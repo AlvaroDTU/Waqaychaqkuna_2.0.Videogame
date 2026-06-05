@@ -89,11 +89,13 @@ namespace Waqaychaqkuna20 {
 			this->Controls->Add(this->pictureBox1);
 			this->Name = L"FrmMenu";
 			this->Text = L"FrmMenu";
+			this->Load += gcnew System::EventHandler(this, &FrmMenu::FrmMenu_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 
+	private: System::Void FrmMenu_Load(System::Object^ sender, System::EventArgs^ e) {}
 	};
 }
