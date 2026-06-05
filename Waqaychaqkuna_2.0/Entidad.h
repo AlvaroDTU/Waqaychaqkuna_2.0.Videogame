@@ -23,7 +23,7 @@ public:
 	~Entidad();
 
 
-
+	// HOLA BRO
 
 	int getPosX();
 	int getPosY();
