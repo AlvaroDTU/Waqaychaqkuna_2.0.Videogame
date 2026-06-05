@@ -19,8 +19,10 @@ namespace Waqaychaqkuna20 {
 		FrmNivel1(void)
 		{
 			InitializeComponent();
+			this->KeyPreview = true;
+
 			g = this->CreateGraphics();
-			guardia = new Guardia("gaurdia", 20, 20, 240, 320, 5, 5, 1, true);
+			guardia = new Guardia("gaurdia", 20, 20, 240, 20, 5, 5, 1, true);
 			guardiaImg = gcnew Bitmap("guardia.png");
 			//
 			//TODO: Add the constructor code here
@@ -85,30 +87,30 @@ namespace Waqaychaqkuna20 {
 		System::Void FrmNivel1_Load(System::Object^ sender, System::EventArgs^ e) {}
 	private: System::Void FrmNivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 	
-		if (e->KeyCode == Keys::Up) {
+		if (e->KeyCode == Keys::W) {
 			guardia->mover(Direccion::Arriba);
 
 		}
 
-		else if (e->KeyCode == Keys::Down) {
+		else if (e->KeyCode == Keys::S) {
 			guardia->mover(Direccion::Abajo);
 
 		}
 
-		else if (e->KeyCode == Keys::Right) {
+		else if (e->KeyCode == Keys::D) {
 			guardia->mover(Direccion::Derecha);
 
 		}
 
-		else if (e->KeyCode == Keys::Left) {
+		else if (e->KeyCode == Keys::A) {
 			guardia->mover(Direccion::Izquierda);
 
 		}
 	
 	}
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		juego->Enabled;
-		guardia->dibujar(g,guardiaImg); 
+		juego->Start();		
+		guardia->dibujar(g,guardiaImg);
 	
 	}
 
