@@ -84,34 +84,36 @@ namespace Waqaychaqkuna20 {
 		}
 #pragma endregion
 	private: 
-		System::Void FrmNivel1_Load(System::Object^ sender, System::EventArgs^ e) {}
+		System::Void FrmNivel1_Load(System::Object^ sender, System::EventArgs^ e) {
+			juego->Start();
+
+		}
 	private: System::Void FrmNivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-	
-		if (e->KeyCode == Keys::W) {
+
+		if (e->KeyCode == Keys::Up) {
 			guardia->mover(Direccion::Arriba);
-
 		}
 
-		else if (e->KeyCode == Keys::S) {
+		else if (e->KeyCode == Keys::Down) {
 			guardia->mover(Direccion::Abajo);
-
 		}
 
-		else if (e->KeyCode == Keys::D) {
+		else if (e->KeyCode == Keys::Right) {
 			guardia->mover(Direccion::Derecha);
-
 		}
 
-		else if (e->KeyCode == Keys::A) {
+		else if (e->KeyCode == Keys::Left) {
 			guardia->mover(Direccion::Izquierda);
 
+
 		}
-	
+		
+
 	}
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		juego->Start();		
+		g->Clear(Color::Cyan);
+
 		guardia->dibujar(g,guardiaImg);
-	
 	}
 
 	};

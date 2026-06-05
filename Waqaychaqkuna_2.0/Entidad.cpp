@@ -24,7 +24,9 @@ int Entidad::getAlto(){	return this->alto; }
 int Entidad::getAncho(){ return this->ancho; }
 int Entidad::getFila() { return this->fila; }
 int Entidad::getColumna() { return this->columna; }
+bool Entidad::getMoviendose() { return this->moviendose; }
 
+void Entidad::setMoviendose(bool a) { moviendose = a; }
 void Entidad::setFila(int fil) { this->fila = fil; }
 void Entidad::setColumna(int colum) { this->columna = colum; }
 

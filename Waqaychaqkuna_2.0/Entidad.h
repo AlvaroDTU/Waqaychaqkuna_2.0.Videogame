@@ -16,6 +16,7 @@ protected:
 	int dirX;
 	int dirY;
 	int fila, columna;
+	bool moviendose;
 
 public:
 	Entidad();
@@ -33,13 +34,15 @@ public:
 	int getAncho();
 	int getFila();
 	int getColumna();
+	bool getMoviendose();
 
+	void setMoviendose(bool a);
 	void setPos(int x, int y);
 	void setAlto(int alt);
 	void setAncho(int anch);
 	void setFila(int fil);
 	void setColumna(int colum);
-
+	
 
 
 	virtual void dibujar(Graphics^ g, Bitmap^ img) = 0;

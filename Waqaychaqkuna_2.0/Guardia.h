@@ -21,6 +21,5 @@ public:
 	void dibujar(Graphics^ g, Bitmap^ img) override;
 
 
-
 };
 
