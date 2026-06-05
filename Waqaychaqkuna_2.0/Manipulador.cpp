@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "Manipulador.h"
-Manipulador::Manipulador(int x, int y, int ancho, int alto, int dx, int dy,
+Manipulador::Manipulador(int x, int y, int dx, int dy,
 	bool at, int obj, int vid, int tM) : Enemigo(posX, posY,
-		ancho, alto, dirX, dirY, at, obj)
+		 dirX, dirY, at, obj)
 {
 	this->tiempoMovimiento = tM;
 

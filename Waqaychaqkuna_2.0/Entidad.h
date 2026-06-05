@@ -21,7 +21,7 @@ protected:
 
 public:
 	Entidad();
-	Entidad(int posX, int posY, int ancho, int alto, int dirX, int dirY);
+	Entidad(int posX, int posY, int dirX, int dirY);
 	~Entidad();
 
 

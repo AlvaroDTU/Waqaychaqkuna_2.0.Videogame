@@ -5,7 +5,7 @@ class Manipulador : public Enemigo
 public:
 	int tiempoMovimiento;
 private:
-	Manipulador(int x, int y, int ancho, int alto, int dx, int dy, bool at, int obj, int vid, int tM);
+	Manipulador(int x, int y, int dx, int dy, bool at, int obj, int vid, int tM);
 	~Manipulador();
 
 	int getTemMov();

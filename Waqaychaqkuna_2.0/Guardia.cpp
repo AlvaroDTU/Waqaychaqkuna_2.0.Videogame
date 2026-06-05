@@ -1,8 +1,7 @@
 #include "pch.h"
 #include "Guardia.h"
-Guardia::Guardia( int posX, int posY, int ancho, int alto, 
-	int dirX, int dirY, int tpAccion, bool Accio) : Entidad(posX,posY,
-		ancho,alto,dirX,dirY)
+Guardia::Guardia( int posX, int posY, int dirX, int dirY,
+	int tpAccion, bool Accio) : Entidad(posX,posY,dirX,dirY)
 {
 	this->fila = 0;
 	this->columna = 0;

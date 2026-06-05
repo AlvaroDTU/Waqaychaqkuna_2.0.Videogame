@@ -1,13 +1,11 @@
 #include "pch.h"
 #include "Entidad.h"
 Entidad::Entidad(){}
-Entidad::Entidad( int posX, int posY, int ancho, int alto, int dirX, int dirY)
+Entidad::Entidad( int posX, int posY, int dirX, int dirY)
 {
 
 	this->posX = posX;
 	this->posY = posY;
-	this->ancho = ancho;
-	this->alto = alto;
 	this->dirX = dirX;
 	this->dirY = dirY;
 }

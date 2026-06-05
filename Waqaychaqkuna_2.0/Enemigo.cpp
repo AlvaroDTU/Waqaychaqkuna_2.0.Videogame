@@ -2,9 +2,8 @@
 #include "Enemigo.h"
 
 Enemigo::Enemigo(int posX, int posY,
-	int acnho, int alto, int dirX, int dirY, bool at, int obj)
-	: Entidad(posX, posY,
-		ancho, alto, dirX, dirY)
+	int dirX, int dirY, bool at, int obj)
+	: Entidad(posX, posY,dirX, dirY)
 {
 
 	this->atacando = at;

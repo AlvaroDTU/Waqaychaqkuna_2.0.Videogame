@@ -9,7 +9,7 @@ private:
 	bool accion;
 public:
 
-	Guardia(int posX, int posY, int acnho, int alto, int dirX, int dirY, int tpAccion, bool Accio);
+	Guardia(int posX, int posY, int dirX, int dirY, int tpAccion, bool Accio);
 	~Guardia();
 	bool getAccion();
 	int getTipoAccion();
