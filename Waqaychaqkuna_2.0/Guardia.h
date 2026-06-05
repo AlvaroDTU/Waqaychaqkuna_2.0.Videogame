@@ -9,7 +9,7 @@ private:
 	bool accion;
 public:
 
-	Guardia(std::string nombre, int posX, int posY, int alto, int ancho, int dirX, int dirY, int tpAccion, bool Accio);
+	Guardia(std::string nombre, int posX, int posY, int acnho, int alto, int dirX, int dirY, int tpAccion, bool Accio);
 	~Guardia();
 	bool getAccion();
 	int getTipoAccion();

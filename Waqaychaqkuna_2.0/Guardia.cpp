@@ -1,19 +1,21 @@
 #include "pch.h"
 #include "Guardia.h"
-Guardia::Guardia(std::string nombre, int posX, int posY, int alto, int ancho, 
+Guardia::Guardia(std::string nombre, int posX, int posY, int ancho, int alto, 
 	int dirX, int dirY, int tpAccion, bool Accio) : Entidad(nombre,posX,posY,
 		alto,ancho,dirX,dirY)
 {
+	this->fila = 0;
+	this->columna = 0;
 	this->accion = Accio;
 	this->tipoAccion = tpAccion;
 }
 Guardia::~Guardia(){}
-bool Guardia::getAccion(){}
-int Guardia::getTipoAccion(){}
-void Guardia::setAccion(bool acc){}
-void Guardia::setTipoAccion(int tAcc){}
+bool Guardia::getAccion() { return this->accion; }
+int Guardia::getTipoAccion() { return this->tipoAccion; }
+void Guardia::setAccion(bool acc) { this->accion = acc; }
+void Guardia::setTipoAccion(int tAcc) { this->tipoAccion = tAcc; }
 
-std::string Guardia::getNombre(){}
+std::string Guardia::getNombre() { return this->nombre; }
 void Guardia::mover(Direccion direccion) {
 	switch (direccion) {
 	case Direccion::Arriba:

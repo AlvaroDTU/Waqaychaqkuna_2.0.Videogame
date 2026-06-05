@@ -19,7 +19,7 @@ protected:
 
 public:
 	Entidad();
-	Entidad(std::string nombre, int posX, int posY, int alto, int ancho, int dirX, int dirY);
+	Entidad(std::string nombre, int posX, int posY, int ancho, int alto, int dirX, int dirY);
 	~Entidad();
 
 
