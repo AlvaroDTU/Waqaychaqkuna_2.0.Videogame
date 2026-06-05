@@ -18,7 +18,7 @@ public:
 	
 	std::string getNombre();
 	void mover(Direccion direccion) override;
-	void dibujar(Graphics^ g, Bitmap^ img) override;
+	void dibujar(Graphics^ g) override;
 
 
 };

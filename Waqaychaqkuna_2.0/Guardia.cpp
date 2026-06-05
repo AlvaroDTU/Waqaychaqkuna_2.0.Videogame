@@ -44,8 +44,9 @@ void Guardia::mover(Direccion direccion) {
 		break;          }
 
 }
-void Guardia::dibujar(Graphics^ g, Bitmap^ img) {
-	
+void Guardia::dibujar(Graphics^ g) {
+	Bitmap^ img = Recursos::guardia;
+
 	this->alto = img->Height / 4;
 	this->ancho = img->Width / 4;
 

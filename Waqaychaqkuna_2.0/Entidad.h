@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include "Recursos.h"
+
 using namespace System::Drawing;
 
 
@@ -45,7 +47,7 @@ public:
 	
 
 
-	virtual void dibujar(Graphics^ g, Bitmap^ img) = 0;
+	virtual void dibujar(Graphics^ g) = 0;
 	virtual void mover(Direccion direccion) = 0;
 	virtual std::string getNombre() = 0;
 

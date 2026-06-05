@@ -23,7 +23,6 @@ namespace Waqaychaqkuna20 {
 
 			g = this->CreateGraphics();
 			guardia = new Guardia("gaurdia", 20, 20, 240, 20, 5, 5, 1, true);
-			guardiaImg = gcnew Bitmap("guardia.png");
 			//
 			//TODO: Add the constructor code here
 			//
@@ -52,7 +51,6 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Timer^ juego;
 
 		   Guardia* guardia;
-		   Bitmap^ guardiaImg;
 
 
 #pragma region Windows Form Designer generated code
@@ -113,7 +111,7 @@ namespace Waqaychaqkuna20 {
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		g->Clear(Color::Cyan);
 
-		guardia->dibujar(g,guardiaImg);
+		guardia->dibujar(g);
 	}
 
 	};
