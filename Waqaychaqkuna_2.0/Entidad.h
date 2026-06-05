@@ -47,10 +47,10 @@ public:
 
 
 	virtual void dibujar(Graphics^ g) = 0;
-	virtual void mover(Direccion direccion) = 0;
+	virtual void mover(Direccion direccion, int ancho, int alto) = 0;
 	virtual std::string getNombre() = 0;
 
-	System::Drawing::Rectangle getRectangle(int extra = 0);
+	System::Drawing::Rectangle getRectangle(int extra);
 
 
 };

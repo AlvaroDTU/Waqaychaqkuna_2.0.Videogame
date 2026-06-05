@@ -1,17 +1,13 @@
 #pragma once
 #include "Enemigo.h"
-class Huaquero : public Enemigo
+class Manipulador : public Enemigo
 {
-private:
-	int vidas;
-	int tiempoMovimiento;
-
 public:
-	Huaquero(int x, int y, int ancho, int alto, int dx, int dy, bool at, int obj, int vid, int tM);
-	~Huaquero();
+	int tiempoMovimiento;
+private:
+	Manipulador(int x, int y, int ancho, int alto, int dx, int dy, bool at, int obj, int vid, int tM);
+	~Manipulador();
 
-	int getVidas();
-	void RestarVidas(int v);
 	int getTemMov();
 	void setTemMov(int TM);
 
@@ -21,6 +17,7 @@ public:
 	void dibujar(Graphics^ g) override;
 
 	// virtual void atacar(Bien* bien) override
+
 
 
 };

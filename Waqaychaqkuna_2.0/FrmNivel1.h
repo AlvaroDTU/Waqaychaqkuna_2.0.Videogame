@@ -87,21 +87,24 @@ namespace Waqaychaqkuna20 {
 
 		}
 	private: System::Void FrmNivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		int ancho = this->Width;
+		int alto = this->Height;
+
 
 		if (e->KeyCode == Keys::Up) {
-			guardia->mover(Direccion::Arriba);
+			guardia->mover(Direccion::Arriba,ancho,alto);
 		}
 
 		else if (e->KeyCode == Keys::Down) {
-			guardia->mover(Direccion::Abajo);
+			guardia->mover(Direccion::Abajo, ancho, alto);
 		}
 
 		else if (e->KeyCode == Keys::Right) {
-			guardia->mover(Direccion::Derecha);
+			guardia->mover(Direccion::Derecha, ancho, alto);
 		}
 
 		else if (e->KeyCode == Keys::Left) {
-			guardia->mover(Direccion::Izquierda);
+			guardia->mover(Direccion::Izquierda, ancho, alto);
 
 
 		}

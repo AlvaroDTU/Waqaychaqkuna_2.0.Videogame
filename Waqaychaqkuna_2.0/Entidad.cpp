@@ -36,3 +36,7 @@ void Entidad::setPos(int x, int y){
 }
 void Entidad::setAlto(int alt) { this->alto = alt; }
 void Entidad::setAncho(int anch) { this->ancho = anch; }
+
+System::Drawing::Rectangle Entidad::getRectangle(int extra) {
+	return System::Drawing::Rectangle(posX - extra, posY - extra, ancho  + extra * 2, alto+extra * 2);
+}

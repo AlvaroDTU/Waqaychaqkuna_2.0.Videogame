@@ -149,6 +149,7 @@
     </ClInclude>
     <ClInclude Include="Guardia.h" />
     <ClInclude Include="Huaquero.h" />
+    <ClInclude Include="Manipulador.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Recursos.h" />
     <ClInclude Include="Resource.h" />
@@ -161,6 +162,7 @@
     <ClCompile Include="FrmNivel1.cpp" />
     <ClCompile Include="Guardia.cpp" />
     <ClCompile Include="Huaquero.cpp" />
+    <ClCompile Include="Manipulador.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

@@ -1,22 +1,20 @@
 #include "pch.h"
-#include "Guardia.h"
-Guardia::Guardia( int posX, int posY, int ancho, int alto, 
-	int dirX, int dirY, int tpAccion, bool Accio) : Entidad(posX,posY,
-		ancho,alto,dirX,dirY)
+#include "Manipulador.h"
+Manipulador::Manipulador(int x, int y, int ancho, int alto, int dx, int dy,
+	bool at, int obj, int vid, int tM) : Enemigo(posX, posY,
+		ancho, alto, dirX, dirY, at, obj)
 {
-	this->fila = 0;
-	this->columna = 0;
-	this->accion = Accio;
-	this->tipoAccion = tpAccion;
-}
-Guardia::~Guardia(){}
-bool Guardia::getAccion() { return this->accion; }
-int Guardia::getTipoAccion() { return this->tipoAccion; }
-void Guardia::setAccion(bool acc) { this->accion = acc; }
-void Guardia::setTipoAccion(int tAcc) { this->tipoAccion = tAcc; }
+	this->tiempoMovimiento = tM;
 
-std::string Guardia::getNombre() { return "guardia"; }
-void Guardia::mover(Direccion direccion, int ancho, int alto) {
+}
+Manipulador::~Manipulador(){}
+
+int Manipulador::getTemMov() { return this->tiempoMovimiento; }
+void Manipulador::setTemMov(int TM) { tiempoMovimiento = TM; }
+
+std::string Manipulador::getNombre() { return "manipulador"; }
+
+void Manipulador::mover(Direccion direccion, int ancho, int alto) {
 	moviendose = true;
 
 	switch (direccion) {
@@ -37,7 +35,8 @@ void Guardia::mover(Direccion direccion, int ancho, int alto) {
 	case Direccion::Izquierda:
 		posX -= dirX;
 		this->fila = 1;
-		break;          }
+		break;
+	}
 
 	Rectangle r = getRectangle(0);
 	if (posX < 0) { posX = 0; }
@@ -47,19 +46,23 @@ void Guardia::mover(Direccion direccion, int ancho, int alto) {
 
 	if (posY + r.Height > alto)
 		posY = alto - r.Height;
+
 }
-void Guardia::dibujar(Graphics^ g) {
+void Manipulador::dibujar(Graphics^ g) {
 	Bitmap^ img = Recursos::guardia;
+	// CAMBIAR LUEGO A :
+	// Bitmap^ img = Recursos::Manipulador;
 
 	this->alto = img->Height / 4;
 	this->ancho = img->Width / 4;
 
 	Rectangle molde = Rectangle(columna * ancho, fila * alto, ancho, alto);
+
 	if (moviendose == true) {
-	columna++;
-	if (columna == 4) { columna = 0; }
+		columna++;
+		if (columna == 4) { columna = 0; }
 	}
-	else 
+	else
 	{
 		columna = 0;
 	}
@@ -67,4 +70,10 @@ void Guardia::dibujar(Graphics^ g) {
 
 	moviendose = false;
 
+
+
+
+
 }
+
+// virtual void atacar(Bien* bien) override
