@@ -1,9 +1,9 @@
 #include "pch.h"
 #include "Entidad.h"
 Entidad::Entidad(){}
-Entidad::Entidad(std::string nombre, int posX, int posY, int ancho, int alto, int dirX, int dirY)
+Entidad::Entidad( int posX, int posY, int ancho, int alto, int dirX, int dirY)
 {
-	this->nombre = nombre;
+
 	this->posX = posX;
 	this->posY = posY;
 	this->ancho = ancho;

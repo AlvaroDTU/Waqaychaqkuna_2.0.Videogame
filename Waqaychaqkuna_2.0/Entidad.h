@@ -10,7 +10,6 @@ enum Direccion { Arriba, Abajo, Izquierda, Derecha };
 class Entidad
 {
 protected:
-	std::string nombre;
 	int posX;
 	int posY;
 	int alto;
@@ -22,7 +21,7 @@ protected:
 
 public:
 	Entidad();
-	Entidad(std::string nombre, int posX, int posY, int ancho, int alto, int dirX, int dirY);
+	Entidad(int posX, int posY, int ancho, int alto, int dirX, int dirY);
 	~Entidad();
 
 

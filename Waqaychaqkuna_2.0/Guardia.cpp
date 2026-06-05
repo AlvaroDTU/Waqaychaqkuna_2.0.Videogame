@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Guardia.h"
-Guardia::Guardia(std::string nombre, int posX, int posY, int ancho, int alto, 
-	int dirX, int dirY, int tpAccion, bool Accio) : Entidad(nombre,posX,posY,
+Guardia::Guardia( int posX, int posY, int ancho, int alto, 
+	int dirX, int dirY, int tpAccion, bool Accio) : Entidad(posX,posY,
 		ancho,alto,dirX,dirY)
 {
 	this->fila = 0;
@@ -15,7 +15,7 @@ int Guardia::getTipoAccion() { return this->tipoAccion; }
 void Guardia::setAccion(bool acc) { this->accion = acc; }
 void Guardia::setTipoAccion(int tAcc) { this->tipoAccion = tAcc; }
 
-std::string Guardia::getNombre() { return this->nombre; }
+std::string Guardia::getNombre() { return "guardia"; }
 void Guardia::mover(Direccion direccion) {
 	moviendose = true;
 

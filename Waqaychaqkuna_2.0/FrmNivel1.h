@@ -22,7 +22,7 @@ namespace Waqaychaqkuna20 {
 			this->KeyPreview = true;
 
 			g = this->CreateGraphics();
-			guardia = new Guardia("gaurdia", 20, 20, 240, 20, 5, 5, 1, true);
+			guardia = new Guardia(20, 20, 240, 20, 5, 5, 1, true);
 			//
 			//TODO: Add the constructor code here
 			//
