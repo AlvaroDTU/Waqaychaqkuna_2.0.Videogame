@@ -35,6 +35,9 @@
     <ClInclude Include="Entidad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Guardia.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Waqaychaqkuna_2.0.cpp">
@@ -53,6 +56,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Entidad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Guardia.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

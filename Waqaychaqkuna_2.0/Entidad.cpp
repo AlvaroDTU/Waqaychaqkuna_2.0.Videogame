@@ -1,7 +1,16 @@
 #include "pch.h"
 #include "Entidad.h"
 Entidad::Entidad(){}
-Entidad::Entidad(std::string nombre, int posX, int posY, int alto, int ancho, int dirX, int dirY){}
+Entidad::Entidad(std::string nombre, int posX, int posY, int alto, int ancho, int dirX, int dirY)
+{
+	this->nombre = nombre;
+	this->posX = posX;
+	this->posY = posY;
+	this->alto = alto;
+	this->ancho = ancho;
+	this->dirX = dirX;
+	this->dirY = dirY;
+}
 Entidad::~Entidad(){}
 
 
@@ -13,7 +22,11 @@ int Entidad::getDirX(){	return this->dirX; }
 int Entidad::getDirY(){ return this->dirY; }
 int Entidad::getAlto(){	return this->alto; }
 int Entidad::getAncho(){ return this->ancho; }
+int Entidad::getFila() { return this->fila; }
+int Entidad::getColumna() { return this->columna; }
 
+void Entidad::setFila(int fil) { this->fila = fil; }
+void Entidad::setColumna(int colum) { this->columna = colum; }
 
 void Entidad::setPos(int x, int y){
 	this->posX = x;
