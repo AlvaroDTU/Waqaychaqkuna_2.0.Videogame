@@ -15,7 +15,7 @@ void Reportera::dibujar(Graphics^ g) {
 	// CAMBIAR LUEGO A :
 	// Bitmap^ img = Recursos::reportera;
 
-	Bitmap^ img = Recursos::guardia;
+	Bitmap^ img = Recursos::reportera;
 
 	ancho = img->Width / 2;
 	alto = img->Height / 2;
