@@ -50,6 +50,15 @@
     <ClInclude Include="Manipulador.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Aliado.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Reportera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cuidador.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Waqaychaqkuna_2.0.cpp">
@@ -83,6 +92,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Manipulador.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Aliado.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Reportera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cuidador.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -51,7 +51,7 @@ void Manipulador::mover(Direccion direccion, int ancho, int alto) {
 void Manipulador::dibujar(Graphics^ g) {
 	Bitmap^ img = Recursos::guardia;
 	// CAMBIAR LUEGO A :
-	// Bitmap^ img = Recursos::Manipulador;
+	// Bitmap^ img = Recursos::manipulador;
 
 	this->alto = img->Height / 4;
 	this->ancho = img->Width / 4;

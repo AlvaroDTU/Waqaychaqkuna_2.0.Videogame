@@ -139,6 +139,8 @@
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Aliado.h" />
+    <ClInclude Include="Cuidador.h" />
     <ClInclude Include="Enemigo.h" />
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="FrmMenu.h">
@@ -152,10 +154,13 @@
     <ClInclude Include="Manipulador.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Recursos.h" />
+    <ClInclude Include="Reportera.h" />
     <ClInclude Include="Resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Aliado.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="Cuidador.cpp" />
     <ClCompile Include="Enemigo.cpp" />
     <ClCompile Include="Entidad.cpp" />
     <ClCompile Include="FrmMenu.cpp" />
@@ -170,6 +175,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Recursos.cpp" />
+    <ClCompile Include="Reportera.cpp" />
     <ClCompile Include="Waqaychaqkuna_2.0.cpp" />
   </ItemGroup>
   <ItemGroup>
