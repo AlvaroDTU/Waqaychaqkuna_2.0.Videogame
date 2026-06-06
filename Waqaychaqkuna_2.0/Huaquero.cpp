@@ -1,21 +1,22 @@
 #include "pch.h"
-#include "Guardia.h"
-Guardia::Guardia( int posX, int posY, int dirX, int dirY,
-	int tpAccion, bool Accio) : Entidad(posX,posY,dirX,dirY)
+#include "Huaquero.h"
+Huaquero::Huaquero(int x, int y, int dx, int dy, 
+	bool at, int obj, int vid, int tM) : Enemigo (posX, posY,
+		dirX, dirY, at, obj) 
 {
-	this->fila = 0;
-	this->columna = 0;
-	this->accion = Accio;
-	this->tipoAccion = tpAccion;
+	this->vidas = vid;
+	this->tiempoMovimiento = tM;
 }
-Guardia::~Guardia(){}
-bool Guardia::getAccion() { return this->accion; }
-int Guardia::getTipoAccion() { return this->tipoAccion; }
-void Guardia::setAccion(bool acc) { this->accion = acc; }
-void Guardia::setTipoAccion(int tAcc) { this->tipoAccion = tAcc; }
+Huaquero::~Huaquero(){}
 
-std::string Guardia::getNombre() { return "guardia"; }
-void Guardia::mover(Direccion direccion, int ancho, int alto) {
+int Huaquero::getVidas() { return this->vidas; }
+void Huaquero::RestarVidas(int v) { this -> vidas -= v; }
+int Huaquero::getTemMov() { return this->tiempoMovimiento; }
+void Huaquero::setTemMov(int TM) { tiempoMovimiento = TM; }
+
+std::string Huaquero::getNombre() { return "huaquero"; }
+
+void Huaquero::mover(Direccion direccion, int ancho, int alto) {
 	moviendose = true;
 
 	switch (direccion) {
@@ -36,7 +37,8 @@ void Guardia::mover(Direccion direccion, int ancho, int alto) {
 	case Direccion::Izquierda:
 		posX -= dirX;
 		this->fila = 1;
-		break;          }
+		break;
+	}
 
 	Rectangle r = getRectangle(0);
 	if (posX < 0) { posX = 0; }
@@ -46,19 +48,22 @@ void Guardia::mover(Direccion direccion, int ancho, int alto) {
 
 	if (posY + r.Height > alto)
 		posY = alto - r.Height;
+
 }
-void Guardia::dibujar(Graphics^ g) {
+void Huaquero::dibujar(Graphics^ g) {
 	Bitmap^ img = Recursos::guardia;
+	// CAMBIAR LUEGO A :
+	// Bitmap^ img = Recursos::huaquero;
 
 	this->alto = img->Height / 4;
 	this->ancho = img->Width / 4;
 
 	Rectangle molde = Rectangle(columna * ancho, fila * alto, ancho, alto);
 	if (moviendose == true) {
-	columna++;
-	if (columna == 4) { columna = 0; }
+		columna++;
+		if (columna == 4) { columna = 0; }
 	}
-	else 
+	else
 	{
 		columna = 0;
 	}
@@ -66,4 +71,8 @@ void Guardia::dibujar(Graphics^ g) {
 
 	moviendose = false;
 
+
+
 }
+
+// void atacar(Bien* bien) 

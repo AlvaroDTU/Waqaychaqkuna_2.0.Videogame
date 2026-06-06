@@ -1,4 +1,5 @@
 #pragma once
+#include "Guardia.h"
 
 namespace Waqaychaqkuna20 {
 
@@ -18,6 +19,10 @@ namespace Waqaychaqkuna20 {
 		FrmNivel1(void)
 		{
 			InitializeComponent();
+			this->KeyPreview = true;
+
+			g = this->CreateGraphics();
+			guardia = new Guardia(20, 20, 240, 20, 5, 5, 1, true);
 			//
 			//TODO: Add the constructor code here
 			//
@@ -34,12 +39,19 @@ namespace Waqaychaqkuna20 {
 				delete components;
 			}
 		}
+	private: System::ComponentModel::IContainer^ components;
+	protected:
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
+		Graphics^ g;
+	private: System::Windows::Forms::Timer^ juego;
+
+		   Guardia* guardia;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -48,12 +60,62 @@ namespace Waqaychaqkuna20 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
-			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"FrmNivel1";
-			this->Padding = System::Windows::Forms::Padding(0);
+			this->components = (gcnew System::ComponentModel::Container());
+			this->juego = (gcnew System::Windows::Forms::Timer(this->components));
+			this->SuspendLayout();
+			// 
+			// juego
+			// 
+			this->juego->Tick += gcnew System::EventHandler(this, &FrmNivel1::timer1_Tick);
+			// 
+			// FrmNivel1
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(943, 543);
+			this->Name = L"FrmNivel1";
+			this->Text = L"FrmNivel1";
+			this->Load += gcnew System::EventHandler(this, &FrmNivel1::FrmNivel1_Load);
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel1::FrmNivel1_KeyDown);
+			this->ResumeLayout(false);
+
 		}
 #pragma endregion
+	private: 
+		System::Void FrmNivel1_Load(System::Object^ sender, System::EventArgs^ e) {
+			juego->Start();
+
+		}
+	private: System::Void FrmNivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		int ancho = this->Width;
+		int alto = this->Height;
+
+
+		if (e->KeyCode == Keys::Up) {
+			guardia->mover(Direccion::Arriba,ancho,alto);
+		}
+
+		else if (e->KeyCode == Keys::Down) {
+			guardia->mover(Direccion::Abajo, ancho, alto);
+		}
+
+		else if (e->KeyCode == Keys::Right) {
+			guardia->mover(Direccion::Derecha, ancho, alto);
+		}
+
+		else if (e->KeyCode == Keys::Left) {
+			guardia->mover(Direccion::Izquierda, ancho, alto);
+
+
+		}
+		
+
+	}
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+		g->Clear(Color::Cyan);
+
+		guardia->dibujar(g);
+	}
+
 	};
 }
