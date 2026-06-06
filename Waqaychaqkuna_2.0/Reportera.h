@@ -13,7 +13,6 @@ public:
 	void setTipoPista(int Tp);
 
 	std::string getNombre() override;
-	void mover(Direccion direccion, int ancho, int alto) override;
 	void dibujar(Graphics^ g) override;
 	
 	// VER SI ESTO SE IMPREMENTARA

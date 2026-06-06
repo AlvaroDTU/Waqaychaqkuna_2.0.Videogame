@@ -11,40 +11,6 @@ int Reportera::getTipoPista() { return this->tipoPista; }
 void Reportera::setTipoPista(int Tp) { this->tipoPista = Tp; }
 
 std::string Reportera::getNombre() { return "reportera"; }
-void Reportera::mover(Direccion direccion, int ancho, int alto) {
-	moviendose = true;
-
-	switch (direccion) {
-	case Direccion::Arriba:
-		posY -= dirY;
-		this->fila = 3;
-		break;
-	case Direccion::Abajo:
-		posY += dirY;
-		this->fila = 0;
-
-		break;
-	case Direccion::Derecha:
-		posX += dirX;
-		this->fila = 2;
-
-		break;
-	case Direccion::Izquierda:
-		posX -= dirX;
-		this->fila = 1;
-		break;
-	}
-
-	Rectangle r = getRectangle(0);
-	if (posX < 0) { posX = 0; }
-	if (posY < 0) { posY = 0; }
-	if (posX + r.Width > ancho)
-		posX = ancho - r.Width;
-
-	if (posY + r.Height > alto)
-		posY = alto - r.Height;
-
-}
 void Reportera::dibujar(Graphics^ g) {
 	// CAMBIAR LUEGO A :
 	// Bitmap^ img = Recursos::reportera;
@@ -54,16 +20,21 @@ void Reportera::dibujar(Graphics^ g) {
 	ancho = img->Width / 2;
 	alto = img->Height / 2;
 	
-	Rectangle model = Rectangle(columna * ancho, fila * ancho, ancho, alto);
+	Rectangle molde = Rectangle(columna * ancho, fila * ancho, ancho, alto);
 
 	if (moviendose == true) {
 		columna++;
-		if (columna == 4) { columna = 0; }
+		fila++;
+		if (columna == 2) { columna = 0; }
+		if (fila == 2) { fila = 0; }
 	}
 	else
 	{
 		columna = 0;
+		fila = 0;
 	}
+	g->DrawImage(img, posX, posY, molde, GraphicsUnit::Pixel);
+
 	moviendose = false;
 }
 

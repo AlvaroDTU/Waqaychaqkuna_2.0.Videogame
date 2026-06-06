@@ -59,6 +59,9 @@
     <ClInclude Include="Cuidador.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Murcielago.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Waqaychaqkuna_2.0.cpp">
@@ -101,6 +104,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Cuidador.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Murcielago.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
