@@ -9,7 +9,8 @@ std::string Murcielago::getNombre() { return "murcielago"; }
 
 void Murcielago::dibujar(Graphics^ g) {
 // Luego cambiar a Bitmao^ img = Recursos::murcilago;
-	Bitmap^ img = Recursos::bat;
+	Bitmap^ img = Recursos::guardia;
+
 	this->alto = img->Height / 1;
 	this->ancho = img->Width / 1;
 

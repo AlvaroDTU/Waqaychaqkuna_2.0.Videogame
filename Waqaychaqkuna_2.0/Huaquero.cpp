@@ -51,7 +51,7 @@ void Huaquero::mover(Direccion direccion, int ancho, int alto) {
 
 }
 void Huaquero::dibujar(Graphics^ g) {
-	Bitmap^ img = Recursos::huaquero;
+	Bitmap^ img = Recursos::guardia;
 	// CAMBIAR LUEGO A :
 	// Bitmap^ img = Recursos::huaquero;
 

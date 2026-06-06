@@ -49,7 +49,7 @@ void Manipulador::mover(Direccion direccion, int ancho, int alto) {
 
 }
 void Manipulador::dibujar(Graphics^ g) {
-	Bitmap^ img = Recursos::manipulador;
+	Bitmap^ img = Recursos::guardia;
 	// CAMBIAR LUEGO A :
 	// Bitmap^ img = Recursos::manipulador;
 
