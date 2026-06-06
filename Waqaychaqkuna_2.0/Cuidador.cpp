@@ -53,6 +53,16 @@ void Cuidador::dibujar(Graphics^ g) {
 	ancho = img->Width / 4;
 	alto = img->Height / 4;
 
-	//Rectangle r = Rectangle(columna*ancho,)
+	Rectangle model = Rectangle(columna * ancho, fila * ancho, ancho, alto);
+
+	if (moviendose == true) {
+		columna++;
+		if (columna == 4) { columna = 0; }
+	}
+	else
+	{
+		columna = 0;
+	}
+	moviendose = false;
 
 }

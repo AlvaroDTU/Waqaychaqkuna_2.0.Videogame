@@ -67,3 +67,5 @@ void Guardia::dibujar(Graphics^ g) {
 	moviendose = false;
 
 }
+
+// void ayudar()

@@ -17,7 +17,7 @@ public:
 	void dibujar(Graphics^ g) override;
 	
 	// VER SI ESTO SE IMPREMENTARA
-	void ayudar() override;
+	//void ayudar() override
 
 };
 

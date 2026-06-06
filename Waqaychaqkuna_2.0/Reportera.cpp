@@ -67,4 +67,4 @@ void Reportera::dibujar(Graphics^ g) {
 	moviendose = false;
 }
 
-// 	void ayudar() override
+// 	void ayudar() override //
