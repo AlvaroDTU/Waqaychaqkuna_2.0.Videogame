@@ -157,6 +157,7 @@
     <ClInclude Include="Recursos.h" />
     <ClInclude Include="Reportera.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Visitante.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Aliado.cpp" />
@@ -178,6 +179,7 @@
     </ClCompile>
     <ClCompile Include="Recursos.cpp" />
     <ClCompile Include="Reportera.cpp" />
+    <ClCompile Include="Visitante.cpp" />
     <ClCompile Include="Waqaychaqkuna_2.0.cpp" />
   </ItemGroup>
   <ItemGroup>
