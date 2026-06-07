@@ -65,6 +65,9 @@
     <ClInclude Include="Visitante.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Ladron.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Waqaychaqkuna_2.0.cpp">
@@ -113,6 +116,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Visitante.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ladron.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

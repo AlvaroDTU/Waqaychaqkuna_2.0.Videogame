@@ -11,7 +11,7 @@ Visitante::~Visitante(){}
 std::string Visitante::getNombre() {
 	for (int i = 0;i < 6;i++) {
 		if (i == tipo) {
-			return "visitante" + std::to_string(i);;
+			return "visitante" + std::to_string(i+1);;
 		}
 	}
 }

@@ -16,6 +16,6 @@ public:
 	int getObjetivo();
 	void setAtacando(bool at);
 	void setObjetivo(int obj);
-	// virtual void atacar(Bien* bien) = 0;
+	// virtual void atacar(Bien* bien) = 0
 
 };

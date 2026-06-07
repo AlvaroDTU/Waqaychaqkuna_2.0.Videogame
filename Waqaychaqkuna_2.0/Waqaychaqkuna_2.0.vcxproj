@@ -151,6 +151,7 @@
     </ClInclude>
     <ClInclude Include="Guardia.h" />
     <ClInclude Include="Huaquero.h" />
+    <ClInclude Include="Ladron.h" />
     <ClInclude Include="Manipulador.h" />
     <ClInclude Include="Murcielago.h" />
     <ClInclude Include="pch.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="FrmNivel1.cpp" />
     <ClCompile Include="Guardia.cpp" />
     <ClCompile Include="Huaquero.cpp" />
+    <ClCompile Include="Ladron.cpp" />
     <ClCompile Include="Manipulador.cpp" />
     <ClCompile Include="Murcielago.cpp" />
     <ClCompile Include="pch.cpp">
