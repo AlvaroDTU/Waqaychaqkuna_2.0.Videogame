@@ -87,8 +87,8 @@ namespace Waqaychaqkuna20 {
 
 		}
 	private: System::Void FrmNivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-		int ancho = this->Width;
-		int alto = this->Height;
+		int ancho = this->Width -16;
+		int alto = this->Height-39;
 
 
 		if (e->KeyCode == Keys::Up) {
