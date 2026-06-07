@@ -11,11 +11,12 @@ Visitante::~Visitante(){}
 std::string Visitante::getNombre() {
 	for (int i = 0;i < 6;i++) {
 		if (i == tipo) {
-			return "enemigo" + std::to_string(i);;
+			return "visitante" + std::to_string(i);;
 		}
 	}
 }
 void Visitante::mover(Direccion direccion, int ancho, int alto) {
+	
 	moviendose = true;
 
 	switch (direccion) {
