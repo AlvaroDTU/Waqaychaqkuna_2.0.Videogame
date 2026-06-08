@@ -18,12 +18,10 @@ protected:
 	int dirY;
 	int fila, columna;
 	bool moviendose;
-
 public:
 	Entidad();
 	Entidad(int posX, int posY, int dirX, int dirY);
 	~Entidad();
-
 
 	// HOLA BRO
 
@@ -47,7 +45,7 @@ public:
 
 
 	virtual void dibujar(Graphics^ g) = 0;
-	virtual void mover(Direccion direccion, int ancho, int alto) = 0;
+	virtual void mover(int ancho, int alto) = 0;
 	virtual std::string getNombre() = 0;
 
 	System::Drawing::Rectangle getRectangle(int extra);
