@@ -15,7 +15,8 @@ public:
 	int getTipoAccion();
 	void setAccion(bool acc);
 	void setTipoAccion(int tAcc);
-	
+	Bitmap^ getBitmap() override;
+
 	std::string getNombre() override;
 	void mover(Direccion direccion, int ancho, int alto);
 	void mover(int ancho, int alto) override;

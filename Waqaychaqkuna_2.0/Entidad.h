@@ -41,12 +41,13 @@ public:
 	void setAncho(int anch);
 	void setFila(int fil);
 	void setColumna(int colum);
-	
+	virtual Bitmap^ getBitmap() = 0;
 
 
-	virtual void dibujar(Graphics^ g) = 0;
+	virtual void dibujar(Graphics^ g);
 	virtual void mover(int ancho, int alto) = 0;
 	virtual std::string getNombre() = 0;
+	void avanzarEscena();
 
 	System::Drawing::Rectangle getRectangle(int extra);
 

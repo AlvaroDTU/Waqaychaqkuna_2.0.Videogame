@@ -24,6 +24,9 @@ int Entidad::getFila() { return this->fila; }
 int Entidad::getColumna() { return this->columna; }
 bool Entidad::getMoviendose() { return this->moviendose; }
 
+//
+
+//
 void Entidad::setMoviendose(bool a) { moviendose = a; }
 void Entidad::setFila(int fil) { this->fila = fil; }
 void Entidad::setColumna(int colum) { this->columna = colum; }
@@ -33,8 +36,47 @@ void Entidad::setPos(int x, int y){
 	this->posY = y;
 }
 void Entidad::setAlto(int alt) { this->alto = alt; }
+void Entidad::dibujar(Graphics^ g) {
+	Bitmap^ img = getBitmap();
+
+	this->alto = img->Height / 4;
+	this->ancho = img->Width / 4;
+
+	Rectangle molde = Rectangle(columna * ancho, fila * alto, ancho, alto);
+
+	if (moviendose == true) {
+		columna++;
+		if (columna == 4) { columna = 0; }
+	}
+	else
+	{
+		columna = 0;
+	}
+	g->DrawImage(img, posX, posY, molde, GraphicsUnit::Pixel);
+
+	moviendose = false;
+}
+
+void Entidad::avanzarEscena() {
+	Bitmap^ img = getBitmap();
+	int n = 0;
+	if (img->Width == 240) { n = 4; }
+	else if (img->Width == 120) { n = 2; }
+	else if (img->Width == 24) { n = 1; }
+
+	if (moviendose == true) {
+		columna++;
+		if (columna == n) { columna = 0; }
+	}
+	else
+	{
+		columna = 0;
+	}
+}
+
 void Entidad::setAncho(int anch) { this->ancho = anch; }
 
-System::Drawing::Rectangle Entidad::getRectangle(int extra) {
-	return System::Drawing::Rectangle(posX - extra, posY - extra, ancho  + extra * 2, alto+extra * 2);
+Rectangle Entidad::getRectangle(int extra) {
+	return Rectangle(posX - extra, posY - extra, ancho  + extra * 2, alto+extra * 2);
 }
+

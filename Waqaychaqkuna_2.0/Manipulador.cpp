@@ -57,10 +57,6 @@ void Manipulador::dibujar(Graphics^ g) {
 
 	moviendose = false;
 
-
-
-
-
 }
 
 // virtual void atacar(Bien* bien) override
