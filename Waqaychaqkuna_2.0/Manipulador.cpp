@@ -14,7 +14,7 @@ void Manipulador::setTemMov(int TM) { tiempoMovimiento = TM; }
 
 std::string Manipulador::getNombre() { return "manipulador"; }
 
-void Manipulador::mover(Direccion direccion, int ancho, int alto) {
+void Manipulador::mover(int ancho, int alto) {
 	moviendose = true;
 
 	switch (direccion) {

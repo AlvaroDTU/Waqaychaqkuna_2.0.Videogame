@@ -16,7 +16,7 @@ void Huaquero::setTemMov(int TM) { tiempoMovimiento = TM; }
 
 std::string Huaquero::getNombre() { return "huaquero"; }
 
-void Huaquero::mover(Direccion direccion, int ancho, int alto) {
+void Huaquero::mover(int ancho, int alto) {
 	moviendose = true;
 
 	switch (direccion) {

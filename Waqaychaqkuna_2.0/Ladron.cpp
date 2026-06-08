@@ -16,7 +16,7 @@ std::string Ladron::getNombre() {
 		}
 	}
 }
-void Ladron::mover(Direccion direccion, int ancho, int alto) {
+void Ladron::mover(int ancho, int alto) {
 	moviendose = true;
 	switch (direccion) {
 	case Direccion::Arriba:
