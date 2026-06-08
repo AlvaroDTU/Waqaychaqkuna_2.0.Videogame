@@ -6,6 +6,7 @@ public ref class Recursos
 {
 public:
     static Bitmap^ guardia = gcnew Bitmap("sprites\\guardia.png");
+   
     //static Bitmap^ reportera = gcnew Bitmap("sprites\\reportera.png");
 
     //static Bitmap^ huaquero = gcnew Bitmap("sprites\\huaquero.png");
