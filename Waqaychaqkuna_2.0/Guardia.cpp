@@ -69,3 +69,5 @@ void Guardia::dibujar(Graphics^ g) {
 }
 
 // void ayudar()
+
+void Guardia::mover(int ancho, int alto) {}
