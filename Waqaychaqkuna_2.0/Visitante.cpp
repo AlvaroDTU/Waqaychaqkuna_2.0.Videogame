@@ -4,40 +4,18 @@
 Visitante::Visitante(int posX, int posY, int dirX, int dirY)
 			: Entidad(posX,posY,dirX,dirY)
 {
-	tipo = rand() % 6 + 1;
+	tipo = rand() % 6;
 	posXFinal = 0;
 }
 Visitante::~Visitante(){}
 std::string Visitante::getNombre() {
 	for (int i = 0;i < 6;i++) {
 		if (i == tipo) {
-			return "visitante" + std::to_string(i+1);;
+			return "visitante" + std::to_string(i+1);
 		}
 	}
 }
-void Visitante::mover(Direccion direccion, int ancho, int alto) {
-	
-	moviendose = true;
-
-	switch (direccion) {
-	case Direccion::Abajo:
-		this->posY += dirY;
-		this->fila = 0;
-		break;
-	case Direccion::Arriba:
-		this->posY -= dirY;
-		this->fila = 3;
-		break;
-	case Direccion::Derecha:
-		this->posX += dirX;
-		this->fila = 2;		
-		break;
-	case Direccion::Izquierda:
-		this->posX -= dirX;
-		this->fila = 1;		
-		break;
-	}
-
+void Visitante::mover(int ancho, int alto) {
 }
 void Visitante::dibujar(Graphics^ g) {
 	// luego cambiar a el img a al correspondiende de los visitantes
