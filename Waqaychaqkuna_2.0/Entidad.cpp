@@ -44,14 +44,7 @@ void Entidad::dibujar(Graphics^ g) {
 
 	Rectangle molde = Rectangle(columna * ancho, fila * alto, ancho, alto);
 
-	if (moviendose == true) {
-		columna++;
-		if (columna == 4) { columna = 0; }
-	}
-	else
-	{
-		columna = 0;
-	}
+	avanzarEscena();
 	g->DrawImage(img, posX, posY, molde, GraphicsUnit::Pixel);
 
 	moviendose = false;
@@ -62,7 +55,7 @@ void Entidad::avanzarEscena() {
 	int n = 0;
 	if (img->Width == 240) { n = 4; }
 	else if (img->Width == 120) { n = 2; }
-	else if (img->Width == 24) { n = 1; }
+	else if (img->Width == 40) { n = 1; }
 
 	if (moviendose == true) {
 		columna++;

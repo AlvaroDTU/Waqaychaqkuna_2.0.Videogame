@@ -40,7 +40,6 @@ void Guardia::mover(Direccion direccion, int anchoLienzo, int altoLienzo) {
 		posX -= dirX;
 		this->fila = 1;
 		break;          }
-
 	Rectangle r = getRectangle(0);
 	if (posX < 0) { posX = 0; }
 	if (posY < 0) { posY = 0; }
@@ -49,6 +48,7 @@ void Guardia::mover(Direccion direccion, int anchoLienzo, int altoLienzo) {
 
 	if (posY + r.Height > altoLienzo)
 		posY = altoLienzo - r.Height;
+
 }
 void Guardia::dibujar(Graphics^ g) {
 	Entidad::dibujar(g);
