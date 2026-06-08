@@ -17,25 +17,7 @@ std::string Ladron::getNombre() {
 	}
 }
 void Ladron::mover(int ancho, int alto) {
-	moviendose = true;
-	switch (direccion) {
-	case Direccion::Arriba:
-		posY += dirY;
-		fila = 3;
-		break;
-	case Direccion::Abajo:
-		posY -= dirY;
-		fila = 0;
-		break;
-	case Direccion::Derecha:
-		posX += dirX;
-		fila = 2;
-		break;
-	case Direccion::Izquierda:
-		posX -= dirX;
-		fila = 1;
-		break;
-	}
+	//
 }
 void Ladron::dibujar(Graphics^ g) {
 	Bitmap^ img;

@@ -14,39 +14,9 @@ void Manipulador::setTemMov(int TM) { tiempoMovimiento = TM; }
 
 std::string Manipulador::getNombre() { return "manipulador"; }
 
-void Manipulador::mover(int ancho, int alto) {
-	moviendose = true;
-
-	switch (direccion) {
-	case Direccion::Arriba:
-		posY -= dirY;
-		this->fila = 3;
-		break;
-	case Direccion::Abajo:
-		posY += dirY;
-		this->fila = 0;
-
-		break;
-	case Direccion::Derecha:
-		posX += dirX;
-		this->fila = 2;
-
-		break;
-	case Direccion::Izquierda:
-		posX -= dirX;
-		this->fila = 1;
-		break;
-	}
-
-	Rectangle r = getRectangle(0);
-	if (posX < 0) { posX = 0; }
-	if (posY < 0) { posY = 0; }
-	if (posX + r.Width > ancho)
-		posX = ancho - r.Width;
-
-	if (posY + r.Height > alto)
-		posY = alto - r.Height;
-
+void Manipulador::mover(int ancho, int alto) 
+{
+	//
 }
 void Manipulador::dibujar(Graphics^ g) {
 	Bitmap^ img = Recursos::guardia;
