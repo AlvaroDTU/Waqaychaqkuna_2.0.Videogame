@@ -15,7 +15,7 @@ void Guardia::setAccion(bool acc) { this->accion = acc; }
 void Guardia::setTipoAccion(int tAcc) { this->tipoAccion = tAcc; }
 
 std::string Guardia::getNombre() { return "guardia"; }
-void Guardia::mover(Direccion direccion, int ancho, int alto) {
+void Guardia::mover(Direccion direccion, int anchoLienzo, int altoLienzo) {
 	moviendose = true;
 
 	switch (direccion) {
@@ -41,11 +41,11 @@ void Guardia::mover(Direccion direccion, int ancho, int alto) {
 	Rectangle r = getRectangle(0);
 	if (posX < 0) { posX = 0; }
 	if (posY < 0) { posY = 0; }
-	if (posX + r.Width > ancho)
-		posX = ancho - r.Width;
+	if (posX + r.Width > anchoLienzo)
+		posX = anchoLienzo - r.Width;
 
-	if (posY + r.Height > alto)
-		posY = alto - r.Height;
+	if (posY + r.Height > altoLienzo)
+		posY = altoLienzo - r.Height;
 }
 void Guardia::dibujar(Graphics^ g) {
 	Bitmap^ img = Recursos::guardia;
