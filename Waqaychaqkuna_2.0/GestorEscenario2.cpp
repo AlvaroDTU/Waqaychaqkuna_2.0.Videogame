@@ -27,14 +27,62 @@ void GestorEscenario2::dibujar(Graphics^ g){
 	for (auto huaquero : huaqueros) { huaquero->dibujar(g); }
 
 }
-void GestorEscenario2::detectarColisiones(){}
+void GestorEscenario2::detectarColisiones() {
+
+	Rectangle hitboxGuardia = guardia->getRectangle(2);
+
+	for (size_t i = 0; i < cuidadores.size(); i++)
+	{
+		for (size_t j = 0; j < huaqueros.size(); j++)
+		{
+			System::Drawing::Rectangle hitboxCuidador = cuidadores[i]->getRectangle(1);
+			System::Drawing::Rectangle hitboxHuaquero = huaqueros[j]->getRectangle(1);
+			if (hitboxHuaquero.IntersectsWith(hitboxCuidador)) {
+				((Huaquero*)huaqueros[j])->RestarVidas(1); //cuidador.ayudar pero no lo pusimos xd
+				((Cuidador*)cuidadores[i])->RestarDuracion(1);
+
+				if (((Huaquero*)huaqueros[j])->getVidas() <= 0)
+				{
+					eliminarHuaquero(j);
+					j--;
+					enemigosDerrotados++;
+				}
+				if (((Cuidador*)huaqueros[i])->getDuracion() <= 0)
+				{
+					
+					eliminarCuidador(i);
+					i--;
+				}
+			}
+		}
+	}
+
+
+	// Colisiones de Guardia con ENEMMGIOS
+	for (size_t i = 0; i < huaqueros.size(); i++)
+	{
+		System::Drawing::Rectangle hitboxEnemigo = huaqueros[i]->getRectangle(1);
+		if (hitboxEnemigo.IntersectsWith(hitboxGuardia)) {
+
+			enemigosDerrotados++;
+			eliminarHuaquero(i);
+			i--;
+		}
+	}
+
+}
 bool GestorEscenario2::victoria() { return false; }
-int GestorEscenario2::getTotalHuaquero() { return (int)huaqueros.size(); }
 
-void GestorEscenario2::agregarCuidador(Cuidador* c){}
-void GestorEscenario2::agregarHuaquero(Huaquero* h){}
+int GestorEscenario2::getTotalHuaquero(){ return (int)huaqueros.size(); }
+
+void GestorEscenario2::agregarCuidador(Cuidador* c) { cuidadores.push_back(c); }
+void GestorEscenario2::agregarHuaquero(Huaquero* h) { huaqueros.push_back(h); }
 void GestorEscenario2::agregarBien(){}
-void  GestorEscenario2::eliminarCuidador(){}
-void  GestorEscenario2::eliminarHuaquero() {}
+void  GestorEscenario2::eliminarCuidador(int i) { cuidadores.erase(cuidadores.begin() + i); }
+void  GestorEscenario2::eliminarHuaquero(int i) { huaqueros.erase(huaqueros.begin() + i); }
 
-void GestorEscenario2::jugar() {}
+void GestorEscenario2::jugar() {
+	detectarColisiones();
+	
+
+}
