@@ -6,7 +6,6 @@
 GestorEscenario1::GestorEscenario1(Guardia* guardia, int anchoLienzo, int altoLienzo, int enemigosTotales) :
 	guardia(guardia), anchoLienzo(anchoLienzo), altoLienzo(altoLienzo), enemigosTotales(enemigosTotales)
 {
-	temporizador = 15;
 	artilugios.push_back(new Artilugio(153, 50, 230, 50, 800, "Cabeza Clava"));
 	artilugios.push_back(new Artilugio(535, 50, 230, 50, 1000, "Telar"));
 	artilugios.push_back(new Artilugio(917, 50, 230, 50, 2000, "Craneo"));
