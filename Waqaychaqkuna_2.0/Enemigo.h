@@ -1,6 +1,7 @@
 #pragma once
 #include "Entidad.h"
-// #include "Bien.h"
+#include "Bien.h"
+
 class Nivel;
 
 class Enemigo : public Entidad
@@ -16,6 +17,6 @@ public:
 	int getObjetivo();
 	void setAtacando(bool at);
 	void setObjetivo(int obj);
-	// virtual void atacar(Bien* bien) = 0
+	virtual void atacar(Bien* bien) = 0;
 
 };

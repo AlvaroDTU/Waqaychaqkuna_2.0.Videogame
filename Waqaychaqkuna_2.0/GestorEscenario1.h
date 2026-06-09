@@ -3,7 +3,7 @@
 #include "Enemigo.h"
 #include "Visitante.h"
 #include "Aliado.h"
-#include "Reportera.h"
+#include "Bien.h"
 #include <vector>
 
 using std::vector;
@@ -14,6 +14,7 @@ private:
 	Guardia* guardia;
 	vector<Enemigo*> ladrones;
 	vector<Visitante*> visitantes;
+	vector<Bien*> artilugios;
 	Aliado* reportera;
 	int anchoLienzo;
 	int altoLienzo;
@@ -24,6 +25,7 @@ public:
 	GestorEscenario1(Guardia* guardia, int anchoLienzo, int altoLienzo);
 	~GestorEscenario1();
 	void mover();
+	void moverGuardia(Direccion direccion);
 	void dibujar(Graphics^ g);
 	void detectarColisiones();
 	void jugar();

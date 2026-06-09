@@ -111,19 +111,19 @@ namespace Waqaychaqkuna20 {
 
 
 			if (e->KeyCode == Keys::Up) {
-				guardia->mover(Direccion::Arriba, ancho, alto);
+				gestor->moverGuardia(Direccion::Arriba);
 			}
 
 			else if (e->KeyCode == Keys::Down) {
-				guardia->mover(Direccion::Abajo, ancho, alto);
+				gestor->moverGuardia(Direccion::Abajo);
 			}
 
 			else if (e->KeyCode == Keys::Right) {
-				guardia->mover(Direccion::Derecha, ancho, alto);
+				gestor->moverGuardia(Direccion::Derecha);
 			}
 
 			else if (e->KeyCode == Keys::Left) {
-				guardia->mover(Direccion::Izquierda, ancho, alto);
+				gestor->moverGuardia(Direccion::Izquierda);
 
 
 			}
@@ -131,6 +131,7 @@ namespace Waqaychaqkuna20 {
 
 		}
 		Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+			
 			gestor->mover();
 			gestor->detectarColisiones();
 
