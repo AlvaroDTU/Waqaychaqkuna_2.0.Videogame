@@ -10,7 +10,7 @@ namespace Waqaychaqkuna20 {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
+	/// <summary> 
 	/// Summary for FrmNivel1
 	/// </summary>
 	public ref class FrmNivel1 : public System::Windows::Forms::Form
