@@ -1,18 +1,18 @@
 #include "pch.h"
 #include "Ladron.h"
 
-Ladron::Ladron(int posX, int posY, int dirX, int dirY, bool atack,int obj,int t, int tPista)
-	: Enemigo (posX,posY,dirX,dirY,atack,obj)
+Ladron::Ladron(int posX, int posY, int dirX, int dirY, bool atack, int obj, int t, int tPista)
+	: Enemigo(posX, posY, dirX, dirY, atack, obj)
 {
 	this->tipo = t;
 	this->tipoPista = tPista;
 }
-Ladron::~Ladron(){}
+Ladron::~Ladron() {}
 
 std::string Ladron::getNombre() {
-	for (int i = 0;i < 4;i++) {
+	for (int i = 0; i < 4; i++) {
 		if (i == tipo) {
-			return "ladron" + std::to_string(i+1);
+			return "ladron" + std::to_string(i + 1);
 		}
 	}
 }
@@ -24,9 +24,9 @@ void Ladron::dibujar(Graphics^ g) {
 	// LUEGO CAMBIAR POR EL DISEÑO DE CADA UNO YAP :V
 	if (tipo == 1) {
 		if (tipoPista == 1) { img = Recursos::guardia; }
-		else if (tipoPista == 2) {img = Recursos::guardia; }
-		else if (tipoPista == 3) {img = Recursos::guardia; }
-		else if (tipoPista == 4) {img = Recursos::guardia; }
+		else if (tipoPista == 2) { img = Recursos::guardia; }
+		else if (tipoPista == 3) { img = Recursos::guardia; }
+		else if (tipoPista == 4) { img = Recursos::guardia; }
 	}
 	else if (tipo == 2) {
 		if (tipoPista == 1) { img = Recursos::guardia; }

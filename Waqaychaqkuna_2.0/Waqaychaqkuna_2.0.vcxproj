@@ -149,6 +149,7 @@
     <ClInclude Include="FrmNivel1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="GestorEscenario1.h" />
     <ClInclude Include="Guardia.h" />
     <ClInclude Include="Huaquero.h" />
     <ClInclude Include="Ladron.h" />
@@ -168,6 +169,7 @@
     <ClCompile Include="Entidad.cpp" />
     <ClCompile Include="FrmMenu.cpp" />
     <ClCompile Include="FrmNivel1.cpp" />
+    <ClCompile Include="GestorEscenario1.cpp" />
     <ClCompile Include="Guardia.cpp" />
     <ClCompile Include="Huaquero.cpp" />
     <ClCompile Include="Ladron.cpp" />
@@ -179,7 +181,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Recursos.cpp" />
     <ClCompile Include="Reportera.cpp" />
     <ClCompile Include="Visitante.cpp" />
     <ClCompile Include="Waqaychaqkuna_2.0.cpp" />
