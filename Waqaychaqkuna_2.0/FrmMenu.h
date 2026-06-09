@@ -34,7 +34,7 @@ namespace Waqaychaqkuna20 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
+
 	protected:
 	private: System::Windows::Forms::Button^ btnJugar;
 
@@ -54,20 +54,8 @@ namespace Waqaychaqkuna20 {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(FrmMenu::typeid));
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->btnJugar = (gcnew System::Windows::Forms::Button());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
-			// 
-			// pictureBox1
-			// 
-			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
-			this->pictureBox1->Location = System::Drawing::Point(0, 0);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(1600, 800);
-			this->pictureBox1->TabIndex = 0;
-			this->pictureBox1->TabStop = false;
 			// 
 			// btnJugar
 			// 
@@ -84,13 +72,12 @@ namespace Waqaychaqkuna20 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(1600, 800);
 			this->Controls->Add(this->btnJugar);
-			this->Controls->Add(this->pictureBox1);
 			this->Name = L"FrmMenu";
 			this->Text = L"FrmMenu";
 			this->Load += gcnew System::EventHandler(this, &FrmMenu::FrmMenu_Load);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 
 		}

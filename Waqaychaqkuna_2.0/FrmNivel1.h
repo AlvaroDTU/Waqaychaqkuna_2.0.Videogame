@@ -48,8 +48,11 @@ namespace Waqaychaqkuna20 {
 		/// </summary>
 
 		Graphics^ g;
-	private: System::Windows::Forms::Timer^ juego;
+	private: System::Windows::Forms::Timer^ tmrNivel1;
 
+	private: System::Windows::Forms::Panel^ pnlMapa;
+
+		   BufferedGraphics^ buffer;
 		   Guardia* guardia;
 
 
@@ -61,18 +64,29 @@ namespace Waqaychaqkuna20 {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
-			this->juego = (gcnew System::Windows::Forms::Timer(this->components));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(FrmNivel1::typeid));
+			this->tmrNivel1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->pnlMapa = (gcnew System::Windows::Forms::Panel());
 			this->SuspendLayout();
 			// 
-			// juego
+			// tmrNivel1
 			// 
-			this->juego->Tick += gcnew System::EventHandler(this, &FrmNivel1::timer1_Tick);
+			this->tmrNivel1->Tick += gcnew System::EventHandler(this, &FrmNivel1::timer1_Tick);
+			// 
+			// pnlMapa
+			// 
+			this->pnlMapa->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pnlMapa.BackgroundImage")));
+			this->pnlMapa->Location = System::Drawing::Point(0, 0);
+			this->pnlMapa->Name = L"pnlMapa";
+			this->pnlMapa->Size = System::Drawing::Size(1300, 800);
+			this->pnlMapa->TabIndex = 0;
 			// 
 			// FrmNivel1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(943, 543);
+			this->ClientSize = System::Drawing::Size(1600, 800);
+			this->Controls->Add(this->pnlMapa);
 			this->Name = L"FrmNivel1";
 			this->Text = L"FrmNivel1";
 			this->Load += gcnew System::EventHandler(this, &FrmNivel1::FrmNivel1_Load);
@@ -83,7 +97,10 @@ namespace Waqaychaqkuna20 {
 #pragma endregion
 	private: 
 		System::Void FrmNivel1_Load(System::Object^ sender, System::EventArgs^ e) {
-			juego->Start();
+			BufferedGraphicsContext^ contexto = BufferedGraphicsManager::Current;
+			Graphics^ g = this->pnlMapa->CreateGraphics();
+			buffer = contexto->Allocate(g, this->pnlMapa->ClientRectangle);
+			tmrNivel1->Start();
 
 		}
 	private: System::Void FrmNivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
@@ -111,11 +128,12 @@ namespace Waqaychaqkuna20 {
 		
 
 	}
-	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		g->Clear(Color::Cyan);
-
-		guardia->dibujar(g);
+	Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+		Graphics^ lienzo = this->pnlMapa->CreateGraphics();
 	}
 
-	};
+	Void pnlMapa_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) 
+	{
+	}
+};
 }
