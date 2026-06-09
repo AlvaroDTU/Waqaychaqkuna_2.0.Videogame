@@ -1,9 +1,11 @@
 #include "pch.h"
 #include "Reportera.h"
 
-Reportera::Reportera(int posX, int posY, int dirX, int dirY, bool ayuda, 
-	int TipPis) : Aliado (posX,posY,dirX,dirY,ayuda)
+Reportera::Reportera(int posX, int posY, int dirX, int dirY, bool ayuda,
+	int TipPis) : Aliado(posX, posY, dirX, dirY, ayuda)
 {
+	columna = 0;
+	fila = 0;
 	this->tipoPista = TipPis;
 }
 Reportera::~Reportera(){}
@@ -17,7 +19,18 @@ Bitmap^ Reportera::getBitmap() {
 
 std::string Reportera::getNombre() { return "reportera"; }
 void Reportera::dibujar(Graphics^ g) {
-	Entidad::dibujar(g);
+	Bitmap^ img = getBitmap();
+
+	this->alto = img->Height / 4;
+	this->ancho = img->Width / 4;
+
+	Rectangle molde = Rectangle(columna * ancho, fila * alto, ancho, alto);
+
+	avanzarEscena();
+	g->DrawImage(img, posX, posY, molde, GraphicsUnit::Pixel);
+	fila++;
+	if (fila == 2) { fila = 0; }
+	moviendose = true;
 }
 
 void Reportera::mover(int ancho, int alto) {}

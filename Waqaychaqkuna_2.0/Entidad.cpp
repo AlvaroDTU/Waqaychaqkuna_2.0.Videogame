@@ -51,7 +51,6 @@ void Entidad::avanzarEscena() {
 	Bitmap^ img = getBitmap();
 	int n = 0;
 	if (img->Width == 240) { n = 4; }
-	else if (img->Width == 120) { n = 2; }
 	else if (img->Width == 40) { n = 1; }
 
 	if (moviendose == true) {
