@@ -1,4 +1,5 @@
 #pragma once
+#include "FrmNivel1.h"
 
 namespace Waqaychaqkuna20 {
 
@@ -67,6 +68,7 @@ namespace Waqaychaqkuna20 {
 			this->btnJugar->TabIndex = 1;
 			this->btnJugar->Text = L"Jugar";
 			this->btnJugar->UseVisualStyleBackColor = true;
+			this->btnJugar->Click += gcnew System::EventHandler(this, &FrmMenu::btnJugar_Click);
 			// 
 			// FrmMenu
 			// 
@@ -83,6 +85,13 @@ namespace Waqaychaqkuna20 {
 		}
 #pragma endregion
 
-	private: System::Void FrmMenu_Load(System::Object^ sender, System::EventArgs^ e) {}
+	Void FrmMenu_Load(System::Object^ sender, System::EventArgs^ e) {}
+	Void btnJugar_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		FrmNivel1^ frm = gcnew FrmNivel1();
+		this->Close();
+		frm->Show();
+	}
 	};
 }
+	

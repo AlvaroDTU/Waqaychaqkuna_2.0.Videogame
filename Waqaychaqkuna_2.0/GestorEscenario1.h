@@ -26,6 +26,13 @@ public:
 	void mover();
 	void dibujar(Graphics^ g);
 	void detectarColisiones();
+	void jugar();
+
+	void agregarLadron(Enemigo* nuevo);
+	void agregarVisitante(Visitante* nuevo);
+	void eliminarLadron(int i);
+	void eliminarVisitante(int i);
+
 	bool victoria();
 	int getTotalLadrones();
 };

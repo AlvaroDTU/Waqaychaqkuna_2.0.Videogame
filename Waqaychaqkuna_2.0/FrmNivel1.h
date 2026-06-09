@@ -1,5 +1,6 @@
 #pragma once
 #include "Guardia.h"
+#include "GestorEscenario1.h"
 
 namespace Waqaychaqkuna20 {
 
@@ -20,9 +21,8 @@ namespace Waqaychaqkuna20 {
 		{
 			InitializeComponent();
 			this->KeyPreview = true;
-
-			g = this->CreateGraphics();
-			guardia = new Guardia(20, 10, 10, 10, 1, true);
+			guardia = new Guardia(20, 20, 5, 5, 1, true);
+			gestor = new GestorEscenario1(guardia, this->pnlMapa->Width, this->pnlMapa->Height);
 			//
 			//TODO: Add the constructor code here
 			//
@@ -47,12 +47,12 @@ namespace Waqaychaqkuna20 {
 		/// Required designer variable.
 		/// </summary>
 
-		Graphics^ g;
 	private: System::Windows::Forms::Timer^ tmrNivel1;
 
 	private: System::Windows::Forms::Panel^ pnlMapa;
 
 		   BufferedGraphics^ buffer;
+		   GestorEscenario1* gestor;
 		   Guardia* guardia;
 
 
@@ -131,6 +131,9 @@ namespace Waqaychaqkuna20 {
 
 		}
 		Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+			gestor->mover();
+			gestor->detectarColisiones();
+
 			Pintar();
 		}
 
@@ -146,7 +149,7 @@ namespace Waqaychaqkuna20 {
 			else
 				buffer->Graphics->Clear(this->pnlMapa->BackColor);
 
-			guardia->dibujar(buffer->Graphics);
+			gestor->dibujar(buffer->Graphics);
 
 			Graphics^ g = this->pnlMapa->CreateGraphics();
 			buffer->Render(g);

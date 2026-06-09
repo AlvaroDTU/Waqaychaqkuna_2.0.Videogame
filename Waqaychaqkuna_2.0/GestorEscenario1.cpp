@@ -3,7 +3,9 @@
 
 GestorEscenario1::GestorEscenario1(Guardia* guardia, int anchoLienzo, int altoLienzo) :
 	guardia(guardia), anchoLienzo(anchoLienzo), altoLienzo(altoLienzo)
-{}
+{
+
+}
 
 GestorEscenario1::~GestorEscenario1() 
 {
@@ -33,6 +35,16 @@ void GestorEscenario1::detectarColisiones()
 {
 
 }
+
+void GestorEscenario1::jugar() 
+{
+
+}
+
+void GestorEscenario1::agregarLadron(Enemigo* nuevo) { ladrones.push_back(nuevo); }
+void GestorEscenario1::agregarVisitante(Visitante* nuevo) { visitantes.push_back(nuevo); }
+void GestorEscenario1::eliminarLadron(int i) { ladrones.erase(ladrones.begin() + i); }
+void GestorEscenario1::eliminarVisitante(int i) { visitantes.erase(visitantes.begin() + i); }
 bool GestorEscenario1::victoria() 
 { 
 	return false; 
