@@ -16,8 +16,7 @@ void Huaquero::setTemMov(int TM) { tiempoMovimiento = TM; }
 
 std::string Huaquero::getNombre() { return "huaquero"; }
 Bitmap^ Huaquero::getBitmap() {
-	// cambiar a huaquero
-	return Recursos::guardia;
+	return Recursos::huaquero;
 }
 
 

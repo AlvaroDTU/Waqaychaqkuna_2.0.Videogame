@@ -15,8 +15,7 @@ void Manipulador::setTemMov(int TM) { tiempoMovimiento = TM; }
 std::string Manipulador::getNombre() { return "manipulador"; }
 
 Bitmap^ Manipulador::getBitmap() {
-	// Cambiar a manipulador
-	return Recursos::guardia;
+	return Recursos::chavon;
 }
 
 

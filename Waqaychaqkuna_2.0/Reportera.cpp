@@ -11,8 +11,7 @@ int Reportera::getTipoPista() { return this->tipoPista; }
 void Reportera::setTipoPista(int Tp) { this->tipoPista = Tp; }
 
 Bitmap^ Reportera::getBitmap() {
-	// cambiar a reportera
-	return Recursos::guardia;
+	return Recursos::reportera;
 }
 
 std::string Reportera::getNombre() { return "reportera"; }
