@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Reportera.h"
+
 Reportera::Reportera(int posX, int posY, int dirX, int dirY, bool ayuda, 
 	int TipPis) : Aliado (posX,posY,dirX,dirY,ayuda)
 {
@@ -19,4 +20,6 @@ void Reportera::dibujar(Graphics^ g) {
 	Entidad::dibujar(g);
 }
 
-// 	void ayudar() override //
+void Reportera::mover(int ancho, int alto) {}
+
+void Reportera::ayudar() {}

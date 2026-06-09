@@ -1,5 +1,6 @@
 #pragma once
 #include "Enemigo.h"
+#include "Bien.h"
 
 class Ladron : public Enemigo
 {
@@ -14,7 +15,7 @@ public:
 	void mover(int ancho, int alto) override;
 	void dibujar(Graphics^ g) override;
 
-	 // void atacar(Bien* bien) override
+	void atacar(Bien* bien) override;
 
 
 

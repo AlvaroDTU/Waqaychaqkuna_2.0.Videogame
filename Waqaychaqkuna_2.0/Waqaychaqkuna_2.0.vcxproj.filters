@@ -71,6 +71,12 @@
     <ClInclude Include="GestorEscenario1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Bien.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Artilugio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Waqaychaqkuna_2.0.cpp">
@@ -122,6 +128,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GestorEscenario1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bien.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Artilugio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

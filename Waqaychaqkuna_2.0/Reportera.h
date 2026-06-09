@@ -14,10 +14,11 @@ public:
 
 	std::string getNombre() override;
 	void dibujar(Graphics^ g) override;
+	void mover(int ancho, int alto) override;
 	Bitmap^ getBitmap() override;
 
-	// VER SI ESTO SE IMPREMENTARA
-	//void ayudar() override
+	
+	void ayudar() override;
 
 };
 

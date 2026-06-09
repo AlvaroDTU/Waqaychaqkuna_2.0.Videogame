@@ -17,7 +17,47 @@ std::string Ladron::getNombre() {
 	}
 }
 void Ladron::mover(int ancho, int alto) {
-	//
+	Rectangle hitboxLadron = getRectangle(5);
+	Rectangle bien1 = Rectangle(153, 50, 230, 50);
+	Rectangle bien2 = Rectangle(535, 50, 230, 50);
+	Rectangle bien3 = Rectangle(917, 50, 230, 50);
+	Rectangle bien4 = Rectangle(153, 600, 230, 50);
+	Rectangle bien5 = Rectangle(535, 600, 230, 50);
+	Rectangle bien6 = Rectangle(917, 600, 230, 50);
+	bool colisionMapa = hitboxLadron.IntersectsWith(bien1) || hitboxLadron.IntersectsWith(bien2) || 
+		hitboxLadron.IntersectsWith(bien3) || hitboxLadron.IntersectsWith(bien4) || 
+		hitboxLadron.IntersectsWith(bien5) || hitboxLadron.IntersectsWith(bien6);
+	if (!colisionMapa) { posX += dirX; posY += dirY; }
+	if (objetivo == 0)
+	{
+		if (posX >= 269) { dirX = 0; dirY = -1; }
+		if (posY >= 200) { posY = 200; atacando = true; }
+	}
+	if (objetivo == 1)
+	{
+		if (posX >= 651) { dirX = 0; dirY = -1; }
+		if (posY >= 200) { posY = 200; atacando = true; }
+	}
+	if (objetivo == 2)
+	{
+		if (posX >= 1033) { dirX = 0; dirY = -1; }
+		if (posY >= 200) { posY = 200; atacando = true; }
+	}
+	if (objetivo == 3)
+	{
+		if (posX >= 269) { dirX = 0; dirY = 1; }
+		if (posY == 37) atacando = true;
+	}
+	if (objetivo == 4)
+	{
+		if (posX >= 651) { dirX = 0; dirY = 1; }
+		if (posY == 37) atacando = true;
+	}
+	if (objetivo == 5)
+	{
+		if (posX >= 1033) { dirX = 0; dirY = 1; }
+		if (posY == 37) atacando = true;
+	}
 }
 void Ladron::dibujar(Graphics^ g) {
 	Bitmap^ img;
@@ -60,3 +100,5 @@ void Ladron::dibujar(Graphics^ g) {
 	}
 	moviendose = false;
 }
+
+void Ladron::atacar(Bien* bien) {}

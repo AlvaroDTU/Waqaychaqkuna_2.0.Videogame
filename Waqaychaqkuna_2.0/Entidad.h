@@ -49,7 +49,7 @@ public:
 	virtual std::string getNombre() = 0;
 	void avanzarEscena();
 
-	System::Drawing::Rectangle getRectangle(int extra);
+	System::Drawing::Rectangle getRectangle(int extra=0);
 
 
 };
