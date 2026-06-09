@@ -29,7 +29,7 @@ void Reportera::dibujar(Graphics^ g) {
 	avanzarEscena();
 	g->DrawImage(img, posX, posY, molde, GraphicsUnit::Pixel);
 	fila++;
-	if (fila == 2) { fila = 0; }
+	if (fila == 2) { fila = 1; }
 	moviendose = true;
 }
 
