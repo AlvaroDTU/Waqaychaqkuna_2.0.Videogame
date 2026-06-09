@@ -20,7 +20,7 @@ namespace Waqaychaqkuna20 {
 		{
 			InitializeComponent();
 			this->KeyPreview = true;
-
+			 
 			g = this->CreateGraphics();
 			guardia = new Guardia(20, 10, 10, 10, 1, true);
 			//
