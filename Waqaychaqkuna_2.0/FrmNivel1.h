@@ -22,7 +22,7 @@ namespace Waqaychaqkuna20 {
 			InitializeComponent();
 			this->KeyPreview = true;
 			guardia = new Guardia(20, 20, 5, 5, 1, true);
-			gestor = new GestorEscenario1(guardia, this->pnlMapa->Width, this->pnlMapa->Height);
+			gestor = new GestorEscenario1(guardia, this->pnlMapa->Width, this->pnlMapa->Height,10);
 			//
 			//TODO: Add the constructor code here
 			//
@@ -89,7 +89,8 @@ namespace Waqaychaqkuna20 {
 			   this->ClientSize = System::Drawing::Size(1600, 800);
 			   this->Controls->Add(this->pnlMapa);
 			   this->Name = L"FrmNivel1";
-			   this->Text = L"FrmNivel1";
+			   this->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			   this->Text = L"Nivel 1: Museo ";
 			   this->Load += gcnew System::EventHandler(this, &FrmNivel1::FrmNivel1_Load);
 			   this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel1::FrmNivel1_KeyDown);
 			   this->ResumeLayout(false);
@@ -106,34 +107,29 @@ namespace Waqaychaqkuna20 {
 
 		}
 		Void FrmNivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-			int ancho = this->pnlMapa->Width;
-			int alto = this->pnlMapa->Height;
-
-
 			if (e->KeyCode == Keys::Up) {
 				gestor->moverGuardia(Direccion::Arriba);
+				Pintar();
 			}
 
 			else if (e->KeyCode == Keys::Down) {
 				gestor->moverGuardia(Direccion::Abajo);
+				Pintar();
 			}
 
 			else if (e->KeyCode == Keys::Right) {
 				gestor->moverGuardia(Direccion::Derecha);
+				Pintar();
 			}
 
 			else if (e->KeyCode == Keys::Left) {
 				gestor->moverGuardia(Direccion::Izquierda);
-
-
+				Pintar();
 			}
-
-
 		}
 		Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 			
-			gestor->mover();
-			gestor->detectarColisiones();
+			gestor->jugar();
 
 			Pintar();
 		}

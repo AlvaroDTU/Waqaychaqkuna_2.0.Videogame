@@ -4,17 +4,18 @@
 Visitante::Visitante(int posX, int posY, int dirX, int dirY)
 			: Entidad(posX,posY,dirX,dirY)
 {
-	tipo = rand() % 6;
+	tipo = rand() % 4 + 1;
 	posXFinal = 0;
 }
 Visitante::~Visitante(){}
 std::string Visitante::getNombre() {
-	for (int i = 0;i < 6;i++) {
-		if (i == tipo) {
+	for (int i = 0;i < 4;i++) {
+		if (i+1 == tipo) {
 			return "visitante" + std::to_string(i+1);
 		}
 	}
 }
+
 void Visitante::mover(int ancho, int alto) {
 }
 void Visitante::dibujar(Graphics^ g) {
@@ -48,3 +49,5 @@ bool Visitante::terminoRecorrido() {
 	else { posXFinal = 0; }
 	return posX == posXFinal;
 }
+
+Bitmap^ Visitante::getBitmap() { return nullptr; }

@@ -13,6 +13,7 @@ public:
 	void mover(int ancho, int alto) override;
 	void dibujar(Graphics^ g) override;
 	bool terminoRecorrido();
+	Bitmap^ getBitmap() override;
 
 };
 

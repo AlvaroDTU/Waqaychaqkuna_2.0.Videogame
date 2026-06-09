@@ -28,8 +28,8 @@ void GestorEscenario2::dibujar(Graphics^ g){
 
 }
 void GestorEscenario2::detectarColisiones(){}
-bool GestorEscenario2::victoria(){}
-int GestorEscenario2::getTotalHuaquero(){}
+bool GestorEscenario2::victoria() { return false; }
+int GestorEscenario2::getTotalHuaquero() { return (int)huaqueros.size(); }
 
 void GestorEscenario2::agregarCuidador(Cuidador* c){}
 void GestorEscenario2::agregarHuaquero(Huaquero* h){}

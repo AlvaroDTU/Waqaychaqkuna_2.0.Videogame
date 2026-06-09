@@ -2,7 +2,7 @@
 #include "Guardia.h"
 #include "Enemigo.h"
 #include "Visitante.h"
-#include "Aliado.h"
+#include "Reportera.h"
 #include "Bien.h"
 #include <vector>
 
@@ -15,14 +15,14 @@ private:
 	vector<Enemigo*> ladrones;
 	vector<Visitante*> visitantes;
 	vector<Bien*> artilugios;
-	Aliado* reportera;
+	Reportera* reportera;
 	int anchoLienzo;
 	int altoLienzo;
 	int enemigosTotales;
 	int enemigosDerrotados;
 	int temporizador;
 public:
-	GestorEscenario1(Guardia* guardia, int anchoLienzo, int altoLienzo);
+	GestorEscenario1(Guardia* guardia, int anchoLienzo, int altoLienzo, int enemigosTotales);
 	~GestorEscenario1();
 	void mover();
 	void moverGuardia(Direccion direccion);

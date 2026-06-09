@@ -63,26 +63,26 @@ void Ladron::dibujar(Graphics^ g) {
 	Bitmap^ img;
 	// LUEGO CAMBIAR POR EL DISEÑO DE CADA UNO YAP :V
 	if (tipo == 1) {
-		if (tipoPista == 1) { img = Recursos::guardia; }
-		else if (tipoPista == 2) { img = Recursos::guardia; }
+		if (tipoPista == 1) { img = Recursos::ladron_bandana1; }
+		else if (tipoPista == 2) { img = Recursos::ladron_brazalete1; }
 		else if (tipoPista == 3) { img = Recursos::guardia; }
 		else if (tipoPista == 4) { img = Recursos::guardia; }
 	}
 	else if (tipo == 2) {
-		if (tipoPista == 1) { img = Recursos::guardia; }
-		else if (tipoPista == 2) { img = Recursos::guardia; }
+		if (tipoPista == 1) { img = Recursos::ladron_bandana2;}
+		else if (tipoPista == 2) { img = Recursos::ladron_brazalete2; }
 		else if (tipoPista == 3) { img = Recursos::guardia; }
 		else if (tipoPista == 4) { img = Recursos::guardia; }
 	}
 	else if (tipo == 3) {
-		if (tipoPista == 1) { img = Recursos::guardia; }
-		else if (tipoPista == 2) { img = Recursos::guardia; }
+		if (tipoPista == 1) { img = Recursos::ladron_bandana3; }
+		else if (tipoPista == 2) { img = Recursos::ladron_brazalete3; }
 		else if (tipoPista == 3) { img = Recursos::guardia; }
 		else if (tipoPista == 4) { img = Recursos::guardia; }
 	}
 	else if (tipo == 4) {
-		if (tipoPista == 1) { img = Recursos::guardia; }
-		else if (tipoPista == 2) { img = Recursos::guardia; }
+		if (tipoPista == 1) { img = Recursos::ladron_bandana4; }
+		else if (tipoPista == 2) { img = Recursos::ladron_brazalete4; }
 		else if (tipoPista == 3) { img = Recursos::guardia; }
 		else if (tipoPista == 4) { img = Recursos::guardia; }
 	}
@@ -102,3 +102,5 @@ void Ladron::dibujar(Graphics^ g) {
 }
 
 void Ladron::atacar(Bien* bien) {}
+
+Bitmap^ Ladron::getBitmap() { return nullptr; }
