@@ -30,8 +30,8 @@ public:
 	void jugar();
 	void agregarCuidador(Cuidador* c);
 	void agregarHuaquero(Huaquero* h);
-	void eliminarCuidador();
-	void eliminarHuaquero();
+	void eliminarCuidador(int i);
+	void eliminarHuaquero(int i);
 	void agregarBien();
 
 };
