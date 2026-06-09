@@ -18,7 +18,8 @@ Bitmap^ Guardia::getBitmap() {
 }
 
 std::string Guardia::getNombre() { return "guardia"; }
-void Guardia::mover(Direccion direccion, int anchoLienzo, int altoLienzo) {
+void Guardia::mover(Direccion direccion, int anchoLienzo, int altoLienzo, int x) {
+
 	moviendose = true;
 
 	switch (direccion) {
