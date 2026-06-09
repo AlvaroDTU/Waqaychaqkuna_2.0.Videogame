@@ -20,7 +20,7 @@ namespace Waqaychaqkuna20 {
 		{
 			InitializeComponent();
 			this->KeyPreview = true;
-			 
+
 			g = this->CreateGraphics();
 			guardia = new Guardia(20, 10, 10, 10, 1, true);
 			//
@@ -57,83 +57,101 @@ namespace Waqaychaqkuna20 {
 
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		void InitializeComponent(void)
-		{
-			this->components = (gcnew System::ComponentModel::Container());
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(FrmNivel1::typeid));
-			this->tmrNivel1 = (gcnew System::Windows::Forms::Timer(this->components));
-			this->pnlMapa = (gcnew System::Windows::Forms::Panel());
-			this->SuspendLayout();
-			// 
-			// tmrNivel1
-			// 
-			this->tmrNivel1->Tick += gcnew System::EventHandler(this, &FrmNivel1::timer1_Tick);
-			// 
-			// pnlMapa
-			// 
-			this->pnlMapa->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pnlMapa.BackgroundImage")));
-			this->pnlMapa->Location = System::Drawing::Point(0, 0);
-			this->pnlMapa->Name = L"pnlMapa";
-			this->pnlMapa->Size = System::Drawing::Size(1300, 800);
-			this->pnlMapa->TabIndex = 0;
-			// 
-			// FrmNivel1
-			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
-			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1600, 800);
-			this->Controls->Add(this->pnlMapa);
-			this->Name = L"FrmNivel1";
-			this->Text = L"FrmNivel1";
-			this->Load += gcnew System::EventHandler(this, &FrmNivel1::FrmNivel1_Load);
-			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel1::FrmNivel1_KeyDown);
-			this->ResumeLayout(false);
+		   /// <summary>
+		   /// Required method for Designer support - do not modify
+		   /// the contents of this method with the code editor.
+		   /// </summary>
+		   void InitializeComponent(void)
+		   {
+			   this->components = (gcnew System::ComponentModel::Container());
+			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(FrmNivel1::typeid));
+			   this->tmrNivel1 = (gcnew System::Windows::Forms::Timer(this->components));
+			   this->pnlMapa = (gcnew System::Windows::Forms::Panel());
+			   this->SuspendLayout();
+			   // 
+			   // tmrNivel1
+			   // 
+			   this->tmrNivel1->Tick += gcnew System::EventHandler(this, &FrmNivel1::timer1_Tick);
+			   // 
+			   // pnlMapa
+			   // 
+			   this->pnlMapa->BackColor = System::Drawing::Color::White;
+			   this->pnlMapa->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pnlMapa.BackgroundImage")));
+			   this->pnlMapa->Location = System::Drawing::Point(0, 0);
+			   this->pnlMapa->Name = L"pnlMapa";
+			   this->pnlMapa->Size = System::Drawing::Size(1300, 800);
+			   this->pnlMapa->TabIndex = 0;
+			   // 
+			   // FrmNivel1
+			   // 
+			   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			   this->ClientSize = System::Drawing::Size(1600, 800);
+			   this->Controls->Add(this->pnlMapa);
+			   this->Name = L"FrmNivel1";
+			   this->Text = L"FrmNivel1";
+			   this->Load += gcnew System::EventHandler(this, &FrmNivel1::FrmNivel1_Load);
+			   this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel1::FrmNivel1_KeyDown);
+			   this->ResumeLayout(false);
 
-		}
+		   }
 #pragma endregion
-	private: 
-		System::Void FrmNivel1_Load(System::Object^ sender, System::EventArgs^ e) {
+	private:
+		Void FrmNivel1_Load(System::Object^ sender, System::EventArgs^ e) {
 			BufferedGraphicsContext^ contexto = BufferedGraphicsManager::Current;
 			Graphics^ g = this->pnlMapa->CreateGraphics();
 			buffer = contexto->Allocate(g, this->pnlMapa->ClientRectangle);
 			tmrNivel1->Start();
+			delete g;
 
 		}
-	private: System::Void FrmNivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-		int ancho = this->Width -16;
-		int alto = this->Height-39;
+		Void FrmNivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+			int ancho = this->pnlMapa->Width;
+			int alto = this->pnlMapa->Height;
 
 
-		if (e->KeyCode == Keys::Up) {
-			guardia->mover(Direccion::Arriba,ancho,alto);
+			if (e->KeyCode == Keys::Up) {
+				guardia->mover(Direccion::Arriba, ancho, alto);
+			}
+
+			else if (e->KeyCode == Keys::Down) {
+				guardia->mover(Direccion::Abajo, ancho, alto);
+			}
+
+			else if (e->KeyCode == Keys::Right) {
+				guardia->mover(Direccion::Derecha, ancho, alto);
+			}
+
+			else if (e->KeyCode == Keys::Left) {
+				guardia->mover(Direccion::Izquierda, ancho, alto);
+
+
+			}
+
+
+		}
+		Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+			Pintar();
 		}
 
-		else if (e->KeyCode == Keys::Down) {
-			guardia->mover(Direccion::Abajo, ancho, alto);
+		Void Pintar()
+		{
+			if (this->pnlMapa->BackgroundImage != nullptr)
+			{
+				buffer->Graphics->DrawImage(this->pnlMapa->BackgroundImage,
+					0, 0,
+					this->pnlMapa->Width,
+					this->pnlMapa->Height);
+			}
+			else
+				buffer->Graphics->Clear(this->pnlMapa->BackColor);
+
+			guardia->dibujar(buffer->Graphics);
+
+			Graphics^ g = this->pnlMapa->CreateGraphics();
+			buffer->Render(g);
+			delete g;
 		}
 
-		else if (e->KeyCode == Keys::Right) {
-			guardia->mover(Direccion::Derecha, ancho, alto);
-		}
-
-		else if (e->KeyCode == Keys::Left) {
-			guardia->mover(Direccion::Izquierda, ancho, alto);
-
-
-		}
-		
-
-	}
-	Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Graphics^ lienzo = this->pnlMapa->CreateGraphics();
-	}
-
-	Void pnlMapa_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) 
-	{
-	}
-};
+	};
 }
