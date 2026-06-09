@@ -152,6 +152,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="GestorEscenario1.h" />
+    <ClInclude Include="GestorEscenario2.h" />
     <ClInclude Include="Guardia.h" />
     <ClInclude Include="Huaquero.h" />
     <ClInclude Include="Ladron.h" />
@@ -174,6 +175,7 @@
     <ClCompile Include="FrmMenu.cpp" />
     <ClCompile Include="FrmNivel1.cpp" />
     <ClCompile Include="GestorEscenario1.cpp" />
+    <ClCompile Include="GestorEscenario2.cpp" />
     <ClCompile Include="Guardia.cpp" />
     <ClCompile Include="Huaquero.cpp" />
     <ClCompile Include="Ladron.cpp" />
