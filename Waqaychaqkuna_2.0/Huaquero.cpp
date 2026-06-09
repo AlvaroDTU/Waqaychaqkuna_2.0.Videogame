@@ -15,6 +15,11 @@ int Huaquero::getTemMov() { return this->tiempoMovimiento; }
 void Huaquero::setTemMov(int TM) { tiempoMovimiento = TM; }
 
 std::string Huaquero::getNombre() { return "huaquero"; }
+Bitmap^ Huaquero::getBitmap() {
+	// cambiar a huaquero
+	return Recursos::guardia;
+}
+
 
 void Huaquero::mover(int anchoLienzo, int altoLienzo) {
 	moviendose = true;
@@ -37,28 +42,7 @@ void Huaquero::mover(int anchoLienzo, int altoLienzo) {
 
 }
 void Huaquero::dibujar(Graphics^ g) {
-	Bitmap^ img = Recursos::guardia;
-	// CAMBIAR LUEGO A :
-	// Bitmap^ img = Recursos::huaquero;
-
-	this->alto = img->Height / 4;
-	this->ancho = img->Width / 4;
-
-	Rectangle molde = Rectangle(columna * ancho, fila * alto, ancho, alto);
-	if (moviendose == true) {
-		columna++;
-		if (columna == 4) { columna = 0; }
-	}
-	else
-	{
-		columna = 0;
-	}
-	g->DrawImage(img, posX, posY, molde, GraphicsUnit::Pixel);
-
-	moviendose = false;
-
-
-
+	Entidad::dibujar(g);
 }
 
 // void atacar(Bien* bien) 

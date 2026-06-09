@@ -14,7 +14,8 @@ public:
 
 	std::string getNombre() override;
 	void dibujar(Graphics^ g) override;
-	
+	Bitmap^ getBitmap() override;
+
 	// VER SI ESTO SE IMPREMENTARA
 	//void ayudar() override
 
