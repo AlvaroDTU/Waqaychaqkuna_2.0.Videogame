@@ -11,8 +11,7 @@ int Cuidador::getDuracion() { return this->duracion; }
 void Cuidador::RestarDuracion(int d) { this->duracion = d; }
 
 Bitmap^ Cuidador::getBitmap() {
-	//CAMBIAR A cuidador
-	return Recursos::guardia;
+	return Recursos::cuidador;
 }
 std::string Cuidador::getNombre() { return "cuidador"; }
 
