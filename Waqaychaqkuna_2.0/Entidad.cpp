@@ -8,6 +8,8 @@ Entidad::Entidad( int posX, int posY, int dirX, int dirY)
 	this->posY = posY;
 	this->dirX = dirX;
 	this->dirY = dirY;
+	fila = 0;
+	columna = 0;
 }
 Entidad::~Entidad(){}
 
@@ -51,11 +53,11 @@ void Entidad::avanzarEscena() {
 	Bitmap^ img = getBitmap();
 	int n = 0;
 	if (img->Width == 240) { n = 4; }
-	else if (img->Width == 40) { n = 1; }
+	else if (img->Width == 160) { n = 4; }
 
 	if (moviendose == true) {
 		columna++;
-		if (columna == n) { columna = 0; }
+		if (columna >= n) { columna = 0; }
 	}
 	else
 	{

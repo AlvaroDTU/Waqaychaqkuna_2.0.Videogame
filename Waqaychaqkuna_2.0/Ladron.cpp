@@ -58,34 +58,12 @@ void Ladron::mover(int ancho, int alto) {
 		if (posX >= 1033) { dirX = 0; dirY = 1; }
 		if (posY == 37) atacando = true;
 	}
+	if(!atacando) avanzarEscena();
+	fila = (dirX > 0) ? 2 : 1;
+	
 }
 void Ladron::dibujar(Graphics^ g) {
-	Bitmap^ img;
-	// LUEGO CAMBIAR POR EL DISEÑO DE CADA UNO YAP :V
-	if (tipo == 1) {
-		if (tipoPista == 1) { img = Recursos::ladron_bandana1; }
-		else if (tipoPista == 2) { img = Recursos::ladron_brazalete1; }
-		else if (tipoPista == 3) { img = Recursos::guardia; }
-		else if (tipoPista == 4) { img = Recursos::guardia; }
-	}
-	else if (tipo == 2) {
-		if (tipoPista == 1) { img = Recursos::ladron_bandana2;}
-		else if (tipoPista == 2) { img = Recursos::ladron_brazalete2; }
-		else if (tipoPista == 3) { img = Recursos::guardia; }
-		else if (tipoPista == 4) { img = Recursos::guardia; }
-	}
-	else if (tipo == 3) {
-		if (tipoPista == 1) { img = Recursos::ladron_bandana3; }
-		else if (tipoPista == 2) { img = Recursos::ladron_brazalete3; }
-		else if (tipoPista == 3) { img = Recursos::guardia; }
-		else if (tipoPista == 4) { img = Recursos::guardia; }
-	}
-	else if (tipo == 4) {
-		if (tipoPista == 1) { img = Recursos::ladron_bandana4; }
-		else if (tipoPista == 2) { img = Recursos::ladron_brazalete4; }
-		else if (tipoPista == 3) { img = Recursos::guardia; }
-		else if (tipoPista == 4) { img = Recursos::guardia; }
-	}
+	Bitmap^ img = getBitmap();
 	this->alto = img->Height / 4;
 	this->ancho = img->Width / 4;
 
@@ -103,4 +81,31 @@ void Ladron::dibujar(Graphics^ g) {
 
 void Ladron::atacar(Bien* bien) {}
 
-Bitmap^ Ladron::getBitmap() { return nullptr; }
+Bitmap^ Ladron::getBitmap() {
+	Bitmap^ img;
+	if (tipo == 1) {
+		if (tipoPista == 1) { img = Recursos::ladron_bandana1; }
+		else if (tipoPista == 2) { img = Recursos::ladron_brazalete1; }
+		else if (tipoPista == 3) { img = Recursos::ladron_camisa1; }
+		else if (tipoPista == 4) { img = Recursos::guardia; }
+	}
+	else if (tipo == 2) {
+		if (tipoPista == 1) { img = Recursos::ladron_bandana2; }
+		else if (tipoPista == 2) { img = Recursos::ladron_brazalete2; }
+		else if (tipoPista == 3) { img = Recursos::ladron_camisa2; }
+		else if (tipoPista == 4) { img = Recursos::guardia; }
+	}
+	else if (tipo == 3) {
+		if (tipoPista == 1) { img = Recursos::ladron_bandana3; }
+		else if (tipoPista == 2) { img = Recursos::ladron_brazalete3; }
+		else if (tipoPista == 3) { img = Recursos::ladron_camisa3; }
+		else if (tipoPista == 4) { img = Recursos::guardia; }
+	}
+	else if (tipo == 4) {
+		if (tipoPista == 1) { img = Recursos::ladron_bandana4; }
+		else if (tipoPista == 2) { img = Recursos::ladron_brazalete4; }
+		else if (tipoPista == 3) { img = Recursos::ladron_camisa4; }
+		else if (tipoPista == 4) { img = Recursos::guardia; }
+	}
+	return img;
+}
