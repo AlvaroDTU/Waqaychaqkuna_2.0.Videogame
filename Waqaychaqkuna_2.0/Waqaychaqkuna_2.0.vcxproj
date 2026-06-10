@@ -140,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aliado.h" />
+    <ClInclude Include="Archivo.h" />
     <ClInclude Include="Artilugio.h" />
     <ClInclude Include="Bien.h" />
     <ClInclude Include="Cuidador.h" />
@@ -153,6 +154,7 @@
     </ClInclude>
     <ClInclude Include="GestorEscenario1.h" />
     <ClInclude Include="GestorEscenario2.h" />
+    <ClInclude Include="GestorEscenario3.h" />
     <ClInclude Include="Guardia.h" />
     <ClInclude Include="Huaca.h" />
     <ClInclude Include="Huaquero.h" />
@@ -167,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Aliado.cpp" />
+    <ClCompile Include="Archivo.cpp" />
     <ClCompile Include="Artilugio.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Bien.cpp" />
@@ -177,6 +180,7 @@
     <ClCompile Include="FrmNivel1.cpp" />
     <ClCompile Include="GestorEscenario1.cpp" />
     <ClCompile Include="GestorEscenario2.cpp" />
+    <ClCompile Include="GestorEscenario3.cpp" />
     <ClCompile Include="Guardia.cpp" />
     <ClCompile Include="Huaca.cpp" />
     <ClCompile Include="Huaquero.cpp" />

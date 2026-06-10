@@ -83,6 +83,15 @@
     <ClInclude Include="Huaca.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GestorEscenario2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GestorEscenario3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Archivo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Waqaychaqkuna_2.0.cpp">
@@ -146,6 +155,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Huaca.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GestorEscenario2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GestorEscenario3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Archivo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
