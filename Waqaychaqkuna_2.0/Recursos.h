@@ -26,6 +26,10 @@ public:
     static Bitmap^ ladron_bandana2 = gcnew Bitmap("sprites\\ladron_bandana2.png");
     static Bitmap^ ladron_bandana3 = gcnew Bitmap("sprites\\ladron_bandana3.png");
     static Bitmap^ ladron_bandana4 = gcnew Bitmap("sprites\\ladron_bandana4.png");
+    static Bitmap^ ladron_camisa1 = gcnew Bitmap("sprites\\ladron_camisa1.png");
+    static Bitmap^ ladron_camisa2 = gcnew Bitmap("sprites\\ladron_camisa2.png");
+    static Bitmap^ ladron_camisa3 = gcnew Bitmap("sprites\\ladron_camisa3.png");
+    static Bitmap^ ladron_camisa4 = gcnew Bitmap("sprites\\ladron_camisa4.png");
 
     static Bitmap^ huaquero = gcnew Bitmap("sprites\\huaquero.png");
 

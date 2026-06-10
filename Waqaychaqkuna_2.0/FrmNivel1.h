@@ -109,22 +109,18 @@ namespace Waqaychaqkuna20 {
 		Void FrmNivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			if (e->KeyCode == Keys::Up) {
 				gestor->moverGuardia(Direccion::Arriba);
-				Pintar();
 			}
 
 			else if (e->KeyCode == Keys::Down) {
 				gestor->moverGuardia(Direccion::Abajo);
-				Pintar();
 			}
 
 			else if (e->KeyCode == Keys::Right) {
 				gestor->moverGuardia(Direccion::Derecha);
-				Pintar();
 			}
 
 			else if (e->KeyCode == Keys::Left) {
 				gestor->moverGuardia(Direccion::Izquierda);
-				Pintar();
 			}
 		}
 		Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
