@@ -6,6 +6,8 @@ Ladron::Ladron(int posX, int posY, int dirX, int dirY, bool atack, int obj, int 
 {
 	this->tipo = t;
 	this->tipoPista = tPista;
+	fila = (dirX > 0) ? 2 : 1;
+	atacando = false;
 }
 Ladron::~Ladron() {}
 
@@ -17,6 +19,7 @@ std::string Ladron::getNombre() {
 	}
 }
 void Ladron::mover(int ancho, int alto) {
+	moviendose = true;
 	Rectangle hitboxLadron = getRectangle(5);
 	Rectangle bien1 = Rectangle(153, 50, 230, 50);
 	Rectangle bien2 = Rectangle(535, 50, 230, 50);
@@ -24,43 +27,40 @@ void Ladron::mover(int ancho, int alto) {
 	Rectangle bien4 = Rectangle(153, 600, 230, 50);
 	Rectangle bien5 = Rectangle(535, 600, 230, 50);
 	Rectangle bien6 = Rectangle(917, 600, 230, 50);
-	bool colisionMapa = hitboxLadron.IntersectsWith(bien1) || hitboxLadron.IntersectsWith(bien2) || 
-		hitboxLadron.IntersectsWith(bien3) || hitboxLadron.IntersectsWith(bien4) || 
+	bool colisionMapa = hitboxLadron.IntersectsWith(bien1) || hitboxLadron.IntersectsWith(bien2) ||
+		hitboxLadron.IntersectsWith(bien3) || hitboxLadron.IntersectsWith(bien4) ||
 		hitboxLadron.IntersectsWith(bien5) || hitboxLadron.IntersectsWith(bien6);
 	if (!colisionMapa) { posX += dirX; posY += dirY; }
 	if (objetivo == 0)
 	{
-		if (posX >= 269) { dirX = 0; dirY = -1; }
-		if (posY >= 200) { posY = 200; atacando = true; }
+		if (posX >= 258 && posX <= 277) { dirX = 0; dirY = -5; fila = 3; }
+		if (posY <= 200) { posY = 200; moviendose = false; }
 	}
 	if (objetivo == 1)
 	{
-		if (posX >= 651) { dirX = 0; dirY = -1; }
-		if (posY >= 200) { posY = 200; atacando = true; }
+		if (posX >= 640 && posX <= 659) { dirX = 0; dirY = -5; fila = 3; }
+		if (posY <= 200) { posY = 200; moviendose = false; }
 	}
 	if (objetivo == 2)
 	{
-		if (posX >= 1033) { dirX = 0; dirY = -1; }
-		if (posY >= 200) { posY = 200; atacando = true; }
+		if (posX >= 1022 && posX <= 1041) { dirX = 0; dirY = -5; fila = 3; }
+		if (posY <= 200) { posY = 200; moviendose = false; }
 	}
 	if (objetivo == 3)
 	{
-		if (posX >= 269) { dirX = 0; dirY = 1; }
-		if (posY == 37) atacando = true;
+		if (posX >= 258 && posX <= 277) { dirX = 0; dirY = 5; fila = 0; }
+		if (posY + alto>= 599) { posY = 599 - alto; moviendose = false; }
 	}
 	if (objetivo == 4)
 	{
-		if (posX >= 651) { dirX = 0; dirY = 1; }
-		if (posY == 37) atacando = true;
+		if (posX >= 640 && posX <= 659) { dirX = 0; dirY = 5; fila = 0; }
+		if (posY + alto>= 599) { posY = 599-alto; moviendose = false; }
 	}
 	if (objetivo == 5)
 	{
-		if (posX >= 1033) { dirX = 0; dirY = 1; }
-		if (posY == 37) atacando = true;
+		if (posX >= 1022 && posX <= 1041) { dirX = 0; dirY = 5; fila = 0; }
+		if (posY + alto>= 599) { posY = 599 - alto; moviendose=false; }
 	}
-	if(!atacando) avanzarEscena();
-	fila = (dirX > 0) ? 2 : 1;
-	
 }
 void Ladron::dibujar(Graphics^ g) {
 	Bitmap^ img = getBitmap();
@@ -68,15 +68,8 @@ void Ladron::dibujar(Graphics^ g) {
 	this->ancho = img->Width / 4;
 
 	Rectangle molde = Rectangle(ancho * columna, fila * alto, ancho, alto);
-	if (moviendose == true) {
-		columna++;
-		if (columna == 4) { columna = 0; }
-	}
-	else
-	{
-		columna = 0;
-	}
-	moviendose = false;
+	avanzarEscena();
+	g->DrawImage(img, posX, posY, molde, GraphicsUnit::Pixel);
 }
 
 void Ladron::atacar(Bien* bien) {}

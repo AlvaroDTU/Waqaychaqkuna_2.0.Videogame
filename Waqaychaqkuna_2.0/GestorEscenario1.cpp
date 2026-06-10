@@ -15,7 +15,7 @@ GestorEscenario1::GestorEscenario1(Guardia* guardia, int anchoLienzo, int altoLi
 	artilugios.push_back(new Artilugio(153, 600, 230, 50, 3000, "Huaco"));
 	artilugios.push_back(new Artilugio(535, 600, 230, 50, 5000, "Tumi Dorado"));
 	artilugios.push_back(new Artilugio(917, 600, 230, 50, 2500, "Vaso Kero"));
-	reportera = new Reportera(40, 120, 0, 0, false, rand() % 4 + 1);
+	reportera = new Reportera(40, 120, 0, 0, false, rand() % 3 + 1);
 	enemigosDerrotados = 0;
 	temporizador = 0;
 }
@@ -61,7 +61,7 @@ void GestorEscenario1::detectarColisiones()
 
 void GestorEscenario1::jugar()
 {
-	if (temporizador == 20)
+	if (temporizador == 10)
 	{
 		temporizador = 0;
 		int dx = (rand() % 2) * 10 - 5; // entre -1 y 1
