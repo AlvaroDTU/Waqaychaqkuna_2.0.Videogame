@@ -68,8 +68,8 @@ void GestorEscenario1::jugar()
 		int dy = 0;
 		int objetivo = rand() % 6;
 		int x = 0, y = (rand() % 2) * 110 + 305;
-		if (dx > 0) x = 0;
-		if (dx < 0) x = 1239;
+		if (dx > 0) x = -60;
+		if (dx < 0) x = 1299;
 		int op = rand() % 4;
 		if (op < 2)
 		{
