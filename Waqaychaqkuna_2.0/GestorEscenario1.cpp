@@ -54,23 +54,23 @@ void GestorEscenario1::jugar()
 	if (temporizador == 100)
 	{
 		temporizador = 0;
-		int dx = (rand() % 2) * 2 - 1; // entre -1 y 1
-		int dy = 0;
-		int objetivo = rand() % 6;
-		int x = 0, y = 0;
-		if (dx == 1) { x = 0; y = (rand() % 2) * 8 + 18; } // y: te da o 18 o 26. 18 = linea 1, 26 = linea 2
-		else if (dx == -1) { x = 167; y = (rand() % 2) * 8 + 18; } //x: 175 (limite) - ancho del visitante | y: te da o 18 o 26. 18 = linea 1, 26 = linea 2
-		int op = rand() % 4;
-		if (op < 2)
-		{	
-			Ladron* nuevo = new Ladron(x, y, dx, dy, false, objetivo, rand() % 4 + 1, reportera->getTipoPista());
-			agregarLadron(nuevo);
-		}
-		else
-		{
-			Visitante* nuevo = new Visitante(x,y, dx, 0);
-			agregarVisitante(nuevo);
-		}
+		// int dx = (rand() % 2) * 2 - 1; // entre -1 y 1
+		// int dy = 0;
+		// int objetivo = rand() % 6;
+		// int x = 0, y = 0;
+		// if (dx == 1) { x = 0; y = (rand() % 2) * 8 + 18; } // y: te da o 18 o 26. 18 = linea 1, 26 = linea 2
+		// else if (dx == -1) { x = 167; y = (rand() % 2) * 8 + 18; } //x: 175 (limite) - ancho del visitante | y: te da o 18 o 26. 18 = linea 1, 26 = linea 2
+		// int op = rand() % 4;
+		// if (op < 2)
+		// {	
+		// 	Ladron* nuevo = new Ladron(x, y, dx, dy, false, objetivo, rand() % 4 + 1, reportera->getTipoPista());
+		// 	agregarLadron(nuevo);
+		// }
+		// else
+		// {
+		// 	Visitante* nuevo = new Visitante(x,y, dx, 0);
+		// 	agregarVisitante(nuevo);
+		// }
 	}
 	temporizador++;
 }

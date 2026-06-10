@@ -154,6 +154,7 @@
     <ClInclude Include="GestorEscenario1.h" />
     <ClInclude Include="GestorEscenario2.h" />
     <ClInclude Include="Guardia.h" />
+    <ClInclude Include="Huaca.h" />
     <ClInclude Include="Huaquero.h" />
     <ClInclude Include="Ladron.h" />
     <ClInclude Include="Manipulador.h" />
@@ -177,6 +178,7 @@
     <ClCompile Include="GestorEscenario1.cpp" />
     <ClCompile Include="GestorEscenario2.cpp" />
     <ClCompile Include="Guardia.cpp" />
+    <ClCompile Include="Huaca.cpp" />
     <ClCompile Include="Huaquero.cpp" />
     <ClCompile Include="Ladron.cpp" />
     <ClCompile Include="Manipulador.cpp" />

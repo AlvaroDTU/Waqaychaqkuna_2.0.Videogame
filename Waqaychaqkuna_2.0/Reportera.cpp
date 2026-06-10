@@ -21,7 +21,7 @@ std::string Reportera::getNombre() { return "reportera"; }
 void Reportera::dibujar(Graphics^ g) {
 	Bitmap^ img = getBitmap();
 
-	this->alto = img->Height / 4;
+	this->alto = img->Height / 2;
 	this->ancho = img->Width / 4;
 
 	Rectangle molde = Rectangle(columna * ancho, fila * alto, ancho, alto);
