@@ -71,6 +71,7 @@ namespace Waqaychaqkuna20 {
 			   // 
 			   // tmrNivel1
 			   // 
+			   this->tmrNivel1->Interval = 16;
 			   this->tmrNivel1->Tick += gcnew System::EventHandler(this, &FrmNivel1::timer1_Tick);
 			   // 
 			   // pnlMapa
