@@ -6,7 +6,7 @@
 
 using std::vector;
 
-class GestorEscenario3
+class GestorBiblioteca
 {
 	private:
 	Guardia * guardia;
@@ -21,8 +21,8 @@ class GestorEscenario3
 	int tiempoRecarga;
 
 	public:
-		GestorEscenario3(Guardia* guardia, int anchoLienzo, int altoLienzo, int enemigosTotales);
-		~GestorEscenario3();
+		GestorBiblioteca(Guardia* guardia, int anchoLienzo, int altoLienzo, int enemigosTotales);
+		~GestorBiblioteca();
 		void mover();
 		void moverGuardia(Direccion direccion);
 		void dibujar(Graphics^ g);

@@ -1,19 +1,19 @@
 #include "pch.h"
-#include "GestorEscenario2.h"
-GestorEscenario2::GestorEscenario2(Guardia* guardia, int anchoLienzo, int altoLienzo)
+#include "GestorHuacas.h"
+GestorHuacas::GestorHuacas(Guardia* guardia, int anchoLienzo, int altoLienzo)
 {
 	this->guardia = guardia;
 	this->anchoLienzo = anchoLienzo;
 	this->altoLienzo = altoLienzo;
 }
-GestorEscenario2::~GestorEscenario2(){
+GestorHuacas::~GestorHuacas(){
 	for (auto cuidador : cuidadores) delete cuidador;
 	cuidadores.clear();
 	for (auto huaquero : huaqueros) delete huaquero;
 	huaqueros.clear();
 
 }
-void GestorEscenario2::mover(int x){
+void GestorHuacas::mover(int x){
 	if (x==1) {guardia->mover(Direccion::Abajo,anchoLienzo,altoLienzo,2);}
 	else if (x==2) {guardia->mover(Direccion::Arriba,anchoLienzo,altoLienzo,2);}
 	else if (x==3) {guardia->mover(Direccion::Izquierda,anchoLienzo,altoLienzo,2);}
@@ -22,12 +22,12 @@ void GestorEscenario2::mover(int x){
 	for (auto huaquero : huaqueros) { huaquero->mover(anchoLienzo,altoLienzo); }
 
 }
-void GestorEscenario2::dibujar(Graphics^ g){
+void GestorHuacas::dibujar(Graphics^ g){
 	guardia->dibujar(g);
 	for (auto huaquero : huaqueros) { huaquero->dibujar(g); }
 
 }
-void GestorEscenario2::detectarColisiones() {
+void GestorHuacas::detectarColisiones() {
 
 	Rectangle hitboxGuardia = guardia->getRectangle(2);
 
@@ -71,17 +71,17 @@ void GestorEscenario2::detectarColisiones() {
 	}
 
 }
-bool GestorEscenario2::victoria() { return false; }
+bool GestorHuacas::victoria() { return false; }
 
-int GestorEscenario2::getTotalHuaquero(){ return (int)huaqueros.size(); }
+int GestorHuacas::getTotalHuaquero(){ return (int)huaqueros.size(); }
 
-void GestorEscenario2::agregarCuidador(Cuidador* c) { cuidadores.push_back(c); }
-void GestorEscenario2::agregarHuaquero(Huaquero* h) { huaqueros.push_back(h); }
-void GestorEscenario2::agregarBien(){}
-void  GestorEscenario2::eliminarCuidador(int i) { cuidadores.erase(cuidadores.begin() + i); }
-void  GestorEscenario2::eliminarHuaquero(int i) { huaqueros.erase(huaqueros.begin() + i); }
+void GestorHuacas::agregarCuidador(Cuidador* c) { cuidadores.push_back(c); }
+void GestorHuacas::agregarHuaquero(Huaquero* h) { huaqueros.push_back(h); }
+void GestorHuacas::agregarBien(){}
+void  GestorHuacas::eliminarCuidador(int i) { cuidadores.erase(cuidadores.begin() + i); }
+void  GestorHuacas::eliminarHuaquero(int i) { huaqueros.erase(huaqueros.begin() + i); }
 
-void GestorEscenario2::jugar() {
+void GestorHuacas::jugar() {
 	detectarColisiones();
 	
 

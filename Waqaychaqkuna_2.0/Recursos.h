@@ -34,4 +34,9 @@ public:
     static Bitmap^ huaquero = gcnew Bitmap("sprites\\huaquero.png");
 
     static Bitmap^ chavon = gcnew Bitmap("sprites\\chavon.png");
+
+    //----------------  MAPAS  ---------------- 
+    static Bitmap^ museo = gcnew Bitmap("backgrounds\\lvl1.png");
+    // static Bitmap^ huacas = gcnew Bitmap("backgrounds\\lvl2.png");
+    // static Bitmap^ biblioteca = gcnew Bitmap("backgrounds\\lvl3.png");
 };

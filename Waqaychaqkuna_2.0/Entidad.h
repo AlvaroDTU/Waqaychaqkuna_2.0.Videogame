@@ -18,12 +18,11 @@ protected:
 	int dirY;
 	int fila, columna;
 	bool moviendose;
+	bool activo;
 public:
 	Entidad();
 	Entidad(int posX, int posY, int dirX, int dirY);
 	~Entidad();
-
-	// HOLA BRO
 
 	int getPosX();
 	int getPosY();
@@ -41,6 +40,8 @@ public:
 	void setAncho(int anch);
 	void setFila(int fil);
 	void setColumna(int colum);
+	bool estaActivo();
+	void setActivo(bool a);
 	virtual Bitmap^ getBitmap() = 0;
 
 

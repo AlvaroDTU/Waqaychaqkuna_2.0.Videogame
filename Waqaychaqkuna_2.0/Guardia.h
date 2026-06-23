@@ -13,12 +13,15 @@ public:
 	~Guardia();
 	bool getAccion();
 	int getTipoAccion();
+	void setVelocidad(int dx, int dy);
+	void mover(int idx, int ancho, int alto);
+	int getDirX();
+	int getDirY();
 	void setAccion(bool acc);
 	void setTipoAccion(int tAcc);
-	Bitmap^ getBitmap() override;
 
+	Bitmap^ getBitmap() override;
 	std::string getNombre() override;
-	void mover(Direccion direccion, int ancho, int alto, int x);
 	void mover(int ancho, int alto) override;
 	void dibujar(Graphics^ g) override;
 

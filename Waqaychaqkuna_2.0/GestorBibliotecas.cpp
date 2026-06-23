@@ -1,7 +1,7 @@
 #include "pch.h"
-#include "GestorEscenario3.h"
+#include "GestorBiblioteca.h"
 
-GestorEscenario3::GestorEscenario3(Guardia* guardia, int anchoLienzo, int altoLienzo, int enemigosTotales) :
+GestorBiblioteca::GestorBiblioteca(Guardia* guardia, int anchoLienzo, int altoLienzo, int enemigosTotales) :
 	guardia(guardia), anchoLienzo(anchoLienzo), altoLienzo(altoLienzo), enemigosTotales(enemigosTotales)
 {
 	//FALTA MODIFICAR POSICIONES Y TAMAÑO
@@ -19,23 +19,23 @@ GestorEscenario3::GestorEscenario3(Guardia* guardia, int anchoLienzo, int altoLi
 
 }
 
-GestorEscenario3::~GestorEscenario3(){
+GestorBiblioteca::~GestorBiblioteca(){
 	for (auto manipulador : manipuladores) { delete manipulador; manipuladores.clear(); }
 }
 
-void GestorEscenario3::mover(){
+void GestorBiblioteca::mover(){
 	for (auto manipulador : manipuladores) manipulador->mover(anchoLienzo, altoLienzo);
 }
 
-void GestorEscenario3::moverGuardia(Direccion direccion) {
+void GestorBiblioteca::moverGuardia(Direccion direccion) {
 	guardia->mover(direccion, anchoLienzo, altoLienzo, 1);
 }
 
-void GestorEscenario3::dibujar(Graphics^ g){
+void GestorBiblioteca::dibujar(Graphics^ g){
 	guardia->dibujar(g);
 	for (auto manipulador : manipuladores) { manipulador->dibujar(g); }
 }
-void GestorEscenario3::detectarColisiones(){
+void GestorBiblioteca::detectarColisiones(){
 	Rectangle hitboxGuardia = guardia->getRectangle(2);
 
 	//Logica de la linterna pendiente
@@ -57,19 +57,19 @@ void GestorEscenario3::detectarColisiones(){
 
 }
 
-bool GestorEscenario3::victoria(){ return false; }
+bool GestorBiblioteca::victoria(){ return false; }
 
-int GestorEscenario3::getTotalManipulador(){return (int)manipuladores.size(); }
+int GestorBiblioteca::getTotalManipulador(){return (int)manipuladores.size(); }
 
-void GestorEscenario3::jugar(){
+void GestorBiblioteca::jugar(){
 	detectarColisiones();
 
 
 }
 
-void GestorEscenario3::agregarManipulador(Manipulador* nuevo){manipuladores.push_back(nuevo);
+void GestorBiblioteca::agregarManipulador(Manipulador* nuevo){manipuladores.push_back(nuevo);
 }
 
-void GestorEscenario3::eliminarManipulador(int i){manipuladores.erase(manipuladores.begin()+i); }
+void GestorBiblioteca::eliminarManipulador(int i){manipuladores.erase(manipuladores.begin()+i); }
 
-void GestorEscenario3::recargaLinterna(){}
+void GestorBiblioteca::recargaLinterna(){}

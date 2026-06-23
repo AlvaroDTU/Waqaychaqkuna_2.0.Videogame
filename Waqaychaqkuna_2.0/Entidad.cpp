@@ -71,3 +71,5 @@ Rectangle Entidad::getRectangle(int extra) {
 	return Rectangle(posX - extra, posY - extra, ancho  + extra * 2, alto+extra * 2);
 }
 
+bool Entidad::estaActivo() { return activo; }
+void Entidad::setActivo(bool a) { activo = a; }

@@ -5,7 +5,7 @@
 #include <vector>
 using std::vector;
 
-class GestorEscenario2
+class GestorHuacas
 {
 private:
 	Guardia* guardia;
@@ -19,8 +19,8 @@ private:
 	int puntajeNivel;
 
 public:
-	GestorEscenario2(Guardia* guardia, int anchoLienzo, int altoLienzo);
-	~GestorEscenario2();
+	GestorHuacas(Guardia* guardia, int anchoLienzo, int altoLienzo);
+	~GestorHuacas();
 	void mover(int x);
 	void dibujar(Graphics^ g);
 	void detectarColisiones();

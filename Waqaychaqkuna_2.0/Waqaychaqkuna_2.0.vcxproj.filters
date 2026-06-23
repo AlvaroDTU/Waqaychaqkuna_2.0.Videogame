@@ -68,7 +68,7 @@
     <ClInclude Include="Ladron.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GestorEscenario1.h">
+    <ClInclude Include="GestorMuseo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Bien.h">
@@ -77,7 +77,7 @@
     <ClInclude Include="Artilugio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GestorEscenario2.h">
+    <ClInclude Include="GestorHuacas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Huaca.h">
@@ -86,10 +86,16 @@
     <ClInclude Include="GestorEscenario2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GestorEscenario3.h">
+    <ClInclude Include="GestorBiblioteca.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Archivo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fondo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Escenario.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -142,7 +148,7 @@
     <ClCompile Include="Ladron.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GestorEscenario1.cpp">
+    <ClCompile Include="GestorMuseo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Bien.cpp">
@@ -151,7 +157,7 @@
     <ClCompile Include="Artilugio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GestorEscenario2.cpp">
+    <ClCompile Include="GestorHuacas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Huaca.cpp">
@@ -160,10 +166,16 @@
     <ClCompile Include="GestorEscenario2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GestorEscenario3.cpp">
+    <ClCompile Include="GestorBibliotecas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Archivo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Fondo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Escenario.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

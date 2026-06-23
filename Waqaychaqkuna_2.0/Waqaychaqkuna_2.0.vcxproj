@@ -146,15 +146,17 @@
     <ClInclude Include="Cuidador.h" />
     <ClInclude Include="Enemigo.h" />
     <ClInclude Include="Entidad.h" />
+    <ClInclude Include="Escenario.h" />
+    <ClInclude Include="Fondo.h" />
     <ClInclude Include="FrmMenu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="FrmNivel1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="GestorEscenario1.h" />
-    <ClInclude Include="GestorEscenario2.h" />
-    <ClInclude Include="GestorEscenario3.h" />
+    <ClInclude Include="GestorMuseo.h" />
+    <ClInclude Include="GestorHuacas.h" />
+    <ClInclude Include="GestorBiblioteca.h" />
     <ClInclude Include="Guardia.h" />
     <ClInclude Include="Huaca.h" />
     <ClInclude Include="Huaquero.h" />
@@ -176,11 +178,13 @@
     <ClCompile Include="Cuidador.cpp" />
     <ClCompile Include="Enemigo.cpp" />
     <ClCompile Include="Entidad.cpp" />
+    <ClCompile Include="Escenario.cpp" />
+    <ClCompile Include="Fondo.cpp" />
     <ClCompile Include="FrmMenu.cpp" />
     <ClCompile Include="FrmNivel1.cpp" />
-    <ClCompile Include="GestorEscenario1.cpp" />
-    <ClCompile Include="GestorEscenario2.cpp" />
-    <ClCompile Include="GestorEscenario3.cpp" />
+    <ClCompile Include="GestorMuseo.cpp" />
+    <ClCompile Include="GestorHuacas.cpp" />
+    <ClCompile Include="GestorBibliotecas.cpp" />
     <ClCompile Include="Guardia.cpp" />
     <ClCompile Include="Huaca.cpp" />
     <ClCompile Include="Huaquero.cpp" />

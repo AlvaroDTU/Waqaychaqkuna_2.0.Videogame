@@ -1,0 +1,49 @@
+#pragma once
+#include "Fondo.h"
+#include "Guardia.h"
+#include "Enemigo.h"
+#include "Aliado.h"
+#include "Bien.h"
+#include <vector>
+
+using std::vector;
+
+class Escenario
+{
+protected:
+	Fondo* fondo;
+	Guardia* guardia;
+	vector<Enemigo*> enemigos;
+	vector<Aliado*> aliados;
+	vector<Bien*> bienes;
+	int anchoLienzo;
+	int altoLienzo;
+	int enemigosTotales;
+	int enemigosDerrotados;
+	int tempSpawnEntidades;
+
+public:
+	Escenario(int enTotales);
+	virtual ~Escenario();
+
+	virtual void crearSprites() = 0;
+	virtual void dibujar(Graphics^ g) = 0;
+	virtual void mover() = 0;
+	virtual void detectarColisiones() = 0;
+	virtual bool victoria() = 0;
+
+	void setLienzo(int ancho, int alto);
+	void setVelGuardia(int dx, int dy);
+	void agregarEnemigo(Enemigo* nuevo);
+	void agregarAliado(Aliado* nuevo);
+	void agregarBien(Bien* nuevo);
+	void eliminarEnemigo(int i);
+	void eliminarAliado(int i);
+	int totalEnemigos();
+	int totalAliados();
+	int totalBienes();
+
+	Guardia* getGuardia();
+};
+
+
