@@ -52,9 +52,7 @@ void Entidad::dibujar(Graphics^ g) {
 void Entidad::avanzarEscena() {
 	Bitmap^ img = getBitmap();
 	int n = 0;
-	if (img->Width == 240) { n = 4; }
-	else if (img->Width == 160) { n = 4; }
-
+	if (img->Width == 240 || img->Width == 160) { n = 4; }
 	if (moviendose == true) {
 		columna++;
 		if (columna >= n) { columna = 0; }
