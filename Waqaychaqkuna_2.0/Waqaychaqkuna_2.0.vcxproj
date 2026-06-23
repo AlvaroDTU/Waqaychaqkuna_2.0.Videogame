@@ -163,6 +163,7 @@
     <ClInclude Include="Ladron.h" />
     <ClInclude Include="Manipulador.h" />
     <ClInclude Include="Murcielago.h" />
+    <ClInclude Include="Objeto.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Recursos.h" />
     <ClInclude Include="Reportera.h" />
@@ -191,6 +192,7 @@
     <ClCompile Include="Ladron.cpp" />
     <ClCompile Include="Manipulador.cpp" />
     <ClCompile Include="Murcielago.cpp" />
+    <ClCompile Include="Objeto.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

@@ -32,3 +32,4 @@ void Guardia::mover(int idx, int ancho, int alto)
 	posX += dirX;
 	posY += dirY;
 }
+void Guardia::mover(int ancho, int alto) {}

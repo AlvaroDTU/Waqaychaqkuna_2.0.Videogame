@@ -14,11 +14,6 @@ GestorHuacas::~GestorHuacas(){
 
 }
 void GestorHuacas::mover(int x){
-	if (x==1) {guardia->mover(Direccion::Abajo,anchoLienzo,altoLienzo,2);}
-	else if (x==2) {guardia->mover(Direccion::Arriba,anchoLienzo,altoLienzo,2);}
-	else if (x==3) {guardia->mover(Direccion::Izquierda,anchoLienzo,altoLienzo,2);}
-	else if (x==4) {guardia->mover(Direccion::Derecha,anchoLienzo,altoLienzo,2);}
-
 	for (auto huaquero : huaqueros) { huaquero->mover(anchoLienzo,altoLienzo); }
 
 }

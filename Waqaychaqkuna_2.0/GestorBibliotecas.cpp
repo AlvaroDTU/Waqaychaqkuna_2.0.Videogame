@@ -28,7 +28,7 @@ void GestorBiblioteca::mover(){
 }
 
 void GestorBiblioteca::moverGuardia(Direccion direccion) {
-	guardia->mover(direccion, anchoLienzo, altoLienzo, 1);
+	guardia->mover(3, anchoLienzo, altoLienzo);
 }
 
 void GestorBiblioteca::dibujar(Graphics^ g){
