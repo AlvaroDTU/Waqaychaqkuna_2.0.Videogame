@@ -36,8 +36,8 @@ void Entidad::setAlto(int alt) { this->alto = alt; }
 void Entidad::dibujar(Graphics^ g) {
 	Bitmap^ img = getBitmap();
 
-	Rectangle origen = Rectangle(columna * ancho, fila * alto, ancho, alto);
-	Rectangle destino(posX, posY, (ancho-20), (alto-15));
+	Rectangle origen = Rectangle(columna * anchoFrame, fila * altoFrame, anchoFrame, altoFrame);
+	Rectangle destino(posX, posY, ancho, alto);
 
 	g->DrawImage(img, destino, origen, GraphicsUnit::Pixel);
 	moviendose = false;
