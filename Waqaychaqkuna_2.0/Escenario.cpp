@@ -33,11 +33,15 @@ void Escenario::setLienzo(int ancho, int alto)
 	altoLienzo = alto;
 }
 void Escenario::setVelGuardia(int dx, int dy) { guardia->setVelocidad(dx, dy); }
+
 void Escenario::agregarEnemigo(Enemigo* nuevo) { enemigos.push_back(nuevo); }
 void Escenario::agregarAliado(Aliado* nuevo) { aliados.push_back(nuevo); }
 void Escenario::agregarBien(Bien* nuevo) { bienes.push_back(nuevo); }
+void Escenario::agregarObjeto(Objeto* nuevo) { objetos.push_back(nuevo); }
+
 void Escenario::eliminarEnemigo(int i) { enemigos.erase(enemigos.begin() + i); }
 void Escenario::eliminarAliado(int i) { aliados.erase(aliados.begin() + i); }
+
 int Escenario::totalEnemigos() { return (int)enemigos.size(); }
 int Escenario::totalAliados() { return (int)aliados.size(); }
 int Escenario::totalBienes() { return (int)bienes.size(); }

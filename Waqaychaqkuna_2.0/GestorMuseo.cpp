@@ -31,11 +31,45 @@ void GestorMuseo::crearSprites()
 	agregarBien(new Artilugio(153, 600, 230, 50, 3000, "Huaco"));
 	agregarBien(new Artilugio(535, 600, 230, 50, 5000, "Tumi Dorado"));
 	agregarBien(new Artilugio(917, 600, 230, 50, 2500, "Vaso Kero"));
+
+	agregarObjeto(new Objeto(294, 7, 974, 115));
+	agregarObjeto(new Objeto(1159, 128, 105, 43));
+	agregarObjeto(new Objeto(1210, 174, 57, 154));
+	agregarObjeto(new Objeto(1242, 311, 58, 25));
+	agregarObjeto(new Objeto(1212, 330, 18, 28));
+	agregarObjeto(new Objeto(1206, 465, 22, 63));
+	agregarObjeto(new Objeto(1241, 463, 59, 44));
+	agregarObjeto(new Objeto(1241, 507, 28, 260));
+	agregarObjeto(new Objeto(1140, 613, 87, 119));
+	agregarObjeto(new Objeto(1047, 577, 84, 76));
+	agregarObjeto(new Objeto(1019, 631, 28, 104));
+	agregarObjeto(new Objeto(974, 664, 34, 68));
+	agregarObjeto(new Objeto(1021, 345, 96, 157));
+	agregarObjeto(new Objeto(910, 287, 30, 119));
+	agregarObjeto(new Objeto(910, 472, 29, 125));
+	agregarObjeto(new Objeto(907, 742, 362, 28));
+	agregarObjeto(new Objeto(694, 770, 234, 27));
+	agregarObjeto(new Objeto(680, 289, 28, 115));
+	agregarObjeto(new Objeto(680, 471, 29, 129));
+	agregarObjeto(new Objeto(335, 138, 252, 112));
+	agregarObjeto(new Objeto(336, 255, 171, 44));
+	agregarObjeto(new Objeto(503, 346, 91, 156));
+	agregarObjeto(new Objeto(338, 429, 15, 88));
+	agregarObjeto(new Objeto(292, 123, 26, 617));
+	agregarObjeto(new Objeto(427, 574, 82, 78));
+	agregarObjeto(new Objeto(338, 601, 17, 127));
+	agregarObjeto(new Objeto(372, 632, 29, 95));
+	agregarObjeto(new Objeto(409, 701, 110, 32));
+	agregarObjeto(new Objeto(517, 616, 29, 21));
+	agregarObjeto(new Objeto(550, 630, 30, 66));
+	agregarObjeto(new Objeto(532, 660, 30, 71));
+	agregarObjeto(new Objeto(570, 689, 35, 45));
+	agregarObjeto(new Objeto(292, 741, 429, 29));
 }
 
 void GestorMuseo::mover()
 {
-	guardia->mover(1, anchoLienzo, altoLienzo);
+	guardia->mover(1, anchoLienzo, altoLienzo, objetos);
 	for (auto ladron : enemigos) ladron->mover(anchoLienzo, altoLienzo);
 	for (int i = 0; i < (int)visitantes.size(); i++)
 	{
@@ -84,6 +118,7 @@ void GestorMuseo::detectarColisiones()
 		fondo->cambioEscena(fondoActual);
 		if (fondoActual == 2) guardia->setPos(85, 370);
 		if (fondoActual == 3) guardia->setPos(80, 365);
+		objetos.clear();
 	}
 	if (hbGuardia.IntersectsWith(cambioIzq)) {
 		fondoActual--;

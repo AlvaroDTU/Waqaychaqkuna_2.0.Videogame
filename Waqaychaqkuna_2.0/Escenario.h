@@ -39,6 +39,7 @@ public:
 	void agregarEnemigo(Enemigo* nuevo);
 	void agregarAliado(Aliado* nuevo);
 	void agregarBien(Bien* nuevo);
+	void agregarObjeto(Objeto* nuevo);
 	void eliminarEnemigo(int i);
 	void eliminarAliado(int i);
 	int totalEnemigos();

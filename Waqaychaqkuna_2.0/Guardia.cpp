@@ -23,16 +23,26 @@ void Guardia::dibujar(Graphics^ g) {
 	Entidad::dibujar(g);
 }
 
-void Guardia::mover(int idx, int ancho, int alto)
+void Guardia::mover(int idx, int ancho, int alto, vector<Objeto*> objetos)
 {
-	moviendose = true;
+	bool colision = false;
+	for (int i = 0; i < (int)objetos.size(); i++)
+	{
+		Rectangle hbGuardia = getRectangle();
+		hbGuardia.X += dirX;
+		hbGuardia.Y += dirY;
+		if (hbGuardia.IntersectsWith(objetos[i]->getRectangle()))
+			colision = true;
+	}
 	if (dirY > 0) fila = 0;
 	else if (dirY < 0) fila = 3;
 	else if (dirX < 0) fila = 1;
 	else if (dirX > 0) fila = 2;
 
-	posX += dirX;
-	posY += dirY;
+	if (!colision) {
+		posX += dirX;
+		posY += dirY;
+	}
 
 	if (dirX != 0 || dirY != 0) avanzarEscena();
 	else columna = 0;

@@ -1,7 +1,9 @@
 #pragma once
 #include "Entidad.h"
+#include "Objeto.h"
+#include <vector>
 
-
+using std::vector;
 class Guardia : public Entidad
 {
 private:
@@ -14,7 +16,7 @@ public:
 	bool getAccion();
 	int getTipoAccion();
 	void setVelocidad(int dx, int dy);
-	void mover(int idx, int ancho, int alto);
+	void mover(int idx, int ancho, int alto, vector<Objeto*> objetos);
 	int getDirX();
 	int getDirY();
 	void setAccion(bool acc);
