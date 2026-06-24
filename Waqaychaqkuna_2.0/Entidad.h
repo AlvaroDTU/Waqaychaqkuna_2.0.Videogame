@@ -4,7 +4,6 @@
 
 using namespace System::Drawing;
 
-
 enum Direccion { Arriba, Abajo, Izquierda, Derecha };
 
 class Entidad
@@ -12,17 +11,19 @@ class Entidad
 protected:
 	int posX;
 	int posY;
-	int alto;
-	int ancho;
 	int dirX;
 	int dirY;
+	int ancho, alto;
+	int anchoFrame, altoFrame;
+
 	int fila, columna;
 	int contadorTicks;
+	double multiplo;
 	bool moviendose;
 	bool activo;
 public:
 	Entidad();
-	Entidad(int posX, int posY, int dirX, int dirY);
+	Entidad(int posX, int posY, int dirX, int dirY,int multi=1);
 	~Entidad();
 
 	int getPosX();
