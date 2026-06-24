@@ -1,14 +1,12 @@
 #include "pch.h"
 #include "Reportera.h"
 
-Reportera::Reportera(int posX, int posY, int dirX, int dirY, bool ayuda,
-	int TipPis) : Aliado(posX, posY, dirX, dirY, ayuda)
+Reportera::Reportera(int posX, int posY, int an, int al, int anF, int alF, bool ayuda, int TipPis)
+	: Aliado(posX, posY, an, al, anF, alF, ayuda)
 {
-	columna = 0;
-	fila = 0;
 	this->tipoPista = TipPis;
 }
-Reportera::~Reportera(){}
+Reportera::~Reportera() {}
 
 int Reportera::getTipoPista() { return this->tipoPista; }
 void Reportera::setTipoPista(int Tp) { this->tipoPista = Tp; }

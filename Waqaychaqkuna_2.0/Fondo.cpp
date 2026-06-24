@@ -22,12 +22,15 @@ void Fondo::cambioEscena(int fActual)
 
 Bitmap^ Fondo::getBitmap() 
 {
+	Bitmap^ img = nullptr;
 	if (tipo == 1)
 	{
-		if (fondoActual == 1) return Recursos::museo_fondo1;
-		if (fondoActual == 2) return Recursos::museo_fondo2;
-		if (fondoActual == 3) return Recursos::museo_fondo3;
+		if (fondoActual == 1) img = Recursos::museo_fondo1;
+		if (fondoActual == 2) img = Recursos::museo_fondo2;
+		if (fondoActual == 3) img = Recursos::museo_fondo3;
 	}
-	if (tipo == 2) return Recursos::huacas;
-	if (tipo == 3) return Recursos::biblioteca;
+	if (tipo == 2) img = Recursos::huacas;
+	if (tipo == 3) img = Recursos::biblioteca;
+
+	return img;
 }

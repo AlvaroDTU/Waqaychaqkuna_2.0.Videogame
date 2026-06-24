@@ -1,16 +1,15 @@
 #include "pch.h"
 #include "Huaquero.h"
-Huaquero::Huaquero(int x, int y, int dx, int dy, 
-	bool at, int obj, int vid, int tM) : Enemigo (posX, posY,
-		dirX, dirY, at, obj) 
+Huaquero::Huaquero(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, bool at, int obj, int vid, int tM)
+	: Enemigo(posX, posY, an, al, anF, alF, dirX, dirY, at, obj)
 {
 	this->vidas = vid;
 	this->tiempoMovimiento = tM;
 }
-Huaquero::~Huaquero(){}
+Huaquero::~Huaquero() {}
 
 int Huaquero::getVidas() { return this->vidas; }
-void Huaquero::RestarVidas(int v) { this -> vidas -= v; }
+void Huaquero::RestarVidas(int v) { this->vidas -= v; }
 int Huaquero::getTemMov() { return this->tiempoMovimiento; }
 void Huaquero::setTemMov(int TM) { tiempoMovimiento = TM; }
 

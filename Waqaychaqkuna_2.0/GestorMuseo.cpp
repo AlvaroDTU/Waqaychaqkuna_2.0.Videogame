@@ -23,7 +23,7 @@ void GestorMuseo::crearSprites()
 {
 	fondo = new Fondo(1, anchoLienzo, altoLienzo);
 
-	guardia = new Guardia(790, 170, 0, 0, 0, false);
+	guardia = new Guardia(790, 170,45,60,60,80);
 
 	agregarBien(new Artilugio(153, 50, 230, 50, 800, "Cabeza Clava"));
 	agregarBien(new Artilugio(535, 50, 230, 50, 1000, "Telar"));

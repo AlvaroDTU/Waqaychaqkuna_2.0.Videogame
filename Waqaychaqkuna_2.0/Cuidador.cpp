@@ -1,11 +1,11 @@
 #include "pch.h"
 #include "Cuidador.h"
-Cuidador::Cuidador(int posX, int posY, int dirX, int dirY, bool ayuda, int dura)
-	: Aliado(posX,posY,dirX,dirY,ayuda)
+Cuidador::Cuidador(int posX, int posY, int an, int al, int anF, int alF, bool ayuda, int dura)
+	: Aliado(posX, posY, an, al, anF, alF, ayuda)
 {
 	this->duracion = dura;
 }
-Cuidador::~Cuidador(){}
+Cuidador::~Cuidador() {}
 
 int Cuidador::getDuracion() { return this->duracion; }
 void Cuidador::RestarDuracion(int d) { this->duracion = d; }

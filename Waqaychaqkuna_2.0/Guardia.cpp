@@ -1,13 +1,12 @@
 #include "pch.h"
 #include "Guardia.h"
-Guardia::Guardia(int posX, int posY, int dirX, int dirY,
-	int tpAccion, bool ac) : Entidad(posX, posY, dirX, dirY)
+Guardia::Guardia(int posX, int posY, int an, int al, int anF, int alF)
+	: Entidad(posX, posY, an, al, anF, alF, 0, 0)
 {
-	this->fila = 0;
-	this->columna = 0;
-	this->accion = ac;
-	this->tipoAccion = tpAccion;
+	accion = false;
+	tipoAccion = 0;
 }
+
 Guardia::~Guardia() {}
 bool Guardia::getAccion() { return this->accion; }
 int Guardia::getTipoAccion() { return this->tipoAccion; }

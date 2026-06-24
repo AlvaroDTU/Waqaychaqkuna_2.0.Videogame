@@ -3,8 +3,7 @@
 class Murcielago : public Aliado
 {
 public:
-
-	Murcielago(int posX, int posY, int dirX, int dirY, bool ayuda, int Tr);
+	Murcielago(int posX, int posY, int an, int al, int anF, int alF, bool ayuda);
 	~Murcielago();
 
 	std::string getNombre() override;

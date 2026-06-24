@@ -8,7 +8,7 @@ private:
 	int tipo;
 	int tipoPista;
 public:
-	Ladron(int posX, int posY, int dirX, int dirY, bool atack, int obj, int t, int tPista);
+	Ladron(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, bool at, int obj, int t, int tPista);
 	~Ladron();
 
 	std::string getNombre() override;

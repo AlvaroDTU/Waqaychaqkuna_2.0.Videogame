@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "Ladron.h"
 
-Ladron::Ladron(int posX, int posY, int dirX, int dirY, bool atack, int obj, int t, int tPista)
-	: Enemigo(posX, posY, dirX, dirY, atack, obj)
+Ladron::Ladron(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, bool at, int obj, int t, int tPista)
+	: Enemigo(posX, posY, an, al, anF, alF, dirX, dirY, at, obj)
 {
 	this->tipo = t;
 	this->tipoPista = tPista;
@@ -49,17 +49,17 @@ void Ladron::mover(int ancho, int alto) {
 	if (objetivo == 3)
 	{
 		if (posX >= 258 && posX <= 277) { dirX = 0; dirY = 5; fila = 0; }
-		if (posY + alto>= 599) { posY = 599 - alto; moviendose = false; }
+		if (posY + alto >= 599) { posY = 599 - alto; moviendose = false; }
 	}
 	if (objetivo == 4)
 	{
 		if (posX >= 640 && posX <= 659) { dirX = 0; dirY = 5; fila = 0; }
-		if (posY + alto>= 599) { posY = 599-alto; moviendose = false; }
+		if (posY + alto >= 599) { posY = 599 - alto; moviendose = false; }
 	}
 	if (objetivo == 5)
 	{
 		if (posX >= 1022 && posX <= 1041) { dirX = 0; dirY = 5; fila = 0; }
-		if (posY + alto>= 599) { posY = 599 - alto; moviendose=false; }
+		if (posY + alto >= 599) { posY = 599 - alto; moviendose = false; }
 	}
 }
 void Ladron::dibujar(Graphics^ g) {

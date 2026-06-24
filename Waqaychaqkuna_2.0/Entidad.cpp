@@ -1,13 +1,9 @@
 #include "pch.h"
 #include "Entidad.h"
 Entidad::Entidad() {}
-Entidad::Entidad(int posX, int posY, int dirX, int dirY, int multi)
-	: posX(posX), posY(posY), dirX(dirX), dirY(dirY), multiplo(multi)
+Entidad::Entidad(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY,bool acti)
+	: posX(posX), posY(posY), ancho(an), alto(al), anchoFrame(anF),altoFrame(alF), dirX(dirX), dirY(dirY), activo(acti)
 {
-	anchoFrame = getBitmap()->Width / 4;
-	altoFrame = getBitmap()->Height / 4;
-	ancho = anchoFrame * multiplo;
-	alto = altoFrame * multiplo;
 	fila = 0;
 	columna = 0;
 	contadorTicks = 0;
@@ -48,7 +44,7 @@ void Entidad::avanzarEscena() {
 	contadorTicks++;
 	int n = 0;
 	if (img->Width == 240 || img->Width == 160) { n = 4; }
-	if (contadorTicks == 5)
+	if (contadorTicks == 4)
 	{
 		columna++;
 		if (columna >= n) { columna = 0; }

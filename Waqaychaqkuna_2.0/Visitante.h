@@ -7,11 +7,10 @@ private:
 	int posXFinal;
 public:
 
-	Visitante(int posX, int posY, int dirX, int dirY);
+	Visitante(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY);
 	~Visitante();
 	std::string getNombre() override;
 	void mover(int ancho, int alto) override;
-	void dibujar(Graphics^ g) override;
 	bool terminoRecorrido();
 	Bitmap^ getBitmap() override;
 

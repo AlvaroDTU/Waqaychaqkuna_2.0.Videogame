@@ -18,12 +18,11 @@ protected:
 
 	int fila, columna;
 	int contadorTicks;
-	double multiplo;
 	bool moviendose;
 	bool activo;
 public:
 	Entidad();
-	Entidad(int posX, int posY, int dirX, int dirY,int multi=1);
+	Entidad(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY,bool acti=true);
 	~Entidad();
 
 	int getPosX();

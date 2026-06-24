@@ -6,7 +6,7 @@ class Reportera : public Aliado
 private:
 	int tipoPista;
 public:
-	Reportera(int posX, int posY, int dirX, int dirY, bool ayuda, int TipPis);
+	Reportera(int posX, int posY, int an, int al, int anF, int alF, bool ayuda, int TipPis);
 	~Reportera();
 
 	int getTipoPista();
