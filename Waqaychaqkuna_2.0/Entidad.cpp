@@ -10,6 +10,7 @@ Entidad::Entidad( int posX, int posY, int dirX, int dirY)
 	this->dirY = dirY;
 	fila = 0;
 	columna = 0;
+	contadorTicks = 0;
 }
 Entidad::~Entidad(){}
 
@@ -42,24 +43,20 @@ void Entidad::dibujar(Graphics^ g) {
 	this->ancho = img->Width / 4;
 
 	Rectangle molde = Rectangle(columna * ancho, fila * alto, ancho, alto);
-
-	avanzarEscena();
 	g->DrawImage(img, posX, posY, molde, GraphicsUnit::Pixel);
-
 	moviendose = false;
 }
 
 void Entidad::avanzarEscena() {
 	Bitmap^ img = getBitmap();
+	contadorTicks++;
 	int n = 0;
 	if (img->Width == 240 || img->Width == 160) { n = 4; }
-	if (moviendose == true) {
+	if (contadorTicks == 5)
+	{
 		columna++;
 		if (columna >= n) { columna = 0; }
-	}
-	else
-	{
-		columna = 0;
+		contadorTicks = 0;
 	}
 }
 

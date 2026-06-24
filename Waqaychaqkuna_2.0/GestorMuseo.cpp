@@ -11,6 +11,7 @@ GestorMuseo::GestorMuseo(int enTotales) : Escenario(enTotales)
 	srand(time(nullptr));
 	crearSprites();
 	tempSpawnEntidades = 75;
+	fondoActual = 1;
 }
 
 GestorMuseo::~GestorMuseo()
@@ -18,11 +19,11 @@ GestorMuseo::~GestorMuseo()
 	Escenario::~Escenario();
 }
 
-void GestorMuseo::crearSprites() 
+void GestorMuseo::crearSprites()
 {
 	fondo = new Fondo(1, anchoLienzo, altoLienzo);
 
-	guardia = new Guardia(20, 20, 0, 0, 0, false);
+	guardia = new Guardia(790, 170, 0, 0, 0, false);
 
 	agregarBien(new Artilugio(153, 50, 230, 50, 800, "Cabeza Clava"));
 	agregarBien(new Artilugio(535, 50, 230, 50, 1000, "Telar"));
@@ -30,16 +31,14 @@ void GestorMuseo::crearSprites()
 	agregarBien(new Artilugio(153, 600, 230, 50, 3000, "Huaco"));
 	agregarBien(new Artilugio(535, 600, 230, 50, 5000, "Tumi Dorado"));
 	agregarBien(new Artilugio(917, 600, 230, 50, 2500, "Vaso Kero"));
-
-	// agregarAliado(new Reportera(40, 120, 0, 0, false, rand() % 3 + 1));
 }
 
 void GestorMuseo::mover()
 {
 	guardia->mover(1, anchoLienzo, altoLienzo);
 	for (auto ladron : enemigos) ladron->mover(anchoLienzo, altoLienzo);
-	for (int i=0;i< (int)visitantes.size();i++) 
-	{ 
+	for (int i = 0; i < (int)visitantes.size(); i++)
+	{
 		visitantes[i]->mover(anchoLienzo, altoLienzo);
 		if (visitantes[i]->terminoRecorrido()) {
 			eliminarVisitante(i);
@@ -62,7 +61,36 @@ void GestorMuseo::dibujar(Graphics^ g)
 
 void GestorMuseo::detectarColisiones()
 {
+	Rectangle hbGuardia = guardia->getRectangle();
+	Rectangle cambioDer = Rectangle(0, 0, 0, 0);
+	Rectangle cambioIzq = Rectangle(0, 0, 0, 0);
 
+	if (fondoActual == 1)
+	{
+		cambioDer = Rectangle(1241, 349, 60, 110);
+	}
+	if (fondoActual == 2)
+	{
+		cambioIzq = Rectangle(0, 350, 70, 110);
+		cambioDer = Rectangle(1236, 355, 64, 110);
+	}
+	if (fondoActual == 3)
+	{
+		cambioIzq = Rectangle(0, 356, 65, 105);
+	}
+	if (hbGuardia.IntersectsWith(cambioDer))
+	{
+		fondoActual++;
+		fondo->cambioEscena(fondoActual);
+		if (fondoActual == 2) guardia->setPos(85, 370);
+		if (fondoActual == 3) guardia->setPos(80, 365);
+	}
+	if (hbGuardia.IntersectsWith(cambioIzq)) {
+		fondoActual--;
+		fondo->cambioEscena(fondoActual);
+		if (fondoActual == 1) guardia->setPos(1171, 377);
+		if (fondoActual == 2) guardia->setPos(1162, 367);
+	}
 }
 
 // void GestorMuseo::jugar()

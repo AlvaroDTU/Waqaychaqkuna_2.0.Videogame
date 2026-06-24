@@ -140,6 +140,8 @@ namespace Waqaychaqkuna20 {
 		Void tmrNivel1_Tick(System::Object^ sender, System::EventArgs^ e)
 		{
 			gestor->mover();
+			gestor->detectarColisiones();
+
 			Pintar();
 		}
 		Void Pintar()

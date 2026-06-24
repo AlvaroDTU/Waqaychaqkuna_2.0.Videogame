@@ -1,6 +1,7 @@
 #pragma once
 #include "Fondo.h"
 #include "Guardia.h"
+#include "Objeto.h"
 #include "Enemigo.h"
 #include "Aliado.h"
 #include "Bien.h"
@@ -16,6 +17,7 @@ protected:
 	vector<Enemigo*> enemigos;
 	vector<Aliado*> aliados;
 	vector<Bien*> bienes;
+	vector<Objeto*> objetos;
 	int anchoLienzo;
 	int altoLienzo;
 	int enemigosTotales;

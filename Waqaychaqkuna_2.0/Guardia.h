@@ -9,7 +9,7 @@ private:
 	bool accion;
 public:
 
-	Guardia(int posX, int posY, int dirX, int dirY, int tpAccion, bool Accio);
+	Guardia(int posX, int posY, int dirX, int dirY, int tpAccion, bool ac);
 	~Guardia();
 	bool getAccion();
 	int getTipoAccion();
@@ -19,6 +19,7 @@ public:
 	int getDirY();
 	void setAccion(bool acc);
 	void setTipoAccion(int tAcc);
+	void setMoviendose(bool mov);
 
 	Bitmap^ getBitmap() override;
 	std::string getNombre() override;

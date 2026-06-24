@@ -17,6 +17,7 @@ protected:
 	int dirX;
 	int dirY;
 	int fila, columna;
+	int contadorTicks;
 	bool moviendose;
 	bool activo;
 public:

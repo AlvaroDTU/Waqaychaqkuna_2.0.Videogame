@@ -6,10 +6,12 @@ class Fondo
 {
 private:
 	int tipo;
+	int fondoActual;
 	int x, ancho, alto;
 public:
 	Fondo(int t, int anchoLienzo, int altoLienzo);
 	void dibujarFondo(Graphics^ g);
+	void cambioEscena(int destino);
 	Bitmap^ getBitmap();
 };
 
