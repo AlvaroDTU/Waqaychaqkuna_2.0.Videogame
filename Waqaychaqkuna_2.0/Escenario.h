@@ -49,7 +49,7 @@ public:
 	int totalBienes();
 
 	int getPuntajeNivel() { return puntajeNivel; }
-
+	int getDerrotados() { return enemigosDerrotados; }
 	Guardia* getGuardia();
 };
 

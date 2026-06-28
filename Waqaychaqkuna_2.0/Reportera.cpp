@@ -18,10 +18,11 @@ std::string Reportera::getNombre() { return "reportera"; }
 
 void Reportera::mover(int ancho, int alto)  // animacion de ayudar
 {
+	if (!activo) return;
+
 	if (ayudando)
 	{
-		fila = 1;
-		
+		fila = 1;	
 	}
 	else
 		fila = 0;
@@ -32,7 +33,7 @@ void Reportera::mover(int ancho, int alto)  // animacion de ayudar
 void Reportera::ayudar() 
 {
 	if (ayudando == false) 
-		tipoPista = rand() % 4 + 1;
+		tipoPista = rand() % 3 + 1;
 	ayudando = true;
 
 

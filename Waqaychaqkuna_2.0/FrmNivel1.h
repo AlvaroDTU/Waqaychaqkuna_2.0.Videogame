@@ -21,7 +21,7 @@ namespace Waqaychaqkuna20 {
 		{
 			InitializeComponent();
 			this->KeyPreview = true;
-			gestor = new GestorMuseo(10);
+			gestor = new GestorMuseo(16);
 			//
 			//TODO: Add the constructor code here
 			//
@@ -52,6 +52,7 @@ namespace Waqaychaqkuna20 {
 		   BufferedGraphics^ buffer;
 	private: System::Windows::Forms::Label^ lblPrueba;
 	private: System::Windows::Forms::Label^ lblPista;
+	private: System::Windows::Forms::Label^ lblDerrotados;
 		   GestorMuseo* gestor;
 
 #pragma region Windows Form Designer generated code
@@ -66,6 +67,7 @@ namespace Waqaychaqkuna20 {
 			   this->pnlMapa = (gcnew System::Windows::Forms::Panel());
 			   this->lblPrueba = (gcnew System::Windows::Forms::Label());
 			   this->lblPista = (gcnew System::Windows::Forms::Label());
+			   this->lblDerrotados = (gcnew System::Windows::Forms::Label());
 			   this->SuspendLayout();
 			   // 
 			   // tmrNivel1
@@ -100,11 +102,21 @@ namespace Waqaychaqkuna20 {
 			   this->lblPista->TabIndex = 2;
 			   this->lblPista->Text = L"PISTA DE REPORTERA: ";
 			   // 
+			   // lblDerrotados
+			   // 
+			   this->lblDerrotados->AutoSize = true;
+			   this->lblDerrotados->Location = System::Drawing::Point(1319, 402);
+			   this->lblDerrotados->Name = L"lblDerrotados";
+			   this->lblDerrotados->Size = System::Drawing::Size(155, 13);
+			   this->lblDerrotados->TabIndex = 3;
+			   this->lblDerrotados->Text = L"ENEMIGOS DERROTADOS: 0";
+			   // 
 			   // FrmNivel1
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->ClientSize = System::Drawing::Size(1600, 800);
+			   this->Controls->Add(this->lblDerrotados);
 			   this->Controls->Add(this->lblPista);
 			   this->Controls->Add(this->lblPrueba);
 			   this->Controls->Add(this->pnlMapa);
@@ -162,7 +174,7 @@ namespace Waqaychaqkuna20 {
 			gestor->jugar();
 
 			this->lblPista->Text = String::Format(L"PISTA DE REPORTERA: {0}", gestor->getReportera()->getTipoPista());
-			this->lblPrueba->Text = String::Format(L"FONDO ACTUAL: {0}", gestor->getFondoActual());
+			this->lblDerrotados->Text = String::Format(L"ENEMIGOS DERROTADOS: {0}", gestor->getDerrotados());
 			Pintar();
 		}
 		Void Pintar()

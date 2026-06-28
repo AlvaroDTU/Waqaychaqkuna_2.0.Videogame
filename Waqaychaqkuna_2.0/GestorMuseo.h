@@ -14,10 +14,12 @@ private:
 	vector<Visitante*> visitantes;
 	int fondoActual;
 	bool iniciado;
+	int enemigosRonda1;
+	int enemigosRonda2;
 public:
 	GestorMuseo(int enTotales);
 	~GestorMuseo();
-	
+
 	void crearSprites() override;
 	void dibujar(Graphics^ g) override;
 	void mover() override;
