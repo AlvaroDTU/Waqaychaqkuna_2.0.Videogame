@@ -51,6 +51,7 @@ public:
 	int totalAliados();
 	int totalBienes();
 
+	Bien* getBien(int i);
 	int getPuntajeNivel() { return puntajeNivel; }
 	int getCapturados() { return enemigosCapturados; }
 	Guardia* getGuardia();

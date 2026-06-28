@@ -7,3 +7,11 @@ Huaca::Huaca(int px, int py, int an, int al, int pValor, std::string nom) : Bien
 Huaca::~Huaca() {}
 
 void Huaca::describir() {}
+
+void Huaca::dibujar(Graphics^ g) {
+
+	g->DrawImage()
+}
+Bitmap^ Huaca::getBitmap() {
+return 
+}

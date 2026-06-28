@@ -25,10 +25,10 @@ void GestorHuacas::crearSprites() {
 	agregarObjeto(new Objeto(779, 243, 23, 54));
 
 	
-	agregarBien(new Huaca(209, 129, 247, 157,2000,"Huaca del Sol"));
-	agregarBien(new Huaca(854, 133, 266, 151,2069, "Huaca de la Luna"));
-	agregarBien(new Huaca(210, 487, 246, 157,2679,"Huaca Dragon"));
-	agregarBien(new Huaca(813, 493, 255, 151,3000,"Huaca Charly"));
+	agregarBien(new Huaca(177, 109, 300, 194,2000,"Huaca del Sol"));
+	agregarBien(new Huaca(817,108 , 299, 188,2069, "Huaca de la Luna"));
+	agregarBien(new Huaca(202, 482, 266, 177,2679,"Huaca Dragon"));
+	agregarBien(new Huaca(801, 474, 309, 200,3000,"Huaca Charly"));
 
 }
 void GestorHuacas::dibujar(Graphics^ g) {
@@ -59,10 +59,43 @@ void GestorHuacas::detectarColisiones() {
 				enemigos[j]->setMoviendose(false);
 				enemigos[j]->setColumna(0);
 				enemigos[j]->setAtacando(true);
+				bienes[i]->restarPuntajeValor(1);
 			}
 		}
 
 	}
+	for (size_t i = 0; i < (int)aliados.size(); i++)
+	{
+		Rectangle htbAliado = aliados[i]->getRectangle();
+		for (size_t j = 0; j < (int)enemigos.size(); j++)
+		{
+			Rectangle htbEnemigo = enemigos[j]->getRectangle();
+			if (htbAliado.IntersectsWith(htbEnemigo)) {	
+				((Cuidador*)aliados[i])->setAyudando(true);
+				((Huaquero*)enemigos[j])->RestarVidas(1);
+				((Cuidador*)aliados[i])->RestarDuracion(1);
+			}
+			else
+			{
+				((Cuidador*)aliados[i])->setAyudando(false);
+			}
+		}
+	}
+	for (size_t i = 0; i < (int)enemigos.size(); i++)
+	{
+		if (((Huaquero*)enemigos[i])->getVidas() == 0) {
+			eliminarEnemigo(i);
+			i--;
+		}
+	}
+	for (size_t i = 0; i < (int)aliados.size(); i++)
+	{
+		if (((Huaquero*)aliados[i])->getVidas() == 0) {
+			eliminarAliado(i);
+			i--;
+		}
+	}
+
 }
 
 bool GestorHuacas::victoria() { return false; }
