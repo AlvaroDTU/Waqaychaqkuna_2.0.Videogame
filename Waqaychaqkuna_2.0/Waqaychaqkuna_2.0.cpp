@@ -11,6 +11,6 @@ int main(array<System::String ^> ^args)
 {
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
-    Application::Run(gcnew Waqaychaqkuna20::FrmNivel1());
+    Application::Run(gcnew Waqaychaqkuna20::FrmNivel2());
     return 0;
 }
