@@ -22,7 +22,6 @@ public:
 	void jugar();
 
 	void generarHuaquero();
-	void agregarBien();
 
 };
 
