@@ -102,7 +102,7 @@ void GestorMuseo::detectarColisiones()
 		for (int j = 0; j < (int)bienes.size(); j++)
 		{
 			Rectangle hitboxEnemigo = enemigos[i]->getRectangle();
-			Rectangle hitboxBien = bienes[j]->getRectangle(1);
+			Rectangle hitboxBien = bienes[j]->getRectangle(5);
 			if (hitboxEnemigo.IntersectsWith(hitboxBien) && enemigos[i]->getAtacando())
 			{
 				enemigos[i]->atacar(bienes[j]);
@@ -129,13 +129,15 @@ void GestorMuseo::detectarColisiones()
 	{
 		if (!iniciado)
 		{
-			iniciado = true;
-			fondoActual++;
-			fondo->cambioEscena(fondoActual);
-			if (fondoActual == 2) guardia->setPos(85, 370);
-			if (fondoActual == 3) guardia->setPos(80, 365);
-			setearColisionesMapa();
-			tempSpawnEntidades = 0;
+			if (((Reportera*)aliados[0])->getTipoPista() > 0) {
+				iniciado = true;
+				fondoActual++;
+				fondo->cambioEscena(fondoActual);
+				if (fondoActual == 2) guardia->setPos(85, 370);
+				if (fondoActual == 3) guardia->setPos(80, 365);
+				setearColisionesMapa();
+				tempSpawnEntidades = 0;
+			}
 		}
 	}
 	if (hbGuardia.IntersectsWith(cambioIzq)) {
@@ -196,6 +198,7 @@ void GestorMuseo::setearColisionesMapa()
 		agregarObjeto(new Objeto(532, 660, 30, 71));
 		agregarObjeto(new Objeto(570, 689, 35, 45));
 		agregarObjeto(new Objeto(292, 741, 429, 29));
+		agregarObjeto(new Objeto(1284, 347, 16, 114));	//bordeDer
 
 		for (int i = 0; i < (int)bienes.size(); i++) 
 			bienes[i]->setActivo(false);

@@ -113,7 +113,7 @@ void Ladron::mover(vector<Objeto*> objetos, vector<Bien*> bienes) {
 
 void Ladron::atacar(Bien* bien) 
 {
-	bien->restarPuntajeValor(5);
+	bien->restarPuntajeValor(1);
 }
 
 Bitmap^ Ladron::getBitmap() {

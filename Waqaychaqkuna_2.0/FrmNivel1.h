@@ -50,11 +50,17 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Panel^ pnlMapa;
 
 		   BufferedGraphics^ buffer;
-	private: System::Windows::Forms::Label^ lblPrueba;
+	private: System::Windows::Forms::Label^ lblArtilugio1;
+
 	private: System::Windows::Forms::Label^ lblPista;
 	private: System::Windows::Forms::Label^ lblDerrotados;
-	private: System::Windows::Forms::Label^ lblPrueba2;
+	private: System::Windows::Forms::Label^ lblArtilugio2;
+
 	private: System::Windows::Forms::Label^ lblIntentos;
+	private: System::Windows::Forms::Label^ lblArtilugio3;
+	private: System::Windows::Forms::Label^ lblArtilugio6;
+	private: System::Windows::Forms::Label^ lblArtilugio5;
+	private: System::Windows::Forms::Label^ lblArtilugio4;
 		   GestorMuseo* gestor;
 
 #pragma region Windows Form Designer generated code
@@ -67,11 +73,15 @@ namespace Waqaychaqkuna20 {
 			   this->components = (gcnew System::ComponentModel::Container());
 			   this->tmrNivel1 = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->pnlMapa = (gcnew System::Windows::Forms::Panel());
-			   this->lblPrueba = (gcnew System::Windows::Forms::Label());
+			   this->lblArtilugio1 = (gcnew System::Windows::Forms::Label());
 			   this->lblPista = (gcnew System::Windows::Forms::Label());
 			   this->lblDerrotados = (gcnew System::Windows::Forms::Label());
-			   this->lblPrueba2 = (gcnew System::Windows::Forms::Label());
+			   this->lblArtilugio2 = (gcnew System::Windows::Forms::Label());
 			   this->lblIntentos = (gcnew System::Windows::Forms::Label());
+			   this->lblArtilugio3 = (gcnew System::Windows::Forms::Label());
+			   this->lblArtilugio6 = (gcnew System::Windows::Forms::Label());
+			   this->lblArtilugio5 = (gcnew System::Windows::Forms::Label());
+			   this->lblArtilugio4 = (gcnew System::Windows::Forms::Label());
 			   this->SuspendLayout();
 			   // 
 			   // tmrNivel1
@@ -88,61 +98,120 @@ namespace Waqaychaqkuna20 {
 			   this->pnlMapa->Size = System::Drawing::Size(1300, 800);
 			   this->pnlMapa->TabIndex = 0;
 			   // 
-			   // lblPrueba
+			   // lblArtilugio1
 			   // 
-			   this->lblPrueba->AutoSize = true;
-			   this->lblPrueba->Location = System::Drawing::Point(1319, 317);
-			   this->lblPrueba->Name = L"lblPrueba";
-			   this->lblPrueba->Size = System::Drawing::Size(13, 13);
-			   this->lblPrueba->TabIndex = 1;
-			   this->lblPrueba->Text = L"0";
+			   this->lblArtilugio1->AutoSize = true;
+			   this->lblArtilugio1->Font = (gcnew System::Drawing::Font(L"Meiryo UI", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->lblArtilugio1->Location = System::Drawing::Point(1319, 304);
+			   this->lblArtilugio1->Name = L"lblArtilugio1";
+			   this->lblArtilugio1->Size = System::Drawing::Size(112, 18);
+			   this->lblArtilugio1->TabIndex = 1;
+			   this->lblArtilugio1->Text = L"ARTILUGIO 1:";
 			   // 
 			   // lblPista
 			   // 
 			   this->lblPista->AutoSize = true;
-			   this->lblPista->Location = System::Drawing::Point(1319, 270);
+			   this->lblPista->Font = (gcnew System::Drawing::Font(L"Meiryo UI", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->lblPista->Location = System::Drawing::Point(1319, 741);
 			   this->lblPista->Name = L"lblPista";
-			   this->lblPista->Size = System::Drawing::Size(132, 13);
+			   this->lblPista->Size = System::Drawing::Size(48, 18);
 			   this->lblPista->TabIndex = 2;
-			   this->lblPista->Text = L"PISTA DE REPORTERA: ";
+			   this->lblPista->Text = L"HOLA";
+			   this->lblPista->Visible = false;
 			   // 
 			   // lblDerrotados
 			   // 
 			   this->lblDerrotados->AutoSize = true;
-			   this->lblDerrotados->Location = System::Drawing::Point(1319, 402);
+			   this->lblDerrotados->Font = (gcnew System::Drawing::Font(L"Meiryo UI", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->lblDerrotados->Location = System::Drawing::Point(1319, 648);
 			   this->lblDerrotados->Name = L"lblDerrotados";
-			   this->lblDerrotados->Size = System::Drawing::Size(155, 13);
+			   this->lblDerrotados->Size = System::Drawing::Size(213, 18);
 			   this->lblDerrotados->TabIndex = 3;
 			   this->lblDerrotados->Text = L"ENEMIGOS DERROTADOS: 0";
 			   // 
-			   // lblPrueba2
+			   // lblArtilugio2
 			   // 
-			   this->lblPrueba2->AutoSize = true;
-			   this->lblPrueba2->Location = System::Drawing::Point(1319, 363);
-			   this->lblPrueba2->Name = L"lblPrueba2";
-			   this->lblPrueba2->Size = System::Drawing::Size(13, 13);
-			   this->lblPrueba2->TabIndex = 4;
-			   this->lblPrueba2->Text = L"0";
+			   this->lblArtilugio2->AutoSize = true;
+			   this->lblArtilugio2->Font = (gcnew System::Drawing::Font(L"Meiryo UI", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->lblArtilugio2->Location = System::Drawing::Point(1319, 367);
+			   this->lblArtilugio2->Name = L"lblArtilugio2";
+			   this->lblArtilugio2->Size = System::Drawing::Size(112, 18);
+			   this->lblArtilugio2->TabIndex = 4;
+			   this->lblArtilugio2->Text = L"ARTILUGIO 2:";
 			   // 
 			   // lblIntentos
 			   // 
 			   this->lblIntentos->AutoSize = true;
-			   this->lblIntentos->Location = System::Drawing::Point(1319, 448);
+			   this->lblIntentos->Font = (gcnew System::Drawing::Font(L"Meiryo UI", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->lblIntentos->Location = System::Drawing::Point(1319, 694);
 			   this->lblIntentos->Name = L"lblIntentos";
-			   this->lblIntentos->Size = System::Drawing::Size(74, 13);
+			   this->lblIntentos->Size = System::Drawing::Size(104, 18);
 			   this->lblIntentos->TabIndex = 5;
 			   this->lblIntentos->Text = L"INTENTOS: 0";
+			   // 
+			   // lblArtilugio3
+			   // 
+			   this->lblArtilugio3->AutoSize = true;
+			   this->lblArtilugio3->Font = (gcnew System::Drawing::Font(L"Meiryo UI", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->lblArtilugio3->Location = System::Drawing::Point(1319, 430);
+			   this->lblArtilugio3->Name = L"lblArtilugio3";
+			   this->lblArtilugio3->Size = System::Drawing::Size(112, 18);
+			   this->lblArtilugio3->TabIndex = 6;
+			   this->lblArtilugio3->Text = L"ARTILUGIO 3:";
+			   // 
+			   // lblArtilugio6
+			   // 
+			   this->lblArtilugio6->AutoSize = true;
+			   this->lblArtilugio6->Font = (gcnew System::Drawing::Font(L"Meiryo UI", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->lblArtilugio6->Location = System::Drawing::Point(1455, 430);
+			   this->lblArtilugio6->Name = L"lblArtilugio6";
+			   this->lblArtilugio6->Size = System::Drawing::Size(112, 18);
+			   this->lblArtilugio6->TabIndex = 9;
+			   this->lblArtilugio6->Text = L"ARTILUGIO 6:";
+			   // 
+			   // lblArtilugio5
+			   // 
+			   this->lblArtilugio5->AutoSize = true;
+			   this->lblArtilugio5->Font = (gcnew System::Drawing::Font(L"Meiryo UI", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->lblArtilugio5->Location = System::Drawing::Point(1455, 367);
+			   this->lblArtilugio5->Name = L"lblArtilugio5";
+			   this->lblArtilugio5->Size = System::Drawing::Size(112, 18);
+			   this->lblArtilugio5->TabIndex = 8;
+			   this->lblArtilugio5->Text = L"ARTILUGIO 5:";
+			   // 
+			   // lblArtilugio4
+			   // 
+			   this->lblArtilugio4->AutoSize = true;
+			   this->lblArtilugio4->Font = (gcnew System::Drawing::Font(L"Meiryo UI", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->lblArtilugio4->Location = System::Drawing::Point(1455, 304);
+			   this->lblArtilugio4->Name = L"lblArtilugio4";
+			   this->lblArtilugio4->Size = System::Drawing::Size(112, 18);
+			   this->lblArtilugio4->TabIndex = 7;
+			   this->lblArtilugio4->Text = L"ARTILUGIO 4:";
 			   // 
 			   // FrmNivel1
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->ClientSize = System::Drawing::Size(1600, 800);
+			   this->Controls->Add(this->lblArtilugio6);
+			   this->Controls->Add(this->lblArtilugio5);
+			   this->Controls->Add(this->lblArtilugio4);
+			   this->Controls->Add(this->lblArtilugio3);
 			   this->Controls->Add(this->lblIntentos);
-			   this->Controls->Add(this->lblPrueba2);
+			   this->Controls->Add(this->lblArtilugio2);
 			   this->Controls->Add(this->lblDerrotados);
 			   this->Controls->Add(this->lblPista);
-			   this->Controls->Add(this->lblPrueba);
+			   this->Controls->Add(this->lblArtilugio1);
 			   this->Controls->Add(this->pnlMapa);
 			   this->Name = L"FrmNivel1";
 			   this->RightToLeft = System::Windows::Forms::RightToLeft::No;
@@ -196,12 +265,35 @@ namespace Waqaychaqkuna20 {
 		Void tmrNivel1_Tick(System::Object^ sender, System::EventArgs^ e)
 		{
 			gestor->jugar();
-			this->lblPista->Text = String::Format(L"PISTA DE REPORTERA: {0}", gestor->getReportera()->getTipoPista());
-			this->lblPrueba->Text = String::Format(L"ACCION GUARDIA: {0}", gestor->getGuardia()->getAccion());
-			this->lblPrueba2->Text = String::Format(L"TIPO ACCION GUARDIA: {0}", gestor->getGuardia()->getTipoAccion());
+			int tPista = gestor->getReportera()->getTipoPista();
+			if (tPista < 4) this->lblPista->Visible = true;
+			if (tPista == 1) this->lblPista->Text = L"PISTA: BANDANA EN LAS PIERNAS";
+			if (tPista == 2) this->lblPista->Text = L"PISTA: BANDANA EN LOS BRAZOS";
+			if (tPista == 3) this->lblPista->Text = L"PISTA: CAMISA NEGRA";
+
+			lblArtilugio1->Text = String::Format("Puntaje\nCabeza Clava:\n{0}", gestor->getBien(0)->getPuntajeValor());
+			lblArtilugio2->Text = String::Format("Puntaje\nManto Paracas:\n{0}", gestor->getBien(1)->getPuntajeValor());
+			lblArtilugio3->Text = String::Format("Puntaje\nCraneo Paracas:\n{0}", gestor->getBien(2)->getPuntajeValor());
+			lblArtilugio4->Text = String::Format("Puntaje\nHuaco Moche:\n{0}", gestor->getBien(3)->getPuntajeValor());
+			lblArtilugio5->Text = String::Format("Puntaje\nTumi de Oro:\n{0}", gestor->getBien(4)->getPuntajeValor());
+			lblArtilugio6->Text = String::Format("Puntaje\nVaso Kero:\n{0}", gestor->getBien(5)->getPuntajeValor());
 			this->lblDerrotados->Text = String::Format(L"ENEMIGOS CAPTURADOS: {0}", gestor->getCapturados());
-			this->lblIntentos->Text = String::Format(L"PrimeraRondaVENCIDA: {0}\nSegundaRondaVENCIDA: {1}", gestor->getPrimeraRondaVencida(), gestor->getSegundaRondaVencida());
+			this->lblIntentos->Text = String::Format(L"INTENTOS: {0}", gestor->getIntentos());
+
 			Pintar();
+
+			if (gestor->victoria())
+			{
+				this->tmrNivel1->Stop();
+				MessageBox::Show("GANASTE");
+				this->Close();
+			}
+			if (gestor->derrota())
+			{
+				this->tmrNivel1->Stop();
+				MessageBox::Show("PERDISTE");
+				this->Close();
+			}
 		}
 		Void Pintar()
 		{

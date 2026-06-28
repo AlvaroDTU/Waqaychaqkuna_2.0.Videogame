@@ -2,7 +2,7 @@
 #include "Reportera.h"
 
 Reportera::Reportera(int posX, int posY, int an, int al, int anF, int alF)
-	: Aliado(posX, posY, an, al, anF, alF), tipoPista(rand() % 3 + 1)
+	: Aliado(posX, posY, an, al, anF, alF), tipoPista(0)
 {}
 
 Reportera::~Reportera() {}
