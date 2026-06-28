@@ -23,7 +23,7 @@ void GestorMuseo::crearSprites()
 {
 	fondo = new Fondo(1, anchoLienzo, altoLienzo);
 
-	guardia = new Guardia(790, 170,45,60,60,80);
+	guardia = new Guardia(790, 170, 45, 60, 60, 80);
 
 	agregarBien(new Artilugio(153, 50, 230, 50, 800, "Cabeza Clava"));
 	agregarBien(new Artilugio(535, 50, 230, 50, 1000, "Telar"));
@@ -172,27 +172,42 @@ void GestorMuseo::cambioColisionesMapa()
 	if (fondoActual == 2)
 	{
 		objetos.clear();
-		agregarObjeto(new Objeto(0,312,40,26));
-		agregarObjeto(new Objeto(40,11,34,327));
-		agregarObjeto(new Objeto(74,11,1156,132));
-		agregarObjeto(new Objeto(74,143,276,24));
-		agregarObjeto(new Objeto(480,143,71,26));
-		agregarObjeto(new Objeto(577,143,150,24));
-		agregarObjeto(new Objeto(748,143,71,26));
-		agregarObjeto(new Objeto(978,143,46,26));
-		agregarObjeto(new Objeto(1047,143,104,26));
-		agregarObjeto(new Objeto(1154,143,71,26));
-		agregarObjeto(new Objeto(1230,11,34,331));
-		agregarObjeto(new Objeto(1264,312,36,30));
-		agregarObjeto(new Objeto(0,462,38,47));
-		agregarObjeto(new Objeto(38,462,36,329));
-		agregarObjeto(new Objeto(74,738,1190,53));
-		agregarObjeto(new Objeto(1230,464,34,274));
-		agregarObjeto(new Objeto(1264,464,36,53));
+		agregarObjeto(new Objeto(0, 312, 40, 26));
+		agregarObjeto(new Objeto(40, 11, 34, 327));
+		agregarObjeto(new Objeto(74, 11, 1156, 125));
+		agregarObjeto(new Objeto(74, 136, 276, 23));
+		agregarObjeto(new Objeto(480, 136, 71, 23));
+		agregarObjeto(new Objeto(577, 136, 150, 21));
+		agregarObjeto(new Objeto(748, 136, 71, 23));
+		agregarObjeto(new Objeto(978, 136, 252, 23));
+		agregarObjeto(new Objeto(1230, 11, 34, 331));
+		agregarObjeto(new Objeto(1264, 312, 36, 30));
+		agregarObjeto(new Objeto(0, 462, 38, 47));
+		agregarObjeto(new Objeto(38, 462, 36, 329));
+		agregarObjeto(new Objeto(74, 738, 1190, 53));
+		agregarObjeto(new Objeto(1230, 464, 34, 274));
+		agregarObjeto(new Objeto(1264, 464, 36, 53));
+		agregarObjeto(new Objeto(442, 416, 48, 23));	//cartel 0
+		agregarObjeto(new Objeto(760, 417, 48, 23));	// cartel 1
+		agregarObjeto(new Objeto(1056, 416, 49, 23));	// cartel 2
 	}
 	if (fondoActual == 3)
 	{
 		objetos.clear();
+		agregarObjeto(new Objeto(0, 311, 72, 30));
+		agregarObjeto(new Objeto(28, 148, 44, 163));
+		agregarObjeto(new Objeto(28, 12, 1153, 136));
+		agregarObjeto(new Objeto(449, 148, 56, 28));
+		agregarObjeto(new Objeto(534, 148, 149, 24));
+		agregarObjeto(new Objeto(716, 148, 56, 28));
+		agregarObjeto(new Objeto(913, 148, 223, 24));
+		agregarObjeto(new Objeto(1136, 148, 45, 638));
+		agregarObjeto(new Objeto(0, 465, 28, 53));
+		agregarObjeto(new Objeto(28, 465, 44, 265));
+		agregarObjeto(new Objeto(28, 730, 1108, 56));
+		agregarObjeto(new Objeto(411, 438, 44, 32));	// cartel 3
+		agregarObjeto(new Objeto(698, 438, 44, 32));	// cartel 4
+		agregarObjeto(new Objeto(976, 438, 44, 32));	// cartel 5
 	}
 }
 // void GestorMuseo::jugar()
