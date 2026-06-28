@@ -2,12 +2,10 @@
 #include "GestorMuseo.h"
 #include "Artilugio.h"
 #include "Ladron.h"
-#include <ctime>
-#include <cstdlib>
+
 
 GestorMuseo::GestorMuseo(int enTotales) : Escenario(enTotales)
 {
-	srand(time(nullptr));
 	tempSpawnEntidades = 75;
 	fondoActual = 1;
 }
