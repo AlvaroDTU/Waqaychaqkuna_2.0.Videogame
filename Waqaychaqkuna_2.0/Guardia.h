@@ -17,7 +17,7 @@ public:
 	bool getAccion();
 	int getTipoAccion();
 	void setVelocidad(int dx, int dy);
-	void mover(int ancho, int alto, vector<Objeto*> objetos, vector<Bien*> bienes);
+	void mover(vector<Objeto*> objetos, vector<Bien*> bienes);
 	int getDirX();
 	int getDirY();
 	void setAccion(bool acc);

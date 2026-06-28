@@ -20,7 +20,7 @@ Bitmap^ Guardia::getBitmap() { return Recursos::guardia; }
 
 std::string Guardia::getNombre() { return "guardia"; }
 
-void Guardia::mover(int ancho, int alto, vector<Objeto*> objetos, vector<Bien*> bienes)
+void Guardia::mover(vector<Objeto*> objetos, vector<Bien*> bienes)
 {
 	bool colision = false;
 	Rectangle hbGuardia = getRectangle();
@@ -36,6 +36,7 @@ void Guardia::mover(int ancho, int alto, vector<Objeto*> objetos, vector<Bien*> 
 		if (hbGuardia.IntersectsWith(bienes[i]->getRectangle()) && bienes[i]->estaActivo())
 			colision = true;
 	}
+
 	if (dirY > 0) fila = 0;
 	else if (dirY < 0) fila = 3;
 	else if (dirX < 0) fila = 1;

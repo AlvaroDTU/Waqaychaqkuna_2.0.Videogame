@@ -1,6 +1,8 @@
 #pragma once
 #include "Visitante.h"
 #include "Reportera.h"
+#include "Artilugio.h"
+#include "Ladron.h"
 #include "Escenario.h"
 #include <vector>
 

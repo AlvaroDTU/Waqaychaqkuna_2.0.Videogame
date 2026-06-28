@@ -1,7 +1,5 @@
 #include "pch.h"
 #include "GestorMuseo.h"
-#include "Artilugio.h"
-#include "Ladron.h"
 #include <ctime>
 #include <cstdlib>
 
@@ -37,7 +35,7 @@ void GestorMuseo::crearSprites()
 
 void GestorMuseo::mover()
 {
-	guardia->mover(anchoLienzo, altoLienzo, objetos,bienes);
+	guardia->mover(objetos,bienes);
 	aliados[0]->mover(anchoLienzo, altoLienzo);
 	for (auto ladron : enemigos) ladron->mover(anchoLienzo, altoLienzo);
 	for (int i = 0; i < (int)visitantes.size(); i++)
@@ -74,6 +72,16 @@ void GestorMuseo::detectarColisiones()
 	else
 		aliados[0]->setAyudando(false);
 
+	// Colision con guardia y enemigos y desaparecer
+	for (size_t i = 0; i < enemigos.size(); i++)
+	{
+		System::Drawing::Rectangle hbLadron = enemigos[i]->getRectangle(1);
+		if (hbLadron.IntersectsWith(hbGuardia)) {
+			enemigosDerrotados++;
+			eliminarEnemigo(i);
+			i--;
+		}
+	}
 	Rectangle cambioDer = Rectangle(0, 0, 0, 0); // para que se mantengan inicializados
 	Rectangle cambioIzq = Rectangle(0, 0, 0, 0);
 
