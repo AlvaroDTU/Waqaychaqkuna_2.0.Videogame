@@ -51,6 +51,83 @@ void GestorHuacas::detectarColisiones() {}
 bool GestorHuacas::victoria() { return false; }
 void GestorHuacas::jugar() {
 	mover();
-
+	tempSpawnEntidades--;
+	if (tempSpawnEntidades == 0) {
+		generarHuaquero();
+		tempSpawnEntidades = 70;
+	}
 }
 
+void GestorHuacas::generarHuaquero() {
+	int tipo = rand() % 16 + 1;
+	//Derecha
+	 if (tipo == 1) {
+		Huaquero* nuevo = new Huaquero(0, 365, 30, 40, 60, 80, 5,0,1,1);
+		agregarEnemigo(nuevo);
+	}
+	else if (tipo == 2) {
+		Huaquero* nuevo = new Huaquero(0, 365, 30, 40, 60, 80, 5, 0,2, tipo);
+		agregarEnemigo(nuevo);
+	}
+	else if (tipo == 3) {
+		Huaquero* nuevo = new Huaquero(0, 365, 30, 40, 60, 80, 5, 0, 3, tipo);
+		agregarEnemigo(nuevo);
+	}
+	 else if (tipo == 4) {
+		Huaquero* nuevo = new Huaquero(0, 365, 30, 40, 60, 80, 5, 0, 4, tipo);
+		agregarEnemigo(nuevo);
+	}
+
+	 // Izqueirda
+	 else if (tipo == 5) {
+		Huaquero* nuevo = new Huaquero(1270, 365, 30, 40, 60, 80, -5, 0, 1, tipo);
+		agregarEnemigo(nuevo);
+	}
+	 else if (tipo == 6) {
+		Huaquero* nuevo = new Huaquero(1270, 365, 30, 40, 60, 80, -5, 0, 2, tipo);
+		agregarEnemigo(nuevo);
+	}
+	 else if (tipo == 7) {
+		Huaquero* nuevo = new Huaquero(1270, 365, 30, 40, 60, 80, -5, 0, 3, tipo);
+		agregarEnemigo(nuevo);
+	}
+	 else if (tipo == 8) {
+		Huaquero* nuevo = new Huaquero(1270, 365, 30, 40, 60, 80, -5, 0, 4, tipo);
+		agregarEnemigo(nuevo);
+	}
+
+	 // Arriba
+	 else if (tipo == 9) {
+		Huaquero* nuevo = new Huaquero(634, 0, 30, 40, 60, 80, 0, 5, 1, tipo);
+		agregarEnemigo(nuevo);
+	}
+	 else if (tipo == 10) {
+		Huaquero* nuevo = new Huaquero(634, 0, 30, 40, 60, 80, 0,5, 2, tipo);
+		agregarEnemigo(nuevo);
+	}
+	 else if (tipo == 11) {
+		Huaquero* nuevo = new Huaquero(634, 0, 30, 40, 60, 80, 0, 5, 3, tipo);
+		agregarEnemigo(nuevo);
+	}
+	 else if (tipo == 12) {
+		Huaquero* nuevo = new Huaquero(634, 0, 30, 40, 60, 80, 0, 5, 4, tipo);
+		agregarEnemigo(nuevo);
+	}
+
+	 // Abajo
+	 else if (tipo == 13) {
+		Huaquero* nuevo = new Huaquero(634, 760, 30, 40, 60, 80, 0, -5, 1, tipo);
+		agregarEnemigo(nuevo);
+	} else if (tipo == 14) {
+		Huaquero* nuevo = new Huaquero(634, 760, 30, 40, 60, 80, 0, -5, 2, tipo);
+		agregarEnemigo(nuevo);
+	}
+	 else if (tipo == 15) {
+		Huaquero* nuevo = new Huaquero(634, 760, 30, 40, 60, 80, 0, -5, 3, tipo);
+		agregarEnemigo(nuevo);
+	}
+	 else if (tipo == 16) {
+		Huaquero* nuevo = new Huaquero(634, 760, 30, 40, 60, 80, 0, -5, 4, tipo);
+		agregarEnemigo(nuevo);
+	}
+}
