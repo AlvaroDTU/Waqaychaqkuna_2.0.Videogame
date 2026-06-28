@@ -8,12 +8,11 @@ private:
 	int tipo;
 	int tipoPista;
 public:
-	Ladron(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, bool at, int obj, int t, int tPista);
+	Ladron(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj, int t, int tPista);
 	~Ladron();
 
 	std::string getNombre() override;
 	void mover(int ancho, int alto) override;
-	void dibujar(Graphics^ g) override;
 	Bitmap^ getBitmap() override;
 	void atacar(Bien* bien) override;
 };

@@ -1,11 +1,10 @@
 #include "pch.h"
 #include "Reportera.h"
 
-Reportera::Reportera(int posX, int posY, int an, int al, int anF, int alF, bool ayuda, int TipPis)
-	: Aliado(posX, posY, an, al, anF, alF, ayuda)
-{
-	this->tipoPista = TipPis;
-}
+Reportera::Reportera(int posX, int posY, int an, int al, int anF, int alF)
+	: Aliado(posX, posY, an, al, anF, alF), tipoPista(rand() % 3 + 1)
+{}
+
 Reportera::~Reportera() {}
 
 int Reportera::getTipoPista() { return this->tipoPista; }
@@ -16,21 +15,25 @@ Bitmap^ Reportera::getBitmap() {
 }
 
 std::string Reportera::getNombre() { return "reportera"; }
-void Reportera::dibujar(Graphics^ g) {
-	Bitmap^ img = getBitmap();
 
-	this->alto = img->Height / 2;
-	this->ancho = img->Width / 4;
-
-	Rectangle molde = Rectangle(columna * ancho, fila * alto, ancho, alto);
+void Reportera::mover(int ancho, int alto)  // animacion de ayudar
+{
+	if (ayudando)
+	{
+		fila = 1;
+		
+	}
+	else
+		fila = 0;
 
 	avanzarEscena();
-	g->DrawImage(img, posX, posY, molde, GraphicsUnit::Pixel);
-	fila++;
-	if (fila == 2) { fila = 1; }
-	moviendose = true;
 }
 
-void Reportera::mover(int ancho, int alto) {}
+void Reportera::ayudar() 
+{
+	if (ayudando == false) 
+		tipoPista = rand() % 4 + 1;
+	ayudando = true;
 
-void Reportera::ayudar() {}
+
+}

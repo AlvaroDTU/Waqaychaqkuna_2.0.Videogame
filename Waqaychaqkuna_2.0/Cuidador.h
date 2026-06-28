@@ -5,7 +5,7 @@ class Cuidador : public Aliado
 private:
 	int duracion;
 public:
-	Cuidador(int posX, int posY, int an, int al, int anF, int alF, bool ayuda, int dura);
+	Cuidador(int posX, int posY, int an, int al, int anF, int alF);
 	~Cuidador();
 
 	int getDuracion();
@@ -13,7 +13,6 @@ public:
 
 
 	std::string getNombre() override;
-	void dibujar(Graphics^ g) override;
 	Bitmap^ getBitmap() override;
 };
 

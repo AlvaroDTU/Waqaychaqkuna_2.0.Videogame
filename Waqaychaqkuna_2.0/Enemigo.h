@@ -10,7 +10,7 @@ protected:
 	bool atacando;
 	int objetivo;
 public:
-	Enemigo(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, bool at, int obj);
+	Enemigo(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj);
 	~Enemigo();
 
 	bool getAtacando();

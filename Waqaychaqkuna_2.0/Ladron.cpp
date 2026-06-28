@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "Ladron.h"
 
-Ladron::Ladron(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, bool at, int obj, int t, int tPista)
-	: Enemigo(posX, posY, an, al, anF, alF, dirX, dirY, at, obj)
+Ladron::Ladron(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj, int t, int tPista)
+	: Enemigo(posX, posY, an, al, anF, alF, dirX, dirY, obj)
 {
 	this->tipo = t;
 	this->tipoPista = tPista;
@@ -61,15 +61,6 @@ void Ladron::mover(int ancho, int alto) {
 		if (posX >= 1022 && posX <= 1041) { dirX = 0; dirY = 5; fila = 0; }
 		if (posY + alto >= 599) { posY = 599 - alto; moviendose = false; }
 	}
-}
-void Ladron::dibujar(Graphics^ g) {
-	Bitmap^ img = getBitmap();
-	this->alto = img->Height / 4;
-	this->ancho = img->Width / 4;
-
-	Rectangle molde = Rectangle(ancho * columna, fila * alto, ancho, alto);
-	avanzarEscena();
-	g->DrawImage(img, posX, posY, molde, GraphicsUnit::Pixel);
 }
 
 void Ladron::atacar(Bien* bien) {}

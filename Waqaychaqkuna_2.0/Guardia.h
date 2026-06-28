@@ -1,6 +1,7 @@
 #pragma once
 #include "Entidad.h"
 #include "Objeto.h"
+#include "Bien.h"
 #include <vector>
 
 using std::vector;
@@ -16,7 +17,7 @@ public:
 	bool getAccion();
 	int getTipoAccion();
 	void setVelocidad(int dx, int dy);
-	void mover(int idx, int ancho, int alto, vector<Objeto*> objetos);
+	void mover(int ancho, int alto, vector<Objeto*> objetos, vector<Bien*> bienes);
 	int getDirX();
 	int getDirY();
 	void setAccion(bool acc);
@@ -26,8 +27,5 @@ public:
 	Bitmap^ getBitmap() override;
 	std::string getNombre() override;
 	void mover(int ancho, int alto) override;
-	void dibujar(Graphics^ g) override;
-
-
 };
 

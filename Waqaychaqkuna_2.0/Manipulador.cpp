@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Manipulador.h"
-Manipulador::Manipulador(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, bool at, int obj, int tM)
-	: Enemigo(posX, posY, an, al, anF, alF, dirX, dirY, at, obj)
+Manipulador::Manipulador(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj, int tM)
+	: Enemigo(posX, posY, an, al, anF, alF, dirX, dirY, obj)
 {
 	this->tiempoMovimiento = tM;
 }
@@ -36,10 +36,6 @@ void Manipulador::mover(int anchoLienzo, int altoLienzo)
 
 	if (posY + r.Height > altoLienzo)
 		posY = altoLienzo - r.Height;
-
-}
-void Manipulador::dibujar(Graphics^ g) {
-	Entidad::dibujar(g);
 
 }
 

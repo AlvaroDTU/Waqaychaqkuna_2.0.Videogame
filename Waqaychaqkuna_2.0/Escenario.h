@@ -35,7 +35,6 @@ public:
 	virtual bool victoria() = 0;
 
 	void setLienzo(int ancho, int alto);
-	void setVelGuardia(int dx, int dy);
 	void agregarEnemigo(Enemigo* nuevo);
 	void agregarAliado(Aliado* nuevo);
 	void agregarBien(Bien* nuevo);

@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Huaquero.h"
-Huaquero::Huaquero(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, bool at, int obj, int vid, int tM)
-	: Enemigo(posX, posY, an, al, anF, alF, dirX, dirY, at, obj)
+Huaquero::Huaquero(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj, int vid, int tM)
+	: Enemigo(posX, posY, an, al, anF, alF, dirX, dirY, obj)
 {
 	this->vidas = vid;
 	this->tiempoMovimiento = tM;
@@ -38,9 +38,6 @@ void Huaquero::mover(int anchoLienzo, int altoLienzo) {
 	if (posY + r.Height > altoLienzo)
 		posY = altoLienzo - r.Height;
 
-}
-void Huaquero::dibujar(Graphics^ g) {
-	Entidad::dibujar(g);
 }
 
 // void atacar(Bien* bien) 

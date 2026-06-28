@@ -1,9 +1,8 @@
 #include "pch.h"
 #include "Cuidador.h"
-Cuidador::Cuidador(int posX, int posY, int an, int al, int anF, int alF, bool ayuda, int dura)
-	: Aliado(posX, posY, an, al, anF, alF, ayuda)
+Cuidador::Cuidador(int posX, int posY, int an, int al, int anF, int alF)
+	: Aliado(posX, posY, an, al, anF, alF), duracion(3)
 {
-	this->duracion = dura;
 }
 Cuidador::~Cuidador() {}
 
@@ -14,8 +13,3 @@ Bitmap^ Cuidador::getBitmap() {
 	return Recursos::cuidador;
 }
 std::string Cuidador::getNombre() { return "cuidador"; }
-
-void Cuidador::dibujar(Graphics^ g) {
-	Entidad::dibujar(g);
-
-}

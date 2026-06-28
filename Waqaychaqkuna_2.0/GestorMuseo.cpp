@@ -2,14 +2,12 @@
 #include "GestorMuseo.h"
 #include "Artilugio.h"
 #include "Ladron.h"
-#include "Reportera.h"
 #include <ctime>
 #include <cstdlib>
 
 GestorMuseo::GestorMuseo(int enTotales) : Escenario(enTotales)
 {
 	srand(time(nullptr));
-	crearSprites();
 	tempSpawnEntidades = 75;
 	fondoActual = 1;
 }
@@ -25,51 +23,22 @@ void GestorMuseo::crearSprites()
 
 	guardia = new Guardia(790, 170, 45, 60, 60, 80);
 
-	agregarBien(new Artilugio(153, 50, 230, 50, 800, "Cabeza Clava"));
-	agregarBien(new Artilugio(535, 50, 230, 50, 1000, "Telar"));
-	agregarBien(new Artilugio(917, 50, 230, 50, 2000, "Craneo"));
-	agregarBien(new Artilugio(153, 600, 230, 50, 3000, "Huaco"));
-	agregarBien(new Artilugio(535, 600, 230, 50, 5000, "Tumi Dorado"));
-	agregarBien(new Artilugio(917, 600, 230, 50, 2500, "Vaso Kero"));
+	agregarAliado(new Reportera(1095, 120, 45, 60, 60, 80));
 
-	agregarObjeto(new Objeto(294, 7, 974, 115));
-	agregarObjeto(new Objeto(1159, 128, 105, 43));
-	agregarObjeto(new Objeto(1210, 174, 57, 154));
-	agregarObjeto(new Objeto(1242, 311, 58, 25));
-	agregarObjeto(new Objeto(1212, 330, 18, 28));
-	agregarObjeto(new Objeto(1206, 465, 22, 63));
-	agregarObjeto(new Objeto(1241, 463, 59, 44));
-	agregarObjeto(new Objeto(1241, 507, 28, 260));
-	agregarObjeto(new Objeto(1140, 613, 87, 119));
-	agregarObjeto(new Objeto(1047, 577, 84, 76));
-	agregarObjeto(new Objeto(1019, 631, 28, 104));
-	agregarObjeto(new Objeto(974, 664, 34, 68));
-	agregarObjeto(new Objeto(1021, 345, 96, 157));
-	agregarObjeto(new Objeto(910, 287, 30, 119));
-	agregarObjeto(new Objeto(910, 472, 29, 125));
-	agregarObjeto(new Objeto(907, 742, 362, 28));
-	agregarObjeto(new Objeto(694, 770, 234, 27));
-	agregarObjeto(new Objeto(680, 289, 28, 115));
-	agregarObjeto(new Objeto(680, 471, 29, 129));
-	agregarObjeto(new Objeto(335, 138, 252, 112));
-	agregarObjeto(new Objeto(336, 255, 171, 44));
-	agregarObjeto(new Objeto(503, 346, 91, 156));
-	agregarObjeto(new Objeto(338, 429, 15, 88));
-	agregarObjeto(new Objeto(292, 123, 26, 617));
-	agregarObjeto(new Objeto(427, 574, 82, 78));
-	agregarObjeto(new Objeto(338, 601, 17, 127));
-	agregarObjeto(new Objeto(372, 632, 29, 95));
-	agregarObjeto(new Objeto(409, 701, 110, 32));
-	agregarObjeto(new Objeto(517, 616, 29, 21));
-	agregarObjeto(new Objeto(550, 630, 30, 66));
-	agregarObjeto(new Objeto(532, 660, 30, 71));
-	agregarObjeto(new Objeto(570, 689, 35, 45));
-	agregarObjeto(new Objeto(292, 741, 429, 29));
+	agregarBien(new Artilugio(243, 313, 181, 157, 800, "Cabeza Clava")); // 0
+	agregarBien(new Artilugio(542, 313, 196, 157, 1000, "Telar"));// 1
+	agregarBien(new Artilugio(857, 313, 181, 157, 2000, "Craneo"));// 2
+	agregarBien(new Artilugio(223, 339, 177, 159, 3000, "Huaco"));// 3
+	agregarBien(new Artilugio(507, 339, 180, 159, 5000, "Tumi Dorado"));// 4
+	agregarBien(new Artilugio(794, 339, 171, 159, 2500, "Vaso Kero"));// 5
+
+	setearColisionesMapa();
 }
 
 void GestorMuseo::mover()
 {
-	guardia->mover(1, anchoLienzo, altoLienzo, objetos);
+	guardia->mover(anchoLienzo, altoLienzo, objetos,bienes);
+	aliados[0]->mover(anchoLienzo, altoLienzo);
 	for (auto ladron : enemigos) ladron->mover(anchoLienzo, altoLienzo);
 	for (int i = 0; i < (int)visitantes.size(); i++)
 	{
@@ -80,14 +49,15 @@ void GestorMuseo::mover()
 		}
 	}
 }
-// void GestorMuseo::moverGuardia(Direccion direccion)
-// {
-// 	guardia->mover(direccion, anchoLienzo, altoLienzo, 1);
-// }
+
 void GestorMuseo::dibujar(Graphics^ g)
 {
 	fondo->dibujarFondo(g);
-	for (auto reportera : aliados) reportera->dibujar(g);
+	if (fondoActual == 1) 
+	{
+		for (auto reportera : aliados)
+			reportera->dibujar(g);
+	}
 	for (auto ladron : enemigos) ladron->dibujar(g);
 	for (auto visitante : visitantes) visitante->dibujar(g);
 	guardia->dibujar(g);
@@ -96,6 +66,14 @@ void GestorMuseo::dibujar(Graphics^ g)
 void GestorMuseo::detectarColisiones()
 {
 	Rectangle hbGuardia = guardia->getRectangle();
+	Rectangle hbReportera = aliados[0]->getRectangle(1);
+	if (hbGuardia.IntersectsWith(hbReportera))
+	{
+		aliados[0]->ayudar();
+	}
+	else
+		aliados[0]->setAyudando(false);
+
 	Rectangle cambioDer = Rectangle(0, 0, 0, 0); // para que se mantengan inicializados
 	Rectangle cambioIzq = Rectangle(0, 0, 0, 0);
 
@@ -114,27 +92,29 @@ void GestorMuseo::detectarColisiones()
 	}
 	if (hbGuardia.IntersectsWith(cambioDer))
 	{
+
 		fondoActual++;
 		fondo->cambioEscena(fondoActual);
 		if (fondoActual == 2) guardia->setPos(85, 370);
 		if (fondoActual == 3) guardia->setPos(80, 365);
-		cambioColisionesMapa();
+		setearColisionesMapa();
+		tempSpawnEntidades = 0;
 	}
 	if (hbGuardia.IntersectsWith(cambioIzq)) {
 		fondoActual--;
 		fondo->cambioEscena(fondoActual);
 		if (fondoActual == 1) guardia->setPos(1171, 377);
 		if (fondoActual == 2) guardia->setPos(1162, 367);
-		cambioColisionesMapa();
+		setearColisionesMapa();
+		tempSpawnEntidades = 0;
 	}
 }
 
-void GestorMuseo::cambioColisionesMapa()
+void GestorMuseo::setearColisionesMapa()
 {
 	objetos.clear();
 	if (fondoActual == 1)
 	{
-		objetos.clear();
 		agregarObjeto(new Objeto(294, 7, 974, 115));
 		agregarObjeto(new Objeto(1159, 128, 105, 43));
 		agregarObjeto(new Objeto(1210, 174, 57, 154));
@@ -168,10 +148,13 @@ void GestorMuseo::cambioColisionesMapa()
 		agregarObjeto(new Objeto(532, 660, 30, 71));
 		agregarObjeto(new Objeto(570, 689, 35, 45));
 		agregarObjeto(new Objeto(292, 741, 429, 29));
+
+		for (int i = 0; i < (int)bienes.size(); i++) 
+			bienes[i]->setActivo(false);
+		aliados[0]->setActivo(true);
 	}
 	if (fondoActual == 2)
 	{
-		objetos.clear();
 		agregarObjeto(new Objeto(0, 312, 40, 26));
 		agregarObjeto(new Objeto(40, 11, 34, 327));
 		agregarObjeto(new Objeto(74, 11, 1156, 125));
@@ -190,10 +173,16 @@ void GestorMuseo::cambioColisionesMapa()
 		agregarObjeto(new Objeto(442, 416, 48, 23));	//cartel 0
 		agregarObjeto(new Objeto(760, 417, 48, 23));	// cartel 1
 		agregarObjeto(new Objeto(1056, 416, 49, 23));	// cartel 2
+
+		for (int i = 0; i < (int)bienes.size(); i++)
+		{
+			if (i < 3) bienes[i]->setActivo(true);
+			else bienes[i]->setActivo(false);
+		}
+		aliados[0]->setActivo(false);
 	}
 	if (fondoActual == 3)
 	{
-		objetos.clear();
 		agregarObjeto(new Objeto(0, 311, 72, 30));
 		agregarObjeto(new Objeto(28, 148, 44, 163));
 		agregarObjeto(new Objeto(28, 12, 1153, 136));
@@ -208,39 +197,52 @@ void GestorMuseo::cambioColisionesMapa()
 		agregarObjeto(new Objeto(411, 438, 44, 32));	// cartel 3
 		agregarObjeto(new Objeto(698, 438, 44, 32));	// cartel 4
 		agregarObjeto(new Objeto(976, 438, 44, 32));	// cartel 5
+
+		for (int i = 0; i < (int)bienes.size(); i++)
+		{
+			if (i < 3) bienes[i]->setActivo(false);
+			else bienes[i]->setActivo(true);
+		}
+		aliados[0]->setActivo(false);
 	}
 }
-// void GestorMuseo::jugar()
-// {
-// 	if (temporizador == 50)
-// 	{
-// 		temporizador = 0;
-// 		int dx = (rand() % 2) * 10 - 5; // entre -1 y 1
-// 		int dy = 0;
-// 		int objetivo = rand() % 6;
-// 		int x = 0, y = (rand() % 2) * 110 + 305;
-// 		if (dx > 0) x = -60;
-// 		if (dx < 0) x = 1299;
-// 		int op = rand() % 4;
-// 		if (op < 2)
-// 		{
-// 			Ladron* nuevo = new Ladron(x, y, dx, dy, false, objetivo, rand() % 4 + 1, reportera->getTipoPista());
-// 			agregarLadron(nuevo);
-// 		}
-// 		else
-// 		{
-// 			Visitante* nuevo = new Visitante(x, y, dx, 0);
-// 			agregarVisitante(nuevo);
-// 		}
-// 	}
-// 	mover();
-// 	detectarColisiones();
-// 	temporizador++;
-// }
+void GestorMuseo::jugar()
+{
+	if (tempSpawnEntidades == 100 && fondoActual > 1)
+	{
+		tempSpawnEntidades = 0;
+		int dx = (rand() % 2) * 10 - 5; // entre -1 y 1
+		int dy = 0;
+		int objetivo = rand() % 6;
+		int x = 0, y = (rand() % 2) * 110 + 305;
+		if (dx > 0) x = -60;
+		if (dx < 0) x = 1299;
+		int op = rand() % 4;
+		if (op < 2)
+		{
+			Ladron* nuevo = new Ladron(x, y, 45, 60, 60, 80, dx, dy, objetivo, rand() % 4 + 1, ((Reportera*)aliados[0])->getTipoPista());
+			agregarEnemigo(nuevo);
+		}
+		else
+		{
+			Visitante* nuevo = new Visitante(x, y, 45, 60, 60, 80, dx, dy);
+			agregarVisitante(nuevo);
+		}
+	}
+	mover();
+	detectarColisiones();
+
+	if (fondoActual > 1) tempSpawnEntidades++;
+}
 
 void GestorMuseo::agregarVisitante(Visitante* nuevo) { visitantes.push_back(nuevo); }
 void GestorMuseo::eliminarVisitante(int i) { visitantes.erase(visitantes.begin() + i); }
 bool GestorMuseo::victoria()
 {
-	return false;
+	return enemigosDerrotados == 10;
+}
+
+Reportera* GestorMuseo::getReportera()
+{
+	return (Reportera*)aliados[0];
 }

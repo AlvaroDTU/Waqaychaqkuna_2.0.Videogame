@@ -4,14 +4,17 @@ class Aliado : public Entidad
 {
 protected:
 	bool ayudando;
+	bool activo;
 public:
-	Aliado(int posX, int posY, int an, int al, int anF, int alF, bool ayuda);
+	Aliado(int posX, int posY, int an, int al, int anF, int alF,bool act=true);
 	~Aliado();
 
-	bool getAyudando();
+	bool estaAyudando();
 	void setAyudando(bool ayuda);
 
-	// VER SI ESTO SE IMPREMENTARA
+	bool estaActivo();
+	void setActivo(bool act);
+
 	virtual void ayudar() = 0;
 
 

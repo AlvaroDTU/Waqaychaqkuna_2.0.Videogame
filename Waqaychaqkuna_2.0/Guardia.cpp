@@ -19,19 +19,21 @@ void Guardia::setMoviendose(bool mov) { moviendose = mov; }
 Bitmap^ Guardia::getBitmap() { return Recursos::guardia; }
 
 std::string Guardia::getNombre() { return "guardia"; }
-void Guardia::dibujar(Graphics^ g) {
-	Entidad::dibujar(g);
-}
 
-void Guardia::mover(int idx, int ancho, int alto, vector<Objeto*> objetos)
+void Guardia::mover(int ancho, int alto, vector<Objeto*> objetos, vector<Bien*> bienes)
 {
 	bool colision = false;
+	Rectangle hbGuardia = getRectangle();
+	hbGuardia.X += dirX;
+	hbGuardia.Y += dirY;
 	for (int i = 0; i < (int)objetos.size(); i++)
 	{
-		Rectangle hbGuardia = getRectangle();
-		hbGuardia.X += dirX;
-		hbGuardia.Y += dirY;
 		if (hbGuardia.IntersectsWith(objetos[i]->getRectangle()))
+			colision = true;
+	}
+	for (int i = 0; i < (int)bienes.size(); i++)
+	{
+		if (hbGuardia.IntersectsWith(bienes[i]->getRectangle()) && bienes[i]->estaActivo())
 			colision = true;
 	}
 	if (dirY > 0) fila = 0;

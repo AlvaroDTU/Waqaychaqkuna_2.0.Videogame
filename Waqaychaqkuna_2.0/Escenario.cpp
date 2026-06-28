@@ -5,6 +5,7 @@ Escenario::Escenario(int enTotales)
 	: fondo(nullptr), guardia(nullptr), anchoLienzo(1300), altoLienzo(800), enemigosTotales(enTotales)
 {
 	enemigosDerrotados = 0;
+	tempSpawnEntidades = 0;
 }
 
 Escenario::~Escenario()
@@ -32,7 +33,6 @@ void Escenario::setLienzo(int ancho, int alto)
 	anchoLienzo = ancho;
 	altoLienzo = alto;
 }
-void Escenario::setVelGuardia(int dx, int dy) { guardia->setVelocidad(dx, dy); }
 
 void Escenario::agregarEnemigo(Enemigo* nuevo) { enemigos.push_back(nuevo); }
 void Escenario::agregarAliado(Aliado* nuevo) { aliados.push_back(nuevo); }

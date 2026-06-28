@@ -1,10 +1,9 @@
 #include "pch.h"
 #include "Enemigo.h"
 
-Enemigo::Enemigo(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, bool at, int obj)
-	: Entidad(posX, posY,an,al,anF,alF,dirX, dirY)
+Enemigo::Enemigo(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj)
+	: Entidad(posX, posY,an,al,anF,alF,dirX, dirY), atacando(false)
 {
-	atacando = at;
 	objetivo = obj;
 }
 Enemigo::~Enemigo(){}

@@ -51,6 +51,7 @@ namespace Waqaychaqkuna20 {
 
 		   BufferedGraphics^ buffer;
 	private: System::Windows::Forms::Label^ lblPrueba;
+	private: System::Windows::Forms::Label^ lblPista;
 		   GestorMuseo* gestor;
 
 #pragma region Windows Form Designer generated code
@@ -64,6 +65,7 @@ namespace Waqaychaqkuna20 {
 			   this->tmrNivel1 = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->pnlMapa = (gcnew System::Windows::Forms::Panel());
 			   this->lblPrueba = (gcnew System::Windows::Forms::Label());
+			   this->lblPista = (gcnew System::Windows::Forms::Label());
 			   this->SuspendLayout();
 			   // 
 			   // tmrNivel1
@@ -83,17 +85,27 @@ namespace Waqaychaqkuna20 {
 			   // lblPrueba
 			   // 
 			   this->lblPrueba->AutoSize = true;
-			   this->lblPrueba->Location = System::Drawing::Point(1342, 305);
+			   this->lblPrueba->Location = System::Drawing::Point(1319, 342);
 			   this->lblPrueba->Name = L"lblPrueba";
-			   this->lblPrueba->Size = System::Drawing::Size(35, 13);
+			   this->lblPrueba->Size = System::Drawing::Size(67, 13);
 			   this->lblPrueba->TabIndex = 1;
-			   this->lblPrueba->Text = L"label1";
+			   this->lblPrueba->Text = L"DX: 0 ,DY: 0";
+			   // 
+			   // lblPista
+			   // 
+			   this->lblPista->AutoSize = true;
+			   this->lblPista->Location = System::Drawing::Point(1319, 270);
+			   this->lblPista->Name = L"lblPista";
+			   this->lblPista->Size = System::Drawing::Size(132, 13);
+			   this->lblPista->TabIndex = 2;
+			   this->lblPista->Text = L"PISTA DE REPORTERA: ";
 			   // 
 			   // FrmNivel1
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->ClientSize = System::Drawing::Size(1600, 800);
+			   this->Controls->Add(this->lblPista);
 			   this->Controls->Add(this->lblPrueba);
 			   this->Controls->Add(this->pnlMapa);
 			   this->Name = L"FrmNivel1";
@@ -111,6 +123,7 @@ namespace Waqaychaqkuna20 {
 		Void FrmNivel1_Load(System::Object^ sender, System::EventArgs^ e) {
 
 			gestor->setLienzo(this->pnlMapa->Width, this->pnlMapa->Height);
+			gestor->crearSprites();
 
 			BufferedGraphicsContext^ contexto = BufferedGraphicsManager::Current;
 			Graphics^ g = this->pnlMapa->CreateGraphics();
@@ -120,28 +133,36 @@ namespace Waqaychaqkuna20 {
 
 		}
 		Void FrmNivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+			Guardia* g = gestor->getGuardia();
 			if (e->KeyCode == Keys::Up) {
-				gestor->setVelGuardia(0, -5);
-				this->lblPrueba->Text = String::Format(L"DX: {0}, DY: {1}", gestor->getGuardia()->getDirX(), gestor->getGuardia()->getDirY());
+				g->setVelocidad(0, -5);
 			}
 			else if (e->KeyCode == Keys::Down) {
-				gestor->setVelGuardia(0, 5);
-				this->lblPrueba->Text = String::Format(L"DX: {0}, DY: {1}", gestor->getGuardia()->getDirX(), gestor->getGuardia()->getDirY());
+				g->setVelocidad(0, 5);
 			}
 			else if (e->KeyCode == Keys::Right) {
-				gestor->setVelGuardia(5, 0);
-				this->lblPrueba->Text = String::Format(L"DX: {0}, DY: {1}", gestor->getGuardia()->getDirX(), gestor->getGuardia()->getDirY());
+				g->setVelocidad(5, 0);
 			}
 			else if (e->KeyCode == Keys::Left) {
-				gestor->setVelGuardia(-5, 0);
-				this->lblPrueba->Text = String::Format(L"DX: {0}, DY: {1}", gestor->getGuardia()->getDirX(), gestor->getGuardia()->getDirY());
+				g->setVelocidad(-5, 0);
+			}
+			else if (e->KeyCode == Keys::E) {
+				g->setAccion(true);
+				g->setTipoAccion(1);
+				// interaccion mostrar info de bienes
+			}
+			else if (e->KeyCode == Keys::Space) {
+				g->setAccion(true);
+				g->setTipoAccion(2);
+				// descubrir a los ladrones
 			}
 		}
 		Void tmrNivel1_Tick(System::Object^ sender, System::EventArgs^ e)
 		{
-			gestor->mover();
-			gestor->detectarColisiones();
+			gestor->jugar();
 
+			this->lblPista->Text = String::Format(L"PISTA DE REPORTERA: {0}", gestor->getReportera()->getTipoPista());
+			this->lblPrueba->Text = String::Format(L"FONDO ACTUAL: {0}", gestor->getFondoActual());
 			Pintar();
 		}
 		Void Pintar()
@@ -154,8 +175,8 @@ namespace Waqaychaqkuna20 {
 		}
 		Void FrmNivel1_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) 
 		{
-			gestor->setVelGuardia(0, 0);
-			this->lblPrueba->Text = String::Format(L"DX: {0}, DY: {1}", gestor->getGuardia()->getDirX(), gestor->getGuardia()->getDirY());
+			Guardia* g = gestor->getGuardia();
+			g->setVelocidad(0, 0);
 		}
 };
 }

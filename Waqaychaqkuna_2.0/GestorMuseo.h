@@ -1,5 +1,6 @@
 #pragma once
 #include "Visitante.h"
+#include "Reportera.h"
 #include "Escenario.h"
 #include <vector>
 
@@ -14,15 +15,19 @@ private:
 public:
 	GestorMuseo(int enTotales);
 	~GestorMuseo();
-
+	
 	void crearSprites() override;
 	void dibujar(Graphics^ g) override;
 	void mover() override;
 	void detectarColisiones() override;
-	void cambioColisionesMapa();
+	void jugar();
+	void setearColisionesMapa();
 	bool victoria() override;
 
 	void agregarVisitante(Visitante* nuevo);
 	void eliminarVisitante(int i);
+
+	Reportera* getReportera();
+	int getFondoActual() { return fondoActual; }
 };
 
