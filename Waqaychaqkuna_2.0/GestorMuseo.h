@@ -19,6 +19,7 @@ public:
 	void dibujar(Graphics^ g) override;
 	void mover() override;
 	void detectarColisiones() override;
+	void cambioColisionesMapa();
 	bool victoria() override;
 
 	void agregarVisitante(Visitante* nuevo);

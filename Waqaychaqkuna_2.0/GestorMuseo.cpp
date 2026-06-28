@@ -96,7 +96,7 @@ void GestorMuseo::dibujar(Graphics^ g)
 void GestorMuseo::detectarColisiones()
 {
 	Rectangle hbGuardia = guardia->getRectangle();
-	Rectangle cambioDer = Rectangle(0, 0, 0, 0);
+	Rectangle cambioDer = Rectangle(0, 0, 0, 0); // para que se mantengan inicializados
 	Rectangle cambioIzq = Rectangle(0, 0, 0, 0);
 
 	if (fondoActual == 1)
@@ -118,16 +118,83 @@ void GestorMuseo::detectarColisiones()
 		fondo->cambioEscena(fondoActual);
 		if (fondoActual == 2) guardia->setPos(85, 370);
 		if (fondoActual == 3) guardia->setPos(80, 365);
-		objetos.clear();
+		cambioColisionesMapa();
 	}
 	if (hbGuardia.IntersectsWith(cambioIzq)) {
 		fondoActual--;
 		fondo->cambioEscena(fondoActual);
 		if (fondoActual == 1) guardia->setPos(1171, 377);
 		if (fondoActual == 2) guardia->setPos(1162, 367);
+		cambioColisionesMapa();
 	}
 }
 
+void GestorMuseo::cambioColisionesMapa()
+{
+	objetos.clear();
+	if (fondoActual == 1)
+	{
+		objetos.clear();
+		agregarObjeto(new Objeto(294, 7, 974, 115));
+		agregarObjeto(new Objeto(1159, 128, 105, 43));
+		agregarObjeto(new Objeto(1210, 174, 57, 154));
+		agregarObjeto(new Objeto(1242, 311, 58, 25));
+		agregarObjeto(new Objeto(1212, 330, 18, 28));
+		agregarObjeto(new Objeto(1206, 465, 22, 63));
+		agregarObjeto(new Objeto(1241, 463, 59, 44));
+		agregarObjeto(new Objeto(1241, 507, 28, 260));
+		agregarObjeto(new Objeto(1140, 613, 87, 119));
+		agregarObjeto(new Objeto(1047, 577, 84, 76));
+		agregarObjeto(new Objeto(1019, 631, 28, 104));
+		agregarObjeto(new Objeto(974, 664, 34, 68));
+		agregarObjeto(new Objeto(1021, 345, 96, 157));
+		agregarObjeto(new Objeto(910, 287, 30, 119));
+		agregarObjeto(new Objeto(910, 472, 29, 125));
+		agregarObjeto(new Objeto(907, 742, 362, 28));
+		agregarObjeto(new Objeto(694, 770, 234, 27));
+		agregarObjeto(new Objeto(680, 289, 28, 115));
+		agregarObjeto(new Objeto(680, 471, 29, 129));
+		agregarObjeto(new Objeto(335, 138, 252, 112));
+		agregarObjeto(new Objeto(336, 255, 171, 44));
+		agregarObjeto(new Objeto(503, 346, 91, 156));
+		agregarObjeto(new Objeto(338, 429, 15, 88));
+		agregarObjeto(new Objeto(292, 123, 26, 617));
+		agregarObjeto(new Objeto(427, 574, 82, 78));
+		agregarObjeto(new Objeto(338, 601, 17, 127));
+		agregarObjeto(new Objeto(372, 632, 29, 95));
+		agregarObjeto(new Objeto(409, 701, 110, 32));
+		agregarObjeto(new Objeto(517, 616, 29, 21));
+		agregarObjeto(new Objeto(550, 630, 30, 66));
+		agregarObjeto(new Objeto(532, 660, 30, 71));
+		agregarObjeto(new Objeto(570, 689, 35, 45));
+		agregarObjeto(new Objeto(292, 741, 429, 29));
+	}
+	if (fondoActual == 2)
+	{
+		objetos.clear();
+		agregarObjeto(new Objeto(0,312,40,26));
+		agregarObjeto(new Objeto(40,11,34,327));
+		agregarObjeto(new Objeto(74,11,1156,132));
+		agregarObjeto(new Objeto(74,143,276,24));
+		agregarObjeto(new Objeto(480,143,71,26));
+		agregarObjeto(new Objeto(577,143,150,24));
+		agregarObjeto(new Objeto(748,143,71,26));
+		agregarObjeto(new Objeto(978,143,46,26));
+		agregarObjeto(new Objeto(1047,143,104,26));
+		agregarObjeto(new Objeto(1154,143,71,26));
+		agregarObjeto(new Objeto(1230,11,34,331));
+		agregarObjeto(new Objeto(1264,312,36,30));
+		agregarObjeto(new Objeto(0,462,38,47));
+		agregarObjeto(new Objeto(38,462,36,329));
+		agregarObjeto(new Objeto(74,738,1190,53));
+		agregarObjeto(new Objeto(1230,464,34,274));
+		agregarObjeto(new Objeto(1264,464,36,53));
+	}
+	if (fondoActual == 3)
+	{
+		objetos.clear();
+	}
+}
 // void GestorMuseo::jugar()
 // {
 // 	if (temporizador == 50)
