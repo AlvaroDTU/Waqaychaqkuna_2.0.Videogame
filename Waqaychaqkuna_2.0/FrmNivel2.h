@@ -42,6 +42,10 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Label^ lblPrueba;
 	private: System::Windows::Forms::Label^ lblPrueba2;
 		   GestorHuacas* gestor;
+	private: System::Windows::Forms::Label^ lblHuaca1;
+	private: System::Windows::Forms::Label^ lblHuaca2;
+	private: System::Windows::Forms::Label^ lblHuaca3;
+	private: System::Windows::Forms::Label^ lblHuaca4;
 		   BufferedGraphics^ buffer;
 
 		/// <summary>
@@ -108,7 +112,7 @@ namespace Waqaychaqkuna20 {
 			this->lblHuaca1->AutoSize = true;
 			this->lblHuaca1->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblHuaca1->Location = System::Drawing::Point(1333, 262);
+			this->lblHuaca1->Location = System::Drawing::Point(1333, 256);
 			this->lblHuaca1->Name = L"lblHuaca1";
 			this->lblHuaca1->Size = System::Drawing::Size(81, 19);
 			this->lblHuaca1->TabIndex = 4;
@@ -119,7 +123,7 @@ namespace Waqaychaqkuna20 {
 			this->lblHuaca2->AutoSize = true;
 			this->lblHuaca2->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblHuaca2->Location = System::Drawing::Point(1333, 296);
+			this->lblHuaca2->Location = System::Drawing::Point(1333, 290);
 			this->lblHuaca2->Name = L"lblHuaca2";
 			this->lblHuaca2->Size = System::Drawing::Size(81, 19);
 			this->lblHuaca2->TabIndex = 5;
@@ -130,7 +134,7 @@ namespace Waqaychaqkuna20 {
 			this->lblHuaca3->AutoSize = true;
 			this->lblHuaca3->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblHuaca3->Location = System::Drawing::Point(1333, 325);
+			this->lblHuaca3->Location = System::Drawing::Point(1333, 319);
 			this->lblHuaca3->Name = L"lblHuaca3";
 			this->lblHuaca3->Size = System::Drawing::Size(81, 19);
 			this->lblHuaca3->TabIndex = 6;
@@ -141,7 +145,7 @@ namespace Waqaychaqkuna20 {
 			this->lblHuaca4->AutoSize = true;
 			this->lblHuaca4->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblHuaca4->Location = System::Drawing::Point(1333, 353);
+			this->lblHuaca4->Location = System::Drawing::Point(1333, 350);
 			this->lblHuaca4->Name = L"lblHuaca4";
 			this->lblHuaca4->Size = System::Drawing::Size(81, 19);
 			this->lblHuaca4->TabIndex = 7;

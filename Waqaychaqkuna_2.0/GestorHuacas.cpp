@@ -36,7 +36,7 @@ void GestorHuacas::dibujar(Graphics^ g) {
 	for (size_t i = 0; i < (int)bienes.size(); i++)
 	{
 		if (bienes[i]->getPuntajeValor() < 1500) {
-			((Huaca*)bienes[0])->dibujar(g);
+			((Huaca*)bienes[i])->dibujar(g);
 		}
 	}
 	for (auto huaquero : enemigos) huaquero->dibujar(g);
