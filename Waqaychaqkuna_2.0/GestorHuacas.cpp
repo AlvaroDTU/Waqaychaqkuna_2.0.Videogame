@@ -72,30 +72,37 @@ void GestorHuacas::detectarColisiones() {
 	for (size_t i = 0; i < (int)aliados.size(); i++)
 	{
 		Rectangle htbAliado = aliados[i]->getRectangle();
-		for (size_t j = 0; j < (int)enemigos.size(); j++)
+		bool ayudando = false;
+
+		for (size_t j = 0; j < enemigos.size(); j++)
 		{
 			Rectangle htbEnemigo = enemigos[j]->getRectangle();
-			if (htbAliado.IntersectsWith(htbEnemigo)) {	
-				((Cuidador*)aliados[i])->setAyudando(true);
+
+			if (htbAliado.IntersectsWith(htbEnemigo))
+			{
+				ayudando = true;
+
 				((Huaquero*)enemigos[j])->RestarVidas(1);
 				((Cuidador*)aliados[i])->RestarDuracion(1);
-			}
-			else
-			{
-				((Cuidador*)aliados[i])->setAyudando(false);
+
+				break;   // ya encontró un enemigo
 			}
 		}
+
+		((Cuidador*)aliados[i])->setAyudando(ayudando);
 	}
+
+
 	for (size_t i = 0; i < (int)enemigos.size(); i++)
 	{
-		if (((Huaquero*)enemigos[i])->getVidas() == 0) {
+		if (((Huaquero*)enemigos[i])->getVidas() <= 0) {
 			eliminarEnemigo(i);
 			i--;
 		}
 	}
 	for (size_t i = 0; i < (int)aliados.size(); i++)
 	{
-		if (((Huaquero*)aliados[i])->getVidas() == 0) {
+		if (((Cuidador*)aliados[i])->getDuracion() <= 0) {
 			eliminarAliado(i);
 			i--;
 		}
