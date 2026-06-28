@@ -8,7 +8,18 @@ Cuidador::~Cuidador() {}
 
 int Cuidador::getDuracion() { return this->duracion; }
 void Cuidador::RestarDuracion(int d) { this->duracion = d; }
-
+void Cuidador::sinMover() {
+	contadorAnimacion--;
+	if (contadorAnimacion == 0) {
+		if (ayudando == false) {
+			fila++;
+			if (fila == 4) {
+				fila = 0;
+			}
+		}
+		contadorAnimacion = 40;
+	}
+}
 Bitmap^ Cuidador::getBitmap() {
 	return Recursos::cuidador;
 }

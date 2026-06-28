@@ -5,9 +5,9 @@ class Huaquero : public Enemigo
 private:
 	int vidas;
 	int tiempoMovimiento;
-
+	int tipo;
 public:
-	Huaquero(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj, int vid, int tM);
+	Huaquero(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj, int tp);
 	~Huaquero();
 
 	int getVidas();
@@ -20,7 +20,7 @@ public:
 	void mover(int ancho, int alto) override;
 	Bitmap^ getBitmap() override;
 
-	// virtual void atacar(Bien* bien) override
+	virtual void atacar(Bien* bien) override;
 
 
 };

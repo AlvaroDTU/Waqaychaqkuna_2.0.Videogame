@@ -5,6 +5,8 @@
 #include "Enemigo.h"
 #include "Aliado.h"
 #include "Bien.h"
+#include "Huaca.h"
+#include "Archivo.h"
 #include <ctime>
 #include <cstdlib>
 #include <vector>

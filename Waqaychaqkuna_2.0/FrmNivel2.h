@@ -1,5 +1,5 @@
 #pragma once
-
+#include "GestorHuacas.h"
 namespace Waqaychaqkuna20 {
 
 	using namespace System;
@@ -18,6 +18,8 @@ namespace Waqaychaqkuna20 {
 		FrmNivel2(void)
 		{
 			InitializeComponent();
+			this->KeyPreview = true;
+			gestor = new GestorHuacas(10);
 			//
 			//TODO: agregar código de constructor aquí
 			//
@@ -40,6 +42,11 @@ namespace Waqaychaqkuna20 {
 	protected:
 
 	private:
+		GestorHuacas* gestor;
+	private: System::Windows::Forms::Label^ lblPrueba;
+	private: System::Windows::Forms::Label^ lblPrueba2;
+		   BufferedGraphics^ buffer;
+
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
@@ -55,6 +62,8 @@ namespace Waqaychaqkuna20 {
 			this->components = (gcnew System::ComponentModel::Container());
 			this->pnlMapa = (gcnew System::Windows::Forms::Panel());
 			this->tmrJuego = (gcnew System::Windows::Forms::Timer(this->components));
+			this->lblPrueba = (gcnew System::Windows::Forms::Label());
+			this->lblPrueba2 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// pnlMapa
@@ -69,18 +78,96 @@ namespace Waqaychaqkuna20 {
 			// tmrJuego
 			// 
 			this->tmrJuego->Interval = 16;
+			this->tmrJuego->Tick += gcnew System::EventHandler(this, &FrmNivel2::tmrJuego_Tick);
+			// 
+			// lblPrueba
+			// 
+			this->lblPrueba->AutoSize = true;
+			this->lblPrueba->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblPrueba->Location = System::Drawing::Point(1333, 195);
+			this->lblPrueba->Name = L"lblPrueba";
+			this->lblPrueba->Size = System::Drawing::Size(81, 19);
+			this->lblPrueba->TabIndex = 2;
+			this->lblPrueba->Text = L"label1";
+			// 
+			// lblPrueba2
+			// 
+			this->lblPrueba2->AutoSize = true;
+			this->lblPrueba2->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblPrueba2->Location = System::Drawing::Point(1333, 226);
+			this->lblPrueba2->Name = L"lblPrueba2";
+			this->lblPrueba2->Size = System::Drawing::Size(81, 19);
+			this->lblPrueba2->TabIndex = 3;
+			this->lblPrueba2->Text = L"label1";
 			// 
 			// FrmNivel2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1600, 800);
+			this->Controls->Add(this->lblPrueba2);
+			this->Controls->Add(this->lblPrueba);
 			this->Controls->Add(this->pnlMapa);
 			this->Name = L"FrmNivel2";
 			this->Text = L"FrmNivel2";
+			this->Load += gcnew System::EventHandler(this, &FrmNivel2::FrmNivel2_Load);
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel2::FrmNivel2_KeyDown);
+			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel2::FrmNivel2_KeyUp);
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+	private: System::Void FrmNivel2_Load(System::Object^ sender, System::EventArgs^ e) {
+		gestor->setLienzo(this->pnlMapa->Width, this->pnlMapa->Height);
+		gestor->crearSprites();
+
+		BufferedGraphicsContext^ contexto = BufferedGraphicsManager::Current;
+		Graphics^ g = this->pnlMapa->CreateGraphics();
+		buffer = contexto->Allocate(g, this->pnlMapa->ClientRectangle);
+		tmrJuego->Start();
+		delete g;
+	}
+	private: System::Void FrmNivel2_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		Guardia* g = gestor->getGuardia();
+		if (e->KeyCode == Keys::Up) {
+			g->setVelocidad(0, -5);
+		}
+		else if (e->KeyCode == Keys::Down) {
+			g->setVelocidad(0, 5);
+		}
+		else if (e->KeyCode == Keys::Right) {
+			g->setVelocidad(5, 0);
+		}
+		else if (e->KeyCode == Keys::Left) {
+			g->setVelocidad(-5, 0);
+		}
+		else if (e->KeyCode == Keys::E) {
+			gestor->generarCuidador();
+		}
+		
+	}
+
+	 Void Pintar()
+	 {
+	  gestor->dibujar(buffer->Graphics);
+	
+	  Graphics^ g = this->pnlMapa->CreateGraphics();
+	  buffer->Render(g);
+	  delete g;
+	 }
+	private: System::Void FrmNivel2_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		Guardia* g = gestor->getGuardia();
+		g->setVelocidad(0, 0);
+	}
+private: System::Void tmrJuego_Tick(System::Object^ sender, System::EventArgs^ e) {
+	lblPrueba->Text = String::Format("PosX: {0}", gestor->getGuardia()->getPosX());
+	lblPrueba2->Text = String::Format("PosY: {0}", gestor->getGuardia()->getPosY());
+	gestor->detectarColisiones();
+	gestor->jugar();
+	Pintar();
+}
+};
 }
