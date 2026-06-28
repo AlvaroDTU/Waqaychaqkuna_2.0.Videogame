@@ -14,5 +14,14 @@ public:
 
 	std::string getNombre() override;
 	Bitmap^ getBitmap() override;
+	void sinMover() {
+		if (ayudando == false) {
+			fila++;
+			if (fila == 4) {
+				fila = 0;
+			}
+		}
+	}
+
 };
 

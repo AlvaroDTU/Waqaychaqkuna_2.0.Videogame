@@ -30,10 +30,26 @@ void GestorHuacas::crearSprites() {
 
 }
 void GestorHuacas::dibujar(Graphics^ g) {
+	fondo->dibujarFondo(g);
 
+	for (auto huaquero : enemigos) huaquero->dibujar(g);
+	for (auto cuidador : aliados) cuidador->dibujar(g);
+	guardia->dibujar(g);
 
 }
-void GestorHuacas::mover() {}
+void GestorHuacas::mover() {
+	guardia->mover(objetos, bienes);
+	for (auto cuidador : aliados) (Cuidador*)cuidador->mover
+	for (auto ladron : enemigos) ladron->mover(anchoLienzo, altoLienzo);
+	for (int i = 0; i < (int)visitantes.size(); i++)
+	{
+		visitantes[i]->mover(anchoLienzo, altoLienzo);
+		if (visitantes[i]->terminoRecorrido()) {
+			eliminarVisitante(i);
+			i--;
+		}
+	}
+}
 void GestorHuacas::detectarColisiones() {}
 
 bool GestorHuacas::victoria() { return false; }
