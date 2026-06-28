@@ -38,7 +38,12 @@ void GestorHuacas::dibujar(Graphics^ g) {
 	for (auto cuidador : aliados) cuidador->dibujar(g);
 
 	guardia->dibujar(g);
-
+	for (size_t i = 0; i < (int)bienes.size(); i++)
+	{
+		if (bienes[i]->getPuntajeValor() < 1000) {
+			((Huaca*)bienes[i])->dibujar(g);
+		}
+	}
 }
 void GestorHuacas::mover() {
 	guardia->mover(objetos, bienes);
