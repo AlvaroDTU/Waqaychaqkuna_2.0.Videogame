@@ -5,6 +5,8 @@
 #include "Enemigo.h"
 #include "Aliado.h"
 #include "Bien.h"
+#include <ctime>
+#include <cstdlib>
 #include <vector>
 
 using std::vector;
@@ -23,6 +25,7 @@ protected:
 	int enemigosTotales;
 	int enemigosDerrotados;
 	int tempSpawnEntidades;
+	int puntajeNivel;
 
 public:
 	Escenario(int enTotales);
@@ -44,6 +47,8 @@ public:
 	int totalEnemigos();
 	int totalAliados();
 	int totalBienes();
+
+	int getPuntajeNivel() { return puntajeNivel; }
 
 	Guardia* getGuardia();
 };

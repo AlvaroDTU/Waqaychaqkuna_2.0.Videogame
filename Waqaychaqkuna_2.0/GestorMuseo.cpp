@@ -1,11 +1,9 @@
 #include "pch.h"
 #include "GestorMuseo.h"
-#include <ctime>
-#include <cstdlib>
+
 
 GestorMuseo::GestorMuseo(int enTotales) : Escenario(enTotales)
 {
-	srand(time(nullptr));
 	tempSpawnEntidades = 75;
 	fondoActual = 1;
 }

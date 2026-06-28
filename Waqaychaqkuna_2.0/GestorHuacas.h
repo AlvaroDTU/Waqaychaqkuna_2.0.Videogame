@@ -2,36 +2,25 @@
 #include "Guardia.h"
 #include "Huaquero.h"
 #include "Cuidador.h"
+#include "Escenario.h"
 #include <vector>
 using std::vector;
 
-class GestorHuacas
+class GestorHuacas : public Escenario
 {
 private:
-	Guardia* guardia;
-	vector<Enemigo*> huaqueros;
-	vector<Cuidador*> cuidadores;
-	int anchoLienzo;
-	int altoLienzo;
-	int enemigosTotales;
-	int enemigosDerrotados;
-	int temporizador;
-	int puntajeNivel;
-
+	int temporizadorMov;
 public:
-	GestorHuacas(Guardia* guardia, int anchoLienzo, int altoLienzo);
+	GestorHuacas(int enTotales);
 	~GestorHuacas();
-	void mover(int x);
-	void dibujar(Graphics^ g);
-	void detectarColisiones();
-	bool victoria();
-	int getTotalHuaquero();
+	void crearSprites() override;
+	void dibujar(Graphics^ g) override;
+	void mover() override;
+	void detectarColisiones() override;
 
+	bool victoria() override;
 	void jugar();
-	void agregarCuidador(Cuidador* c);
-	void agregarHuaquero(Huaquero* h);
-	void eliminarCuidador(int i);
-	void eliminarHuaquero(int i);
+
 	void agregarBien();
 
 };

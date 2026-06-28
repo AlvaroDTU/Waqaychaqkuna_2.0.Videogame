@@ -4,6 +4,7 @@
 Escenario::Escenario(int enTotales)
 	: fondo(nullptr), guardia(nullptr), anchoLienzo(1300), altoLienzo(800), enemigosTotales(enTotales)
 {
+	srand(time(nullptr));
 	enemigosDerrotados = 0;
 	tempSpawnEntidades = 0;
 }
