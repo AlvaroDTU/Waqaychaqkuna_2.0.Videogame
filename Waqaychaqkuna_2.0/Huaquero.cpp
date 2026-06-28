@@ -29,7 +29,6 @@ void Huaquero::mover(int anchoLienzo, int altoLienzo) {
 
 	posX += dirX;
 	posY += dirY;
-
 	Rectangle r = getRectangle(0);
 	if (posX < 0) { posX = 0; }
 	if (posY < 0) { posY = 0; }
@@ -95,6 +94,6 @@ void Huaquero::mover(int anchoLienzo, int altoLienzo) {
 	if (tipo == 16) {
 		if (posY <= 564) { dirX = 5;dirY = 0;}
 	}
-	if(atacando==false) avanzarEscena();
+	avanzarEscena();
 }
  void Huaquero::atacar(Bien* bien) {}

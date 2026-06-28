@@ -22,6 +22,7 @@ public:
 	void jugar();
 
 	void generarHuaquero();
+	void generarCuidador();
 
 };
 

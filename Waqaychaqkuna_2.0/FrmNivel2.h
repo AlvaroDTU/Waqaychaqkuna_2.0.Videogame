@@ -144,6 +144,9 @@ namespace Waqaychaqkuna20 {
 		else if (e->KeyCode == Keys::Left) {
 			g->setVelocidad(-5, 0);
 		}
+		else if (e->KeyCode == Keys::E) {
+			gestor->generarCuidador();
+		}
 		
 	}
 
@@ -162,7 +165,7 @@ namespace Waqaychaqkuna20 {
 private: System::Void tmrJuego_Tick(System::Object^ sender, System::EventArgs^ e) {
 	lblPrueba->Text = String::Format("PosX: {0}", gestor->getGuardia()->getPosX());
 	lblPrueba2->Text = String::Format("PosY: {0}", gestor->getGuardia()->getPosY());
-	
+	gestor->detectarColisiones();
 	gestor->jugar();
 	Pintar();
 }

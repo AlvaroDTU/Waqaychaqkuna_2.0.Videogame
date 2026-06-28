@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "GestorHuacas.h"
+#include "Cuidador.h"
 GestorHuacas::GestorHuacas(int enTotales) : Escenario(enTotales)
 {
 	tempSpawnEntidades = 70;
@@ -43,10 +44,26 @@ void GestorHuacas::mover() {
 	guardia->mover(objetos, bienes);
 
 	for (auto cuidador : aliados) ((Cuidador*) cuidador)->sinMover();
-	for (auto ladron : enemigos) ladron->mover(anchoLienzo, altoLienzo);
-	
+	for (size_t j = 0; j < (int)enemigos.size(); j++) {
+		if (enemigos[j]->getAtacando()==false) { enemigos[j]->mover(anchoLienzo,altoLienzo); }
+	}
 }
-void GestorHuacas::detectarColisiones() {}
+void GestorHuacas::detectarColisiones() {
+	for (size_t i = 0; i < (int)bienes.size(); i++)
+	{
+		Rectangle htbBien = bienes[i]->getRectangle();
+		for (size_t j = 0; j < (int)enemigos.size(); j++)
+		{
+			Rectangle htbEnemigo = enemigos[j]->getRectangle();
+			if (htbBien.IntersectsWith(htbEnemigo)) {
+				enemigos[j]->setMoviendose(false);
+				enemigos[j]->setColumna(0);
+				enemigos[j]->setAtacando(true);
+			}
+		}
+
+	}
+}
 
 bool GestorHuacas::victoria() { return false; }
 void GestorHuacas::jugar() {
@@ -129,5 +146,41 @@ void GestorHuacas::generarHuaquero() {
 	 else if (tipo == 16) {
 		Huaquero* nuevo = new Huaquero(634, 760, 30, 40, 60, 80, 0, -5, 4, tipo);
 		agregarEnemigo(nuevo);
+	}
+}
+void GestorHuacas::generarCuidador() {
+
+	int dx = guardia->getDirX();
+	int dy = guardia->getDirY();
+
+	int x, y;
+
+	if (dx > 0) x = guardia->getPosX() + 40;
+	else if (dx < 0) x = guardia->getPosX() - 40;
+	else x = guardia->getPosX();
+
+	if (dy > 0) y = guardia->getPosY() + 40;
+	else if (dy < 0) y = guardia->getPosY() - 40;
+	else y = guardia->getPosY();
+
+	Rectangle rCuidador(x, y, 30, 40);   // tamaño del sprite
+
+	bool colisionHuaca = false;
+
+	for (auto bien : bienes)
+	{
+		Rectangle rHuaca = bien->getRectangle();
+
+		if (rCuidador.IntersectsWith(rHuaca))
+		{
+			colisionHuaca = true;
+			break;
+		}
+	}
+
+	if (!colisionHuaca)
+	{
+		Cuidador* nuevo = new Cuidador(x, y,30,40,60,80);
+		agregarAliado(nuevo);
 	}
 }
