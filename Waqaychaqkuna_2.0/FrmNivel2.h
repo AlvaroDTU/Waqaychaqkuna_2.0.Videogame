@@ -45,6 +45,10 @@ namespace Waqaychaqkuna20 {
 		GestorHuacas* gestor;
 	private: System::Windows::Forms::Label^ lblPrueba;
 	private: System::Windows::Forms::Label^ lblPrueba2;
+	private: System::Windows::Forms::Label^ lblHuaca1;
+	private: System::Windows::Forms::Label^ lblHuaca2;
+	private: System::Windows::Forms::Label^ lblHuaca3;
+	private: System::Windows::Forms::Label^ lblHuaca4;
 		   BufferedGraphics^ buffer;
 
 		/// <summary>
@@ -64,6 +68,10 @@ namespace Waqaychaqkuna20 {
 			this->tmrJuego = (gcnew System::Windows::Forms::Timer(this->components));
 			this->lblPrueba = (gcnew System::Windows::Forms::Label());
 			this->lblPrueba2 = (gcnew System::Windows::Forms::Label());
+			this->lblHuaca1 = (gcnew System::Windows::Forms::Label());
+			this->lblHuaca2 = (gcnew System::Windows::Forms::Label());
+			this->lblHuaca3 = (gcnew System::Windows::Forms::Label());
+			this->lblHuaca4 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// pnlMapa
@@ -102,11 +110,59 @@ namespace Waqaychaqkuna20 {
 			this->lblPrueba2->TabIndex = 3;
 			this->lblPrueba2->Text = L"label1";
 			// 
+			// lblHuaca1
+			// 
+			this->lblHuaca1->AutoSize = true;
+			this->lblHuaca1->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblHuaca1->Location = System::Drawing::Point(1333, 262);
+			this->lblHuaca1->Name = L"lblHuaca1";
+			this->lblHuaca1->Size = System::Drawing::Size(81, 19);
+			this->lblHuaca1->TabIndex = 4;
+			this->lblHuaca1->Text = L"label1";
+			// 
+			// lblHuaca2
+			// 
+			this->lblHuaca2->AutoSize = true;
+			this->lblHuaca2->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblHuaca2->Location = System::Drawing::Point(1333, 296);
+			this->lblHuaca2->Name = L"lblHuaca2";
+			this->lblHuaca2->Size = System::Drawing::Size(81, 19);
+			this->lblHuaca2->TabIndex = 5;
+			this->lblHuaca2->Text = L"label1";
+			// 
+			// lblHuaca3
+			// 
+			this->lblHuaca3->AutoSize = true;
+			this->lblHuaca3->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblHuaca3->Location = System::Drawing::Point(1333, 325);
+			this->lblHuaca3->Name = L"lblHuaca3";
+			this->lblHuaca3->Size = System::Drawing::Size(81, 19);
+			this->lblHuaca3->TabIndex = 6;
+			this->lblHuaca3->Text = L"label1";
+			// 
+			// lblHuaca4
+			// 
+			this->lblHuaca4->AutoSize = true;
+			this->lblHuaca4->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblHuaca4->Location = System::Drawing::Point(1333, 353);
+			this->lblHuaca4->Name = L"lblHuaca4";
+			this->lblHuaca4->Size = System::Drawing::Size(81, 19);
+			this->lblHuaca4->TabIndex = 7;
+			this->lblHuaca4->Text = L"label1";
+			// 
 			// FrmNivel2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1600, 800);
+			this->Controls->Add(this->lblHuaca4);
+			this->Controls->Add(this->lblHuaca3);
+			this->Controls->Add(this->lblHuaca2);
+			this->Controls->Add(this->lblHuaca1);
 			this->Controls->Add(this->lblPrueba2);
 			this->Controls->Add(this->lblPrueba);
 			this->Controls->Add(this->pnlMapa);
@@ -165,6 +221,10 @@ namespace Waqaychaqkuna20 {
 private: System::Void tmrJuego_Tick(System::Object^ sender, System::EventArgs^ e) {
 	lblPrueba->Text = String::Format("PosX: {0}", gestor->getGuardia()->getPosX());
 	lblPrueba2->Text = String::Format("PosY: {0}", gestor->getGuardia()->getPosY());
+	lblHuaca1->Text = String::Format("Puntaje: {0}", gestor->getBien(0)->getPuntajeValor());
+	lblHuaca2->Text = String::Format("Puntaje: {0}", gestor->getBien(1)->getPuntajeValor());
+	lblHuaca3->Text = String::Format("Puntaje: {0}", gestor->getBien(2)->getPuntajeValor());
+	lblHuaca4->Text = String::Format("Puntaje: {0}", gestor->getBien(3)->getPuntajeValor());
 	gestor->detectarColisiones();
 	gestor->jugar();
 	Pintar();

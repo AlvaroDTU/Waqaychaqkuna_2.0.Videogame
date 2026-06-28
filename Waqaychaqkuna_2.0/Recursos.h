@@ -41,4 +41,9 @@ public:
     static Bitmap^ museo_fondo3 = gcnew Bitmap("backgrounds\\museo_fondo3.png");
     static Bitmap^ huacas = gcnew Bitmap("backgrounds\\Huacas.png");
     static Bitmap^ biblioteca = gcnew Bitmap("backgrounds\\lvl3.png");
+
+    //----------------- HUACAS ----------------------
+    static Bitmap^ huaca1 = gcnew Bitmap("backgrounds\\Huaca1.png");
+    static Bitmap^ museo_fondo2 = gcnew Bitmap("backgrounds\\museo_fondo2.png");
+    static Bitmap^ museo_fondo3 = gcnew Bitmap("backgrounds\\museo_fondo3.png");
 };

@@ -48,3 +48,6 @@ int Escenario::totalAliados() { return (int)aliados.size(); }
 int Escenario::totalBienes() { return (int)bienes.size(); }
 
 Guardia* Escenario::getGuardia() { return guardia; }
+Bien* Escenario::getBien(int i) {
+	return bienes[i];
+}
