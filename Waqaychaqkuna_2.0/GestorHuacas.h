@@ -21,6 +21,7 @@ public:
 	bool victoria() override;
 	void jugar();
 
+	void generarHuaquero();
 	void agregarBien();
 
 };
