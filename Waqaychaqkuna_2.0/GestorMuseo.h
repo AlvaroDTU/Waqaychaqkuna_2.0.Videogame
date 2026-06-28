@@ -30,6 +30,7 @@ public:
 	void jugar();
 	void setearColisionesMapa();
 	bool victoria() override;
+	bool derrota() override;
 
 	void agregarVisitante(Visitante* nuevo);
 	void eliminarVisitante(int i);
@@ -40,5 +41,7 @@ public:
 	void restarIntentos() { intentos--; }
 
 	bool getIniciado() { return iniciado; }
+	bool getPrimeraRondaVencida() { return primerRondaVencida; }
+	bool getSegundaRondaVencida() { return segundaRondaVencida; }
 };
 

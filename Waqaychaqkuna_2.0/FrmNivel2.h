@@ -39,12 +39,9 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Panel^ pnlMapa;
 	private: System::Windows::Forms::Timer^ tmrJuego;
 	private: System::ComponentModel::IContainer^ components;
-	protected:
-
-	private:
-		GestorHuacas* gestor;
 	private: System::Windows::Forms::Label^ lblPrueba;
 	private: System::Windows::Forms::Label^ lblPrueba2;
+		   GestorHuacas* gestor;
 		   BufferedGraphics^ buffer;
 
 		/// <summary>

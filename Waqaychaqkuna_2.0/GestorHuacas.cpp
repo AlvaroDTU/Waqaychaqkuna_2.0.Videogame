@@ -66,6 +66,8 @@ void GestorHuacas::detectarColisiones() {
 }
 
 bool GestorHuacas::victoria() { return false; }
+bool GestorHuacas::derrota() { return false; }
+
 void GestorHuacas::jugar() {
 	mover();
 	tempSpawnEntidades--;

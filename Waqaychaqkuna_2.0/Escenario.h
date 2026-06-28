@@ -38,6 +38,7 @@ public:
 	virtual void mover() = 0;
 	virtual void detectarColisiones() = 0;
 	virtual bool victoria() = 0;
+	virtual bool derrota() = 0;
 
 	void setLienzo(int ancho, int alto);
 	void agregarEnemigo(Enemigo* nuevo);

@@ -72,9 +72,9 @@ void Ladron::mover(vector<Objeto*> objetos, vector<Bien*> bienes) {
 		if (objetivo == 0) { cx = 333; cy = 391; }
 		if (objetivo == 1) { cx = 640; cy = 391; }
 		if (objetivo == 2) { cx = 947; cy = 386; }
-		if (objetivo == 3) { cx = 947; cy = 386; }
-		if (objetivo == 4) { cx = 947; cy = 386; }
-		if (objetivo == 5) { cx = 947; cy = 386; }
+		if (objetivo == 3) { cx = 312; cy = 419; }
+		if (objetivo == 4) { cx = 596; cy = 418; }
+		if (objetivo == 5) { cx = 880; cy = 418; }
 
 		if (posX < cx) dirX = 3;
 		if (posX > cx) dirX = -3;
@@ -111,7 +111,10 @@ void Ladron::mover(vector<Objeto*> objetos, vector<Bien*> bienes) {
 
 }
 
-void Ladron::atacar(Bien* bien) {}
+void Ladron::atacar(Bien* bien) 
+{
+	bien->restarPuntajeValor(5);
+}
 
 Bitmap^ Ladron::getBitmap() {
 	Bitmap^ img=nullptr;

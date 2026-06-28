@@ -200,7 +200,7 @@ namespace Waqaychaqkuna20 {
 			this->lblPrueba->Text = String::Format(L"ACCION GUARDIA: {0}", gestor->getGuardia()->getAccion());
 			this->lblPrueba2->Text = String::Format(L"TIPO ACCION GUARDIA: {0}", gestor->getGuardia()->getTipoAccion());
 			this->lblDerrotados->Text = String::Format(L"ENEMIGOS CAPTURADOS: {0}", gestor->getCapturados());
-			this->lblIntentos->Text = String::Format(L"INICIADO: {0}", gestor->getIniciado());
+			this->lblIntentos->Text = String::Format(L"PrimeraRondaVENCIDA: {0}\nSegundaRondaVENCIDA: {1}", gestor->getPrimeraRondaVencida(), gestor->getSegundaRondaVencida());
 			Pintar();
 		}
 		Void Pintar()

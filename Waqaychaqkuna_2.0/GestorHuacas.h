@@ -19,6 +19,8 @@ public:
 	void detectarColisiones() override;
 
 	bool victoria() override;
+	bool derrota() override;
+
 	void jugar();
 
 	void generarHuaquero();
