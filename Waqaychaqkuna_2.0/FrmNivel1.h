@@ -53,6 +53,8 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Label^ lblPrueba;
 	private: System::Windows::Forms::Label^ lblPista;
 	private: System::Windows::Forms::Label^ lblDerrotados;
+	private: System::Windows::Forms::Label^ lblPrueba2;
+	private: System::Windows::Forms::Label^ lblIntentos;
 		   GestorMuseo* gestor;
 
 #pragma region Windows Form Designer generated code
@@ -68,6 +70,8 @@ namespace Waqaychaqkuna20 {
 			   this->lblPrueba = (gcnew System::Windows::Forms::Label());
 			   this->lblPista = (gcnew System::Windows::Forms::Label());
 			   this->lblDerrotados = (gcnew System::Windows::Forms::Label());
+			   this->lblPrueba2 = (gcnew System::Windows::Forms::Label());
+			   this->lblIntentos = (gcnew System::Windows::Forms::Label());
 			   this->SuspendLayout();
 			   // 
 			   // tmrNivel1
@@ -87,11 +91,11 @@ namespace Waqaychaqkuna20 {
 			   // lblPrueba
 			   // 
 			   this->lblPrueba->AutoSize = true;
-			   this->lblPrueba->Location = System::Drawing::Point(1319, 342);
+			   this->lblPrueba->Location = System::Drawing::Point(1319, 317);
 			   this->lblPrueba->Name = L"lblPrueba";
-			   this->lblPrueba->Size = System::Drawing::Size(67, 13);
+			   this->lblPrueba->Size = System::Drawing::Size(13, 13);
 			   this->lblPrueba->TabIndex = 1;
-			   this->lblPrueba->Text = L"DX: 0 ,DY: 0";
+			   this->lblPrueba->Text = L"0";
 			   // 
 			   // lblPista
 			   // 
@@ -111,11 +115,31 @@ namespace Waqaychaqkuna20 {
 			   this->lblDerrotados->TabIndex = 3;
 			   this->lblDerrotados->Text = L"ENEMIGOS DERROTADOS: 0";
 			   // 
+			   // lblPrueba2
+			   // 
+			   this->lblPrueba2->AutoSize = true;
+			   this->lblPrueba2->Location = System::Drawing::Point(1319, 363);
+			   this->lblPrueba2->Name = L"lblPrueba2";
+			   this->lblPrueba2->Size = System::Drawing::Size(13, 13);
+			   this->lblPrueba2->TabIndex = 4;
+			   this->lblPrueba2->Text = L"0";
+			   // 
+			   // lblIntentos
+			   // 
+			   this->lblIntentos->AutoSize = true;
+			   this->lblIntentos->Location = System::Drawing::Point(1319, 448);
+			   this->lblIntentos->Name = L"lblIntentos";
+			   this->lblIntentos->Size = System::Drawing::Size(74, 13);
+			   this->lblIntentos->TabIndex = 5;
+			   this->lblIntentos->Text = L"INTENTOS: 0";
+			   // 
 			   // FrmNivel1
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->ClientSize = System::Drawing::Size(1600, 800);
+			   this->Controls->Add(this->lblIntentos);
+			   this->Controls->Add(this->lblPrueba2);
 			   this->Controls->Add(this->lblDerrotados);
 			   this->Controls->Add(this->lblPista);
 			   this->Controls->Add(this->lblPrueba);
@@ -172,9 +196,11 @@ namespace Waqaychaqkuna20 {
 		Void tmrNivel1_Tick(System::Object^ sender, System::EventArgs^ e)
 		{
 			gestor->jugar();
-
 			this->lblPista->Text = String::Format(L"PISTA DE REPORTERA: {0}", gestor->getReportera()->getTipoPista());
-			this->lblDerrotados->Text = String::Format(L"ENEMIGOS DERROTADOS: {0}", gestor->getDerrotados());
+			this->lblPrueba->Text = String::Format(L"ACCION GUARDIA: {0}", gestor->getGuardia()->getAccion());
+			this->lblPrueba2->Text = String::Format(L"TIPO ACCION GUARDIA: {0}", gestor->getGuardia()->getTipoAccion());
+			this->lblDerrotados->Text = String::Format(L"ENEMIGOS CAPTURADOS: {0}", gestor->getCapturados());
+			this->lblIntentos->Text = String::Format(L"INICIADO: {0}", gestor->getIniciado());
 			Pintar();
 		}
 		Void Pintar()
@@ -189,6 +215,8 @@ namespace Waqaychaqkuna20 {
 		{
 			Guardia* g = gestor->getGuardia();
 			g->setVelocidad(0, 0);
+			g->setAccion(false);
+			g->setTipoAccion(0);
 		}
 };
 }

@@ -11,6 +11,7 @@ private:
 	int tipo;
 	int tipoPista;
 	int tempMovimiento;
+	int tempAtaque;
 public:
 	Ladron(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj, int t, int tPista);
 	~Ladron();

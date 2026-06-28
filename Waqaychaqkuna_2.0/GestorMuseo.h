@@ -14,8 +14,11 @@ private:
 	vector<Visitante*> visitantes;
 	int fondoActual;
 	bool iniciado;
+	bool primerRondaVencida;
+	bool segundaRondaVencida;
 	int enemigosRonda1;
 	int enemigosRonda2;
+	int intentos;
 public:
 	GestorMuseo(int enTotales);
 	~GestorMuseo();
@@ -33,5 +36,9 @@ public:
 
 	Reportera* getReportera();
 	int getFondoActual() { return fondoActual; }
+	int getIntentos() { return intentos; }
+	void restarIntentos() { intentos--; }
+
+	bool getIniciado() { return iniciado; }
 };
 

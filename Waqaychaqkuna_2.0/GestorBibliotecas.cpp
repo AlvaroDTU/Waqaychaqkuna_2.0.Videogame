@@ -14,7 +14,7 @@ GestorBiblioteca::GestorBiblioteca(Guardia* guardia, int anchoLienzo, int altoLi
 	this->guardia = guardia;
 	this->anchoLienzo = anchoLienzo;
 	this->altoLienzo = altoLienzo;
-	enemigosDerrotados = 0;
+	enemigosCapturados = 0;
 	temporizador = 0;
 
 }
@@ -49,7 +49,7 @@ void GestorBiblioteca::detectarColisiones(){
 		System::Drawing::Rectangle hitboxEnemigo = manipuladores[i]->getRectangle(1);
 		if (hitboxEnemigo.IntersectsWith(hitboxGuardia)) {
 
-			enemigosDerrotados++;
+			enemigosCapturados++;
 			eliminarManipulador(i);
 			i--;
 		}

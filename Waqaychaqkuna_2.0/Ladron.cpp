@@ -9,6 +9,7 @@ Ladron::Ladron(int posX, int posY, int an, int al, int anF, int alF, int dirX, i
 	fila = (dirX > 0) ? 2 : 1;
 	atacando = false;
 	tempMovimiento = 0;
+	tempAtaque = 1000;
 }
 Ladron::~Ladron() {}
 
@@ -21,22 +22,65 @@ std::string Ladron::getNombre() {
 }
 void Ladron::mover(vector<Objeto*> objetos, vector<Bien*> bienes) {
 
-	tempMovimiento++;
-	if (tempMovimiento >= 100 && tempMovimiento <= 150)
+	if (tempAtaque > 0) 
 	{
-		if (tempMovimiento == 100) {
-			dirX = (rand() % 3 - 1);
-			dirY = (rand() % 3 - 1);
-			if (dirX == 0 && dirY == 0)
-			{
-				if (rand() % 2 == 0) { dirX = (rand() % 2 == 0) ? 1 : -1; dirY = 0; }
-				else { dirX = 0; dirY = (rand() % 2 == 0) ? 1 : -1; }
+		tempAtaque--;
+		tempMovimiento++;
+		if (tempMovimiento >= 100 && tempMovimiento <= 150)
+		{
+			if (tempMovimiento == 100) {
+				dirX = (rand() % 3 - 1);
+				dirY = (rand() % 3 - 1);
+				if (dirX == 0 && dirY == 0)
+				{
+					if (rand() % 2 == 0) { dirX = (rand() % 2 == 0) ? 1 : -1; dirY = 0; }
+					else { dirX = 0; dirY = (rand() % 2 == 0) ? 1 : -1; }
+				}
 			}
-			if (dirX > 0) fila = 2;
-			if (dirX < 0) fila = 1;
-			if (dirY > 0) fila = 0;
-			if (dirY < 0) fila = 3;
+			bool colision = false;
+			Rectangle hbLadron = getRectangle();
+			hbLadron.X += dirX;
+			hbLadron.Y += dirY;
+			for (int i = 0; i < (int)objetos.size(); i++)
+			{
+				if (hbLadron.IntersectsWith(objetos[i]->getRectangle()))
+					colision = true;
+			}
+			for (int i = 0; i < (int)bienes.size(); i++)
+			{
+				if (hbLadron.IntersectsWith(bienes[i]->getRectangle()) && bienes[i]->estaActivo())
+					colision = true;
+			}
+			if (!colision)
+			{
+				posX += dirX;
+				posY += dirY;
+			}
+
+			if (tempMovimiento >= 150)
+			{
+				tempMovimiento = 0;
+				dirX = 0;
+				dirY = 0;
+			}
 		}
+	}
+	else
+	{
+		atacando = true;
+		int cx=0, cy=0;
+		if (objetivo == 0) { cx = 333; cy = 391; }
+		if (objetivo == 1) { cx = 640; cy = 391; }
+		if (objetivo == 2) { cx = 947; cy = 386; }
+		if (objetivo == 3) { cx = 947; cy = 386; }
+		if (objetivo == 4) { cx = 947; cy = 386; }
+		if (objetivo == 5) { cx = 947; cy = 386; }
+
+		if (posX < cx) dirX = 3;
+		if (posX > cx) dirX = -3;
+		if (posY > cy) dirY = -3;
+		if (posY < cy) dirY = 3;
+
 		bool colision = false;
 		Rectangle hbLadron = getRectangle();
 		hbLadron.X += dirX;
@@ -56,16 +100,15 @@ void Ladron::mover(vector<Objeto*> objetos, vector<Bien*> bienes) {
 			posX += dirX;
 			posY += dirY;
 		}
-		
-		if (tempMovimiento >= 150)
-		{
-			tempMovimiento = 0;
-			dirX = 0;
-			dirY = 0;
-		}
 	}
+	if (dirX > 0) fila = 2;
+	if (dirX < 0) fila = 1;
+	if (dirY > 0) fila = 0;
+	if (dirY < 0) fila = 3;
+
 	if (dirX != 0 || dirY != 0) avanzarEscena();
 	else columna = 0;
+
 }
 
 void Ladron::atacar(Bien* bien) {}

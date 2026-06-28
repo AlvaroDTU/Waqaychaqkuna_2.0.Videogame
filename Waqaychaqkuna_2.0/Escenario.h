@@ -25,7 +25,7 @@ protected:
 	int anchoLienzo;
 	int altoLienzo;
 	int enemigosTotales;
-	int enemigosDerrotados;
+	int enemigosCapturados;
 	int tempSpawnEntidades;
 	int puntajeNivel;
 
@@ -51,7 +51,7 @@ public:
 	int totalBienes();
 
 	int getPuntajeNivel() { return puntajeNivel; }
-	int getDerrotados() { return enemigosDerrotados; }
+	int getCapturados() { return enemigosCapturados; }
 	Guardia* getGuardia();
 };
 

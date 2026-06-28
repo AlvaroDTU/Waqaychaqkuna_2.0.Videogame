@@ -9,6 +9,7 @@ GestorMuseo::GestorMuseo(int enTotales) : Escenario(enTotales)
 	fondoActual = 1;
 	enemigosRonda1 = rand() % (enemigosTotales / 2 - enemigosTotales/4) + enemigosTotales / 4 + 1;
 	enemigosRonda2 = enemigosTotales - enemigosRonda1;
+	intentos = 3;
 }
 
 GestorMuseo::~GestorMuseo()
@@ -66,14 +67,31 @@ void GestorMuseo::detectarColisiones()
 	else
 		aliados[0]->setAyudando(false);
 
-	// Colision con guardia y enemigos y desaparecer
+	// Colision con guardia y enemigos
 	for (int i = (int)enemigos.size()-1; i >=0 ; i--)
 	{
-		System::Drawing::Rectangle hbLadron = enemigos[i]->getRectangle(1);
-		if (hbLadron.IntersectsWith(hbGuardia)) {
-			enemigosDerrotados++;
-			eliminarEnemigo(i);
-			i--;
+		Rectangle hbLadron = enemigos[i]->getRectangle(1);
+		if (hbLadron.IntersectsWith(hbGuardia))
+		{
+			if (guardia->getAccion() && guardia->getTipoAccion()==1) {
+				enemigosCapturados++;
+				eliminarEnemigo(i);
+				guardia->setAccion(false);
+				guardia->setTipoAccion(0);
+			}
+		}
+	}
+	// Colision con guardia y visitantes
+	for (int i = (int)visitantes.size()-1; i >=0 ; i--)
+	{
+		Rectangle hbVistante = visitantes[i]->getRectangle(1);
+		if (hbVistante.IntersectsWith(hbGuardia))
+		{
+			if (guardia->getAccion() && guardia->getTipoAccion()==1) {
+				intentos--;
+				guardia->setAccion(false);
+				guardia->setTipoAccion(0);
+			}
 		}
 	}
 	Rectangle cambioDer = Rectangle(0, 0, 0, 0); // para que se mantengan inicializados
@@ -96,6 +114,7 @@ void GestorMuseo::detectarColisiones()
 	{
 		if (!iniciado)
 		{
+			iniciado = true;
 			fondoActual++;
 			fondo->cambioEscena(fondoActual);
 			if (fondoActual == 2) guardia->setPos(85, 370);
@@ -185,6 +204,7 @@ void GestorMuseo::setearColisionesMapa()
 		agregarObjeto(new Objeto(760, 417, 48, 23));	// cartel 1
 		agregarObjeto(new Objeto(1056, 416, 49, 23));	// cartel 2
 
+		enemigosCapturados = 0;
 		for (int i = 0; i < enemigosRonda1; i++)
 		{
 			int x = 0, y = 0;
@@ -192,7 +212,7 @@ void GestorMuseo::setearColisionesMapa()
 			if (rand() % 2 == 0) y = rand() % 84 + 159; // 159 a 242
 			else y= rand() % 200 + 477; // 477 a 676
 			int tipo = rand() % 3 + 1;
-			agregarEnemigo(new Ladron(x,y,45,60,60,80,0,0,0,tipo,((Reportera*)aliados[0])->getTipoPista()));
+			agregarEnemigo(new Ladron(x,y,45,60,60,80,0,0,rand() % 3, tipo, ((Reportera*)aliados[0])->getTipoPista()));
 		}
 		for (int i = 0; i < enemigosRonda1; i++)
 		{
@@ -233,7 +253,7 @@ void GestorMuseo::setearColisionesMapa()
 			if (rand() % 2 == 0) y = rand() % 123 + 153; // 153 a 275
 			else y = rand() % 137 + 532; // 532 a 668
 			int tipo = rand() % 3 + 1;
-			agregarEnemigo(new Ladron(x, y, 45, 60, 60, 80, 0, 0, 0, tipo, ((Reportera*)aliados[0])->getTipoPista()));
+			agregarEnemigo(new Ladron(x, y, 45, 60, 60, 80, 0, 0, rand() % 3 + 3, tipo, ((Reportera*)aliados[0])->getTipoPista()));
 		}
 		for (int i = 0; i < enemigosRonda2; i++)
 		{
@@ -256,6 +276,7 @@ void GestorMuseo::jugar()
 	mover();
 	detectarColisiones();
 
+	if (enemigosCapturados == enemigosRonda1) { iniciado = false; }
 	if (fondoActual > 1) tempSpawnEntidades++;
 }
 
@@ -263,7 +284,7 @@ void GestorMuseo::agregarVisitante(Visitante* nuevo) { visitantes.push_back(nuev
 void GestorMuseo::eliminarVisitante(int i) { visitantes.erase(visitantes.begin() + i); }
 bool GestorMuseo::victoria()
 {
-	return enemigosDerrotados == 10;
+	return enemigosCapturados==enemigosTotales;
 }
 
 Reportera* GestorMuseo::getReportera()

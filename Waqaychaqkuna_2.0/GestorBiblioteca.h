@@ -15,7 +15,7 @@ class GestorBiblioteca
 	int anchoLienzo;
 	int altoLienzo;
 	int enemigosTotales;
-	int enemigosDerrotados;
+	int enemigosCapturados;
 	int temporizador;
 	int puntajeNivel;
 	int tiempoRecarga;
