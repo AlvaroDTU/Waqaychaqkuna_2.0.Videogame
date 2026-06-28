@@ -23,6 +23,7 @@ protected:
 	int enemigosTotales;
 	int enemigosDerrotados;
 	int tempSpawnEntidades;
+	int puntajeNivel;
 
 public:
 	Escenario(int enTotales);
@@ -44,6 +45,8 @@ public:
 	int totalEnemigos();
 	int totalAliados();
 	int totalBienes();
+
+	int getPuntajeNivel() { return puntajeNivel; }
 
 	Guardia* getGuardia();
 };
