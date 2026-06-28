@@ -25,25 +25,25 @@ void GestorHuacas::crearSprites() {
 	agregarObjeto(new Objeto(779, 243, 23, 54));
 
 	
-	agregarBien(new Huaca(177, 109, 300, 194,2000,"Huaca del Sol"));
-	agregarBien(new Huaca(817,108 , 299, 188,2069, "Huaca de la Luna"));
-	agregarBien(new Huaca(202, 482, 266, 177,2679,"Huaca Dragon"));
-	agregarBien(new Huaca(801, 474, 309, 200,3000,"Huaca Charly"));
+	agregarBien(new Huaca(177, 109, 300, 194,2000,"Huaca del Sol",1));
+	agregarBien(new Huaca(817,108 , 299, 188,2069, "Huaca de la Luna",2));
+	agregarBien(new Huaca(202, 482, 266, 177,2679,"Huaca Dragon",3));
+	agregarBien(new Huaca(801, 474, 309, 200,3000,"Huaca Charly",4));
 
 }
 void GestorHuacas::dibujar(Graphics^ g) {
 	fondo->dibujarFondo(g);
-
+	for (size_t i = 0; i < (int)bienes.size(); i++)
+	{
+		if (bienes[i]->getPuntajeValor() < 1500) {
+			((Huaca*)bienes[0])->dibujar(g);
+		}
+	}
 	for (auto huaquero : enemigos) huaquero->dibujar(g);
 	for (auto cuidador : aliados) cuidador->dibujar(g);
 
 	guardia->dibujar(g);
-	for (size_t i = 0; i < (int)bienes.size(); i++)
-	{
-		if (bienes[i]->getPuntajeValor() < 1000) {
-			((Huaca*)bienes[i])->dibujar(g);
-		}
-	}
+	
 }
 void GestorHuacas::mover() {
 	guardia->mover(objetos, bienes);
