@@ -39,4 +39,7 @@ void Manipulador::mover(int anchoLienzo, int altoLienzo)
 
 }
 
-// virtual void atacar(Bien* bien) override
+void Manipulador::atacar(Bien* bien)
+{
+	bien->restarPuntajeValor(1);
+}

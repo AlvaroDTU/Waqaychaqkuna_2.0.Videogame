@@ -8,7 +8,7 @@ private:
 	int tipo;
 public:
 	Huaquero(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj, int tp);
-	~Huaquero();
+	~Huaquero();	
 
 	int getVidas();
 	void RestarVidas(int v);

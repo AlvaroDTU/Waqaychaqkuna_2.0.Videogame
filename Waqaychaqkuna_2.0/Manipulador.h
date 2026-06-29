@@ -15,9 +15,6 @@ private:
 
 	void mover(int ancho, int alto) override;
 	Bitmap^ getBitmap() override;
-	// virtual void atacar(Bien* bien) override
-
-
-
+	void atacar(Bien* bien) override;
 };
 

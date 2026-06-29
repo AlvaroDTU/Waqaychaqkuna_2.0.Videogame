@@ -29,7 +29,7 @@ void Huaquero::mover(int anchoLienzo, int altoLienzo) {
 
 	posX += dirX;
 	posY += dirY;
-	Rectangle r = getRectangle(0);
+	Rectangle r = getRectangle();
 	if (posX < 0) { posX = 0; }
 	if (posY < 0) { posY = 0; }
 	if (posX + r.Width > anchoLienzo)

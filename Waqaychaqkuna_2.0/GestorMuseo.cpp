@@ -318,7 +318,12 @@ bool GestorMuseo::victoria()
 }
 bool GestorMuseo::derrota()
 {
-	return intentos <= 0;
+	bool bienDestruido=false;
+	for (auto bien : bienes) 
+	{
+		if (bien->getPuntajeValor() <= 0) bienDestruido = true;
+	}
+	return intentos <= 0 || bienDestruido;
 }
 
 Reportera* GestorMuseo::getReportera()

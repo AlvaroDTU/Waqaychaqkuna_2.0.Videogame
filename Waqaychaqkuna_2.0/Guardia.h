@@ -17,12 +17,12 @@ public:
 	bool getAccion();
 	int getTipoAccion();
 	void setVelocidad(int dx, int dy);
-	void mover(vector<Objeto*> objetos, vector<Bien*> bienes);
 	int getDirX();
 	int getDirY();
 	void setAccion(bool acc);
-	void setTipoAccion(int tAcc);
-	void setMoviendose(bool mov);
+	void setTipoAccion(int tAcc);	
+
+	void mover(vector<Objeto*> objetos, vector<Bien*> bienes);
 
 	Bitmap^ getBitmap() override;
 	std::string getNombre() override;

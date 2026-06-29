@@ -15,7 +15,7 @@ int Guardia::getDirX() { return dirX; }
 int Guardia::getDirY() { return dirY; }
 void Guardia::setAccion(bool acc) { this->accion = acc; }
 void Guardia::setTipoAccion(int tAcc) { this->tipoAccion = tAcc; }
-void Guardia::setMoviendose(bool mov) { moviendose = mov; }
+
 Bitmap^ Guardia::getBitmap() { return Recursos::guardia; }
 
 std::string Guardia::getNombre() { return "guardia"; }
