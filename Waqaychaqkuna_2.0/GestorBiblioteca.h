@@ -1,4 +1,5 @@
 #pragma once
+#include "Escenario.h"
 #include "Guardia.h"
 #include "Manipulador.h"
 #include "Archivo.h"
@@ -6,22 +7,13 @@
 
 using std::vector;
 
-class GestorBiblioteca
+class GestorBiblioteca : public Escenario
 {
 	private:
-	Guardia * guardia;
-	vector<Enemigo*> manipuladores;
-	vector<Bien*> archivos;
-	int anchoLienzo;
-	int altoLienzo;
-	int enemigosTotales;
-	int enemigosCapturados;
-	int temporizador;
-	int puntajeNivel;
 	int tiempoRecarga;
 
 	public:
-		GestorBiblioteca(Guardia* guardia, int anchoLienzo, int altoLienzo, int enemigosTotales);
+		GestorBiblioteca(int enTotal);
 		~GestorBiblioteca();
 		void mover();
 		void moverGuardia(Direccion direccion);
