@@ -103,7 +103,7 @@ void GestorMuseo::detectarColisiones()
 		{
 			Rectangle hitboxEnemigo = enemigos[i]->getRectangle();
 			Rectangle hitboxBien = bienes[j]->getRectangle(5);
-			if (hitboxEnemigo.IntersectsWith(hitboxBien) && enemigos[i]->getAtacando())
+			if (hitboxEnemigo.IntersectsWith(hitboxBien) && enemigos[i]->getAtacando() && bienes[j]->estaActivo())
 			{
 				enemigos[i]->atacar(bienes[j]);
 			}
