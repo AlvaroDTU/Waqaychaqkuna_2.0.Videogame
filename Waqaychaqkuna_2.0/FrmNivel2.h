@@ -231,6 +231,7 @@ namespace Waqaychaqkuna20 {
 	{
 		this->tmrJuego->Stop();
 		MessageBox::Show("GANASTE");
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
 	if (gestor->derrota())

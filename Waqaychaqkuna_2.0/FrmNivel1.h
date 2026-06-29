@@ -118,9 +118,9 @@ namespace Waqaychaqkuna20 {
 				   static_cast<System::Byte>(0)));
 			   this->lblPista->Location = System::Drawing::Point(1319, 741);
 			   this->lblPista->Name = L"lblPista";
-			   this->lblPista->Size = System::Drawing::Size(48, 18);
+			   this->lblPista->Size = System::Drawing::Size(109, 18);
 			   this->lblPista->TabIndex = 2;
-			   this->lblPista->Text = L"HOLA";
+			   this->lblPista->Text = L"PEDIR PISTA!";
 			   this->lblPista->Visible = false;
 			   // 
 			   // lblDerrotados
@@ -207,9 +207,9 @@ namespace Waqaychaqkuna20 {
 				   static_cast<System::Byte>(0)));
 			   this->label1->Location = System::Drawing::Point(1311, 139);
 			   this->label1->Name = L"label1";
-			   this->label1->Size = System::Drawing::Size(272, 20);
+			   this->label1->Size = System::Drawing::Size(207, 40);
 			   this->label1->TabIndex = 10;
-			   this->label1->Text = L"'E' PARA\nCAPTURAR LADRONES";
+			   this->label1->Text = L"\'E\' PARA\nCAPTURAR LADRONES";
 			   // 
 			   // FrmNivel1
 			   // 
@@ -300,6 +300,7 @@ namespace Waqaychaqkuna20 {
 			{
 				this->tmrNivel1->Stop();
 				MessageBox::Show("GANASTE");
+				this->DialogResult = System::Windows::Forms::DialogResult::OK;
 				this->Close();
 			}
 			if (gestor->derrota())
