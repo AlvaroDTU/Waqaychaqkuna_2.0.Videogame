@@ -84,7 +84,6 @@ void GestorHuacas::detectarColisiones() {
 
 				((Huaquero*)enemigos[j])->RestarVidas(1);
 				((Cuidador*)aliados[i])->RestarDuracion(1);
-
 				break;   // ya encontró un enemigo
 			}
 		}
@@ -97,6 +96,7 @@ void GestorHuacas::detectarColisiones() {
 	{
 		if (((Huaquero*)enemigos[i])->getVidas() <= 0) {
 			eliminarEnemigo(i);
+			enemigosCapturados++;
 			i--;
 		}
 	}
@@ -110,8 +110,15 @@ void GestorHuacas::detectarColisiones() {
 
 }
 
-bool GestorHuacas::victoria() { return false; }
-bool GestorHuacas::derrota() { return false; }
+bool GestorHuacas::victoria() { return enemigosCapturados==enemigosTotales; }
+bool GestorHuacas::derrota() { 
+	bool bienDestruido = false;
+	for (auto bien : bienes)
+	{
+		if (bien->getPuntajeValor() <= 0) bienDestruido = true;
+	}
+	return bienDestruido; 
+}
 
 void GestorHuacas::jugar() {
 	mover();

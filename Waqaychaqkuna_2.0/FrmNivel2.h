@@ -215,7 +215,8 @@ namespace Waqaychaqkuna20 {
 		Guardia* g = gestor->getGuardia();
 		g->setVelocidad(0, 0);
 	}
-private: System::Void tmrJuego_Tick(System::Object^ sender, System::EventArgs^ e) {
+	Void tmrJuego_Tick(System::Object^ sender, System::EventArgs^ e) {
+
 	lblPrueba->Text = String::Format("PosX: {0}", gestor->getGuardia()->getPosX());
 	lblPrueba2->Text = String::Format("PosY: {0}", gestor->getGuardia()->getPosY());
 	lblHuaca1->Text = String::Format("Puntaje: {0}", gestor->getBien(0)->getPuntajeValor());
@@ -225,6 +226,19 @@ private: System::Void tmrJuego_Tick(System::Object^ sender, System::EventArgs^ e
 	gestor->detectarColisiones();
 	gestor->jugar();
 	Pintar();
+
+	if (gestor->victoria())
+	{
+		this->tmrJuego->Stop();
+		MessageBox::Show("GANASTE");
+		this->Close();
+	}
+	if (gestor->derrota())
+	{
+		this->tmrJuego->Stop();
+		MessageBox::Show("PERDISTE");
+		this->Close();
+	}
 }
 };
 }

@@ -90,11 +90,9 @@ namespace Waqaychaqkuna20 {
 	Void btnJugar_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
 		FrmNivel1^ frm1 = gcnew FrmNivel1();
-		this->Hide();
 		frm1->ShowDialog();
 
 		FrmNivel2^ frm2 = gcnew FrmNivel2();
-		this->Hide();
 		frm2->ShowDialog();
 	}
 	};
