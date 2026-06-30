@@ -19,54 +19,76 @@ GestorBiblioteca::GestorBiblioteca(int enTotal) : Escenario(enTotal)
 GestorBiblioteca::~GestorBiblioteca(){
 	Escenario::~Escenario();
 }
+void GestorBiblioteca::crearSprites(){
+	fondo = new Fondo(3, anchoLienzo, altoLienzo);
 
-void GestorBiblioteca::mover(){
-	
+	guardia = new Guardia(890, 1322, 45, 60, 60, 80);
+
+
+	agregarBien(new Archivo(24, 7, 40, 200, 5000, "Archivo Caceres", false));
+	agregarBien(new Archivo(53, 7, 40, 200, 4500, "Trad. peruanas", false));
+	agregarBien(new Archivo(111, 7, 40, 200, 4000, "Juras de indep.", false));
+	agregarBien(new Archivo(82, 7, 40, 200, 6000, "Archivo Courret", false));
+
+	setearColisionesMapa();
+
 }
-
-void GestorBiblioteca::moverGuardia(Direccion direccion) {
-	// guardia->mover(3, anchoLienzo, altoLienzo);
-}
-
 void GestorBiblioteca::dibujar(Graphics^ g){
+
+	fondo->dibujarFondo(g);
+	for (auto manipulador : enemigos) manipulador->dibujar(g);
 	guardia->dibujar(g);
-	for (auto manipulador : enemigos) { manipulador->dibujar(g); }
+
+}
+void GestorBiblioteca::mover(){
+
+	guardia->mover(objetos, bienes);
+
+	for (size_t j = 0; j < (int)enemigos.size(); j++) {
+		if (enemigos[j]->getAtacando() == false) { enemigos[j]->mover(anchoLienzo, altoLienzo); }
+	}
+
 }
 void GestorBiblioteca::detectarColisiones(){
-	Rectangle hitboxGuardia = guardia->getRectangle(2);
 
-	//Logica de la linterna pendiente
+	Rectangle hbGuardia = guardia->getRectangle();
 
-
-
-
-	//Colision del guardia y los manipuladores de yapa
-	for (size_t i = 0; i < enemigos.size(); i++)
+	for (int i = (int)enemigos.size() - 1; i >= 0; i--)
 	{
-		System::Drawing::Rectangle hitboxEnemigo = enemigos[i]->getRectangle(1);
-		if (hitboxEnemigo.IntersectsWith(hitboxGuardia)) {
+		Rectangle hbLadron = enemigos[i]->getRectangle(1);
+		if (hbLadron.IntersectsWith(hbGuardia))
+		{
+			if (guardia->getAccion() && guardia->getTipoAccion() == 1) {
+				enemigosCapturados++;
+				eliminarEnemigo(i);
+				guardia->setAccion(false);
+				guardia->setTipoAccion(0);
+			}
+		}
+	}
 
-			enemigosCapturados++;
-			eliminarManipulador(i);
-			i--;
+	for (int i = 0; i < (int)enemigos.size(); i++)
+	{
+		for (int j = 0; j < (int)bienes.size(); j++)
+		{
+			Rectangle hitboxEnemigo = enemigos[i]->getRectangle();
+			Rectangle hitboxBien = bienes[j]->getRectangle(5);
+			if (hitboxEnemigo.IntersectsWith(hitboxBien) && enemigos[i]->getAtacando() && bienes[j]->estaActivo())
+			{
+				enemigos[i]->atacar(bienes[j]);
+			}
 		}
 	}
 
 }
 
-bool GestorBiblioteca::victoria(){ return false; }
+bool GestorBiblioteca::victoria(){ return false;}
+bool GestorBiblioteca::derrota(){ return false;}
 
-int GestorBiblioteca::getTotalManipulador(){return (int)enemigos.size(); }
+void GestorBiblioteca::jugar(){}
 
-void GestorBiblioteca::jugar(){
-	detectarColisiones();
+void GestorBiblioteca::setearColisionesMapa(){}
 
-
-}
-
-void GestorBiblioteca::agregarManipulador(Manipulador* nuevo){enemigos.push_back(nuevo);
-}
-
-void GestorBiblioteca::eliminarManipulador(int i){enemigos.erase(enemigos.begin()+i); }
+void GestorBiblioteca::generarHuaquero(){}
 
 void GestorBiblioteca::recargaLinterna(){}

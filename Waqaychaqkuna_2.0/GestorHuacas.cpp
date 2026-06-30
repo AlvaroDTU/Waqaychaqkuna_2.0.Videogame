@@ -9,7 +9,7 @@ GestorHuacas::~GestorHuacas() {
 	Escenario::~Escenario();
 }
 void GestorHuacas::crearSprites() {
-	fondo = new Fondo(2, anchoLienzo, altoLienzo);
+	fondo = new Fondo(3, anchoLienzo, altoLienzo);
 
 	guardia = new Guardia(790, 170, 30, 40, 60, 80);
 

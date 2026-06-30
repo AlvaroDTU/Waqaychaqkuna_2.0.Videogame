@@ -13,18 +13,20 @@ class GestorBiblioteca : public Escenario
 	int tiempoRecarga;
 
 	public:
-		GestorBiblioteca(int enTotal);
+		GestorBiblioteca(int enTotales);
 		~GestorBiblioteca();
-		void mover();
-		void moverGuardia(Direccion direccion);
-		void dibujar(Graphics^ g);
-		void detectarColisiones();
-		bool victoria();
-		int getTotalManipulador();
+		void crearSprites() override;
+		void dibujar(Graphics^ g) override;
+		void mover() override;
+		void detectarColisiones() override;
+
+		bool victoria() override;
+		bool derrota() override;
 
 		void jugar();
-		void agregarManipulador(Manipulador* nuevo);
-		void eliminarManipulador(int i);
+		void setearColisionesMapa();
+
+		void generarHuaquero();
 		void recargaLinterna();
 };
 
