@@ -10,7 +10,8 @@ using std::vector;
 class GestorBiblioteca : public Escenario
 {
 	private:
-	int tiempoRecarga;
+	double tiempoRecarga;
+	int intentos;
 
 	public:
 		GestorBiblioteca(int enTotales);
@@ -26,7 +27,7 @@ class GestorBiblioteca : public Escenario
 		void jugar();
 		void setearColisionesMapa();
 
-		void generarHuaquero();
+		void generarManipulador();
 		void recargaLinterna();
 };
 

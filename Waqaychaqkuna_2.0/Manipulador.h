@@ -2,10 +2,11 @@
 #include "Enemigo.h"
 class Manipulador : public Enemigo
 {
-public:
-	int tiempoMovimiento;
 private:
-	Manipulador(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj, int tM);
+	int tiempoMovimiento;
+	int tipo;
+public:
+	Manipulador(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj, int t);
 	~Manipulador();
 
 	int getTemMov();

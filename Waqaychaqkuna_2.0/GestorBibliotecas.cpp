@@ -3,13 +3,6 @@
 
 GestorBiblioteca::GestorBiblioteca(int enTotal) : Escenario(enTotal)
 {
-	//FALTA MODIFICAR POSICIONES Y TAMAÑO
-	//archivos.push_back(new Archivo(24, 7, 40, 200, 5000, "Archivo Caceres", false));
-	//archivos.push_back(new Archivo(53, 7, 40, 200, 4500, "Trad. peruanas", false));
-	//archivos.push_back(new Archivo(111, 7, 40, 200, 4000, "Juras de indep.", false));
-	//archivos.push_back(new Archivo(82, 7, 40, 200, 6000, "Archivo Courret", false));
-	//archivos.push_back(new Archivo(140, 7, 40, 200, 3000, "Manuscrito Inca", false));
-
 	this->guardia = guardia;
 	this->anchoLienzo = anchoLienzo;
 	this->altoLienzo = altoLienzo;
@@ -24,7 +17,7 @@ void GestorBiblioteca::crearSprites(){
 
 	guardia = new Guardia(890, 1322, 45, 60, 60, 80);
 
-
+	//FALTA MODIFICAR POSICIONES Y TAMAÑO
 	agregarBien(new Archivo(24, 7, 40, 200, 5000, "Archivo Caceres", false));
 	agregarBien(new Archivo(53, 7, 40, 200, 4500, "Trad. peruanas", false));
 	agregarBien(new Archivo(111, 7, 40, 200, 4000, "Juras de indep.", false));
@@ -59,10 +52,7 @@ void GestorBiblioteca::detectarColisiones(){
 		if (hbLadron.IntersectsWith(hbGuardia))
 		{
 			if (guardia->getAccion() && guardia->getTipoAccion() == 1) {
-				enemigosCapturados++;
-				eliminarEnemigo(i);
-				guardia->setAccion(false);
-				guardia->setTipoAccion(0);
+				intentos--;
 			}
 		}
 	}
@@ -82,13 +72,52 @@ void GestorBiblioteca::detectarColisiones(){
 
 }
 
-bool GestorBiblioteca::victoria(){ return false;}
-bool GestorBiblioteca::derrota(){ return false;}
+bool GestorBiblioteca::victoria(){ return enemigosCapturados == enemigosTotales; }
+bool GestorBiblioteca::derrota(){
 
-void GestorBiblioteca::jugar(){}
+	bool bienDestruido = false;
+	for (auto bien : bienes)
+	{
+		if (bien->getPuntajeValor() <= 0) bienDestruido = true;
+	}
+	return intentos <= 0 || bienDestruido;
+}
 
-void GestorBiblioteca::setearColisionesMapa(){}
+void GestorBiblioteca::jugar(){
+	mover();
+	tempSpawnEntidades--;
+	if (tempSpawnEntidades == 0) {
+		generarManipulador();
+		tempSpawnEntidades = 70;
+	}
+}
 
-void GestorBiblioteca::generarHuaquero(){}
+void GestorBiblioteca::setearColisionesMapa(){
 
-void GestorBiblioteca::recargaLinterna(){}
+
+}
+
+void GestorBiblioteca::generarManipulador(){
+	int tipo = rand() % 4 + 1;
+	//Derecha
+	if (tipo == 1) {
+		Manipulador* nuevo = new Manipulador(0, 365, 30, 40, 60, 80, 5, 0, 1, 1);
+		agregarEnemigo(nuevo);
+	}
+	else if (tipo == 2) {
+		Manipulador* nuevo = new Manipulador(0, 365, 30, 40, 60, 80, 5, 0, 2, tipo);
+		agregarEnemigo(nuevo);
+	}
+	else if (tipo == 3) {
+		Manipulador* nuevo = new Manipulador(0, 365, 30, 40, 60, 80, 5, 0, 3, tipo);
+		agregarEnemigo(nuevo);
+	}
+	else if (tipo == 4) {
+		Manipulador* nuevo = new Manipulador(0, 365, 30, 40, 60, 80, 5, 0, 4, tipo);
+		agregarEnemigo(nuevo);
+	}
+}
+
+void GestorBiblioteca::recargaLinterna(){
+	tiempoRecarga = 100.00;
+}
