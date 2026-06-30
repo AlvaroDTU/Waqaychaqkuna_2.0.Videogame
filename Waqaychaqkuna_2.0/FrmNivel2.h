@@ -280,7 +280,7 @@ namespace Waqaychaqkuna20 {
 	lblHuaca2->Text = String::Format("Puntaje: {0}", gestor->getBien(1)->getPuntajeValor());
 	lblHuacaN2->Text = gcnew System::String(gestor->getBien(1)->getNombre().c_str());
 	lblHuaca3->Text = String::Format("Puntaje: {0}", gestor->getBien(2)->getPuntajeValor());
-	lblHuacaN3->Text = gcnew System::String(gestor->getBien(3)->getNombre().c_str());
+	lblHuacaN3->Text = gcnew System::String(gestor->getBien(2)->getNombre().c_str());
 	lblHuaca4->Text = String::Format("Puntaje: {0}", gestor->getBien(3)->getPuntajeValor());
 	lblHuacaN4->Text = gcnew System::String(gestor->getBien(3)->getNombre().c_str());
 
