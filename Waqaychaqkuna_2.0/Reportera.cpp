@@ -35,6 +35,4 @@ void Reportera::ayudar()
 	if (ayudando == false) 
 		tipoPista = rand() % 3 + 1;
 	ayudando = true;
-
-
 }
