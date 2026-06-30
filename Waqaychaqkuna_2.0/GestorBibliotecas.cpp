@@ -17,11 +17,10 @@ void GestorBiblioteca::crearSprites(){
 
 	guardia = new Guardia(890, 1322, 45, 60, 60, 80);
 
-	//FALTA MODIFICAR POSICIONES Y TAMAÑO
-	agregarBien(new Archivo(24, 7, 40, 200, 5000, "Archivo Caceres", false));
-	agregarBien(new Archivo(53, 7, 40, 200, 4500, "Trad. peruanas", false));
-	agregarBien(new Archivo(111, 7, 40, 200, 4000, "Juras de indep.", false));
-	agregarBien(new Archivo(82, 7, 40, 200, 6000, "Archivo Courret", false));
+	agregarBien(new Archivo(316,200, 60, 330, 5000, "Archivo Caceres", false));
+	agregarBien(new Archivo(552, 200, 60, 330, 4500, "Trad. peruanas", false));
+	agregarBien(new Archivo(718, 200, 60, 330, 4000, "Juras de indep.", false));
+	agregarBien(new Archivo(908, 200, 60, 330, 6000, "Archivo Courret", false));
 
 	setearColisionesMapa();
 
@@ -93,6 +92,7 @@ void GestorBiblioteca::jugar(){
 }
 
 void GestorBiblioteca::setearColisionesMapa(){
+	
 
 
 }
