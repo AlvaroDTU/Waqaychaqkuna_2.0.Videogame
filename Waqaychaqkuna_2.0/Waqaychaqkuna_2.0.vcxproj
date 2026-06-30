@@ -157,6 +157,9 @@
     <ClInclude Include="FrmNivel2.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="FrmNivel3.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="GestorMuseo.h" />
     <ClInclude Include="GestorHuacas.h" />
     <ClInclude Include="GestorBiblioteca.h" />
@@ -187,6 +190,7 @@
     <ClCompile Include="FrmMenu.cpp" />
     <ClCompile Include="FrmNivel1.cpp" />
     <ClCompile Include="FrmNivel2.cpp" />
+    <ClCompile Include="FrmNivel3.cpp" />
     <ClCompile Include="GestorMuseo.cpp" />
     <ClCompile Include="GestorHuacas.cpp" />
     <ClCompile Include="GestorBibliotecas.cpp" />
@@ -227,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNivel2.resx">
       <DependentUpon>FrmNivel2.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNivel3.resx">
+      <DependentUpon>FrmNivel3.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
