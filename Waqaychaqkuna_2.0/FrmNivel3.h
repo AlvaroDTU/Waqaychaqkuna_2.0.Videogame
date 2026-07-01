@@ -45,6 +45,10 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Label^ lblArchivo4;
 	private: System::Windows::Forms::Label^ lblDerrotados;
 	private: System::Windows::Forms::Label^ lblBateria;
+	private: System::Windows::Forms::Label^ lblIntentos;
+	private: System::Windows::Forms::Timer^ tmrNivel3;
+
+	private: System::ComponentModel::IContainer^ components;
 
 
 
@@ -57,7 +61,7 @@ namespace Waqaychaqkuna20 {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -66,6 +70,7 @@ namespace Waqaychaqkuna20 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->pnlMapa = (gcnew System::Windows::Forms::Panel());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -75,6 +80,8 @@ namespace Waqaychaqkuna20 {
 			this->lblArchivo4 = (gcnew System::Windows::Forms::Label());
 			this->lblDerrotados = (gcnew System::Windows::Forms::Label());
 			this->lblBateria = (gcnew System::Windows::Forms::Label());
+			this->lblIntentos = (gcnew System::Windows::Forms::Label());
+			this->tmrNivel3 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->SuspendLayout();
 			// 
 			// pnlMapa
@@ -168,17 +175,35 @@ namespace Waqaychaqkuna20 {
 			this->lblBateria->AutoSize = true;
 			this->lblBateria->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblBateria->Location = System::Drawing::Point(1319, 700);
+			this->lblBateria->Location = System::Drawing::Point(1319, 734);
 			this->lblBateria->Name = L"lblBateria";
 			this->lblBateria->Size = System::Drawing::Size(199, 17);
 			this->lblBateria->TabIndex = 18;
 			this->lblBateria->Text = L"PORCENTAJE BATERIA: 0";
+			// 
+			// lblIntentos
+			// 
+			this->lblIntentos->AutoSize = true;
+			this->lblIntentos->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblIntentos->Location = System::Drawing::Point(1319, 694);
+			this->lblIntentos->Name = L"lblIntentos";
+			this->lblIntentos->Size = System::Drawing::Size(105, 17);
+			this->lblIntentos->TabIndex = 19;
+			this->lblIntentos->Text = L"INTENTOS: 0";
+			// 
+			// tmrNivel3
+			// 
+			this->tmrNivel3->Enabled = true;
+			this->tmrNivel3->Interval = 16;
+			this->tmrNivel3->Tick += gcnew System::EventHandler(this, &FrmNivel3::timer1_Tick);
 			// 
 			// FrmNivel3
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1600, 800);
+			this->Controls->Add(this->lblIntentos);
 			this->Controls->Add(this->lblBateria);
 			this->Controls->Add(this->lblDerrotados);
 			this->Controls->Add(this->lblArchivo4);
@@ -196,5 +221,7 @@ namespace Waqaychaqkuna20 {
 		}
 #pragma endregion
 	
+
+
 };
 }

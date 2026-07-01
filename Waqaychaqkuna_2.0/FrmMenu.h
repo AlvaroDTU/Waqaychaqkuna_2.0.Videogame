@@ -1,6 +1,7 @@
 #pragma once
 #include "FrmNivel1.h"
 #include "FrmNivel2.h"
+#include "FrmNivel3.h"
 
 namespace Waqaychaqkuna20 {
 
@@ -89,21 +90,29 @@ namespace Waqaychaqkuna20 {
 	Void FrmMenu_Load(System::Object^ sender, System::EventArgs^ e) {}
 	Void btnJugar_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
-		FrmNivel1^ f1 = gcnew FrmNivel1();
+	/*	FrmNivel1^ f1 = gcnew FrmNivel1();
 		if (f1->ShowDialog() != System::Windows::Forms::DialogResult::OK)
 		{
 			delete f1;
 			return;
 		}
-		delete f1;
+		delete f1;*/
 
-		FrmNivel2^ f2 = gcnew FrmNivel2();
+		/*	FrmNivel2^ f2 = gcnew FrmNivel2();
 		if (f2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
 		{
 			delete f2;
 			return;
 		}
-		delete f2;
+		delete f2;*/
+
+		FrmNivel3^ f3 = gcnew FrmNivel3();
+		if (f3->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+		{
+			delete f3;
+			return;
+		}
+		delete f3;
 	}
 	};
 }
