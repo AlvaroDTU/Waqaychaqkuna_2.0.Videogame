@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Manipulador.h"
-Manipulador::Manipulador(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj, int tM)
+Manipulador::Manipulador(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj, int tM, bool iluminado)
 	: Enemigo(posX, posY, an, al, anF, alF, dirX, dirY, obj)
 {
 	this->tiempoMovimiento = tM;
@@ -16,6 +16,12 @@ Bitmap^ Manipulador::getBitmap() {
 	return Recursos::chavon;
 }
 
+bool Manipulador::getIluminado() {
+	return iluminado;
+}
+void Manipulador::setIluminado(bool i) {
+	iluminado = i;
+}
 
 void Manipulador::mover(int anchoLienzo, int altoLienzo)
 {
