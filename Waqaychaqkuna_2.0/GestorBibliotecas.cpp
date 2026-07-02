@@ -15,7 +15,7 @@ GestorBiblioteca::~GestorBiblioteca(){
 void GestorBiblioteca::crearSprites(){
 	fondo = new Fondo(3, anchoLienzo, altoLienzo);
 
-	guardia = new Guardia(890, 1322, 45, 60, 60, 80);
+	guardia = new Guardia(600, 1000, 45, 60, 60, 80);
 
 	agregarBien(new Archivo(316,200, 60, 330, 5000, "Archivo Caceres", false));
 	agregarBien(new Archivo(552, 200, 60, 330, 4500, "Trad. peruanas", false));

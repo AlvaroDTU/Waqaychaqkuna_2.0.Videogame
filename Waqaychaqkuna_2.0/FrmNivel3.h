@@ -1,6 +1,6 @@
 #pragma once
 #include "Guardia.h"
-#include "GestorMuseo.h"
+#include "GestorBiblioteca.h"
 
 namespace Waqaychaqkuna20 {
 
@@ -19,6 +19,7 @@ namespace Waqaychaqkuna20 {
 	public:
 		FrmNivel3(void)
 		{
+			gestor = new GestorBiblioteca(16);
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
@@ -47,9 +48,10 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Label^ lblBateria;
 	private: System::Windows::Forms::Label^ lblIntentos;
 	private: System::Windows::Forms::Timer^ tmrNivel3;
-
 	private: System::ComponentModel::IContainer^ components;
-
+	 BufferedGraphics^ buffer;
+	private: System::ComponentModel::BackgroundWorker^ backgroundWorker1;
+		   GestorBiblioteca* gestor;
 
 
 
@@ -82,6 +84,7 @@ namespace Waqaychaqkuna20 {
 			this->lblBateria = (gcnew System::Windows::Forms::Label());
 			this->lblIntentos = (gcnew System::Windows::Forms::Label());
 			this->tmrNivel3 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
 			this->SuspendLayout();
 			// 
 			// pnlMapa
@@ -195,8 +198,7 @@ namespace Waqaychaqkuna20 {
 			// tmrNivel3
 			// 
 			this->tmrNivel3->Enabled = true;
-			this->tmrNivel3->Interval = 16;
-			this->tmrNivel3->Tick += gcnew System::EventHandler(this, &FrmNivel3::timer1_Tick);
+			this->tmrNivel3->Tick += gcnew System::EventHandler(this, &FrmNivel3::tmrNivel3_Tick);
 			// 
 			// FrmNivel3
 			// 
@@ -215,6 +217,9 @@ namespace Waqaychaqkuna20 {
 			this->Controls->Add(this->pnlMapa);
 			this->Name = L"FrmNivel3";
 			this->Text = L"Nivel 3: Biblioteca";
+			this->Load += gcnew System::EventHandler(this, &FrmNivel3::FrmNivel3_Load);
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel3::FrmNivel3_KeyDown);
+			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel3::FrmNivel3_KeyUp);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -222,6 +227,57 @@ namespace Waqaychaqkuna20 {
 #pragma endregion
 	
 
+
+private: System::Void FrmNivel3_Load(System::Object^ sender, System::EventArgs^ e) {
+	gestor->setLienzo(this->pnlMapa->Width, this->pnlMapa->Height);
+	gestor->crearSprites();
+
+	BufferedGraphicsContext^ contexto = BufferedGraphicsManager::Current;
+	Graphics^ g = this->pnlMapa->CreateGraphics();
+	buffer = contexto->Allocate(g, this->pnlMapa->ClientRectangle);
+	tmrNivel3->Start();
+	delete g;
+}
+
+
+private: System::Void FrmNivel3_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	Guardia* g = gestor->getGuardia();
+	if (e->KeyCode == Keys::Up) {
+		g->setVelocidad(0, -5);
+	}
+	else if (e->KeyCode == Keys::Down) {
+		g->setVelocidad(0, 5);
+	}
+	else if (e->KeyCode == Keys::Right) {
+		g->setVelocidad(5, 0);
+	}
+	else if (e->KeyCode == Keys::Left) {
+		g->setVelocidad(-5, 0);
+	}
+}
+
+ Void Pintar(){
+		   gestor->dibujar(buffer->Graphics);
+
+		   Graphics^ g = this->pnlMapa->CreateGraphics();
+		   buffer->Render(g);
+		   delete g;
+}
+
+private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ e) {
+
+	gestor->jugar();
+	gestor->detectarColisiones();
+
+	Pintar();
+}
+
+private: System::Void FrmNivel3_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	Guardia* g = gestor->getGuardia();
+	g->setVelocidad(0, 0);
+	g->setAccion(false);
+	g->setTipoAccion(0);
+}
 
 };
 }
