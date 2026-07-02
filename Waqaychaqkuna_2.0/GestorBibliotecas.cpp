@@ -17,10 +17,10 @@ void GestorBiblioteca::crearSprites(){
 
 	guardia = new Guardia(622, 674, 30, 40, 60, 80);
 
-	agregarBien(new Archivo(320,200, 60, 328, 5000, "Archivo Caceres", false));
-	agregarBien(new Archivo(524, 200, 60, 328, 4500, "Trad. peruanas", false));
-	agregarBien(new Archivo(718, 200, 60, 328, 4000, "Juras de indep.", false));
-	agregarBien(new Archivo(910, 200, 60, 328, 6000, "Archivo Courret", false));
+	agregarBien(new Archivo(320,203, 60, 324, 5000, "Archivo Caceres", false));
+	agregarBien(new Archivo(524, 203, 60, 324, 4500, "Trad. peruanas", false));
+	agregarBien(new Archivo(718, 203, 60, 324, 4000, "Juras de indep.", false));
+	agregarBien(new Archivo(910, 203, 60, 324, 6000, "Archivo Courret", false));
 
 	setearColisionesMapa();
 
@@ -92,9 +92,39 @@ void GestorBiblioteca::jugar(){
 }
 
 void GestorBiblioteca::setearColisionesMapa(){
-	
-
-
+//escritorio
+	agregarObjeto(new Objeto(572, 578, 36, 45));
+	agregarObjeto(new Objeto(610, 599, 110, 23));
+//plantas
+	agregarObjeto(new Objeto(890, 627, 42, 40));
+	agregarObjeto(new Objeto(1190, 561, 42, 40));
+	agregarObjeto(new Objeto(1188, 304, 42, 40));
+	agregarObjeto(new Objeto(885, 113, 42, 40));
+	agregarObjeto(new Objeto(677, 113, 42, 40));
+	agregarObjeto(new Objeto(581, 113, 42, 40));
+	agregarObjeto(new Objeto(373, 113, 42, 40));
+	agregarObjeto(new Objeto(72, 304, 42, 40));
+	agregarObjeto(new Objeto(72, 561, 42, 40));
+	agregarObjeto(new Objeto(367, 627, 42, 40));
+	agregarObjeto(new Objeto(148, 607, 40, 38));
+	agregarObjeto(new Objeto(1109, 607, 40, 38));
+	//estantes
+	agregarObjeto(new Objeto(80, 68, 118, 94));
+	agregarObjeto(new Objeto(1102, 68, 118, 94));
+	//cercas
+	agregarObjeto(new Objeto(148, 638, 208, 46));
+	agregarObjeto(new Objeto(942, 638, 208, 46));
+	//varillas (?
+	agregarObjeto(new Objeto(70, 200, 32, 68));
+	agregarObjeto(new Objeto(1203, 200, 32, 68));
+	agregarObjeto(new Objeto(77, 454, 26, 58));
+	agregarObjeto(new Objeto(1195, 454, 26, 58));
+	//mesitas
+	agregarObjeto(new Objeto(162, 336, 39, 76));
+	agregarObjeto(new Objeto(1091, 336, 39, 76));
+	//bancos
+	agregarObjeto(new Objeto(158, 160, 42, 45));
+	agregarObjeto(new Objeto(1098, 160, 42, 45));
 }
 
 void GestorBiblioteca::generarManipulador(){
