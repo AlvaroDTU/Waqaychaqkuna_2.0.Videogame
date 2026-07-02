@@ -15,12 +15,12 @@ GestorBiblioteca::~GestorBiblioteca(){
 void GestorBiblioteca::crearSprites(){
 	fondo = new Fondo(3, anchoLienzo, altoLienzo);
 
-	guardia = new Guardia(600, 1000, 45, 60, 60, 80);
+	guardia = new Guardia(622, 674, 30, 40, 60, 80);
 
-	agregarBien(new Archivo(316,200, 60, 330, 5000, "Archivo Caceres", false));
-	agregarBien(new Archivo(552, 200, 60, 330, 4500, "Trad. peruanas", false));
-	agregarBien(new Archivo(718, 200, 60, 330, 4000, "Juras de indep.", false));
-	agregarBien(new Archivo(908, 200, 60, 330, 6000, "Archivo Courret", false));
+	agregarBien(new Archivo(320,200, 60, 328, 5000, "Archivo Caceres", false));
+	agregarBien(new Archivo(524, 200, 60, 328, 4500, "Trad. peruanas", false));
+	agregarBien(new Archivo(718, 200, 60, 328, 4000, "Juras de indep.", false));
+	agregarBien(new Archivo(910, 200, 60, 328, 6000, "Archivo Courret", false));
 
 	setearColisionesMapa();
 

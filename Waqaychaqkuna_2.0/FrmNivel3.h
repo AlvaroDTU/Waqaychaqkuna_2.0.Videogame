@@ -50,7 +50,7 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Timer^ tmrNivel3;
 	private: System::ComponentModel::IContainer^ components;
 	 BufferedGraphics^ buffer;
-	private: System::ComponentModel::BackgroundWorker^ backgroundWorker1;
+
 		   GestorBiblioteca* gestor;
 
 
@@ -84,7 +84,6 @@ namespace Waqaychaqkuna20 {
 			this->lblBateria = (gcnew System::Windows::Forms::Label());
 			this->lblIntentos = (gcnew System::Windows::Forms::Label());
 			this->tmrNivel3 = (gcnew System::Windows::Forms::Timer(this->components));
-			this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
 			this->SuspendLayout();
 			// 
 			// pnlMapa
@@ -198,6 +197,7 @@ namespace Waqaychaqkuna20 {
 			// tmrNivel3
 			// 
 			this->tmrNivel3->Enabled = true;
+			this->tmrNivel3->Interval = 16;
 			this->tmrNivel3->Tick += gcnew System::EventHandler(this, &FrmNivel3::tmrNivel3_Tick);
 			// 
 			// FrmNivel3
