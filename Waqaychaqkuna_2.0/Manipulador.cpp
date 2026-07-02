@@ -37,6 +37,74 @@ void Manipulador::mover(int anchoLienzo, int altoLienzo)
 	if (posY + r.Height > altoLienzo)
 		posY = altoLienzo - r.Height;
 
+
+
+	if (tipo == 1) {
+		if (posY >= 299) {
+
+			dirX = 5;
+			dirY = 0;
+
+			if (posX >= 262) {
+				dirX = 0;
+				dirY = 5;
+
+				if (posY >= 336) {
+					dirX = 5;
+					dirY = 0;
+				}
+			}
+		}
+	}
+	if (tipo == 2) {
+		if (posY >= 299) {
+			dirX = 5;
+			dirY = 0;
+
+			if (posX >= 262) {
+				dirX = 0;
+				dirY = 5;
+
+				if (posY >= 388) {
+					dirX = 5;
+					dirY = 0;
+				}
+			}
+		}
+	}
+	if (tipo == 3) {
+		if (posY >= 299) {
+			dirX = 5;
+			dirY = 0;
+
+			if (posX >= 316) {
+				dirX = 0;
+				dirY = 5;
+
+				if (posY >= 3) {
+					dirX = 5;
+					dirY = 0;
+				}
+			}
+		}
+	}
+	if (tipo == 4) {
+		if (posY >= 299) {
+			dirX = 5;
+			dirY = 0;
+
+			if (posX >= 262) {
+				dirX = 0;
+				dirY = 5;
+
+				if (posY >= 339) {
+					dirX = 5;
+					dirY = 0;
+				}
+			}
+		}
+	}
+
 }
 
 void Manipulador::atacar(Bien* bien)

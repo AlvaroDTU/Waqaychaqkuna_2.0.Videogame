@@ -50,7 +50,7 @@ void GestorBiblioteca::detectarColisiones(){
 		Rectangle hbLadron = enemigos[i]->getRectangle(1);
 		if (hbLadron.IntersectsWith(hbGuardia))
 		{
-			if (guardia->getAccion() && guardia->getTipoAccion() == 1) {
+			if (guardia->getAccion() && guardia->getTipoAccion() != 1) {
 				intentos--;
 			}
 		}
@@ -87,7 +87,7 @@ void GestorBiblioteca::jugar(){
 	tempSpawnEntidades--;
 	if (tempSpawnEntidades == 0) {
 		generarManipulador();
-		tempSpawnEntidades = 70;
+		tempSpawnEntidades = 10;
 	}
 }
 
@@ -129,21 +129,21 @@ void GestorBiblioteca::setearColisionesMapa(){
 
 void GestorBiblioteca::generarManipulador(){
 	int tipo = rand() % 4 + 1;
-	//Derecha
+
 	if (tipo == 1) {
-		Manipulador* nuevo = new Manipulador(0, 365, 30, 40, 60, 80, 5, 0, 1, 1);
+		Manipulador* nuevo = new Manipulador(305, 365, 30, 40, 60, 80, 0, 5, 1, 1);
 		agregarEnemigo(nuevo);
 	}
 	else if (tipo == 2) {
-		Manipulador* nuevo = new Manipulador(0, 365, 30, 40, 60, 80, 5, 0, 2, tipo);
+		Manipulador* nuevo = new Manipulador(534, 365, 30, 40, 60, 80, 0, 5, 2, tipo);
 		agregarEnemigo(nuevo);
 	}
 	else if (tipo == 3) {
-		Manipulador* nuevo = new Manipulador(0, 365, 30, 40, 60, 80, 5, 0, 3, tipo);
+		Manipulador* nuevo = new Manipulador(750, 365, 30, 40, 60, 80, 0, 5, 3, tipo);
 		agregarEnemigo(nuevo);
 	}
 	else if (tipo == 4) {
-		Manipulador* nuevo = new Manipulador(0, 365, 30, 40, 60, 80, 5, 0, 4, tipo);
+		Manipulador* nuevo = new Manipulador(962, 365, 30, 40, 60, 80, 0, 5, 4, tipo);
 		agregarEnemigo(nuevo);
 	}
 }
