@@ -6,7 +6,7 @@ GestorBiblioteca::GestorBiblioteca(int enTotal) : Escenario(enTotal)
 	enemigosCapturados = 0;
 	this->tiempoRecarga = 100.00;
 	tempSpawnEntidades = 70;
-	vidas = 50;
+	vidas = 20;
 }
 
 GestorBiblioteca::~GestorBiblioteca(){
@@ -50,16 +50,20 @@ void GestorBiblioteca::detectarColisiones(){
 
 	Rectangle hbGuardia = guardia->getRectangle();
 
-	for (int i = (int)enemigos.size() - 1; i >= 0; i--)
+	for (size_t i = 0; i < (int)bienes.size(); i++)
 	{
-		Rectangle hbLadron = enemigos[i]->getRectangle(1);
-		if (hbLadron.IntersectsWith(hbGuardia))
+		Rectangle htbBien = bienes[i]->getRectangle();
+		for (size_t j = 0; j < (int)enemigos.size(); j++)
 		{
-			if (hbGuardia.IntersectsWith(hbLadron)) {
-				vidas = vidas - 0.1;
+			Rectangle htbEnemigo = enemigos[j]->getRectangle();
+			if (htbBien.IntersectsWith(htbEnemigo)) {
+				enemigos[j]->setMoviendose(false);
+				enemigos[j]->setColumna(0);
+				enemigos[j]->setAtacando(true);
+				bienes[i]->restarPuntajeValor(1);
 			}
-			else vidas = 0;
 		}
+
 	}
 
 	for (int i = 0; i < (int)enemigos.size(); i++)
@@ -94,7 +98,7 @@ void GestorBiblioteca::jugar(){
 	tempSpawnEntidades--;
 	if (tempSpawnEntidades == 0) {
 		generarManipulador();
-		tempSpawnEntidades = 300;
+		tempSpawnEntidades = 120;
 	}
 }
 
@@ -174,7 +178,7 @@ void GestorBiblioteca::recargaLinterna(){
 
 	if (tiempoRecarga <= 0) tiempoRecarga = 0;
 
-	else tiempoRecarga = tiempoRecarga - 0.2;
+	else tiempoRecarga = tiempoRecarga - 0.4;
 }
 
 double GestorBiblioteca::getTiempoRecarga() {
