@@ -145,19 +145,19 @@ void GestorBiblioteca::generarManipulador(){
 	int tipo = rand() % 4 + 1;
 
 	if (tipo == 1) {
-		Manipulador* nuevo = new Manipulador(305, 365, 30, 40, 60, 80, 0, 5, 1, 1, false);
+		Manipulador* nuevo = new Manipulador(305, 64, 30, 40, 60, 80, 0, 5, 1, 1, false);
 		agregarEnemigo(nuevo);
 	}
 	else if (tipo == 2) {
-		Manipulador* nuevo = new Manipulador(534, 365, 30, 40, 60, 80, 0, 5, 2, tipo, false);
+		Manipulador* nuevo = new Manipulador(534, 64, 30, 40, 60, 80, 0, 5, 2, tipo, false);
 		agregarEnemigo(nuevo);
 	}
 	else if (tipo == 3) {
-		Manipulador* nuevo = new Manipulador(750, 365, 30, 40, 60, 80, 0, 5, 3, tipo, false);
+		Manipulador* nuevo = new Manipulador(750, 64, 30, 40, 60, 80, 0, 5, 3, tipo, false);
 		agregarEnemigo(nuevo);
 	}
 	else if (tipo == 4) {
-		Manipulador* nuevo = new Manipulador(962, 365, 30, 40, 60, 80, 0, 5, 4, tipo, false);
+		Manipulador* nuevo = new Manipulador(962, 64, 30, 40, 60, 80, 0, 5, 4, tipo, false);
 		agregarEnemigo(nuevo);
 	}
 }
