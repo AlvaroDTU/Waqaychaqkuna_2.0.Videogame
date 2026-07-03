@@ -12,7 +12,7 @@ class GestorBiblioteca : public Escenario
 {
 	private:
 	double tiempoRecarga;
-	int intentos;
+	int vidas;
 
 	public:
 		GestorBiblioteca(int enTotales);
@@ -31,5 +31,6 @@ class GestorBiblioteca : public Escenario
 		void generarManipulador();
 		void recargaLinterna();
 		double getTiempoRecarga();
+		int getVidas();
 };
 

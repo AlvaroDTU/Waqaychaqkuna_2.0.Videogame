@@ -188,7 +188,7 @@ namespace Waqaychaqkuna20 {
 			this->lblIntentos->Name = L"lblIntentos";
 			this->lblIntentos->Size = System::Drawing::Size(105, 17);
 			this->lblIntentos->TabIndex = 19;
-			this->lblIntentos->Text = L"INTENTOS: 0";
+
 			// 
 			// tmrNivel3
 			// 
@@ -300,16 +300,16 @@ private: System::Void FrmNivel3_KeyDown(System::Object^ sender, System::Windows:
 }
 
  Void Pintar(){
-		   gestor->dibujar(buffer->Graphics);
+	 gestor->dibujar(buffer->Graphics);
 
-		   Graphics^ g = this->pnlMapa->CreateGraphics();
-		   buffer->Render(g);
-		   delete g;
+	 Graphics^ g = this->pnlMapa->CreateGraphics();
+	 buffer->Render(g);
+	 delete g;
 }
 
 private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ e) {
 
-	//bateria
+	this->lblIntentos->Text = String::Format(L"Vida: {0}", gestor->getVidas());
 	this->lblBateria->Text = String::Format("PORCENTAJE BATERIA: {0}", (int)gestor->getTiempoRecarga());
 	//archivos
 	this->lblArchivo1->Text = gcnew System::String(gestor->getBien(0)->getNombre().c_str());

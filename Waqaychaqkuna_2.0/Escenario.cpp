@@ -40,7 +40,7 @@ void Escenario::agregarAliado(Aliado* nuevo) { aliados.push_back(nuevo); }
 void Escenario::agregarBien(Bien* nuevo) { bienes.push_back(nuevo); }
 void Escenario::agregarObjeto(Objeto* nuevo) { objetos.push_back(nuevo); }
 
-void Escenario::eliminarEnemigo(int i) { enemigos.erase(enemigos.begin() + i); }
+void Escenario::eliminarEnemigo(int i) { delete enemigos[i]; enemigos.erase(enemigos.begin() + i); }
 void Escenario::eliminarAliado(int i) { aliados.erase(aliados.begin() + i); }
 
 int Escenario::totalEnemigos() { return (int)enemigos.size(); }

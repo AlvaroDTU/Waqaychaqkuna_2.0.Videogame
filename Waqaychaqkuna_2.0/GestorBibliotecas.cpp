@@ -3,11 +3,10 @@
 
 GestorBiblioteca::GestorBiblioteca(int enTotal) : Escenario(enTotal)
 {
-	this->guardia = guardia;
-	this->anchoLienzo = anchoLienzo;
-	this->altoLienzo = altoLienzo;
 	enemigosCapturados = 0;
 	this->tiempoRecarga = 100.00;
+	tempSpawnEntidades = 70;
+	vidas = 50;
 }
 
 GestorBiblioteca::~GestorBiblioteca(){
@@ -56,9 +55,10 @@ void GestorBiblioteca::detectarColisiones(){
 		Rectangle hbLadron = enemigos[i]->getRectangle(1);
 		if (hbLadron.IntersectsWith(hbGuardia))
 		{
-			if (guardia->getAccion() && guardia->getTipoAccion() != 1) {
-				intentos--;
+			if (hbGuardia.IntersectsWith(hbLadron)) {
+				vidas = vidas - 0.1;
 			}
+			else vidas = 0;
 		}
 	}
 
@@ -85,7 +85,7 @@ bool GestorBiblioteca::derrota(){
 	{
 		if (bien->getPuntajeValor() <= 0) bienDestruido = true;
 	}
-	return intentos <= 0 || bienDestruido;
+	return vidas <= 0 || bienDestruido;
 }
 
 void GestorBiblioteca::jugar(){
@@ -94,7 +94,7 @@ void GestorBiblioteca::jugar(){
 	tempSpawnEntidades--;
 	if (tempSpawnEntidades == 0) {
 		generarManipulador();
-		tempSpawnEntidades = 10;
+		tempSpawnEntidades = 300;
 	}
 }
 
@@ -179,4 +179,8 @@ void GestorBiblioteca::recargaLinterna(){
 
 double GestorBiblioteca::getTiempoRecarga() {
 	return tiempoRecarga;
+}
+
+int GestorBiblioteca::getVidas() {
+	return vidas;
 }
