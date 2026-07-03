@@ -181,7 +181,6 @@ namespace Waqaychaqkuna20 {
 			this->lblBateria->Name = L"lblBateria";
 			this->lblBateria->Size = System::Drawing::Size(199, 17);
 			this->lblBateria->TabIndex = 18;
-			this->lblBateria->Text = L"PORCENTAJE BATERIA: 0";
 			// 
 			// lblIntentos
 			// 
@@ -265,6 +264,8 @@ private: System::Void FrmNivel3_KeyDown(System::Object^ sender, System::Windows:
 }
 
 private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ e) {
+
+	this->lblBateria->Text = String::Format("PORCENTAJE BATERIA: {0}", (int)gestor->getTiempoRecarga());
 
 	gestor->jugar();
 	gestor->detectarColisiones();

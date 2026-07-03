@@ -43,8 +43,7 @@ void Manipulador::mover(int anchoLienzo, int altoLienzo)
 	if (posY + r.Height > altoLienzo)
 		posY = altoLienzo - r.Height;
 
-
-
+//1era ventana
 	if (tipo == 1) {
 		if (posY >= 299) {
 
@@ -62,6 +61,8 @@ void Manipulador::mover(int anchoLienzo, int altoLienzo)
 			}
 		}
 	}
+
+//2da ventana
 	if (tipo == 2) {
 		if (posY >= 299) {
 			dirX = 5;
@@ -78,6 +79,8 @@ void Manipulador::mover(int anchoLienzo, int altoLienzo)
 			}
 		}
 	}
+
+//3era ventana
 	if (tipo == 3) {
 		if (posY >= 299) {
 			dirX = 5;
@@ -94,6 +97,8 @@ void Manipulador::mover(int anchoLienzo, int altoLienzo)
 			}
 		}
 	}
+
+//4ta ventana
 	if (tipo == 4) {
 		if (posY >= 299) {
 			dirX = 5;

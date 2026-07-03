@@ -7,6 +7,7 @@ GestorBiblioteca::GestorBiblioteca(int enTotal) : Escenario(enTotal)
 	this->anchoLienzo = anchoLienzo;
 	this->altoLienzo = altoLienzo;
 	enemigosCapturados = 0;
+	this->tiempoRecarga = 100.00;
 }
 
 GestorBiblioteca::~GestorBiblioteca(){
@@ -89,6 +90,7 @@ bool GestorBiblioteca::derrota(){
 
 void GestorBiblioteca::jugar(){
 	mover();
+	recargaLinterna();
 	tempSpawnEntidades--;
 	if (tempSpawnEntidades == 0) {
 		generarManipulador();
@@ -153,5 +155,20 @@ void GestorBiblioteca::generarManipulador(){
 	}
 }
 void GestorBiblioteca::recargaLinterna(){
-	tiempoRecarga = 100.00;
+
+	Rectangle g = guardia->getRectangle();
+	Rectangle m = aliados[0]->getRectangle();
+
+	if (g.IntersectsWith(m)){
+
+		tiempoRecarga = 100.00;
+	}
+
+	if (tiempoRecarga <= 0) tiempoRecarga = 0;
+
+	else tiempoRecarga = tiempoRecarga - 0.2;
+}
+
+double GestorBiblioteca::getTiempoRecarga() {
+	return tiempoRecarga;
 }

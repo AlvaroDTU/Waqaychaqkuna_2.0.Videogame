@@ -30,5 +30,6 @@ class GestorBiblioteca : public Escenario
 
 		void generarManipulador();
 		void recargaLinterna();
+		double getTiempoRecarga();
 };
 
