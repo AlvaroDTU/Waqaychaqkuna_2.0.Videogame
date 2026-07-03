@@ -309,7 +309,7 @@ private: System::Void FrmNivel3_KeyDown(System::Object^ sender, System::Windows:
 
 private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ e) {
 
-	this->lblIntentos->Text = String::Format(L"Vida: {0}", gestor->getVidas());
+	this->lblIntentos->Text = String::Format(L"Vida: {0}", (int)gestor->getVidas());
 	this->lblBateria->Text = String::Format("PORCENTAJE BATERIA: {0}", (int)gestor->getTiempoRecarga());
 	//archivos
 	this->lblArchivo1->Text = gcnew System::String(gestor->getBien(0)->getNombre().c_str());
