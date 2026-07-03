@@ -37,6 +37,9 @@ void Murcielago::mover(int anchoLienzo, int altoLienzo) {
 		posX = 1140;
 		dirX *= -1;
 	}
+	if (columna < 2) columna = 0;
+	avanzarEscena();
+
 }
 void Murcielago::ayudar() {
 	//no se q poner aun aqui lol

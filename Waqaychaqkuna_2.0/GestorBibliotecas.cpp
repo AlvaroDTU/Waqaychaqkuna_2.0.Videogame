@@ -162,7 +162,9 @@ void GestorBiblioteca::recargaLinterna(){
 	if (g.IntersectsWith(m)){
 
 		tiempoRecarga = 100.00;
+		aliados[0]->setColumna(2);
 	}
+
 
 	if (tiempoRecarga <= 0) tiempoRecarga = 0;
 

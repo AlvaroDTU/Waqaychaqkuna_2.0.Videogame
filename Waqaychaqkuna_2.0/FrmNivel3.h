@@ -39,7 +39,7 @@ namespace Waqaychaqkuna20 {
 		}
 	private: System::Windows::Forms::Panel^ pnlMapa;
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ label2;
+
 	private: System::Windows::Forms::Label^ lblArchivo1;
 	private: System::Windows::Forms::Label^ lblArchivo2;
 	private: System::Windows::Forms::Label^ lblArchivo3;
@@ -75,7 +75,6 @@ namespace Waqaychaqkuna20 {
 			this->components = (gcnew System::ComponentModel::Container());
 			this->pnlMapa = (gcnew System::Windows::Forms::Panel());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->lblArchivo1 = (gcnew System::Windows::Forms::Label());
 			this->lblArchivo2 = (gcnew System::Windows::Forms::Label());
 			this->lblArchivo3 = (gcnew System::Windows::Forms::Label());
@@ -105,17 +104,6 @@ namespace Waqaychaqkuna20 {
 			this->label1->Size = System::Drawing::Size(199, 40);
 			this->label1->TabIndex = 11;
 			this->label1->Text = L"\'E\' PARA\r\nENCENDER LINTERNA";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(1311, 210);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(202, 40);
-			this->label2->TabIndex = 12;
-			this->label2->Text = L"\'R\' PARA\r\nRECARGAR LINTERNA";
 			// 
 			// lblArchivo1
 			// 
@@ -179,7 +167,7 @@ namespace Waqaychaqkuna20 {
 				static_cast<System::Byte>(0)));
 			this->lblBateria->Location = System::Drawing::Point(1319, 734);
 			this->lblBateria->Name = L"lblBateria";
-			this->lblBateria->Size = System::Drawing::Size(199, 17);
+			this->lblBateria->Size = System::Drawing::Size(0, 17);
 			this->lblBateria->TabIndex = 18;
 			// 
 			// lblIntentos
@@ -211,7 +199,6 @@ namespace Waqaychaqkuna20 {
 			this->Controls->Add(this->lblArchivo3);
 			this->Controls->Add(this->lblArchivo2);
 			this->Controls->Add(this->lblArchivo1);
-			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pnlMapa);
 			this->Name = L"FrmNivel3";
