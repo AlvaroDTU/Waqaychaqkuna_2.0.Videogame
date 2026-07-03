@@ -20,6 +20,7 @@ namespace Waqaychaqkuna20 {
 			InitializeComponent();
 			this->KeyPreview = true;
 			gestor = new GestorHuacas(10);
+			finCont = 0;
 			//
 			//TODO: agregar código de constructor aquí
 			//
@@ -50,6 +51,7 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Label^ lblHuacaN2;
 	private: System::Windows::Forms::Label^ lblHuacaN3;
 	private: System::Windows::Forms::Label^ lblHuacaN4;
+	int finCont;
 
 		   BufferedGraphics^ buffer;
 
@@ -234,6 +236,12 @@ namespace Waqaychaqkuna20 {
 		gestor->setLienzo(this->pnlMapa->Width, this->pnlMapa->Height);
 		gestor->crearSprites();
 
+		//prueba de dialogo
+		std::vector<std::string> frases;
+		frases.push_back("Bienvenido a la Escena Uno!");
+		frases.push_back("Choca a los enemigos para sumar puntaje.");
+		gestor->getDialogo()->iniciar(frases);
+
 		BufferedGraphicsContext^ contexto = BufferedGraphicsManager::Current;
 		Graphics^ g = this->pnlMapa->CreateGraphics();
 		buffer = contexto->Allocate(g, this->pnlMapa->ClientRectangle);
@@ -241,6 +249,16 @@ namespace Waqaychaqkuna20 {
 		delete g;
 	}
 	private: System::Void FrmNivel2_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+
+	//prueba dialogos
+		if (gestor->getDialogo()->estaActivo())
+		{
+			if (e->KeyCode == Keys::Space || e->KeyCode == Keys::Enter)
+				gestor->getDialogo()->avanzar();
+			e->Handled = true;
+			return;
+		}
+
 		Guardia* g = gestor->getGuardia();
 		if (e->KeyCode == Keys::Up) {
 			g->setVelocidad(0, -5);
@@ -263,7 +281,8 @@ namespace Waqaychaqkuna20 {
 	 Void Pintar()
 	 {
 	  gestor->dibujar(buffer->Graphics);
-	
+	  gestor->getDialogo()->dibujar(buffer->Graphics, pnlMapa->ClientSize.Width, pnlMapa->ClientSize.Height);
+
 	  Graphics^ g = this->pnlMapa->CreateGraphics();
 	  buffer->Render(g);
 	  delete g;
@@ -273,6 +292,18 @@ namespace Waqaychaqkuna20 {
 		g->setVelocidad(0, 0);
 	}
 	Void tmrJuego_Tick(System::Object^ sender, System::EventArgs^ e) {
+
+		gestor->getDialogo()->actualizar();
+		if (gestor->victoria())
+		{
+			finCont++;
+			if (finCont >= 120)
+			{
+				this->DialogResult = System::Windows::Forms::DialogResult::OK;
+				this->Close();
+			}
+		}
+
 
 	lblPrueba->Text = String::Format("PosX: {0}", gestor->getGuardia()->getPosX());
 	lblHuaca1->Text = String::Format("Puntaje: {0}", gestor->getBien(0)->getPuntajeValor());

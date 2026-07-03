@@ -51,3 +51,5 @@ Guardia* Escenario::getGuardia() { return guardia; }
 Bien* Escenario::getBien(int i) {
 	return bienes[i];
 }
+
+Dialogo* Escenario::getDialogo() { return &dialogo;}

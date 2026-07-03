@@ -7,6 +7,7 @@
 #include "Bien.h"
 #include "Huaca.h"
 #include "Archivo.h"
+#include "Dialogo.h"
 #include <ctime>
 #include <cstdlib>
 #include <vector>
@@ -22,6 +23,7 @@ protected:
 	vector<Aliado*> aliados;
 	vector<Bien*> bienes;
 	vector<Objeto*> objetos;
+	Dialogo dialogo;
 	int anchoLienzo;
 	int altoLienzo;
 	int enemigosTotales;
@@ -55,6 +57,7 @@ public:
 	int getPuntajeNivel() { return puntajeNivel; }
 	int getCapturados() { return enemigosCapturados; }
 	Guardia* getGuardia();
+	Dialogo* getDialogo();
 };
 
 

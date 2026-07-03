@@ -144,6 +144,7 @@
     <ClInclude Include="Artilugio.h" />
     <ClInclude Include="Bien.h" />
     <ClInclude Include="Cuidador.h" />
+    <ClInclude Include="Dialogo.h" />
     <ClInclude Include="Enemigo.h" />
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="Escenario.h" />
@@ -183,6 +184,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Bien.cpp" />
     <ClCompile Include="Cuidador.cpp" />
+    <ClCompile Include="Dialogo.cpp" />
     <ClCompile Include="Enemigo.cpp" />
     <ClCompile Include="Entidad.cpp" />
     <ClCompile Include="Escenario.cpp" />

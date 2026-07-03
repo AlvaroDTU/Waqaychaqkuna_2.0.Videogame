@@ -104,6 +104,9 @@
     <ClInclude Include="FrmNivel3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Dialogo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Waqaychaqkuna_2.0.cpp">
@@ -188,6 +191,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FrmNivel3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
