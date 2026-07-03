@@ -238,10 +238,38 @@ namespace Waqaychaqkuna20 {
 
 		//prueba de dialogo
 		std::vector<std::string> frases;
-		frases.push_back("Bienvenido a la Escena Uno!");
-		frases.push_back("Choca a los enemigos para sumar puntaje.");
+		frases.push_back("Reportera: Evita que los huaqueros destruyan las huacas");
+		frases.push_back("poniendo cuidadores que vigilen y protejan el patrimonio (letra E)");
+		frases.push_back("Si el puntaje de una Huaca es menor a 1500, esta se destruye");
 		gestor->getDialogo()->iniciar(frases);
 
+		std::vector<std::string> huaca1;
+		huaca1.push_back("La Huaca del Sol ha sido destruida...");
+		huaca1.push_back("Fue el mayor centro ceremonial de la cultura Moche.");
+		huaca1.push_back("Con ella se pierde parte de la historia y arquitectura del Perú.");
+		huaca1.push_back("¡Protege nuestro patrimonio antes de que sea demasiado tarde!");
+
+		std::vector<std::string> huaca2;
+		huaca2.push_back("La Huaca de la Luna ha sido destruida...");
+		huaca2.push_back("Sus murales narraban rituales y creencias de los mochicas.");
+		huaca2.push_back("Cada pintura perdida borra parte de nuestra memoria cultural.");
+		huaca2.push_back("¡No permitas que el huaqueo destruya nuestra historia!");
+
+		std::vector<std::string> huaca3;
+		huaca3.push_back("La Huaca Dragón ha sido destruida...");
+		huaca3.push_back("Sus relieves representaban importantes símbolos de la cultura Chimú.");
+		huaca3.push_back("Su destrucción significa perder valiosa evidencia arqueológica.");
+		huaca3.push_back("¡El patrimonio cultural necesita ser protegido por todos!");
+
+		std::vector<std::string> huaca4;
+		huaca4.push_back("La Huaca Takaynamo ha sido destruida...");
+		huaca4.push_back("Está vinculada al origen legendario del reino Chimú.");
+		huaca4.push_back("Cada monumento perdido debilita nuestra identidad cultural.");
+		huaca4.push_back("¡Conservar el patrimonio es preservar nuestra historia!");
+	/*	"Huaca del Sol", 1));
+		"Huaca de la Luna", 2
+			"Huaca Dragon", 3));
+			"Huaca Takaynamo", 4))*/
 		BufferedGraphicsContext^ contexto = BufferedGraphicsManager::Current;
 		Graphics^ g = this->pnlMapa->CreateGraphics();
 		buffer = contexto->Allocate(g, this->pnlMapa->ClientRectangle);
