@@ -14,6 +14,7 @@ GestorBiblioteca::~GestorBiblioteca(){
 	Escenario::~Escenario();
 }
 void GestorBiblioteca::crearSprites(){
+
 	fondo = new Fondo(3, anchoLienzo, altoLienzo);
 
 	guardia = new Guardia(622, 674, 30, 40, 60, 80);
@@ -35,7 +36,6 @@ void GestorBiblioteca::dibujar(Graphics^ g){
 	for (auto murcielago : aliados)
 		murcielago->dibujar(g);
 	guardia->dibujar(g);
-
 
 }
 void GestorBiblioteca::mover(){
@@ -132,6 +132,13 @@ void GestorBiblioteca::setearColisionesMapa(){
 	//bancos
 	agregarObjeto(new Objeto(158, 160, 42, 45));
 	agregarObjeto(new Objeto(1098, 160, 42, 45));
+	//bordes
+	agregarObjeto(new Objeto(27, 24, 33, 684));
+	agregarObjeto(new Objeto(1238, 24, 33, 684));
+	agregarObjeto(new Objeto(28, 691, 490, 18));
+	agregarObjeto(new Objeto(779, 691, 490, 18));
+	agregarObjeto(new Objeto(486, 720, 327, 33));
+	agregarObjeto(new Objeto(198, 95, 809, 20));
 }
 
 void GestorBiblioteca::generarManipulador(){
@@ -164,7 +171,6 @@ void GestorBiblioteca::recargaLinterna(){
 		tiempoRecarga = 100.00;
 		aliados[0]->setColumna(2);
 	}
-
 
 	if (tiempoRecarga <= 0) tiempoRecarga = 0;
 
