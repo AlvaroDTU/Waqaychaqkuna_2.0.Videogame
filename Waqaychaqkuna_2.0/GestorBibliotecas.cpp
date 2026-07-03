@@ -16,11 +16,13 @@ void GestorBiblioteca::crearSprites(){
 	fondo = new Fondo(3, anchoLienzo, altoLienzo);
 
 	guardia = new Guardia(622, 674, 30, 40, 60, 80);
+	
+	agregarAliado(new Murcielago(131, 541, 40, 30, 40, 24));
 
-	agregarBien(new Archivo(320,203, 60, 324, 5000, "Archivo Caceres", false));
-	agregarBien(new Archivo(524, 203, 60, 324, 4500, "Trad. peruanas", false));
-	agregarBien(new Archivo(718, 203, 60, 324, 4000, "Juras de indep.", false));
-	agregarBien(new Archivo(910, 203, 60, 324, 6000, "Archivo Courret", false));
+	agregarBien(new Archivo(320,203, 60, 320, 5000, "Archivo Caceres", false));
+	agregarBien(new Archivo(524, 203, 60, 320, 4500, "Trad. peruanas", false));
+	agregarBien(new Archivo(718, 203, 60, 320, 4000, "Juras de indep.", false));
+	agregarBien(new Archivo(910, 203, 60, 320, 6000, "Archivo Courret", false));
 
 	setearColisionesMapa();
 
@@ -29,13 +31,16 @@ void GestorBiblioteca::dibujar(Graphics^ g){
 
 	fondo->dibujarFondo(g);
 	for (auto manipulador : enemigos) manipulador->dibujar(g);
+	for (auto murcielago : aliados)
+		murcielago->dibujar(g);
 	guardia->dibujar(g);
+
 
 }
 void GestorBiblioteca::mover(){
 
 	guardia->mover(objetos, bienes);
-
+	aliados[0]->mover(anchoLienzo, altoLienzo);
 	for (size_t j = 0; j < (int)enemigos.size(); j++) {
 		if (enemigos[j]->getAtacando() == false) { enemigos[j]->mover(anchoLienzo, altoLienzo); }
 	}

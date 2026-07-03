@@ -16,7 +16,6 @@ public:
 	void mover(int ancho, int alto) override;
 	Bitmap^ getBitmap() override;
 
-	
 	void ayudar() override;
 
 };

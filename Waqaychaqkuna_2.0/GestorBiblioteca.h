@@ -1,6 +1,7 @@
 #pragma once
-#include "Escenario.h"
 #include "Guardia.h"
+#include "Escenario.h"
+#include "Murcielago.h"
 #include "Manipulador.h"
 #include "Archivo.h"
 #include <vector>

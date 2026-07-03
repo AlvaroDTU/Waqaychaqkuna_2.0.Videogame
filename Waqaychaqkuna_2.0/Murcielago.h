@@ -7,7 +7,8 @@ public:
 	~Murcielago();
 
 	std::string getNombre() override;
-	// VER SI ESTO SE IMPREMENTARA
-	//void ayudar() override
+	Bitmap^getBitmap() override;
+	void mover(int ancho, int alto) override;
+	void ayudar() override;
 };
 
