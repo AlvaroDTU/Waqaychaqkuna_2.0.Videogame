@@ -34,12 +34,13 @@ void GestorBiblioteca::crearSprites(){
 void GestorBiblioteca::dibujar(Graphics^ g){
 
 	fondo->dibujarFondo(g);
+	guardia->dibujar(g);
 	for (auto manipulador : enemigos) manipulador->dibujar(g);
 	for (auto murcielago : aliados)
 		murcielago->dibujar(g);
 
-	if (encenderLinterna()){ linterna->dibujar(g); }
-	guardia->dibujar(g);
+	if (linterna->getEncendida())
+		linterna->dibujar(g);
 
 }
 void GestorBiblioteca::mover(){
@@ -54,13 +55,12 @@ void GestorBiblioteca::mover(){
 void GestorBiblioteca::detectarColisiones(){
 
 	Rectangle hbGuardia = guardia->getRectangle();
-	Rectangle hbLinterna = linterna->getRectangle(0);
 	//colision guardia y enemigos
 	for (int i = (int)enemigos.size() - 1; i >= 0; i--)
 	{
 		Rectangle hbLadron = enemigos[i]->getRectangle(1);
 		if (hbLadron.IntersectsWith(hbGuardia))	{ vidas = vidas - 0.2; }
-		else vidas = 0;
+
 	}
 	//colision enemigos y bienes
 	for (size_t i = 0; i < (int)bienes.size(); i++)
@@ -77,11 +77,19 @@ void GestorBiblioteca::detectarColisiones(){
 			}
 		}
 	}
-	//colision enemigos y linterna
-	for (int i = (int)enemigos.size() - 1; i >= 0; i--)
+	if (linterna != nullptr && linterna->getEncendida())
 	{
-		Rectangle hbLadron = enemigos[i]->getRectangle(1);
-		if (hbLadron.IntersectsWith(hbLinterna) && linterna->getEncendida() == true) { eliminarEnemigo(i); }
+		Rectangle hbLinterna = linterna->getRectangle();
+
+		for (int i = enemigos.size() - 1; i >= 0; i--)
+		{
+			Rectangle hbLadron = enemigos[i]->getRectangle();
+
+			if (hbLadron.IntersectsWith(hbLinterna))
+			{
+				eliminarEnemigo(i);
+			}
+		}
 	}
 
 }
@@ -101,6 +109,7 @@ bool GestorBiblioteca::derrota(){
 
 void GestorBiblioteca::jugar(){
 	mover();
+	encenderLinterna();
 	recargaLinterna();
 	tempSpawnEntidades--;
 	if (tempSpawnEntidades == 0) {
@@ -198,12 +207,18 @@ double GestorBiblioteca::getVidas() {
 
 bool GestorBiblioteca::encenderLinterna() {
 
-	if (guardia->getAccion() && guardia->getTipoAccion() == 1) {
+	if (guardia->getAccion() && guardia->getTipoAccion() == 1)
+	{
+		linterna->setEncendida(true);
+
 		int lx = guardia->getPosX();
 		int ly = guardia->getPosY() + 114;
-		linterna->setEncendida(true);
+
 		linterna->setPos(lx, ly);
-		return true;
 	}
-	else return false;
+	else
+	{
+		linterna->setEncendida(false);
+	}
+	return(guardia->getAccion() && guardia->getTipoAccion() == 1);
 }

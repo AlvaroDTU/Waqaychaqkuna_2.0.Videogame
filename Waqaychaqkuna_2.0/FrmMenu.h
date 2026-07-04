@@ -98,21 +98,21 @@ namespace Waqaychaqkuna20 {
 		//}
 		//delete f1;
 		
-		FrmNivel2^ f2 = gcnew FrmNivel2();
-		if (f2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
-		{
-			delete f2;
-			return;
-		}
-		delete f2;
-		// 
-		//FrmNivel3^ f3 = gcnew FrmNivel3();
-		//if (f3->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+		//FrmNivel2^ f2 = gcnew FrmNivel2();
+		//if (f2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
 		//{
-		//	delete f3;
+		//	delete f2;
 		//	return;
 		//}
-		//delete f3;
+		//delete f2;
+		// 
+		FrmNivel3^ f3 = gcnew FrmNivel3();
+		if (f3->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+		{
+			delete f3;
+			return;
+		}
+		delete f3;
 	}
 	};
 }
