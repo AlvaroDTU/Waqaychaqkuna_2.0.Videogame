@@ -207,7 +207,7 @@ double GestorBiblioteca::getVidas() {
 
 bool GestorBiblioteca::encenderLinterna() {
 
-	if (guardia->getAccion() && guardia->getTipoAccion() == 1)
+	if (guardia->getAccion() && guardia->getTipoAccion() == 1 && tiempoRecarga >=1)
 	{
 		linterna->setEncendida(true);
 
@@ -215,10 +215,11 @@ bool GestorBiblioteca::encenderLinterna() {
 		int ly = guardia->getPosY() - linterna->getAlto();
 
 		linterna->setPos(lx, ly);
+		return true;
 	}
 	else
 	{
 		linterna->setEncendida(false);
+		return false;
 	}
-	return(guardia->getAccion() && guardia->getTipoAccion() == 1);
 }
