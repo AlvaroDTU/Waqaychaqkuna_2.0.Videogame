@@ -45,32 +45,32 @@ void Manipulador::mover(int anchoLienzo, int altoLienzo)
 		posY = altoLienzo - r.Height;
 
 
-	if (posY >= 155 && posY < posFinal) { dirX = -5;dirY = 0;}
+	if (posY >= 155 && posY < posFinal) { dirX = -7;dirY = 0;}
 	//1era ventana
 	if(tipo==1 && posX <= 252) {
-		dirY = 5;dirX = 0;
+		dirY = 7;dirX = 0;
 		
-		if(posY>=posFinal) { dirX = 5;dirY = 0; }
+		if(posY>=posFinal) { dirX = 7;dirY = 0; }
 	}
 	//2da ventana
 	if (tipo == 2 && posX <= 430) {
-		dirY = 5;dirX = 0;
+		dirY = 7;dirX = 0;
 
-		if (posY >= posFinal) { dirX = 5;dirY = 0; }
+		if (posY >= posFinal) { dirX = 7;dirY = 0; }
 
 	}
 	
 //3era ventana
 	if (tipo == 3 && posX <= 630) {
-		dirY = 5;dirX = 0;
+		dirY = 7;dirX = 0;
 
-		if (posY >= posFinal) { dirX = 5;dirY = 0; }
+		if (posY >= posFinal) { dirX = 7;dirY = 0; }
 
 	}
 //4ta ventana
 	if (tipo == 4 && posX <= 830) {
-		dirY = 5;dirX = 0;
-		if (posY >= posFinal) { dirX = 5;dirY = 0; }
+		dirY = 7;dirX = 0;
+		if (posY >= posFinal) { dirX = 7;dirY = 0; }
 	}
 	avanzarEscena();
 }

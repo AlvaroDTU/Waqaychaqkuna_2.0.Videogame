@@ -5,7 +5,7 @@ GestorBiblioteca::GestorBiblioteca(int enTotal) : Escenario(enTotal)
 {
 	contador = 0;
 	this->tiempoRecarga = 100.00;
-	tempSpawnEntidades = 70;
+	tempSpawnEntidades = 80;
 	vidas = 20;
 	linterna = nullptr;
 }
@@ -25,8 +25,8 @@ void GestorBiblioteca::crearSprites(){
 
 	agregarBien(new Archivo(320,203, 60, 320, 5000, "Archivo Caceres", false,  1));
 	agregarBien(new Archivo(524, 203, 60, 320, 4500, "Trad. peruanas", false, 2));
-	agregarBien(new Archivo(718, 203, 60, 320, 4000, "Juras de indep.", false, 3));
-	agregarBien(new Archivo(910, 203, 60, 320, 6000, "Archivo Courret", false, 4));
+	agregarBien(new Archivo(718, 203, 60, 320, 6000, "Juras de indep.", false, 3));
+	agregarBien(new Archivo(910, 203, 60, 320, 4000, "Archivo Courret", false, 4));
 
 	setearColisionesMapa();
 
@@ -85,7 +85,7 @@ void GestorBiblioteca::detectarColisiones(){
 				enemigos[j]->setMoviendose(false);
 				enemigos[j]->setColumna(0);
 				enemigos[j]->setAtacando(true);
-				bienes[i]->restarPuntajeValor(4);
+				bienes[i]->restarPuntajeValor(1);
 			}
 		}
 	}
@@ -127,14 +127,14 @@ void GestorBiblioteca::jugar(){
 	tempSpawnEntidades--;
 	if (tempSpawnEntidades == 0 && (contador != enemigosTotales)) {
 		generarManipulador();
-		tempSpawnEntidades = 100;
+		tempSpawnEntidades = 50;
 		contador++;
 	}
 }
 
 void GestorBiblioteca::setearColisionesMapa(){
 //escritorio
-	agregarObjeto(new Objeto(572, 578, 36, 45));
+	agregarObjeto(new Objeto(570, 578, 36, 43));
 	agregarObjeto(new Objeto(610, 599, 110, 23));
 //plantas
 	agregarObjeto(new Objeto(890, 627, 42, 40));
@@ -179,19 +179,19 @@ void GestorBiblioteca::generarManipulador(){
 	int tipo = rand() % 4 + 1;
 
 	if (tipo == 1) {
-		Manipulador* nuevo = new Manipulador(305, 64, 30, 40, 60, 80, 0, 5, 1, 1, false);
+		Manipulador* nuevo = new Manipulador(305, 64, 30, 40, 60, 80, 0, 7, 1, 1, false);
 		agregarEnemigo(nuevo);
 	}
 	else if (tipo == 2) {
-		Manipulador* nuevo = new Manipulador(534, 64, 30, 40, 60, 80, 0, 5, 2, tipo, false);
+		Manipulador* nuevo = new Manipulador(534, 64, 30, 40, 60, 80, 0, 7, 2, tipo, false);
 		agregarEnemigo(nuevo);
 	}
 	else if (tipo == 3) {
-		Manipulador* nuevo = new Manipulador(750, 64, 30, 40, 60, 80, 0, 5, 3, tipo, false);
+		Manipulador* nuevo = new Manipulador(750, 64, 30, 40, 60, 80, 0, 7, 3, tipo, false);
 		agregarEnemigo(nuevo);
 	}
 	else if (tipo == 4) {
-		Manipulador* nuevo = new Manipulador(962, 64, 30, 40, 60, 80, 0, 5, 4, tipo, false);
+		Manipulador* nuevo = new Manipulador(962, 64, 30, 40, 60, 80, 0, 7, 4, tipo, false);
 		agregarEnemigo(nuevo);
 	}
 }

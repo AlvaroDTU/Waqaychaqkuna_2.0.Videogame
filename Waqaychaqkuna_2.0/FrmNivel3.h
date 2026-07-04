@@ -19,7 +19,7 @@ namespace Waqaychaqkuna20 {
 	public:
 		FrmNivel3(void)
 		{
-			gestor = new GestorBiblioteca(20);
+			gestor = new GestorBiblioteca(30);
 			InitializeComponent();
 			finCont = 0;
 			//
@@ -305,16 +305,16 @@ private: System::Void FrmNivel3_KeyDown(System::Object^ sender, System::Windows:
 
 	Guardia* g = gestor->getGuardia();
 	if (e->KeyCode == Keys::Up) {
-		g->setVelocidad(0, -5);
+		g->setVelocidad(0, -6);
 	}
 	else if (e->KeyCode == Keys::Down) {
-		g->setVelocidad(0, 5);
+		g->setVelocidad(0, 6);
 	}
 	else if (e->KeyCode == Keys::Right) {
-		g->setVelocidad(5, 0);
+		g->setVelocidad(6, 0);
 	}
 	else if (e->KeyCode == Keys::Left) {
-		g->setVelocidad(-5, 0);
+		g->setVelocidad(-6, 0);
 	}
 	//encender linterna
 	else if (e->KeyCode == Keys::E) {
@@ -404,8 +404,8 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 	}
 
 	if (!musicaSuspenso &&
-		(gestor->getBien(0)->getPuntajeValor() <= 2200 || gestor->getBien(1)->getPuntajeValor() <= 2200 ||
-		gestor->getBien(2)->getPuntajeValor() <= 2200 || gestor->getBien(3)->getPuntajeValor() <= 2200)) {
+		(gestor->getBien(0)->getPuntajeValor() <= 2000 || gestor->getBien(1)->getPuntajeValor() <= 2000 ||
+		gestor->getBien(2)->getPuntajeValor() <= 2000 || gestor->getBien(3)->getPuntajeValor() <= 2000)) {
 
 		musicaSuspenso = true;
 
