@@ -243,9 +243,10 @@ namespace Waqaychaqkuna20 {
 
 		//prueba de dialogo
 		std::vector<std::string> frases;
-		frases.push_back("Reportera: Evita que los huaqueros destruyan las huacas");
-		frases.push_back("poniendo cuidadores que vigilen y protejan el patrimonio (letra E)");
-		frases.push_back("Si el puntaje de una Huaca es menor a 1500, esta se destruye");
+		frases.push_back("Reportera: ¡Necesitamos tu ayuda para proteger nuestro patrimonio cultural!");
+		frases.push_back("Usa la tecla E para colocar cuidadores cerca de las huacas y detener a los huaqueros.");
+		frases.push_back("Cada huaca conserva siglos de historia. Si una cae, también se pierde parte de nuestra identidad.");
+		frases.push_back("Vigila su puntaje: si desciende por debajo de 1500, la huaca será destruida. ¡Depende de ti evitarlo!");
 		gestor->getDialogo()->iniciar(frases);
 
 	/*	"Huaca del Sol", 1));
