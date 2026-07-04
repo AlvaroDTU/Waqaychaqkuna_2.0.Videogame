@@ -12,6 +12,8 @@ public:
     static Bitmap^ reportera = gcnew Bitmap("sprites\\reportera.png");
     static Bitmap^ cuidador = gcnew Bitmap("sprites\\cuidador.png");
     static Bitmap^ murcielago = gcnew Bitmap("sprites\\bat.png");
+    static Bitmap^ linterna = gcnew Bitmap("sprites\\linterna.png");
+
 
     //---------------- VISITANTES ----------------
     static Bitmap^ visitante1 = gcnew Bitmap("sprites\\visitante1.png");
