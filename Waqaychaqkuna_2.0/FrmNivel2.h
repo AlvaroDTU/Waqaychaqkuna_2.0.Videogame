@@ -19,7 +19,7 @@ namespace Waqaychaqkuna20 {
 		{
 			InitializeComponent();
 			this->KeyPreview = true;
-			gestor = new GestorHuacas(5);
+			gestor = new GestorHuacas(20);
 			finCont = 0;
 
 			//
@@ -334,9 +334,10 @@ namespace Waqaychaqkuna20 {
 			if (finCont >= 200)
 			{
 				this->tmrJuego->Stop();
-				if (gestor->victoria())Recursos::victoria->Stop();
-				if (gestor->derrota()) Recursos::perdiste->Stop();
+				if (gestor->victoria()) { Recursos::victoria->Stop();
 				this->DialogResult = System::Windows::Forms::DialogResult::OK;
+				}
+				if (gestor->derrota()) Recursos::perdiste->Stop();
 				this->Close();
 			}
 		}
