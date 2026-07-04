@@ -253,3 +253,12 @@ bool GestorBiblioteca::encenderLinterna() {
 		return false;
 	}
 }
+
+void GestorBiblioteca::dibujarLibros(Graphics^ g, int i) {
+	int x ;
+	int y;
+	int ancho;
+	int alto;
+	Bitmap^ img = Recursos::libros;
+	g->DrawImage(img, x, y, ancho, alto);
+}
