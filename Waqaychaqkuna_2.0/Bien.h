@@ -11,6 +11,7 @@ protected:
 	int puntajeValor;
 	std::string nombre;
 	bool activo;
+
 public:
 	Bien(int px, int py, int an, int al, int pValor, std::string nom,bool act=true);
 	~Bien();
@@ -25,5 +26,7 @@ public:
 	void restarPuntajeValor(int pv);
 	virtual void describir() = 0;
 	Rectangle getRectangle(int extra = 0);
+
+
 };
 

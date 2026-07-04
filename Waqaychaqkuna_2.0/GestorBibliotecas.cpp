@@ -23,10 +23,10 @@ void GestorBiblioteca::crearSprites(){
 	
 	agregarAliado(new Murcielago(131, 541, 40, 30, 40, 24));
 
-	agregarBien(new Archivo(320,203, 60, 320, 5000, "Archivo Caceres", false));
-	agregarBien(new Archivo(524, 203, 60, 320, 4500, "Trad. peruanas", false));
-	agregarBien(new Archivo(718, 203, 60, 320, 4000, "Juras de indep.", false));
-	agregarBien(new Archivo(910, 203, 60, 320, 6000, "Archivo Courret", false));
+	agregarBien(new Archivo(320,203, 60, 320, 5000, "Archivo Caceres", false,  1));
+	agregarBien(new Archivo(524, 203, 60, 320, 4500, "Trad. peruanas", false, 2));
+	agregarBien(new Archivo(718, 203, 60, 320, 4000, "Juras de indep.", false, 3));
+	agregarBien(new Archivo(910, 203, 60, 320, 6000, "Archivo Courret", false, 4));
 
 	setearColisionesMapa();
 
@@ -62,6 +62,18 @@ void GestorBiblioteca::detectarColisiones(){
 		if (hbLadron.IntersectsWith(hbGuardia))	{ vidas = vidas - 0.2; }
 
 	}
+	//colision guardia y bienes
+	for (size_t i = 0; i < (int)bienes.size(); i++)
+	{
+		Rectangle htbBien = bienes[i]->getRectangle();
+		for (size_t j = 0; j < (int)enemigos.size(); j++)
+		{
+			if (htbBien.IntersectsWith(hbGuardia)) {
+				
+			}
+		}
+	}
+
 	//colision enemigos y bienes
 	for (size_t i = 0; i < (int)bienes.size(); i++)
 	{
@@ -77,6 +89,7 @@ void GestorBiblioteca::detectarColisiones(){
 			}
 		}
 	}
+	//colision enemigos y linterna
 	if (linterna != nullptr && linterna->getEncendida())
 	{
 		Rectangle hbLinterna = linterna->getRectangle();

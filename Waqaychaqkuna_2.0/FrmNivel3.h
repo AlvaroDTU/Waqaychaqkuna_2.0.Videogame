@@ -59,10 +59,11 @@ namespace Waqaychaqkuna20 {
 		   GestorBiblioteca* gestor;
 		   int finCont;
 
-
-	protected:
-
-	protected:
+		   bool dialogoArchivo1 = false;
+		   bool dialogoArchivo2 = false;
+		   bool dialogoArchivo3 = false;
+		   bool dialogoArchivo4 = false;
+		   bool musicaSuspenso = false;
 
 	private:
 		/// <summary>
@@ -167,7 +168,7 @@ namespace Waqaychaqkuna20 {
 			this->lblDerrotados->Name = L"lblDerrotados";
 			this->lblDerrotados->Size = System::Drawing::Size(221, 17);
 			this->lblDerrotados->TabIndex = 17;
-			this->lblDerrotados->Text = L"ENEMIGOS DERROTADOS: 0";
+
 			// 
 			// lblBateria
 			// 
@@ -278,9 +279,9 @@ private: System::Void FrmNivel3_Load(System::Object^ sender, System::EventArgs^ 
 	//dialogo de inicio
 	std::vector<std::string> frases;
 	frases.push_back("Reportera: ¡Necesitamos tu ayuda para proteger la historia de nuestro país!");
-	frases.push_back("Usa la tecla E para encender tu linterna y detener a los manipuladores.");
-	frases.push_back("Cada archivo conserva acontecimientos historicos. Si uno es manipulado, se pierde parte de nuestra identidad nacional.");
-	frases.push_back("Vigila su puntaje: si desciende por debajo de 1500, la historia será cambiada. ¡Depende de ti la historia del Perú!");
+	frases.push_back("Usa la tecla E para encender tu linterna y ahuyentar a los manipuladores.");
+	frases.push_back("Cada archivo conserva acontecimientos historicos importantes. Si uno es manipulado, se pierde parte de nuestra identidad nacional.");
+	frases.push_back("Vigila su puntaje: si desciende por debajo de 2000, la historia será cambiada. ¡Depende de ti preservar la historia del Perú!");
 	gestor->getDialogo()->iniciar(frases);
 
 	BufferedGraphicsContext^ contexto = BufferedGraphicsManager::Current;
@@ -348,7 +349,61 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 		}
 	}
 
-	this->lblIntentos->Text = String::Format(L"Vida: {0}", (int)gestor->getVidas());
+	if (!dialogoArchivo1 && gestor->getBien(0)->getPuntajeValor() <= 2000)
+	{
+		dialogoArchivo1 = true;
+
+		std::vector<std::string> archivo1;
+		archivo1.push_back("La Huaca del Sol ha sido destruida...");
+		archivo1.push_back("Fue el mayor centro ceremonial de la cultura Moche.");
+		archivo1.push_back("Con ella se pierde parte de la historia y arquitectura del Perú.");
+		archivo1.push_back("¡Protege nuestro patrimonio antes de que sea demasiado tarde!");
+
+		gestor->getDialogo()->iniciar(archivo1);
+	}
+
+	if (!dialogoArchivo2 && gestor->getBien(1)->getPuntajeValor() <= 2000)
+	{
+		dialogoArchivo2 = true;
+
+		std::vector<std::string> archivo2;
+		archivo2.push_back("La Huaca de la Luna ha sido destruida...");
+		archivo2.push_back("Sus murales narraban rituales y creencias de los mochicas.");
+		archivo2.push_back("Cada pintura perdida borra parte de nuestra memoria cultural.");
+		archivo2.push_back("¡No permitas que el huaqueo destruya nuestra historia!");
+
+		gestor->getDialogo()->iniciar(archivo2);
+	}
+	//hOLA
+
+	if (!dialogoArchivo3 && gestor->getBien(2)->getPuntajeValor() <= 2000)
+	{
+		dialogoArchivo3 = true;
+
+		std::vector<std::string> archivo3;
+		archivo3.push_back("La Huaca Dragón ha sido destruida...");
+		archivo3.push_back("Sus relieves representaban importantes símbolos de la cultura Chimú.");
+		archivo3.push_back("Su destrucción significa perder valiosa evidencia arqueológica.");
+		archivo3.push_back("¡El patrimonio cultural necesita ser protegido por todos!");
+
+		gestor->getDialogo()->iniciar(archivo3);
+	}
+
+	if (!dialogoArchivo4 && gestor->getBien(3)->getPuntajeValor() <= 2000)
+	{
+		dialogoArchivo4 = true;
+
+		std::vector<std::string> archivo4;
+		archivo4.push_back("La Huaca Takaynamo ha sido destruida...");
+		archivo4.push_back("Está vinculada al origen legendario del reino Chimú.");
+		archivo4.push_back("Cada monumento perdido debilita nuestra identidad cultural.");
+		archivo4.push_back("¡Conservar el patrimonio es preservar nuestra historia!");
+
+		gestor->getDialogo()->iniciar(archivo4);
+	}
+
+	this->lblDerrotados->Text = String::Format(L"ENEMIGOS CAPTURADOS: {0}", (int)gestor->getCapturados());
+	this->lblIntentos->Text = String::Format(L"VIDA: {0}", (int)gestor->getVidas());
 	this->lblBateria->Text = String::Format("PORCENTAJE BATERIA: {0}", (int)gestor->getTiempoRecarga());
 	//archivos
 	this->lblArchivo1->Text = gcnew System::String(gestor->getBien(0)->getNombre().c_str());
