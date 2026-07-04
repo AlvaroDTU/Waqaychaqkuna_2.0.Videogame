@@ -60,6 +60,10 @@ namespace Waqaychaqkuna20 {
 		   bool dialogoHuaca3 = false;
 		   bool dialogoHuaca4 = false;
 		   bool musicaSuspenso = false;
+	private: System::Windows::Forms::Panel^ pnlEstadisticas;
+
+
+
 		   bool musicaFinal = false;
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -74,7 +78,9 @@ namespace Waqaychaqkuna20 {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(FrmNivel2::typeid));
 			this->pnlMapa = (gcnew System::Windows::Forms::Panel());
+			this->pnlEstadisticas = (gcnew System::Windows::Forms::Panel());
 			this->tmrJuego = (gcnew System::Windows::Forms::Timer(this->components));
 			this->lblPrueba = (gcnew System::Windows::Forms::Label());
 			this->lblPrueba2 = (gcnew System::Windows::Forms::Label());
@@ -86,6 +92,7 @@ namespace Waqaychaqkuna20 {
 			this->lblHuacaN2 = (gcnew System::Windows::Forms::Label());
 			this->lblHuacaN3 = (gcnew System::Windows::Forms::Label());
 			this->lblHuacaN4 = (gcnew System::Windows::Forms::Label());
+			this->pnlEstadisticas->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// pnlMapa
@@ -97,6 +104,24 @@ namespace Waqaychaqkuna20 {
 			this->pnlMapa->Size = System::Drawing::Size(1300, 800);
 			this->pnlMapa->TabIndex = 1;
 			// 
+			// pnlEstadisticas
+			// 
+			this->pnlEstadisticas->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pnlEstadisticas.BackgroundImage")));
+			this->pnlEstadisticas->Controls->Add(this->lblPrueba);
+			this->pnlEstadisticas->Controls->Add(this->lblHuaca4);
+			this->pnlEstadisticas->Controls->Add(this->lblHuacaN4);
+			this->pnlEstadisticas->Controls->Add(this->lblPrueba2);
+			this->pnlEstadisticas->Controls->Add(this->lblHuacaN3);
+			this->pnlEstadisticas->Controls->Add(this->lblHuaca3);
+			this->pnlEstadisticas->Controls->Add(this->lblHuacaN1);
+			this->pnlEstadisticas->Controls->Add(this->lblHuacaN2);
+			this->pnlEstadisticas->Controls->Add(this->lblHuaca1);
+			this->pnlEstadisticas->Controls->Add(this->lblHuaca2);
+			this->pnlEstadisticas->Location = System::Drawing::Point(1300, 0);
+			this->pnlEstadisticas->Name = L"pnlEstadisticas";
+			this->pnlEstadisticas->Size = System::Drawing::Size(300, 800);
+			this->pnlEstadisticas->TabIndex = 0;
+			// 
 			// tmrJuego
 			// 
 			this->tmrJuego->Interval = 16;
@@ -107,7 +132,7 @@ namespace Waqaychaqkuna20 {
 			this->lblPrueba->AutoSize = true;
 			this->lblPrueba->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblPrueba->Location = System::Drawing::Point(1333, 120);
+			this->lblPrueba->Location = System::Drawing::Point(26, 429);
 			this->lblPrueba->Name = L"lblPrueba";
 			this->lblPrueba->Size = System::Drawing::Size(81, 19);
 			this->lblPrueba->TabIndex = 2;
@@ -118,7 +143,7 @@ namespace Waqaychaqkuna20 {
 			this->lblPrueba2->AutoSize = true;
 			this->lblPrueba2->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblPrueba2->Location = System::Drawing::Point(1333, 139);
+			this->lblPrueba2->Location = System::Drawing::Point(26, 463);
 			this->lblPrueba2->Name = L"lblPrueba2";
 			this->lblPrueba2->Size = System::Drawing::Size(81, 19);
 			this->lblPrueba2->TabIndex = 3;
@@ -129,7 +154,7 @@ namespace Waqaychaqkuna20 {
 			this->lblHuaca1->AutoSize = true;
 			this->lblHuaca1->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblHuaca1->Location = System::Drawing::Point(1333, 212);
+			this->lblHuaca1->Location = System::Drawing::Point(26, 530);
 			this->lblHuaca1->Name = L"lblHuaca1";
 			this->lblHuaca1->Size = System::Drawing::Size(81, 19);
 			this->lblHuaca1->TabIndex = 4;
@@ -140,7 +165,7 @@ namespace Waqaychaqkuna20 {
 			this->lblHuaca2->AutoSize = true;
 			this->lblHuaca2->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblHuaca2->Location = System::Drawing::Point(1333, 268);
+			this->lblHuaca2->Location = System::Drawing::Point(26, 597);
 			this->lblHuaca2->Name = L"lblHuaca2";
 			this->lblHuaca2->Size = System::Drawing::Size(81, 19);
 			this->lblHuaca2->TabIndex = 5;
@@ -151,7 +176,7 @@ namespace Waqaychaqkuna20 {
 			this->lblHuaca3->AutoSize = true;
 			this->lblHuaca3->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblHuaca3->Location = System::Drawing::Point(1333, 328);
+			this->lblHuaca3->Location = System::Drawing::Point(26, 664);
 			this->lblHuaca3->Name = L"lblHuaca3";
 			this->lblHuaca3->Size = System::Drawing::Size(81, 19);
 			this->lblHuaca3->TabIndex = 6;
@@ -162,7 +187,7 @@ namespace Waqaychaqkuna20 {
 			this->lblHuaca4->AutoSize = true;
 			this->lblHuaca4->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblHuaca4->Location = System::Drawing::Point(1333, 378);
+			this->lblHuaca4->Location = System::Drawing::Point(26, 719);
 			this->lblHuaca4->Name = L"lblHuaca4";
 			this->lblHuaca4->Size = System::Drawing::Size(81, 19);
 			this->lblHuaca4->TabIndex = 7;
@@ -173,7 +198,7 @@ namespace Waqaychaqkuna20 {
 			this->lblHuacaN1->AutoSize = true;
 			this->lblHuacaN1->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblHuacaN1->Location = System::Drawing::Point(1333, 193);
+			this->lblHuacaN1->Location = System::Drawing::Point(26, 501);
 			this->lblHuacaN1->Name = L"lblHuacaN1";
 			this->lblHuacaN1->Size = System::Drawing::Size(81, 19);
 			this->lblHuacaN1->TabIndex = 8;
@@ -184,7 +209,7 @@ namespace Waqaychaqkuna20 {
 			this->lblHuacaN2->AutoSize = true;
 			this->lblHuacaN2->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblHuacaN2->Location = System::Drawing::Point(1333, 249);
+			this->lblHuacaN2->Location = System::Drawing::Point(26, 567);
 			this->lblHuacaN2->Name = L"lblHuacaN2";
 			this->lblHuacaN2->Size = System::Drawing::Size(81, 19);
 			this->lblHuacaN2->TabIndex = 9;
@@ -195,7 +220,7 @@ namespace Waqaychaqkuna20 {
 			this->lblHuacaN3->AutoSize = true;
 			this->lblHuacaN3->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblHuacaN3->Location = System::Drawing::Point(1333, 309);
+			this->lblHuacaN3->Location = System::Drawing::Point(26, 632);
 			this->lblHuacaN3->Name = L"lblHuacaN3";
 			this->lblHuacaN3->Size = System::Drawing::Size(81, 19);
 			this->lblHuacaN3->TabIndex = 10;
@@ -206,7 +231,7 @@ namespace Waqaychaqkuna20 {
 			this->lblHuacaN4->AutoSize = true;
 			this->lblHuacaN4->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblHuacaN4->Location = System::Drawing::Point(1333, 359);
+			this->lblHuacaN4->Location = System::Drawing::Point(26, 695);
 			this->lblHuacaN4->Name = L"lblHuacaN4";
 			this->lblHuacaN4->Size = System::Drawing::Size(81, 19);
 			this->lblHuacaN4->TabIndex = 11;
@@ -216,25 +241,17 @@ namespace Waqaychaqkuna20 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1600, 800);
-			this->Controls->Add(this->lblHuacaN4);
-			this->Controls->Add(this->lblHuacaN3);
-			this->Controls->Add(this->lblHuacaN2);
-			this->Controls->Add(this->lblHuacaN1);
-			this->Controls->Add(this->lblHuaca4);
-			this->Controls->Add(this->lblHuaca3);
-			this->Controls->Add(this->lblHuaca2);
-			this->Controls->Add(this->lblHuaca1);
-			this->Controls->Add(this->lblPrueba2);
-			this->Controls->Add(this->lblPrueba);
+			this->ClientSize = System::Drawing::Size(1366, 745);
+			this->Controls->Add(this->pnlEstadisticas);
 			this->Controls->Add(this->pnlMapa);
 			this->Name = L"FrmNivel2";
 			this->Text = L"FrmNivel2";
 			this->Load += gcnew System::EventHandler(this, &FrmNivel2::FrmNivel2_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel2::FrmNivel2_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel2::FrmNivel2_KeyUp);
+			this->pnlEstadisticas->ResumeLayout(false);
+			this->pnlEstadisticas->PerformLayout();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
