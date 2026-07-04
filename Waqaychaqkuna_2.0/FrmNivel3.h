@@ -360,10 +360,10 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 		dialogoArchivo1 = true;
 
 		std::vector<std::string> archivo1;
-		archivo1.push_back("La Huaca del Sol ha sido destruida...");
-		archivo1.push_back("Fue el mayor centro ceremonial de la cultura Moche.");
-		archivo1.push_back("Con ella se pierde parte de la historia y arquitectura del Perú.");
-		archivo1.push_back("¡Protege nuestro patrimonio antes de que sea demasiado tarde!");
+		archivo1.push_back("El Archivo Caceres ha sido manipuladas...");
+		archivo1.push_back("Los documentos originales de Andres Avelino Caceres se han perdido.");
+		archivo1.push_back("Con ellos desaparece parte de la memoria de la Guerra del Pacifico.");
+		archivo1.push_back("¡No permitas que la historia del Peru sea borrada!");
 
 		gestor->getDialogo()->iniciar(archivo1);
 	}
@@ -373,10 +373,10 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 		dialogoArchivo2 = true;
 
 		std::vector<std::string> archivo2;
-		archivo2.push_back("La Huaca de la Luna ha sido destruida...");
-		archivo2.push_back("Sus murales narraban rituales y creencias de los mochicas.");
-		archivo2.push_back("Cada pintura perdida borra parte de nuestra memoria cultural.");
-		archivo2.push_back("¡No permitas que el huaqueo destruya nuestra historia!");
+		archivo2.push_back("Las Tradiciones Peruanas han sido manipuladas...");
+		archivo2.push_back("Las historias de Ricardo Palma ya no podran llegar a futuras generaciones.");
+		archivo2.push_back("La identidad de un pueblo tambien vive en sus relatos.");
+		archivo2.push_back("¡La cultura tambien necesita ser defendida!");
 
 		gestor->getDialogo()->iniciar(archivo2);
 	}
@@ -387,10 +387,10 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 		dialogoArchivo3 = true;
 
 		std::vector<std::string> archivo3;
-		archivo3.push_back("La Huaca Dragón ha sido destruida...");
-		archivo3.push_back("Sus relieves representaban importantes símbolos de la cultura Chimú.");
-		archivo3.push_back("Su destrucción significa perder valiosa evidencia arqueológica.");
-		archivo3.push_back("¡El patrimonio cultural necesita ser protegido por todos!");
+		archivo3.push_back("Las Juras de Independencia han sido manipuladas...");
+		archivo3.push_back("Los testimonios del nacimiento del Peru se han perdido.");
+		archivo3.push_back("La libertad tambien se conserva en sus documentos.");
+		archivo3.push_back("¡Protege el legado de nuestra independencia!");
 
 		gestor->getDialogo()->iniciar(archivo3);
 	}
@@ -400,10 +400,10 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 		dialogoArchivo4 = true;
 
 		std::vector<std::string> archivo4;
-		archivo4.push_back("La Huaca Takaynamo ha sido destruida...");
-		archivo4.push_back("Está vinculada al origen legendario del reino Chimú.");
-		archivo4.push_back("Cada monumento perdido debilita nuestra identidad cultural.");
-		archivo4.push_back("¡Conservar el patrimonio es preservar nuestra historia!");
+		archivo4.push_back("El Archivo Courret ha sido manipuladas...");
+		archivo4.push_back("Miles de fotografias historicas se han perdido para siempre.");
+		archivo4.push_back("Sin ellas, una parte del Peru queda en el olvido.");
+		archivo4.push_back("¡Cada fotografia es una ventana a nuestra historia!");
 
 		gestor->getDialogo()->iniciar(archivo4);
 	}
