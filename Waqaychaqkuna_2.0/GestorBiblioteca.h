@@ -38,7 +38,7 @@ class GestorBiblioteca : public Escenario
 		Linterna* getLinterna();
 		bool encenderLinterna();
 		Bitmap^ getBitmap();
-		void dibujarLibros(Graphics^ g, int i);
+		void dibujarLibros(Graphics^ g);
 
 };
 
