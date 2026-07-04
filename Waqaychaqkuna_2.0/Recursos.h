@@ -46,15 +46,21 @@ public:
     static Bitmap^ huacas = gcnew Bitmap("backgrounds\\huacas.png");
     static Bitmap^ biblioteca = gcnew Bitmap("backgrounds\\biblioteca.png");
 
-    //----------------- HUACAS ----------------------
+    //----------------- RECURSOS DEL MAPA ----------------------
     static Bitmap^ huaca1 = gcnew Bitmap("backgrounds\\Huaca1.png");
     static Bitmap^ huaca2 = gcnew Bitmap("backgrounds\\Huaca2.png");
     static Bitmap^ huaca3 = gcnew Bitmap("backgrounds\\Huaca3.png");
     static Bitmap^ huaca4 = gcnew Bitmap("backgrounds\\Huaca4.png");
+    static Bitmap^ libros = gcnew Bitmap("sprites\\libros.png");
 
     //---------------- SONIDOS ----------------
+    static SoundPlayer^ victoria = gcnew SoundPlayer("sonidos\\victoria.wav");
+    static SoundPlayer^ perdiste = gcnew SoundPlayer("sonidos\\perdiste.wav");
     static SoundPlayer^ normal2 = gcnew SoundPlayer("sonidos\\normal2.wav");
     static SoundPlayer^ suspenso2 = gcnew SoundPlayer("sonidos\\suspenso2.wav");
     static SoundPlayer^ normal3 = gcnew SoundPlayer("sonidos\\normal3.wav");
     static SoundPlayer^ suspenso3 = gcnew SoundPlayer("sonidos\\suspenso3.wav");
+
+    //---------------- PANEL ESTADISTICAS ----------------
+
 };

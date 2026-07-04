@@ -11,7 +11,6 @@ class Archivo : public Bien
 	~Archivo();
 
 	std::string getNombre();
-
 	void describir() override;
 
 };

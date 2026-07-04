@@ -278,9 +278,9 @@ private: System::Void FrmNivel3_Load(System::Object^ sender, System::EventArgs^ 
 	//dialogo de inicio
 	std::vector<std::string> frases;
 	frases.push_back("(Radio) Reportera: ¡Oh no, parece que la banda criminal se ha inflitrado dentro del museo!");
-	frases.push_back("(Radio) Reportera: Usa la tecla E para encender tu linterna y ahuyentar a los manipuladores. Puedes recargar tu linterna al acercarte al murcielago y presionar la tecla R.");
+	frases.push_back("(Radio) Reportera: Usa la tecla E para encender tu linterna y ahuyentar a los manipuladores. Puedes recargar tu linterna al acercarte al murcielago y presionar la tecla E.");
 	frases.push_back("(Radio) Reportera: Si uno de los archivos es manipulado, se pierde parte de nuestra historia nacional...");
-	frases.push_back("(Radio) Reportera: Si su desciende por debajo de 2000, la historia será manipulada. ¡Depende de ti preservar la historia del Perú!");
+	frases.push_back("(Radio) Reportera: Si su puntaje desciende por debajo de 2000, la historia será manipulada. ¡Depende de ti preservar la historia del Perú!");
 	gestor->getDialogo()->iniciar(frases);
 
 	BufferedGraphicsContext^ contexto = BufferedGraphicsManager::Current;
@@ -325,11 +325,6 @@ private: System::Void FrmNivel3_KeyDown(System::Object^ sender, System::Windows:
 		g->setAccion(true);
 		g->setTipoAccion(2);
 	}
-	//recargar linterna
-	else if (e->KeyCode == Keys::R) {
-		g->setAccion(true);
-		g->setTipoAccion(3);
-	}
 }
 
  Void Pintar(){
@@ -359,7 +354,7 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 		dialogoArchivo1 = true;
 
 		std::vector<std::string> archivo1;
-		archivo1.push_back("El Archivo Caceres ha sido manipuladas...");
+		archivo1.push_back("El Archivo Caceres ha sido manipulado...");
 		archivo1.push_back("Los documentos originales de Andres Avelino Caceres se han perdido.");
 		archivo1.push_back("Con ellos desaparece parte de la memoria de la Guerra del Pacifico.");
 		archivo1.push_back("¡No permitas que la historia del Peru sea borrada!");
@@ -386,7 +381,7 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 		dialogoArchivo3 = true;
 
 		std::vector<std::string> archivo3;
-		archivo3.push_back("Las Juras de Independencia han sido manipuladas...");
+		archivo3.push_back("La Juramentacion de la Independencia ha sido manipulada...");
 		archivo3.push_back("Los testimonios del nacimiento del Peru se han perdido.");
 		archivo3.push_back("La libertad tambien se conserva en sus documentos.");
 		archivo3.push_back("¡Protege el legado de nuestra independencia!");
@@ -399,7 +394,7 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 		dialogoArchivo4 = true;
 
 		std::vector<std::string> archivo4;
-		archivo4.push_back("El Archivo Courret ha sido manipuladas...");
+		archivo4.push_back("El Archivo Courret ha sido manipulado...");
 		archivo4.push_back("Miles de fotografias historicas se han perdido para siempre.");
 		archivo4.push_back("Sin ellas, una parte del Peru queda en el olvido.");
 		archivo4.push_back("¡Cada fotografia es una ventana a nuestra historia!");

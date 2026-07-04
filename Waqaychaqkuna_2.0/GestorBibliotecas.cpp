@@ -172,7 +172,7 @@ void GestorBiblioteca::setearColisionesMapa(){
 	agregarObjeto(new Objeto(28, 691, 490, 18));
 	agregarObjeto(new Objeto(779, 691, 490, 18));
 	agregarObjeto(new Objeto(486, 720, 327, 33));
-	agregarObjeto(new Objeto(198, 95, 809, 20));
+	agregarObjeto(new Objeto(198, 95, 893, 20));
 }
 
 void GestorBiblioteca::generarManipulador(){
@@ -200,7 +200,7 @@ void GestorBiblioteca::recargaLinterna(){
 	Rectangle g = guardia->getRectangle();
 	Rectangle m = aliados[0]->getRectangle();
 
-	if (g.IntersectsWith(m)&& guardia->getAccion() && guardia->getTipoAccion() == 3){
+	if (g.IntersectsWith(m)&& guardia->getAccion() && guardia->getTipoAccion() == 1){
 
 		tiempoRecarga = 100.00;
 		aliados[0]->setColumna(2);
@@ -252,4 +252,13 @@ bool GestorBiblioteca::encenderLinterna() {
 		linterna->setEncendida(false);
 		return false;
 	}
+}
+
+void GestorBiblioteca::dibujarLibros(Graphics^ g, int i) {
+	int x ;
+	int y;
+	int ancho;
+	int alto;
+	Bitmap^ img = Recursos::libros;
+	g->DrawImage(img, x, y, ancho, alto);
 }
