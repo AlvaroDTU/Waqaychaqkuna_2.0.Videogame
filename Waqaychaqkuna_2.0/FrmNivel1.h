@@ -63,6 +63,15 @@ namespace Waqaychaqkuna20 {
 		   float mapa_escalaY = 1.0f;
 		   float stats_escalaX = 1.0f;
 		   float stats_escalaY = 1.0f;
+		   Point lblPistaBase;
+		   Point lblIntentosBase;
+		   Point lblDerrotadosBase;
+		   Point lblArtilugio1Base;
+		   Point lblArtilugio2Base;
+		   Point lblArtilugio3Base;
+		   Point lblArtilugio4Base;
+		   Point lblArtilugio5Base;
+		   Point lblArtilugio6Base;
 
 #pragma region Windows Form Designer generated code
 		   /// <summary>
@@ -243,6 +252,16 @@ namespace Waqaychaqkuna20 {
 
 			gestor->setLienzo(this->pnlMapa->Width, this->pnlMapa->Height);
 			gestor->crearSprites();
+			lblPistaBase = lblPista->Location;
+			lblIntentosBase = lblIntentos->Location;
+			lblDerrotadosBase = lblDerrotados->Location;
+			lblArtilugio1Base = lblArtilugio1->Location;
+			lblArtilugio2Base = lblArtilugio2->Location;
+			lblArtilugio3Base = lblArtilugio3->Location;
+			lblArtilugio4Base = lblArtilugio4->Location;
+			lblArtilugio5Base = lblArtilugio5->Location;
+			lblArtilugio6Base = lblArtilugio6->Location;
+
 			BufferedGraphicsContext^ contexto = BufferedGraphicsManager::Current;
 			Graphics^ g = this->pnlMapa->CreateGraphics();
 			buffer = contexto->Allocate(g, this->pnlMapa->ClientRectangle);
@@ -344,6 +363,8 @@ namespace Waqaychaqkuna20 {
 		stats_escalaX = pnlEstadisticas->Width / 300.0f;
 		stats_escalaY = pnlEstadisticas->Height / 800.0f;
 
+		ActualizarTamanoLabels();
+
 		gestor->setEscalado(mapa_escalaX, mapa_escalaY);
 		gestor->setLienzo(this->pnlMapa->Width, this->pnlMapa->Height);
 
@@ -353,6 +374,69 @@ namespace Waqaychaqkuna20 {
 		buffer = contexto->Allocate(g, pnlMapa->ClientRectangle);
 		buffer->Graphics->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
 		delete g;
+	}
+	Void ActualizarTamanoLabels()
+	{
+		int tmFuente = 10;
+		float escalaPromedio = stats_escalaX;
+		System::Drawing::Font^ fuente = gcnew System::Drawing::Font(
+										"Microsoft Sans Serif",
+										(int)tmFuente * escalaPromedio,
+										FontStyle::Bold
+										);
+		lblPista->Location = Point(
+			lblPistaBase.X * stats_escalaX,
+			lblPistaBase.Y * stats_escalaY
+		);
+		lblPista->Font = fuente;
+
+		lblIntentos->Location = Point(
+			lblIntentosBase.X * stats_escalaX,
+			lblIntentosBase.Y * stats_escalaY
+		);
+		lblIntentos->Font = fuente;
+
+		lblDerrotados->Location = Point(
+			lblDerrotadosBase.X * stats_escalaX,
+			lblDerrotadosBase.Y * stats_escalaY
+		);
+		lblDerrotados->Font = fuente;
+
+		lblArtilugio1->Location = Point(
+			lblArtilugio1Base.X * stats_escalaX,
+			lblArtilugio1Base.Y * stats_escalaY
+		);
+		lblArtilugio1->Font = fuente;
+
+		lblArtilugio2->Location = Point(
+			lblArtilugio2Base.X * stats_escalaX,
+			lblArtilugio2Base.Y * stats_escalaY
+		);
+		lblArtilugio2->Font = fuente;
+
+		lblArtilugio3->Location = Point(
+			lblArtilugio3Base.X * stats_escalaX,
+			lblArtilugio3Base.Y * stats_escalaY
+		);
+		lblArtilugio3->Font = fuente;
+
+		lblArtilugio4->Location = Point(
+			lblArtilugio4Base.X * stats_escalaX,
+			lblArtilugio4Base.Y * stats_escalaY
+		);
+		lblArtilugio4->Font = fuente;
+
+		lblArtilugio5->Location = Point(
+			lblArtilugio5Base.X * stats_escalaX,
+			lblArtilugio5Base.Y * stats_escalaY
+		);
+		lblArtilugio5->Font = fuente;
+
+		lblArtilugio6->Location = Point(
+			lblArtilugio6Base.X * stats_escalaX,
+			lblArtilugio6Base.Y * stats_escalaY
+		);
+		lblArtilugio6->Font = fuente;
 	}
 	};
 }
