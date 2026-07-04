@@ -377,6 +377,7 @@ namespace Waqaychaqkuna20 {
 	
 	if (!gestor->getDialogo()->estaActivo()) { gestor->jugar(); 
 	gestor->detectarColisiones();}
+
 	Pintar();
 
 	if (gestor->victoria())   
