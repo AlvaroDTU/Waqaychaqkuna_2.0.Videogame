@@ -19,7 +19,7 @@ namespace Waqaychaqkuna20 {
 		{
 			InitializeComponent();
 			this->KeyPreview = true;
-			gestor = new GestorHuacas(10);
+			gestor = new GestorHuacas(20);
 			finCont = 0;
 
 			//
@@ -59,6 +59,7 @@ namespace Waqaychaqkuna20 {
 		   bool dialogoHuaca2 = false;
 		   bool dialogoHuaca3 = false;
 		   bool dialogoHuaca4 = false;
+		   bool musicaSuspenso = false;
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
@@ -242,9 +243,10 @@ namespace Waqaychaqkuna20 {
 
 		//prueba de dialogo
 		std::vector<std::string> frases;
-		frases.push_back("Reportera: Evita que los huaqueros destruyan las huacas");
-		frases.push_back("poniendo cuidadores que vigilen y protejan el patrimonio (letra E)");
-		frases.push_back("Si el puntaje de una Huaca es menor a 1500, esta se destruye");
+		frases.push_back("Reportera: ¡Necesitamos tu ayuda para proteger nuestro patrimonio cultural!");
+		frases.push_back("Usa la tecla E para colocar cuidadores cerca de las huacas y detener a los huaqueros.");
+		frases.push_back("Cada huaca conserva siglos de historia. Si una cae, también se pierde parte de nuestra identidad.");
+		frases.push_back("Vigila su puntaje: si desciende por debajo de 1500, la huaca será destruida. ¡Depende de ti evitarlo!");
 		gestor->getDialogo()->iniciar(frases);
 
 	/*	"Huaca del Sol", 1));
@@ -255,6 +257,7 @@ namespace Waqaychaqkuna20 {
 		Graphics^ g = this->pnlMapa->CreateGraphics();
 		buffer = contexto->Allocate(g, this->pnlMapa->ClientRectangle);
 		tmrJuego->Start();
+		Recursos::normal2->PlayLooping();
 		delete g;
 	}
 	private: System::Void FrmNivel2_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
@@ -312,6 +315,20 @@ namespace Waqaychaqkuna20 {
 				this->Close();
 			}
 		}
+
+		if (!musicaSuspenso &&
+			(gestor->getBien(0)->getPuntajeValor() <= 1500 ||
+				gestor->getBien(1)->getPuntajeValor() <= 1500 ||
+				gestor->getBien(2)->getPuntajeValor() <= 1500 ||
+				gestor->getBien(3)->getPuntajeValor() <= 1500))
+		{
+			musicaSuspenso = true;
+
+			Recursos::normal2->Stop();
+			Recursos::suspenso2->PlayLooping();
+		}
+
+
 		if (!dialogoHuaca1 && gestor->getBien(0)->getPuntajeValor() <= 1500)
 		{
 			dialogoHuaca1 = true;
@@ -337,6 +354,7 @@ namespace Waqaychaqkuna20 {
 
 			gestor->getDialogo()->iniciar(huaca2);
 		}
+		//hOLA
 
 		if (!dialogoHuaca3 && gestor->getBien(2)->getPuntajeValor() <= 1500)
 		{
@@ -383,13 +401,14 @@ namespace Waqaychaqkuna20 {
 	if (gestor->victoria())   
 	{
 		this->tmrJuego->Stop();
-
+		Recursos::suspenso2->Stop();
 		MessageBox::Show("GANASTE");
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
 	if (gestor->derrota())
 	{
+		Recursos::suspenso2->Stop();
 		this->tmrJuego->Stop();
 		MessageBox::Show("PERDISTE");
 		this->Close();

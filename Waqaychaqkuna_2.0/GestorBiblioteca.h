@@ -35,6 +35,7 @@ class GestorBiblioteca : public Escenario
 		double getTiempoRecarga();
 		double getVidas();
 		Linterna* getLinterna();
+		bool encenderLinterna();
 
 };
 

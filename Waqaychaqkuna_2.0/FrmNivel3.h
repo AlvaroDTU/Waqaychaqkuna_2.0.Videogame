@@ -19,7 +19,7 @@ namespace Waqaychaqkuna20 {
 	public:
 		FrmNivel3(void)
 		{
-			gestor = new GestorBiblioteca(16);
+			gestor = new GestorBiblioteca(8);
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
@@ -296,6 +296,16 @@ private: System::Void FrmNivel3_KeyDown(System::Object^ sender, System::Windows:
 	}
 	else if (e->KeyCode == Keys::Left) {
 		g->setVelocidad(-5, 0);
+	}
+	//encender linterna
+	else if (e->KeyCode == Keys::E) {
+		g->setAccion(true);
+		g->setTipoAccion(1);
+	}
+	//describir bienes
+	else if (e->KeyCode == Keys::D) {
+		g->setAccion(true);
+		g->setTipoAccion(2);
 	}
 }
 

@@ -27,9 +27,9 @@ class Linterna
 		bool getEncendida();
 
 		void setPos(int x, int y);
-		void setEncencida(bool e);
+		void setEncendida(bool e);
 		void dibujar(Graphics^ g);
 		Bitmap^ getBitmap();
-		Rectangle getRectangle();
+		Rectangle getRectangle(int extra=0);
 };
 
