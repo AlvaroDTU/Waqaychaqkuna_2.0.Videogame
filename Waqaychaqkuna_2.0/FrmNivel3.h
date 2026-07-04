@@ -278,10 +278,10 @@ private: System::Void FrmNivel3_Load(System::Object^ sender, System::EventArgs^ 
 
 	//dialogo de inicio
 	std::vector<std::string> frases;
-	frases.push_back("Reportera: ¡Necesitamos tu ayuda para proteger la historia de nuestro país!");
-	frases.push_back("Usa la tecla E para encender tu linterna y ahuyentar a los manipuladores.");
-	frases.push_back("Cada archivo conserva acontecimientos historicos importantes. Si uno es manipulado, se pierde parte de nuestra identidad nacional.");
-	frases.push_back("Vigila su puntaje: si desciende por debajo de 2000, la historia será cambiada. ¡Depende de ti preservar la historia del Perú!");
+	frases.push_back("(Radio) Reportera: ¡Oh no, parece que la banda criminal se ha inflitrado dentro del museo!");
+	frases.push_back("(Radio) Reportera: Usa la tecla E para encender tu linterna y ahuyentar a los manipuladores. Puedes recargar tu linterna al acercarte al murcielago y presionar la tecla R.");
+	frases.push_back("(Radio) Reportera: Cada archivo contiene acontecimientos historicos importantes en la historia del Perú. Si uno es manipulado, se pierde parte de nuestra historia nacional.");
+	frases.push_back("(Radio) Reportera: Si su desciende por debajo de 2000, la historia será manipulada. ¡Depende de ti preservar la historia del Perú!");
 	gestor->getDialogo()->iniciar(frases);
 
 	BufferedGraphicsContext^ contexto = BufferedGraphicsManager::Current;
