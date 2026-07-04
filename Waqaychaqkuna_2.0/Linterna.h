@@ -30,6 +30,6 @@ class Linterna
 		void setEncencida(bool e);
 		void dibujar(Graphics^ g);
 		Bitmap^ getBitmap();
-		Rectangle getRectangle(int extra = 0);
+		Rectangle getRectangle();
 };
 

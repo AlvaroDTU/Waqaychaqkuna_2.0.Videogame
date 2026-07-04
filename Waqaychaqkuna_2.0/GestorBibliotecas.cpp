@@ -49,6 +49,7 @@ void GestorBiblioteca::mover(){
 void GestorBiblioteca::detectarColisiones(){
 
 	Rectangle hbGuardia = guardia->getRectangle();
+	Rectangle hbLinterna = linterna->getRectangle();
 	//colision guardia y enemigos
 	for (int i = (int)enemigos.size() - 1; i >= 0; i--)
 	{
