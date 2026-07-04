@@ -200,7 +200,7 @@ void GestorBiblioteca::recargaLinterna(){
 	Rectangle g = guardia->getRectangle();
 	Rectangle m = aliados[0]->getRectangle();
 
-	if (g.IntersectsWith(m)&& guardia->getAccion() && guardia->getTipoAccion() == 3){
+	if (g.IntersectsWith(m)&& guardia->getAccion() && guardia->getTipoAccion() == 1){
 
 		tiempoRecarga = 100.00;
 		aliados[0]->setColumna(2);

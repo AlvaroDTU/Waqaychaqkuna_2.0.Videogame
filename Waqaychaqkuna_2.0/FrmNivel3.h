@@ -281,7 +281,7 @@ private: System::Void FrmNivel3_Load(System::Object^ sender, System::EventArgs^ 
 	frases.push_back("(Radio) Reportera: ¡Oh no, parece que la banda criminal se ha inflitrado dentro del museo!");
 	frases.push_back("(Radio) Reportera: Usa la tecla E para encender tu linterna y ahuyentar a los manipuladores. Puedes recargar tu linterna al acercarte al murcielago y presionar la tecla R.");
 	frases.push_back("(Radio) Reportera: Si uno de los archivos es manipulado, se pierde parte de nuestra historia nacional...");
-	frases.push_back("(Radio) Reportera: Si su desciende por debajo de 2000, la historia será manipulada. ¡Depende de ti preservar la historia del Perú!");
+	frases.push_back("(Radio) Reportera: Si su puntaje desciende por debajo de 2000, la historia será manipulada. ¡Depende de ti preservar la historia del Perú!");
 	gestor->getDialogo()->iniciar(frases);
 
 	BufferedGraphicsContext^ contexto = BufferedGraphicsManager::Current;
@@ -325,11 +325,6 @@ private: System::Void FrmNivel3_KeyDown(System::Object^ sender, System::Windows:
 	else if (e->KeyCode == Keys::D) {
 		g->setAccion(true);
 		g->setTipoAccion(2);
-	}
-	//recargar linterna
-	else if (e->KeyCode == Keys::R) {
-		g->setAccion(true);
-		g->setTipoAccion(3);
 	}
 }
 
