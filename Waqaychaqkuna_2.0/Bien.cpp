@@ -12,7 +12,12 @@ int Bien::getPosY() { return posY; }
 int Bien::getPuntajeValor() { return puntajeValor; }
 std::string Bien::getNombre() { return nombre; }
 
-void Bien::restarPuntajeValor(int pv) { puntajeValor -= pv; }
+void Bien::restarPuntajeValor(int pv) 
+{ 
+	puntajeValor -= pv; 
+	if (puntajeValor <= 0)
+		puntajeValor = 0;
+}
 
 bool Bien::estaActivo() { return activo; }
 void Bien::setActivo(bool act) { activo = act; }
