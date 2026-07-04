@@ -9,6 +9,7 @@ using std::vector;
 class GestorHuacas : public Escenario
 {
 private:
+	int contador;
 	int temporizadorMov;
 public:
 	GestorHuacas(int enTotales);

@@ -3,6 +3,7 @@
 #include "Cuidador.h"
 GestorHuacas::GestorHuacas(int enTotales) : Escenario(enTotales)
 {
+	contador = 0;
 	tempSpawnEntidades = 70;
 }
 GestorHuacas::~GestorHuacas() {
@@ -121,9 +122,10 @@ bool GestorHuacas::derrota() {
 void GestorHuacas::jugar() {
 	mover();
 	tempSpawnEntidades--;
-	if (tempSpawnEntidades == 0) {
+	if (tempSpawnEntidades == 0 && (contador != enemigosTotales)) {
 		generarHuaquero();
-		tempSpawnEntidades = 70;
+		tempSpawnEntidades = 100;
+		contador++;
 	}
 }
 

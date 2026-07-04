@@ -19,7 +19,7 @@ namespace Waqaychaqkuna20 {
 		{
 			InitializeComponent();
 			this->KeyPreview = true;
-			gestor = new GestorHuacas(10);
+			gestor = new GestorHuacas(20);
 			finCont = 0;
 
 			//
