@@ -73,7 +73,7 @@ void GestorBiblioteca::detectarColisiones(){
 				enemigos[j]->setMoviendose(false);
 				enemigos[j]->setColumna(0);
 				enemigos[j]->setAtacando(true);
-				bienes[i]->restarPuntajeValor(1);
+				bienes[i]->restarPuntajeValor(4);
 			}
 		}
 	}
@@ -114,7 +114,7 @@ void GestorBiblioteca::jugar(){
 	tempSpawnEntidades--;
 	if (tempSpawnEntidades == 0 && (contador != enemigosTotales)) {
 		generarManipulador();
-		tempSpawnEntidades = 120;
+		tempSpawnEntidades = 100;
 		contador++;
 	}
 }

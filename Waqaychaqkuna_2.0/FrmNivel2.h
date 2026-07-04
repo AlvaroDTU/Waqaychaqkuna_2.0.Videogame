@@ -251,8 +251,8 @@ namespace Waqaychaqkuna20 {
 
 	/*	"Huaca del Sol", 1));
 		"Huaca de la Luna", 2
-			"Huaca Dragon", 3));
-			"Huaca Takaynamo", 4))*/
+		"Huaca Dragon", 3));
+		"Huaca Takaynamo", 4))*/
 		BufferedGraphicsContext^ contexto = BufferedGraphicsManager::Current;
 		Graphics^ g = this->pnlMapa->CreateGraphics();
 		buffer = contexto->Allocate(g, this->pnlMapa->ClientRectangle);

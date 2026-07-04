@@ -19,8 +19,9 @@ namespace Waqaychaqkuna20 {
 	public:
 		FrmNivel3(void)
 		{
-			gestor = new GestorBiblioteca(8);
+			gestor = new GestorBiblioteca(20);
 			InitializeComponent();
+			finCont = 0;
 			//
 			//TODO: agregar código de constructor aquí
 			//
@@ -55,9 +56,8 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Label^ lblPuntaje2;
 	private: System::Windows::Forms::Label^ lblPuntaje4;
 
-
 		   GestorBiblioteca* gestor;
-
+		   int finCont;
 
 
 	protected:
@@ -275,6 +275,14 @@ private: System::Void FrmNivel3_Load(System::Object^ sender, System::EventArgs^ 
 	gestor->setLienzo(this->pnlMapa->Width, this->pnlMapa->Height);
 	gestor->crearSprites();
 
+	//dialogo de inicio
+	std::vector<std::string> frases;
+	frases.push_back("Reportera: ¡Necesitamos tu ayuda para proteger la historia de nuestro país!");
+	frases.push_back("Usa la tecla E para encender tu linterna y detener a los manipuladores.");
+	frases.push_back("Cada archivo conserva acontecimientos historicos. Si uno es manipulado, se pierde parte de nuestra identidad nacional.");
+	frases.push_back("Vigila su puntaje: si desciende por debajo de 1500, la historia será cambiada. ¡Depende de ti la historia del Perú!");
+	gestor->getDialogo()->iniciar(frases);
+
 	BufferedGraphicsContext^ contexto = BufferedGraphicsManager::Current;
 	Graphics^ g = this->pnlMapa->CreateGraphics();
 	buffer = contexto->Allocate(g, this->pnlMapa->ClientRectangle);
@@ -284,6 +292,15 @@ private: System::Void FrmNivel3_Load(System::Object^ sender, System::EventArgs^ 
 
 
 private: System::Void FrmNivel3_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+
+	if (gestor->getDialogo()->estaActivo())
+	{
+		if (e->KeyCode == Keys::Space || e->KeyCode == Keys::Enter)
+			gestor->getDialogo()->avanzar();
+		e->Handled = true;
+		return;
+	}
+
 	Guardia* g = gestor->getGuardia();
 	if (e->KeyCode == Keys::Up) {
 		g->setVelocidad(0, -5);
@@ -310,14 +327,26 @@ private: System::Void FrmNivel3_KeyDown(System::Object^ sender, System::Windows:
 }
 
  Void Pintar(){
-	 gestor->dibujar(buffer->Graphics);
 
+	 gestor->dibujar(buffer->Graphics);
+	 gestor->getDialogo()->dibujar(buffer->Graphics, pnlMapa->ClientSize.Width, pnlMapa->ClientSize.Height);
 	 Graphics^ g = this->pnlMapa->CreateGraphics();
 	 buffer->Render(g);
 	 delete g;
 }
 
 private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ e) {
+
+	gestor->getDialogo()->actualizar();
+	if (gestor->victoria())
+	{
+		finCont++;
+		if (finCont >= 120)
+		{
+			this->DialogResult = System::Windows::Forms::DialogResult::OK;
+			this->Close();
+		}
+	}
 
 	this->lblIntentos->Text = String::Format(L"Vida: {0}", (int)gestor->getVidas());
 	this->lblBateria->Text = String::Format("PORCENTAJE BATERIA: {0}", (int)gestor->getTiempoRecarga());
@@ -332,8 +361,10 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 	this->lblPuntaje3->Text = String::Format("Puntaje: {0}", gestor->getBien(2)->getPuntajeValor());
 	this->lblPuntaje4->Text = String::Format("Puntaje: {0}", gestor->getBien(3)->getPuntajeValor());
 
-	gestor->jugar();
-	gestor->detectarColisiones();
+	if (!gestor->getDialogo()->estaActivo()) {
+		gestor->jugar();
+		gestor->detectarColisiones();
+	}
 
 	Pintar();
 
