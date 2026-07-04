@@ -23,9 +23,9 @@ void GestorMuseo::crearSprites()
 {
 	fondo = new Fondo(1, anchoLienzo, altoLienzo);
 	std::vector<std::string> frases;
-	frases.push_back("Reportera: Evita que los huaqueros destruyan las huacas");
-	frases.push_back("poniendo cuidadores que vigilen y protejan el patrimonio (letra E)");
-	frases.push_back("Si el puntaje de una Huaca es menor a 1500, esta se destruye");
+	frases.push_back("Reportera:\n\"Hey, por aqui!\"");
+	frases.push_back("Reportera:\n\"Acercate para poder ayudarte detener a los ladrones.\"");
+	frases.push_back("(Interactua usando E con la reportera)");
 	dialogo.iniciar(frases);
 	guardia = new Guardia(790, 170, 45, 60, 60, 80);
 
@@ -45,20 +45,19 @@ void GestorMuseo::mover()
 {
 	if (dialogo.estaActivo())
 		dialogo.actualizar();
-	else 
+	else
 	{
 		guardia->mover(objetos, bienes);
-		aliados[0]->mover(anchoLienzo, altoLienzo);
 		for (auto ladron : enemigos) ((Ladron*)ladron)->mover(objetos, bienes);
 		for (auto visitante : visitantes) visitante->mover(objetos, bienes);
 	}
+	aliados[0]->mover(anchoLienzo, altoLienzo);
 }
 
 void GestorMuseo::dibujar(Graphics^ g)
 {
-	
 	fondo->dibujarFondo(g);
-	if (fondoActual == 1) 
+	if (fondoActual == 1)
 	{
 		for (auto reportera : aliados)
 			reportera->dibujar(g);
@@ -76,18 +75,35 @@ void GestorMuseo::detectarColisiones()
 	Rectangle hbReportera = aliados[0]->getRectangle(1);
 	if (hbGuardia.IntersectsWith(hbReportera))
 	{
-		aliados[0]->ayudar();
+		if (guardia->getAccion() && guardia->getTipoAccion() == 1) {
+			aliados[0]->ayudar();
+			std::vector<std::string> frases;
+			std::string pista;
+			switch (getReportera()->getTipoPista()) {
+			case 1: pista = "BANDANA EN LAS PIERNAS"; break;
+			case 2: pista = "BANDANA EN LOS BRAZOS"; break;
+			case 3: pista = "CAMISAS NEGRAS"; break;
+			default: pista = ""; break;
+			}
+			frases.push_back("Reportera:\n\"Bien! De acuerdo a mis informes, los ladrones planean ocultarse entre los visitantes para asi poder robar nuestro patrimonio cuando nadie se de cuenta.\"");
+			frases.push_back("Reportera:\n\"Para reconocerse entre ellos mismos, usan identificadores sutiles que son algo complicados de ver.\"");
+			frases.push_back("Reportera:\n\"Pero no te preocupes! Mi equipo y yo hemos logrado descubrir lo que llevaran puesto:\n" + pista + "\"");
+			frases.push_back("Reportera:\n\"Identifica correctamente a los ladrones y capturalos (pulsando E)\"");
+			frases.push_back("Reportera:\n\"Pero ten cuidado, si capturas a un visitante normal los ladrones se daran cuenta que vas por ellos y huiran antes de que puedas atraparlos!\"");
+			frases.push_back("Reportera:\n\"Mucha suerte, guardia!\"");
+			dialogo.iniciar(frases);
+		}
+		if(!dialogo.estaActivo())
+			aliados[0]->setAyudando(false);
 	}
-	else
-		aliados[0]->setAyudando(false);
 
 	// Colision con guardia y enemigos
-	for (int i = (int)enemigos.size()-1; i >=0 ; i--)
+	for (int i = (int)enemigos.size() - 1; i >= 0; i--)
 	{
 		Rectangle hbLadron = enemigos[i]->getRectangle(1);
 		if (hbLadron.IntersectsWith(hbGuardia))
 		{
-			if (guardia->getAccion() && guardia->getTipoAccion()==1) {
+			if (guardia->getAccion() && guardia->getTipoAccion() == 1) {
 				enemigosCapturados++;
 				eliminarEnemigo(i);
 				guardia->setAccion(false);
@@ -96,12 +112,12 @@ void GestorMuseo::detectarColisiones()
 		}
 	}
 	// Colision con guardia y visitantes
-	for (int i = (int)visitantes.size()-1; i >=0 ; i--)
+	for (int i = (int)visitantes.size() - 1; i >= 0; i--)
 	{
 		Rectangle hbVistante = visitantes[i]->getRectangle(1);
 		if (hbVistante.IntersectsWith(hbGuardia))
 		{
-			if (guardia->getAccion() && guardia->getTipoAccion()==1) {
+			if (guardia->getAccion() && guardia->getTipoAccion() == 1) {
 				intentos--;
 				guardia->setAccion(false);
 				guardia->setTipoAccion(0);
@@ -126,7 +142,7 @@ void GestorMuseo::detectarColisiones()
 
 	if (fondoActual == 1)
 	{
-		if(((Reportera*)aliados[0])->getTipoPista() > 0)
+		if (((Reportera*)aliados[0])->getTipoPista() > 0)
 			cambioDer = Rectangle(1241, 349, 60, 110);
 	}
 	if (fondoActual == 2)
@@ -158,7 +174,7 @@ void GestorMuseo::detectarColisiones()
 		if (fondoActual == 2) guardia->setPos(1162, 367);
 		setearColisionesMapa();
 		tempSpawnEntidades = 0;
-		
+
 	}
 }
 
@@ -209,7 +225,7 @@ void GestorMuseo::setearColisionesMapa()
 		agregarObjeto(new Objeto(292, 741, 429, 29));
 		agregarObjeto(new Objeto(1284, 347, 16, 114));	//bordeDer
 
-		for (int i = 0; i < (int)bienes.size(); i++) 
+		for (int i = 0; i < (int)bienes.size(); i++)
 			bienes[i]->setActivo(false);
 		aliados[0]->setActivo(true);
 	}
@@ -253,8 +269,8 @@ void GestorMuseo::setearColisionesMapa()
 			int x = 0, y = 0;
 			x = rand() % 1109 + 75; // 75 a 1183
 			if (rand() % 2 == 0) y = rand() % 84 + 159; // 159 a 242
-			else y= rand() % 200 + 477; // 477 a 676
-			agregarVisitante(new Visitante(x,y,45,60,60,80,0,0));
+			else y = rand() % 200 + 477; // 477 a 676
+			agregarVisitante(new Visitante(x, y, 45, 60, 60, 80, 0, 0));
 		}
 
 		for (int i = 0; i < (int)bienes.size(); i++)
@@ -327,8 +343,8 @@ bool GestorMuseo::victoria()
 }
 bool GestorMuseo::derrota()
 {
-	bool bienDestruido=false;
-	for (auto bien : bienes) 
+	bool bienDestruido = false;
+	for (auto bien : bienes)
 	{
 		if (bien->getPuntajeValor() <= 0) bienDestruido = true;
 	}

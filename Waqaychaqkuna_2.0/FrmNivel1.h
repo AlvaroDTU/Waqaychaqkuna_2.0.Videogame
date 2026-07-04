@@ -113,7 +113,7 @@ namespace Waqaychaqkuna20 {
 			   this->lblPista->Name = L"lblPista";
 			   this->lblPista->Size = System::Drawing::Size(107, 17);
 			   this->lblPista->TabIndex = 2;
-			   this->lblPista->Text = L"PEDIR PISTA!";
+			   this->lblPista->Text = L"PISTA ACTUAL:\n";
 			   this->lblPista->Visible = false;
 			   // 
 			   // lblDerrotados
@@ -285,9 +285,9 @@ namespace Waqaychaqkuna20 {
 			gestor->jugar();
 			int tPista = gestor->getReportera()->getTipoPista();
 			if (tPista < 4) this->lblPista->Visible = true;
-			if (tPista == 1) this->lblPista->Text = L"PISTA: BANDANA EN LAS PIERNAS";
-			if (tPista == 2) this->lblPista->Text = L"PISTA: BANDANA EN LOS BRAZOS";
-			if (tPista == 3) this->lblPista->Text = L"PISTA: CAMISA NEGRA";
+			if (tPista == 1) this->lblPista->Text = L"PISTA ACTUAL:\nBANDANA EN LAS PIERNAS";
+			if (tPista == 2) this->lblPista->Text = L"PISTA ACTUAL:\nBANDANA EN LOS BRAZOS";
+			if (tPista == 3) this->lblPista->Text = L"PISTA ACTUAL:\nCAMISAS NEGRAS";
 
 			lblArtilugio1->Text = String::Format("Puntaje\nCabeza Clava:\n{0}", gestor->getBien(0)->getPuntajeValor());
 			lblArtilugio2->Text = String::Format("Puntaje\nManto Paracas:\n{0}", gestor->getBien(1)->getPuntajeValor());
