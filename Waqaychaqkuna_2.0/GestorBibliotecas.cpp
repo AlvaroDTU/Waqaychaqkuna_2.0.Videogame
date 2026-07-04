@@ -23,9 +23,9 @@ void GestorBiblioteca::crearSprites(){
 	
 	agregarAliado(new Murcielago(131, 541, 40, 30, 40, 24));
 
-	agregarBien(new Archivo(320,203, 60, 320, 5000, "Archivo Caceres", false,  1));
+	agregarBien(new Archivo(320,203, 60, 320, 4000, "Archivo Caceres", false,  1));
 	agregarBien(new Archivo(524, 203, 60, 320, 4500, "Trad. peruanas", false, 2));
-	agregarBien(new Archivo(718, 203, 60, 320, 6000, "Juras de indep.", false, 3));
+	agregarBien(new Archivo(718, 203, 60, 320, 5000, "Juras de indep.", false, 3));
 	agregarBien(new Archivo(910, 203, 60, 320, 4000, "Archivo Courret", false, 4));
 
 	setearColisionesMapa();
@@ -127,7 +127,7 @@ void GestorBiblioteca::jugar(){
 	tempSpawnEntidades--;
 	if (tempSpawnEntidades == 0 && (contador != enemigosTotales)) {
 		generarManipulador();
-		tempSpawnEntidades = 50;
+		tempSpawnEntidades = 40;
 		contador++;
 	}
 }
@@ -208,7 +208,7 @@ void GestorBiblioteca::recargaLinterna(){
 
 	if (tiempoRecarga <= 0) tiempoRecarga = 0;
 
-	else tiempoRecarga = tiempoRecarga - 0.4;
+	else tiempoRecarga = tiempoRecarga - 0.3;
 }
 
 double GestorBiblioteca::getTiempoRecarga() {
