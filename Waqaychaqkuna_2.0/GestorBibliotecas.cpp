@@ -71,6 +71,22 @@ void GestorBiblioteca::detectarColisiones(){
 			}
 		}
 	}
+	//colision enemigos y linterna
+	for (size_t i = 0; i < (int)bienes.size(); i++)
+	{
+		Rectangle htbBien = bienes[i]->getRectangle();
+		for (size_t j = 0; j < (int)enemigos.size(); j++)
+		{
+			Rectangle htbEnemigo = enemigos[j]->getRectangle();
+			if (htbBien.IntersectsWith(htbEnemigo)) {
+				enemigos[j]->setMoviendose(false);
+				enemigos[j]->setColumna(0);
+				enemigos[j]->setAtacando(true);
+				bienes[i]->restarPuntajeValor(1);
+			}
+		}
+	}
+
 }
 
 bool GestorBiblioteca::victoria(){ return enemigosCapturados == enemigosTotales; }

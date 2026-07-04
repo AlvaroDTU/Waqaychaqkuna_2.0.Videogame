@@ -1,0 +1,42 @@
+#include "pch.h"
+#include "Linterna.h"
+
+Linterna::Linterna(bool encendida){
+	this->ancho = 72;
+	this->alto = 114;
+	this->anchoFrame = 72;
+	this->altoFrame = 114;
+}
+
+Linterna::~Linterna(){
+	encendida = false;
+}
+
+int Linterna::getPosX(){ return posX;}
+int Linterna::getPosY(){ return posY; }
+int Linterna::getDirX(){ return dirX; }
+int Linterna::getDirY(){ return dirY; }
+int Linterna::getAlto(){ return alto; }
+int Linterna::getAncho(){ return ancho; }
+bool Linterna::getEncendida(){ return encendida; }
+
+void Linterna::setPos(int x, int y) {
+	this->posX = x;
+	this->posY = y;
+}
+void Linterna::setEncencida(bool e){ 
+	encendida = e;
+}
+
+void Linterna::dibujar(Graphics^ g){
+	Bitmap^ img = getBitmap();
+
+	Rectangle origen = Rectangle(columna * anchoFrame, fila * altoFrame, anchoFrame, altoFrame);
+	Rectangle destino(posX, posY, ancho, alto);
+
+	g->DrawImage(img, destino, origen, GraphicsUnit::Pixel);
+}
+
+Bitmap^ Linterna::getBitmap(){ return Recursos::linterna; }
+
+Rectangle Linterna::getRectangle(int extra = 0){ return Rectangle(posX - extra, posY - extra, ancho + extra * 2, alto + extra * 2); }

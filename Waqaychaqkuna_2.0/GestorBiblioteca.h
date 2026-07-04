@@ -4,6 +4,7 @@
 #include "Murcielago.h"
 #include "Manipulador.h"
 #include "Archivo.h"
+#include "Linterna.h"
 #include <vector>
 
 using std::vector;
@@ -13,6 +14,7 @@ class GestorBiblioteca : public Escenario
 	private:
 	double tiempoRecarga;
 	double vidas;
+	Linterna* linterna;
 
 	public:
 		GestorBiblioteca(int enTotales);
@@ -32,5 +34,7 @@ class GestorBiblioteca : public Escenario
 		void recargaLinterna();
 		double getTiempoRecarga();
 		double getVidas();
+		Linterna* getLinterna();
+
 };
 
