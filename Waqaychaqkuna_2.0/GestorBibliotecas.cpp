@@ -33,6 +33,7 @@ void GestorBiblioteca::crearSprites(){
 }
 void GestorBiblioteca::dibujar(Graphics^ g){
 	fondo->dibujarFondo(g, escalaX, escalaY);
+	dibujarLibros(g);
 	guardia->dibujar(g, escalaX, escalaY);
 	for (auto manipulador : enemigos) manipulador->dibujar(g,escalaX, escalaY);
 	for (auto murcielago : aliados)
@@ -40,8 +41,6 @@ void GestorBiblioteca::dibujar(Graphics^ g){
 
 	if (linterna->getEncendida())
 		linterna->dibujar(g);
-
-	dibujarLibros(g);
 
 }
 void GestorBiblioteca::mover(){
@@ -265,7 +264,7 @@ void GestorBiblioteca::dibujarLibros(Graphics^ g) {
 		for (size_t j = 0; j < (int)enemigos.size(); j++)
 		{
 			Rectangle htbEnemigo = enemigos[j]->getRectangle();
-			if (htbBien.IntersectsWith(htbEnemigo) && bienes[i]->getPuntajeValor() <=2000) {
+			if (htbBien.IntersectsWith(htbEnemigo) && bienes[i]->getPuntajeValor() <=2005) {
 				int x = enemigos[i]->getPosX() - 20;
 				int y = enemigos[i]->getPosY();
 				int ancho = 44;
