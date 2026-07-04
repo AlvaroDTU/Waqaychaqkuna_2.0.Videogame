@@ -39,4 +39,4 @@ void Linterna::dibujar(Graphics^ g){
 
 Bitmap^ Linterna::getBitmap(){ return Recursos::linterna; }
 
-Rectangle Linterna::getRectangle(int extra = 0){ return Rectangle(posX - extra, posY - extra, ancho + extra * 2, alto + extra * 2); }
+Rectangle Linterna::getRectangle(int extra){ return Rectangle(posX - extra, posY - extra, ancho + extra * 2, alto + extra * 2); }

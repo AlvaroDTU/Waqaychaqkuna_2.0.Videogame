@@ -59,6 +59,7 @@ namespace Waqaychaqkuna20 {
 		   bool dialogoHuaca2 = false;
 		   bool dialogoHuaca3 = false;
 		   bool dialogoHuaca4 = false;
+		   bool musicaSuspenso = false;
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
@@ -255,6 +256,7 @@ namespace Waqaychaqkuna20 {
 		Graphics^ g = this->pnlMapa->CreateGraphics();
 		buffer = contexto->Allocate(g, this->pnlMapa->ClientRectangle);
 		tmrJuego->Start();
+		Recursos::normal2->PlayLooping();
 		delete g;
 	}
 	private: System::Void FrmNivel2_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
@@ -312,6 +314,20 @@ namespace Waqaychaqkuna20 {
 				this->Close();
 			}
 		}
+
+		if (!musicaSuspenso &&
+			(gestor->getBien(0)->getPuntajeValor() <= 1500 ||
+				gestor->getBien(1)->getPuntajeValor() <= 1500 ||
+				gestor->getBien(2)->getPuntajeValor() <= 1500 ||
+				gestor->getBien(3)->getPuntajeValor() <= 1500))
+		{
+			musicaSuspenso = true;
+
+			Recursos::normal2->Stop();
+			Recursos::suspenso2->PlayLooping();
+		}
+
+
 		if (!dialogoHuaca1 && gestor->getBien(0)->getPuntajeValor() <= 1500)
 		{
 			dialogoHuaca1 = true;
