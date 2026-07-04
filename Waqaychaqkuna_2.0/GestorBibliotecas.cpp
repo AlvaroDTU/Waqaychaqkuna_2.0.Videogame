@@ -211,8 +211,8 @@ bool GestorBiblioteca::encenderLinterna() {
 	{
 		linterna->setEncendida(true);
 
-		int lx = guardia->getPosX();
-		int ly = guardia->getPosY() + 114;
+		int lx = guardia->getPosX() - 21;
+		int ly = guardia->getPosY() - linterna->getAlto();
 
 		linterna->setPos(lx, ly);
 	}
