@@ -7,6 +7,7 @@ GestorBiblioteca::GestorBiblioteca(int enTotal) : Escenario(enTotal)
 	this->tiempoRecarga = 100.00;
 	tempSpawnEntidades = 70;
 	vidas = 20;
+	linterna = nullptr;
 }
 
 GestorBiblioteca::~GestorBiblioteca(){
@@ -15,6 +16,8 @@ GestorBiblioteca::~GestorBiblioteca(){
 void GestorBiblioteca::crearSprites(){
 
 	fondo = new Fondo(3, anchoLienzo, altoLienzo);
+
+	linterna = new Linterna(false);
 
 	guardia = new Guardia(622, 674, 30, 40, 60, 80);
 	
@@ -51,7 +54,7 @@ void GestorBiblioteca::mover(){
 void GestorBiblioteca::detectarColisiones(){
 
 	Rectangle hbGuardia = guardia->getRectangle();
-	Rectangle hbLinterna = linterna->getRectangle();
+	Rectangle hbLinterna = linterna->getRectangle(0);
 	//colision guardia y enemigos
 	for (int i = (int)enemigos.size() - 1; i >= 0; i--)
 	{
@@ -89,8 +92,9 @@ bool GestorBiblioteca::derrota(){
 	bool bienDestruido = false;
 	for (auto bien : bienes)
 	{
-		if (bien->getPuntajeValor() <= 0) {bienDestruido = true; return bienDestruido;}
+		if (bien->getPuntajeValor() <= 0) {bienDestruido = true; }
 	}
+	return bienDestruido;
 	if (vidas <= 0) return true;
 
 }
@@ -193,10 +197,11 @@ double GestorBiblioteca::getVidas() {
 }
 
 bool GestorBiblioteca::encenderLinterna() {
+
 	if (guardia->getAccion() && guardia->getTipoAccion() == 1) {
 		int lx = guardia->getPosX();
 		int ly = guardia->getPosY() + 114;
-		linterna->setEncencida(true);
+		linterna->setEncendida(true);
 		linterna->setPos(lx, ly);
 		return true;
 	}

@@ -8,6 +8,9 @@ Linterna::Linterna(bool encendida){
 	this->altoFrame = 114;
 	this->posX =0;
 	this->posY = 0;
+	this->encendida = encendida;
+	this->fila = 0;
+	this->columna = 0;
 }
 
 Linterna::~Linterna(){
@@ -26,7 +29,7 @@ void Linterna::setPos(int x, int y) {
 	this->posX = x;
 	this->posY = y;
 }
-void Linterna::setEncencida(bool e){ 
+void Linterna::setEncendida(bool e){ 
 	encendida = e;
 }
 
