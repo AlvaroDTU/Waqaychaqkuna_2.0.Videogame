@@ -55,4 +55,6 @@ public:
     //---------------- SONIDOS ----------------
     static SoundPlayer^ normal2 = gcnew SoundPlayer("sonidos\\normal2.wav");
     static SoundPlayer^ suspenso2 = gcnew SoundPlayer("sonidos\\suspenso2.wav");
+    static SoundPlayer^ normal3 = gcnew SoundPlayer("sonidos\\normal3.wav");
+    static SoundPlayer^ suspenso3 = gcnew SoundPlayer("sonidos\\suspenso3.wav");
 };

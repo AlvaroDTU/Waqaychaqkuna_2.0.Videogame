@@ -288,6 +288,7 @@ private: System::Void FrmNivel3_Load(System::Object^ sender, System::EventArgs^ 
 	Graphics^ g = this->pnlMapa->CreateGraphics();
 	buffer = contexto->Allocate(g, this->pnlMapa->ClientRectangle);
 	tmrNivel3->Start();
+	Recursos::normal3->PlayLooping();
 	delete g;
 }
 
@@ -400,6 +401,16 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 		archivo4.push_back("¡Conservar el patrimonio es preservar nuestra historia!");
 
 		gestor->getDialogo()->iniciar(archivo4);
+	}
+
+	if (!musicaSuspenso &&
+		(gestor->getBien(0)->getPuntajeValor() <= 2200 || gestor->getBien(1)->getPuntajeValor() <= 2200 ||
+		gestor->getBien(2)->getPuntajeValor() <= 2200 || gestor->getBien(3)->getPuntajeValor() <= 2200)) {
+
+		musicaSuspenso = true;
+
+		Recursos::normal3->Stop();
+		Recursos::suspenso3->PlayLooping();
 	}
 
 	this->lblDerrotados->Text = String::Format(L"ENEMIGOS CAPTURADOS: {0}", (int)gestor->getCapturados());
