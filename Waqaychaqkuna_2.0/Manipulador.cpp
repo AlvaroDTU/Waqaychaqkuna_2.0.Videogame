@@ -77,5 +77,5 @@ void Manipulador::mover(int anchoLienzo, int altoLienzo)
 
 void Manipulador::atacar(Bien* bien)
 {
-	bien->restarPuntajeValor(1);
+	bien->restarPuntajeValor(50);
 }

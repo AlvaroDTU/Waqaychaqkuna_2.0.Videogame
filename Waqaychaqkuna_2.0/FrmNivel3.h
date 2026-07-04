@@ -336,6 +336,22 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 	gestor->detectarColisiones();
 
 	Pintar();
+
+	if (gestor->victoria())
+	{
+		this->tmrNivel3->Stop();
+		Recursos::suspenso2->Stop();
+		MessageBox::Show("GANASTE");
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+		this->Close();
+	}
+	if (gestor->derrota())
+	{
+		Recursos::suspenso2->Stop();
+		this->tmrNivel3->Stop();
+		MessageBox::Show("PERDISTE");
+		this->Close();
+	}
 }
 
 private: System::Void FrmNivel3_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {

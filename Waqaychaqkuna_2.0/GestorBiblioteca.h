@@ -12,6 +12,7 @@ using std::vector;
 class GestorBiblioteca : public Escenario
 {
 	private:
+	int contador;
 	double tiempoRecarga;
 	double vidas;
 	Linterna* linterna;

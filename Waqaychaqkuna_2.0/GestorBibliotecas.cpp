@@ -3,7 +3,7 @@
 
 GestorBiblioteca::GestorBiblioteca(int enTotal) : Escenario(enTotal)
 {
-	enemigosCapturados = 0;
+	contador = 0;
 	this->tiempoRecarga = 100.00;
 	tempSpawnEntidades = 70;
 	vidas = 20;
@@ -88,6 +88,7 @@ void GestorBiblioteca::detectarColisiones(){
 			if (hbLadron.IntersectsWith(hbLinterna))
 			{
 				eliminarEnemigo(i);
+				enemigosCapturados++;
 			}
 		}
 	}
@@ -100,10 +101,9 @@ bool GestorBiblioteca::derrota(){
 	bool bienDestruido = false;
 	for (auto bien : bienes)
 	{
-		if (bien->getPuntajeValor() <= 0) {bienDestruido = true; }
+		if (bien->getPuntajeValor() <= 0) bienDestruido = true;
 	}
-	return bienDestruido;
-	if (vidas <= 0) return true;
+	return vidas <= 0 || bienDestruido;
 
 }
 
@@ -112,9 +112,10 @@ void GestorBiblioteca::jugar(){
 	encenderLinterna();
 	recargaLinterna();
 	tempSpawnEntidades--;
-	if (tempSpawnEntidades == 0) {
+	if (tempSpawnEntidades == 0 && (contador != enemigosTotales)) {
 		generarManipulador();
 		tempSpawnEntidades = 120;
+		contador++;
 	}
 }
 
