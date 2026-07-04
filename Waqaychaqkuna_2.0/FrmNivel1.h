@@ -61,7 +61,8 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Label^ lblArtilugio6;
 	private: System::Windows::Forms::Label^ lblArtilugio5;
 	private: System::Windows::Forms::Label^ lblArtilugio4;
-	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ lblInstruccion;
+
 	private: System::Windows::Forms::Panel^ pnlMapa;
 		   GestorMuseo* gestor;
 
@@ -83,7 +84,7 @@ namespace Waqaychaqkuna20 {
 			   this->lblArtilugio6 = (gcnew System::Windows::Forms::Label());
 			   this->lblArtilugio5 = (gcnew System::Windows::Forms::Label());
 			   this->lblArtilugio4 = (gcnew System::Windows::Forms::Label());
-			   this->label1 = (gcnew System::Windows::Forms::Label());
+			   this->lblInstruccion = (gcnew System::Windows::Forms::Label());
 			   this->pnlMapa = (gcnew System::Windows::Forms::Panel());
 			   this->SuspendLayout();
 			   // 
@@ -192,16 +193,16 @@ namespace Waqaychaqkuna20 {
 			   this->lblArtilugio4->TabIndex = 7;
 			   this->lblArtilugio4->Text = L"ARTILUGIO 4:";
 			   // 
-			   // label1
+			   // lblInstruccion
 			   // 
-			   this->label1->AutoSize = true;
-			   this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			   this->lblInstruccion->AutoSize = true;
+			   this->lblInstruccion->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->label1->Location = System::Drawing::Point(1311, 139);
-			   this->label1->Name = L"label1";
-			   this->label1->Size = System::Drawing::Size(207, 40);
-			   this->label1->TabIndex = 10;
-			   this->label1->Text = L"\'E\' PARA\nCAPTURAR LADRONES";
+			   this->lblInstruccion->Location = System::Drawing::Point(1344, 161);
+			   this->lblInstruccion->Name = L"lblInstruccion";
+			   this->lblInstruccion->Size = System::Drawing::Size(207, 40);
+			   this->lblInstruccion->TabIndex = 10;
+			   this->lblInstruccion->Text = L"   \'E\' PARA  \nCAPTURAR LADRONES";
 			   // 
 			   // pnlMapa
 			   // 
@@ -217,7 +218,7 @@ namespace Waqaychaqkuna20 {
 			   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->ClientSize = System::Drawing::Size(1600, 800);
-			   this->Controls->Add(this->label1);
+			   this->Controls->Add(this->lblInstruccion);
 			   this->Controls->Add(this->lblArtilugio6);
 			   this->Controls->Add(this->lblArtilugio5);
 			   this->Controls->Add(this->lblArtilugio4);

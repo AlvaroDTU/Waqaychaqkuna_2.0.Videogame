@@ -22,7 +22,11 @@ GestorMuseo::~GestorMuseo()
 void GestorMuseo::crearSprites()
 {
 	fondo = new Fondo(1, anchoLienzo, altoLienzo);
-
+	std::vector<std::string> frases;
+	frases.push_back("Reportera: Evita que los huaqueros destruyan las huacas");
+	frases.push_back("poniendo cuidadores que vigilen y protejan el patrimonio (letra E)");
+	frases.push_back("Si el puntaje de una Huaca es menor a 1500, esta se destruye");
+	dialogo.iniciar(frases);
 	guardia = new Guardia(790, 170, 45, 60, 60, 80);
 
 	agregarAliado(new Reportera(1095, 120, 45, 60, 60, 80));
