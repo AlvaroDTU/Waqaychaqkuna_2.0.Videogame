@@ -245,7 +245,6 @@ namespace Waqaychaqkuna20 {
 
 			gestor->setLienzo(this->pnlMapa->Width, this->pnlMapa->Height);
 			gestor->crearSprites();
-
 			BufferedGraphicsContext^ contexto = BufferedGraphicsManager::Current;
 			Graphics^ g = this->pnlMapa->CreateGraphics();
 			buffer = contexto->Allocate(g, this->pnlMapa->ClientRectangle);
@@ -255,27 +254,30 @@ namespace Waqaychaqkuna20 {
 		}
 		Void FrmNivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			Guardia* g = gestor->getGuardia();
-			if (e->KeyCode == Keys::Up) {
+			if (gestor->getDialogo()->estaActivo())
+			{
+				if (e->KeyCode == Keys::Space || e->KeyCode == Keys::Enter)
+					gestor->getDialogo()->avanzar();
+				e->Handled = true;
+				return;
+			}
+			if (e->KeyCode == Keys::Up) 
 				g->setVelocidad(0, -5);
-			}
-			else if (e->KeyCode == Keys::Down) {
+			else if (e->KeyCode == Keys::Down)
 				g->setVelocidad(0, 5);
-			}
-			else if (e->KeyCode == Keys::Right) {
+			else if (e->KeyCode == Keys::Right)
 				g->setVelocidad(5, 0);
-			}
-			else if (e->KeyCode == Keys::Left) {
+			else if (e->KeyCode == Keys::Left)
 				g->setVelocidad(-5, 0);
-			}
 			else if (e->KeyCode == Keys::E) {
 				g->setAccion(true);
 				g->setTipoAccion(1);
-				// interaccion mostrar info de bienes
+				// interaccion descubrir a los ladrones
 			}
-			else if (e->KeyCode == Keys::Space) {
+			else if (e->KeyCode == Keys::D) {
 				g->setAccion(true);
 				g->setTipoAccion(2);
-				// descubrir a los ladrones
+				// mostrar descripcion de bienes
 			}
 		}
 		Void tmrNivel1_Tick(System::Object^ sender, System::EventArgs^ e)
@@ -315,7 +317,6 @@ namespace Waqaychaqkuna20 {
 		Void Pintar()
 		{
 			gestor->dibujar(buffer->Graphics);
-
 			Graphics^ g = this->pnlMapa->CreateGraphics();
 			buffer->Render(g);
 			delete g;

@@ -43,14 +43,20 @@ void GestorMuseo::crearSprites()
 
 void GestorMuseo::mover()
 {
-	guardia->mover(objetos,bienes);
-	aliados[0]->mover(anchoLienzo, altoLienzo);
-	for (auto ladron : enemigos) ((Ladron*)ladron)->mover(objetos, bienes);
-	for (auto visitante : visitantes) visitante->mover(objetos, bienes);
+	if (dialogo.estaActivo())
+		dialogo.actualizar();
+	else 
+	{
+		guardia->mover(objetos, bienes);
+		aliados[0]->mover(anchoLienzo, altoLienzo);
+		for (auto ladron : enemigos) ((Ladron*)ladron)->mover(objetos, bienes);
+		for (auto visitante : visitantes) visitante->mover(objetos, bienes);
+	}
 }
 
 void GestorMuseo::dibujar(Graphics^ g)
 {
+	
 	fondo->dibujarFondo(g);
 	if (fondoActual == 1) 
 	{
@@ -60,6 +66,8 @@ void GestorMuseo::dibujar(Graphics^ g)
 	for (auto ladron : enemigos) ladron->dibujar(g);
 	for (auto visitante : visitantes) visitante->dibujar(g);
 	guardia->dibujar(g);
+
+	dialogo.dibujar(g, anchoLienzo, altoLienzo);
 }
 
 void GestorMuseo::detectarColisiones()
@@ -118,42 +126,39 @@ void GestorMuseo::detectarColisiones()
 
 	if (fondoActual == 1)
 	{
-		cambioDer = Rectangle(1241, 349, 60, 110);
+		if(((Reportera*)aliados[0])->getTipoPista() > 0)
+			cambioDer = Rectangle(1241, 349, 60, 110);
 	}
 	if (fondoActual == 2)
 	{
-		cambioIzq = Rectangle(0, 350, 70, 110);
-		cambioDer = Rectangle(1236, 355, 64, 110);
+		if (!iniciado) {
+			// cambioIzq = Rectangle(0, 350, 70, 110);
+			cambioDer = Rectangle(1236, 355, 64, 110);
+		}
 	}
 	if (fondoActual == 3)
 	{
-		cambioIzq = Rectangle(0, 356, 65, 105);
+		if (!iniciado)
+			cambioIzq = Rectangle(0, 356, 65, 105);
 	}
 	if (hbGuardia.IntersectsWith(cambioDer))
 	{
-		if (!iniciado)
-		{
-			if (((Reportera*)aliados[0])->getTipoPista() > 0) {
-				iniciado = true;
-				fondoActual++;
-				fondo->cambioEscena(fondoActual);
-				if (fondoActual == 2) guardia->setPos(85, 370);
-				if (fondoActual == 3) guardia->setPos(80, 365);
-				setearColisionesMapa();
-				tempSpawnEntidades = 0;
-			}
-		}
+		iniciado = true;
+		fondoActual++;
+		fondo->cambioEscena(fondoActual);
+		if (fondoActual == 2) guardia->setPos(85, 370);
+		if (fondoActual == 3) guardia->setPos(80, 365);
+		setearColisionesMapa();
+		tempSpawnEntidades = 0;
 	}
 	if (hbGuardia.IntersectsWith(cambioIzq)) {
-		if (!iniciado)
-		{
-			fondoActual--;
-			fondo->cambioEscena(fondoActual);
-			if (fondoActual == 1) guardia->setPos(1171, 377);
-			if (fondoActual == 2) guardia->setPos(1162, 367);
-			setearColisionesMapa();
-			tempSpawnEntidades = 0;
-		}
+		fondoActual--;
+		fondo->cambioEscena(fondoActual);
+		if (fondoActual == 1) guardia->setPos(1171, 377);
+		if (fondoActual == 2) guardia->setPos(1162, 367);
+		setearColisionesMapa();
+		tempSpawnEntidades = 0;
+		
 	}
 }
 
