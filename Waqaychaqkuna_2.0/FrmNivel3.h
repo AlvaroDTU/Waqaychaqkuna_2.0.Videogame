@@ -58,7 +58,6 @@ namespace Waqaychaqkuna20 {
 
 		   GestorBiblioteca* gestor;
 		   int finCont;
-
 		   bool dialogoArchivo1 = false;
 		   bool dialogoArchivo2 = false;
 		   bool dialogoArchivo3 = false;

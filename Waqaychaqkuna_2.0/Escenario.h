@@ -30,6 +30,7 @@ protected:
 	int enemigosCapturados;
 	int tempSpawnEntidades;
 	int puntajeNivel;
+	float escalaX, escalaY;
 
 public:
 	Escenario(int enTotales);
@@ -52,7 +53,7 @@ public:
 	int totalEnemigos();
 	int totalAliados();
 	int totalBienes();
-
+	void setEscalado(float eX, float eY);
 	Bien* getBien(int i);
 	int getPuntajeNivel() { return puntajeNivel; }
 	int getCapturados() { return enemigosCapturados; }

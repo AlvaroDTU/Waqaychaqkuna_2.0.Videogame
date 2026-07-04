@@ -7,6 +7,8 @@ Escenario::Escenario(int enTotales)
 	srand(time(nullptr));
 	enemigosCapturados = 0;
 	tempSpawnEntidades = 0;
+	escalaX = 1.0f;
+	escalaY = 1.0f;
 }
 
 Escenario::~Escenario()
@@ -53,3 +55,9 @@ Bien* Escenario::getBien(int i) {
 }
 
 Dialogo* Escenario::getDialogo() { return &dialogo;}
+
+void Escenario::setEscalado(float eX, float eY) 
+{
+	escalaX = eX;
+	escalaY = eY;
+}

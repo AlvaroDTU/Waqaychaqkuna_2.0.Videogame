@@ -43,5 +43,7 @@ public:
 	bool getIniciado() { return iniciado; }
 	bool getPrimeraRondaVencida() { return primerRondaVencida; }
 	bool getSegundaRondaVencida() { return segundaRondaVencida; }
+
+	void dibujarFlechas(Graphics^ g);
 };
 

@@ -45,7 +45,7 @@ public:
 	void setColumna(int colum);
 	bool estaActivo();
 	void setActivo(bool a);
-	void dibujar(Graphics^ g);
+	void dibujar(Graphics^ g, float escalaX, float escalaY);
 
 	virtual Bitmap^ getBitmap() = 0;
 	virtual void mover(int ancho, int alto) = 0;

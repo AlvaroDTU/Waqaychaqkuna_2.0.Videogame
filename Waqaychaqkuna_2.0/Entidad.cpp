@@ -29,14 +29,13 @@ void Entidad::setPos(int x, int y) {
 	this->posY = y;
 }
 void Entidad::setAlto(int alt) { this->alto = alt; }
-void Entidad::dibujar(Graphics^ g) {
+void Entidad::dibujar(Graphics^ g, float escalaX, float escalaY) {
 	Bitmap^ img = getBitmap();
 
 	Rectangle origen = Rectangle(columna * anchoFrame, fila * altoFrame, anchoFrame, altoFrame);
-	Rectangle destino(posX, posY, ancho, alto);
+	Rectangle destino(posX * escalaX, posY * escalaY, ancho * escalaX, alto * escalaY);
 
 	g->DrawImage(img, destino, origen, GraphicsUnit::Pixel);
-	moviendose = false;
 }
 
 void Entidad::avanzarEscena() {

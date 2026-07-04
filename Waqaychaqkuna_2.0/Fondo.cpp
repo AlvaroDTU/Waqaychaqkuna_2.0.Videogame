@@ -8,10 +8,12 @@ Fondo::Fondo(int t, int anchoLienzo, int altoLienzo)
 
 }
 
-void Fondo::dibujarFondo(Graphics^ g)
+void Fondo::dibujarFondo(Graphics^ g, float escalaX, float escalaY)
 {
 	Bitmap^ bmp = getBitmap();
-	g->DrawImage(bmp, 0, 0, Rectangle(x, 0, ancho, alto), GraphicsUnit::Pixel);
+	Rectangle origen(x, 0, ancho, alto);
+	Rectangle destino(0, 0, 1300 * escalaX, 800 * escalaY);
+	g->DrawImage(bmp, destino, origen, GraphicsUnit::Pixel);
 }
 
 void Fondo::cambioEscena(int fActual)
@@ -20,7 +22,7 @@ void Fondo::cambioEscena(int fActual)
 	fondoActual = fActual;
 }
 
-Bitmap^ Fondo::getBitmap() 
+Bitmap^ Fondo::getBitmap()
 {
 	Bitmap^ img = nullptr;
 	if (tipo == 1)

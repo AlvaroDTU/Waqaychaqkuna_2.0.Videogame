@@ -53,13 +53,18 @@ void GestorMuseo::mover()
 	aliados[0]->mover(anchoLienzo, altoLienzo);
 }
 
-static void dibujarFlechas(Graphics^ g, int fActual)
+void GestorMuseo::dibujarFlechas(Graphics^ g)
 {
 	Bitmap^ flecha = gcnew Bitmap("sprites\\flecha.png");
 	Rectangle origen(0, 0, flecha->Width, flecha->Height);
-	Rectangle destino1(1241 - 7 * (fActual - 1), 356 + 3 * (fActual - 1), 34, 26);
-	Rectangle destino2(1241 - 7 * (fActual - 1), 391 + 3 * (fActual - 1), 34, 26);
-	Rectangle destino3(1241 - 7 * (fActual - 1), 427 + 3 * (fActual - 1), 34, 26);
+	int x = 1241 - 7 * (fondoActual - 1);
+	int y1 = 356 + 3 * (fondoActual - 1);
+	int y2 = 391 + 3 * (fondoActual - 1);
+	int y3 = 427 + 3 * (fondoActual - 1);
+	int ancho = 34, alto = 26;
+	Rectangle destino1((int)x * escalaX, (int)y1 * escalaY, (int)ancho * escalaX, (int)alto * escalaY);
+	Rectangle destino2((int)x * escalaX, (int)y2 * escalaY, (int)ancho * escalaX, (int)alto * escalaY);
+	Rectangle destino3((int)x * escalaX, (int)y3 * escalaY, (int)ancho * escalaX, (int)alto * escalaY);
 	g->DrawImage(flecha, destino1, origen, GraphicsUnit::Pixel);
 	g->DrawImage(flecha, destino2, origen, GraphicsUnit::Pixel);
 	g->DrawImage(flecha, destino3, origen, GraphicsUnit::Pixel);
@@ -67,17 +72,17 @@ static void dibujarFlechas(Graphics^ g, int fActual)
 
 void GestorMuseo::dibujar(Graphics^ g)
 {
-	fondo->dibujarFondo(g);
-	if ((getReportera()->getTipoPista() > 0 && fondoActual == 1) || (primerRondaVencida && fondoActual==2))
-		dibujarFlechas(g, fondoActual);
+	fondo->dibujarFondo(g, escalaX, escalaY);
+	if ((getReportera()->getTipoPista() > 0 && fondoActual == 1) || (primerRondaVencida && fondoActual == 2))
+		dibujarFlechas(g);
 	if (fondoActual == 1)
 	{
 		for (auto reportera : aliados)
-			reportera->dibujar(g);
+			reportera->dibujar(g, escalaX, escalaY);
 	}
-	for (auto ladron : enemigos) ladron->dibujar(g);
-	for (auto visitante : visitantes) visitante->dibujar(g);
-	guardia->dibujar(g);
+	for (auto ladron : enemigos) ladron->dibujar(g, escalaX, escalaY);
+	for (auto visitante : visitantes) visitante->dibujar(g, escalaX, escalaY);
+	guardia->dibujar(g, escalaX, escalaY);
 
 	dialogo.dibujar(g, anchoLienzo, altoLienzo);
 }
@@ -298,7 +303,7 @@ void GestorMuseo::setearColisionesMapa()
 			int tipo = rand() % 3 + 1;
 			agregarEnemigo(new Ladron(x, y, 45, 60, 60, 80, 0, 0, rand() % 3, tipo, getReportera()->getTipoPista()));
 		}
-		int nVisitantes = enemigosRonda1 + rand() % 6; 
+		int nVisitantes = enemigosRonda1 + rand() % 6;
 		for (int i = 0; i < nVisitantes; i++)
 		{
 			int x = 0, y = 0;
@@ -364,14 +369,14 @@ void GestorMuseo::jugar()
 	mover();
 	detectarColisiones();
 
-	if (enemigosCapturados == enemigosRonda1 && !primerRondaVencida) 
-	{ 
-		iniciado = false; primerRondaVencida = true; 
+	if (enemigosCapturados == enemigosRonda1 && !primerRondaVencida)
+	{
+		iniciado = false; primerRondaVencida = true;
 		std::vector<std::string> frases;
 		frases.push_back("(Radio)Reportera:\n\"Lo lograste! Ahora pasa a la siguiente sala para capturar al resto.\"");
 		dialogo.iniciar(frases);
 	}
-	if (enemigosCapturados == enemigosTotales && !segundaRondaVencida) { 
+	if (enemigosCapturados == enemigosTotales && !segundaRondaVencida) {
 		std::vector<std::string> frases;
 		frases.push_back("(Radio)Reportera:\n\"Bien hecho, guardia! El museo esta seguro de los ladrones gracias a ti\"");
 		dialogo.iniciar(frases);

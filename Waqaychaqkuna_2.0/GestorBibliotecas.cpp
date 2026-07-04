@@ -33,11 +33,11 @@ void GestorBiblioteca::crearSprites(){
 }
 void GestorBiblioteca::dibujar(Graphics^ g){
 
-	fondo->dibujarFondo(g);
-	guardia->dibujar(g);
-	for (auto manipulador : enemigos) manipulador->dibujar(g);
+	fondo->dibujarFondo(g, escalaX, escalaY);
+	guardia->dibujar(g, escalaX, escalaY);
+	for (auto manipulador : enemigos) manipulador->dibujar(g,escalaX, escalaY);
 	for (auto murcielago : aliados)
-		murcielago->dibujar(g);
+		murcielago->dibujar(g, escalaX, escalaY);
 
 	if (linterna->getEncendida())
 		linterna->dibujar(g);
