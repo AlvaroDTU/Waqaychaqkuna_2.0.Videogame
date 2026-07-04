@@ -172,7 +172,7 @@ void GestorBiblioteca::setearColisionesMapa(){
 	agregarObjeto(new Objeto(28, 691, 490, 18));
 	agregarObjeto(new Objeto(779, 691, 490, 18));
 	agregarObjeto(new Objeto(486, 720, 327, 33));
-	agregarObjeto(new Objeto(198, 95, 809, 20));
+	agregarObjeto(new Objeto(198, 95, 893, 20));
 }
 
 void GestorBiblioteca::generarManipulador(){
