@@ -19,7 +19,7 @@ namespace Waqaychaqkuna20 {
 		{
 			InitializeComponent();
 			this->KeyPreview = true;
-			gestor = new GestorHuacas(20);
+			gestor = new GestorHuacas(5);
 			finCont = 0;
 
 			//
@@ -60,6 +60,7 @@ namespace Waqaychaqkuna20 {
 		   bool dialogoHuaca3 = false;
 		   bool dialogoHuaca4 = false;
 		   bool musicaSuspenso = false;
+		   bool musicaFinal = false;
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
@@ -294,7 +295,16 @@ namespace Waqaychaqkuna20 {
 	 {
 	  gestor->dibujar(buffer->Graphics);
 	  gestor->getDialogo()->dibujar(buffer->Graphics, pnlMapa->ClientSize.Width, pnlMapa->ClientSize.Height);
+	  if (gestor->victoria()) {
+		  buffer->Graphics->DrawString("MISION CUMPLIDA!", gcnew System::Drawing::Font("Segoe UI", 40, FontStyle::Bold),
+			  gcnew SolidBrush(Color::DarkGreen), 300.0f, 260.0f);
 
+	  }
+	  if (gestor->derrota()) {
+		  buffer->Graphics->DrawString("GAME OVER", gcnew System::Drawing::Font("Segoe UI", 40, FontStyle::Bold),
+			  gcnew SolidBrush(Color::DarkRed), 360.0f, 260.0f);
+
+	  }
 	  Graphics^ g = this->pnlMapa->CreateGraphics();
 	  buffer->Render(g);
 	  delete g;
@@ -306,11 +316,26 @@ namespace Waqaychaqkuna20 {
 	Void tmrJuego_Tick(System::Object^ sender, System::EventArgs^ e) {
 
 		gestor->getDialogo()->actualizar();
-		if (gestor->victoria())
+		if (gestor->victoria() || gestor->derrota())
 		{
+			if (gestor->victoria() && !musicaFinal) {
+				Recursos::normal2->Stop();
+				Recursos::suspenso2->Stop();
+				Recursos::victoria->PlayLooping();
+				musicaFinal = true;
+			}
+			if (gestor->derrota() && !musicaFinal) {
+				Recursos::normal2->Stop();
+				Recursos::suspenso2->Stop();
+				Recursos::perdiste->PlayLooping();
+				musicaFinal = true;
+			}
 			finCont++;
-			if (finCont >= 120)
+			if (finCont >= 200)
 			{
+				this->tmrJuego->Stop();
+				if (gestor->victoria())Recursos::victoria->Stop();
+				if (gestor->derrota()) Recursos::perdiste->Stop();
 				this->DialogResult = System::Windows::Forms::DialogResult::OK;
 				this->Close();
 			}
@@ -392,27 +417,12 @@ namespace Waqaychaqkuna20 {
 	lblHuaca4->Text = String::Format("Puntaje: {0}", gestor->getBien(3)->getPuntajeValor());
 	lblHuacaN4->Text = gcnew System::String(gestor->getBien(3)->getNombre().c_str());
 
-	
 	if (!gestor->getDialogo()->estaActivo()) { gestor->jugar(); 
 	gestor->detectarColisiones();}
 
 	Pintar();
 
-	if (gestor->victoria())   
-	{
-		this->tmrJuego->Stop();
-		Recursos::suspenso2->Stop();
-		MessageBox::Show("GANASTE");
-		this->DialogResult = System::Windows::Forms::DialogResult::OK;
-		this->Close();
-	}
-	if (gestor->derrota())
-	{
-		Recursos::suspenso2->Stop();
-		this->tmrJuego->Stop();
-		MessageBox::Show("PERDISTE");
-		this->Close();
-	}
+
 }
 };
 }

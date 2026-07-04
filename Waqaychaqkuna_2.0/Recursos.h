@@ -53,6 +53,8 @@ public:
     static Bitmap^ huaca4 = gcnew Bitmap("backgrounds\\Huaca4.png");
 
     //---------------- SONIDOS ----------------
+    static SoundPlayer^ victoria = gcnew SoundPlayer("sonidos\\victoria.wav");
+    static SoundPlayer^ perdiste = gcnew SoundPlayer("sonidos\\perdiste.wav");
     static SoundPlayer^ normal2 = gcnew SoundPlayer("sonidos\\normal2.wav");
     static SoundPlayer^ suspenso2 = gcnew SoundPlayer("sonidos\\suspenso2.wav");
     static SoundPlayer^ normal3 = gcnew SoundPlayer("sonidos\\normal3.wav");
