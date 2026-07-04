@@ -399,13 +399,14 @@ namespace Waqaychaqkuna20 {
 	if (gestor->victoria())   
 	{
 		this->tmrJuego->Stop();
-
+		Recursos::suspenso2->Stop();
 		MessageBox::Show("GANASTE");
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
 	if (gestor->derrota())
 	{
+		Recursos::suspenso2->Stop();
 		this->tmrJuego->Stop();
 		MessageBox::Show("PERDISTE");
 		this->Close();
