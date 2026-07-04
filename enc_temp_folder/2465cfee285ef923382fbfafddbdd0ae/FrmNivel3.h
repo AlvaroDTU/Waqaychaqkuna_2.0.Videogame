@@ -355,7 +355,7 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 		dialogoArchivo1 = true;
 
 		std::vector<std::string> archivo1;
-		archivo1.push_back("El Archivo Caceres ha sido manipulado...");
+		archivo1.push_back("El Archivo Caceres ha sido manipuladas...");
 		archivo1.push_back("Los documentos originales de Andres Avelino Caceres se han perdido.");
 		archivo1.push_back("Con ellos desaparece parte de la memoria de la Guerra del Pacifico.");
 		archivo1.push_back("¡No permitas que la historia del Peru sea borrada!");
@@ -382,7 +382,7 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 		dialogoArchivo3 = true;
 
 		std::vector<std::string> archivo3;
-		archivo3.push_back("La Juramentacion de la Independencia ha sido manipulada...");
+		archivo3.push_back("Las Juras de Independencia han sido manipuladas...");
 		archivo3.push_back("Los testimonios del nacimiento del Peru se han perdido.");
 		archivo3.push_back("La libertad tambien se conserva en sus documentos.");
 		archivo3.push_back("¡Protege el legado de nuestra independencia!");
@@ -395,7 +395,7 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 		dialogoArchivo4 = true;
 
 		std::vector<std::string> archivo4;
-		archivo4.push_back("El Archivo Courret ha sido manipulado...");
+		archivo4.push_back("El Archivo Courret ha sido manipuladas...");
 		archivo4.push_back("Miles de fotografias historicas se han perdido para siempre.");
 		archivo4.push_back("Sin ellas, una parte del Peru queda en el olvido.");
 		archivo4.push_back("¡Cada fotografia es una ventana a nuestra historia!");
