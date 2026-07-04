@@ -101,7 +101,7 @@ namespace Waqaychaqkuna20 {
 		FrmNivel2^ f2 = gcnew FrmNivel2();
 		if (f2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
 		{
-			delete f2;
+			delete f3;
 			return;
 		}
 		delete f2;

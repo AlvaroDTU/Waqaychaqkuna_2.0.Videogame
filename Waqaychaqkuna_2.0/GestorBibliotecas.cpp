@@ -49,7 +49,14 @@ void GestorBiblioteca::mover(){
 void GestorBiblioteca::detectarColisiones(){
 
 	Rectangle hbGuardia = guardia->getRectangle();
-
+	//colision guardia y enemigos
+	for (int i = (int)enemigos.size() - 1; i >= 0; i--)
+	{
+		Rectangle hbLadron = enemigos[i]->getRectangle(1);
+		if (hbLadron.IntersectsWith(hbGuardia))	{ vidas = vidas - 0.2; }
+		else vidas = 0;
+	}
+	//colision enemigos y bienes
 	for (size_t i = 0; i < (int)bienes.size(); i++)
 	{
 		Rectangle htbBien = bienes[i]->getRectangle();
@@ -63,22 +70,7 @@ void GestorBiblioteca::detectarColisiones(){
 				bienes[i]->restarPuntajeValor(1);
 			}
 		}
-
 	}
-
-	for (int i = 0; i < (int)enemigos.size(); i++)
-	{
-		for (int j = 0; j < (int)bienes.size(); j++)
-		{
-			Rectangle hitboxEnemigo = enemigos[i]->getRectangle();
-			Rectangle hitboxBien = bienes[j]->getRectangle(5);
-			if (hitboxEnemigo.IntersectsWith(hitboxBien) && enemigos[i]->getAtacando() && bienes[j]->estaActivo())
-			{
-				enemigos[i]->atacar(bienes[j]);
-			}
-		}
-	}
-
 }
 
 bool GestorBiblioteca::victoria(){ return enemigosCapturados == enemigosTotales; }
@@ -89,7 +81,7 @@ bool GestorBiblioteca::derrota(){
 	{
 		if (bien->getPuntajeValor() <= 0) bienDestruido = true;
 	}
-	return vidas <= 0 || bienDestruido;
+	return bienDestruido;
 }
 
 void GestorBiblioteca::jugar(){
@@ -185,6 +177,6 @@ double GestorBiblioteca::getTiempoRecarga() {
 	return tiempoRecarga;
 }
 
-int GestorBiblioteca::getVidas() {
+double GestorBiblioteca::getVidas() {
 	return vidas;
 }
