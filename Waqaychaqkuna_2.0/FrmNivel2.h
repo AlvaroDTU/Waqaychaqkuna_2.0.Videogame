@@ -353,6 +353,7 @@ namespace Waqaychaqkuna20 {
 
 			gestor->getDialogo()->iniciar(huaca2);
 		}
+		//hOLA
 
 		if (!dialogoHuaca3 && gestor->getBien(2)->getPuntajeValor() <= 1500)
 		{
