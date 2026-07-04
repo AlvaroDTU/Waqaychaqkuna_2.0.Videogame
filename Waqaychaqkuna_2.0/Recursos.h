@@ -1,6 +1,7 @@
 #pragma once
 
 using namespace System::Drawing;
+using namespace System::Media;
 
 public ref class Recursos
 {
