@@ -21,6 +21,7 @@ namespace Waqaychaqkuna20 {
 			this->KeyPreview = true;
 			gestor = new GestorHuacas(10);
 			finCont = 0;
+
 			//
 			//TODO: agregar código de constructor aquí
 			//
@@ -52,6 +53,7 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Label^ lblHuacaN3;
 	private: System::Windows::Forms::Label^ lblHuacaN4;
 	int finCont;
+	
 
 		   BufferedGraphics^ buffer;
 
@@ -243,29 +245,6 @@ namespace Waqaychaqkuna20 {
 		frases.push_back("Si el puntaje de una Huaca es menor a 1500, esta se destruye");
 		gestor->getDialogo()->iniciar(frases);
 
-		std::vector<std::string> huaca1;
-		huaca1.push_back("La Huaca del Sol ha sido destruida...");
-		huaca1.push_back("Fue el mayor centro ceremonial de la cultura Moche.");
-		huaca1.push_back("Con ella se pierde parte de la historia y arquitectura del Perú.");
-		huaca1.push_back("¡Protege nuestro patrimonio antes de que sea demasiado tarde!");
-
-		std::vector<std::string> huaca2;
-		huaca2.push_back("La Huaca de la Luna ha sido destruida...");
-		huaca2.push_back("Sus murales narraban rituales y creencias de los mochicas.");
-		huaca2.push_back("Cada pintura perdida borra parte de nuestra memoria cultural.");
-		huaca2.push_back("¡No permitas que el huaqueo destruya nuestra historia!");
-
-		std::vector<std::string> huaca3;
-		huaca3.push_back("La Huaca Dragón ha sido destruida...");
-		huaca3.push_back("Sus relieves representaban importantes símbolos de la cultura Chimú.");
-		huaca3.push_back("Su destrucción significa perder valiosa evidencia arqueológica.");
-		huaca3.push_back("¡El patrimonio cultural necesita ser protegido por todos!");
-
-		std::vector<std::string> huaca4;
-		huaca4.push_back("La Huaca Takaynamo ha sido destruida...");
-		huaca4.push_back("Está vinculada al origen legendario del reino Chimú.");
-		huaca4.push_back("Cada monumento perdido debilita nuestra identidad cultural.");
-		huaca4.push_back("¡Conservar el patrimonio es preservar nuestra historia!");
 	/*	"Huaca del Sol", 1));
 		"Huaca de la Luna", 2
 			"Huaca Dragon", 3));
@@ -331,7 +310,40 @@ namespace Waqaychaqkuna20 {
 				this->Close();
 			}
 		}
+		if (gestor->getBien(0)->getPuntajeValor() == 1500) {
+			std::vector<std::string> huaca1;
+			huaca1.push_back("La Huaca del Sol ha sido destruida...");
+			huaca1.push_back("Fue el mayor centro ceremonial de la cultura Moche.");
+			huaca1.push_back("Con ella se pierde parte de la historia y arquitectura del Perú.");
+			huaca1.push_back("¡Protege nuestro patrimonio antes de que sea demasiado tarde!");
 
+			gestor->getDialogo()->iniciar(huaca1); }
+
+		if (gestor->getBien(1)->getPuntajeValor() == 1500) {
+			std::vector<std::string> huaca2;
+			huaca2.push_back("La Huaca de la Luna ha sido destruida...");
+			huaca2.push_back("Sus murales narraban rituales y creencias de los mochicas.");
+			huaca2.push_back("Cada pintura perdida borra parte de nuestra memoria cultural.");
+			huaca2.push_back("¡No permitas que el huaqueo destruya nuestra historia!");
+
+			gestor->getDialogo()->iniciar(huaca2); }
+
+		if (gestor->getBien(2)->getPuntajeValor() == 1500) {
+			std::vector<std::string> huaca3;
+			huaca3.push_back("La Huaca Dragón ha sido destruida...");
+			huaca3.push_back("Sus relieves representaban importantes símbolos de la cultura Chimú.");
+			huaca3.push_back("Su destrucción significa perder valiosa evidencia arqueológica.");
+			huaca3.push_back("¡El patrimonio cultural necesita ser protegido por todos!");
+
+			gestor->getDialogo()->iniciar(huaca3); }
+
+		if (gestor->getBien(3)->getPuntajeValor() == 1500) {
+			std::vector<std::string> huaca4;
+			huaca4.push_back("La Huaca Takaynamo ha sido destruida...");
+			huaca4.push_back("Está vinculada al origen legendario del reino Chimú.");
+			huaca4.push_back("Cada monumento perdido debilita nuestra identidad cultural.");
+			huaca4.push_back("¡Conservar el patrimonio es preservar nuestra historia!");
+			gestor->getDialogo()->iniciar(huaca4); }
 
 	lblPrueba->Text = String::Format("PosX: {0}", gestor->getGuardia()->getPosX());
 	lblHuaca1->Text = String::Format("Puntaje: {0}", gestor->getBien(0)->getPuntajeValor());
@@ -344,12 +356,13 @@ namespace Waqaychaqkuna20 {
 	lblHuacaN4->Text = gcnew System::String(gestor->getBien(3)->getNombre().c_str());
 
 	gestor->detectarColisiones();
-	gestor->jugar();
+	if(!gestor->getDialogo()->estaActivo())gestor->jugar();
 	Pintar();
 
 	if (gestor->victoria())   
 	{
 		this->tmrJuego->Stop();
+
 		MessageBox::Show("GANASTE");
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
