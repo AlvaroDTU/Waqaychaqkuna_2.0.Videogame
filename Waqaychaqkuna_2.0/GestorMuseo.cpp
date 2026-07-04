@@ -89,7 +89,7 @@ void GestorMuseo::detectarColisiones()
 			frases.push_back("Reportera:\n\"Para reconocerse entre ellos mismos, usan identificadores sutiles que son algo complicados de ver.\"");
 			frases.push_back("Reportera:\n\"Pero no te preocupes! Mi equipo y yo hemos logrado descubrir lo que llevaran puesto:\n" + pista + "\"");
 			frases.push_back("Reportera:\n\"Identifica correctamente a los ladrones y capturalos (pulsando E)\"");
-			frases.push_back("Reportera:\n\"Pero ten cuidado, si capturas a un visitante normal los ladrones se daran cuenta que vas por ellos y huiran antes de que puedas atraparlos!\"");
+			frases.push_back("Reportera:\n\"Pero ten cuidado, si capturas a un visitante normal los ladrones se daran cuenta que vas por ellos y huiran antes de que puedas atraparlos.\"");
 			frases.push_back("Reportera:\n\"Mucha suerte, guardia!\"");
 			dialogo.iniciar(frases);
 		}
