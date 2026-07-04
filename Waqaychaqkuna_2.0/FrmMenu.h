@@ -106,13 +106,13 @@ namespace Waqaychaqkuna20 {
 		 }
 		 delete f2;
 		// 
-		// FrmNivel3^ f3 = gcnew FrmNivel3();
-		// if (f3->ShowDialog() != System::Windows::Forms::DialogResult::OK)
-		// {
-		// 	delete f3;
-		// 	return;
-		// }
-		// delete f3;
+		FrmNivel3^ f3 = gcnew FrmNivel3();
+		if (f3->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+		{
+			delete f3;
+			return;
+		}
+		delete f3;
 	}
 	};
 }

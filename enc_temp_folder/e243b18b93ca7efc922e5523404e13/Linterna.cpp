@@ -6,8 +6,6 @@ Linterna::Linterna(bool encendida){
 	this->alto = 114;
 	this->anchoFrame = 72;
 	this->altoFrame = 114;
-	this->posX =0;
-	this->posY = 0;
 }
 
 Linterna::~Linterna(){
@@ -41,4 +39,4 @@ void Linterna::dibujar(Graphics^ g){
 
 Bitmap^ Linterna::getBitmap(){ return Recursos::linterna; }
 
-Rectangle Linterna::getRectangle(int extra){ return Rectangle(posX - extra, posY - extra, ancho + extra * 2, alto + extra * 2); }
+Rectangle Linterna::getRectangle(){ return Rectangle(posX, posY, ancho, alto); }

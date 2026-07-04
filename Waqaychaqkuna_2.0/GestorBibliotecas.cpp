@@ -34,6 +34,8 @@ void GestorBiblioteca::dibujar(Graphics^ g){
 	for (auto manipulador : enemigos) manipulador->dibujar(g);
 	for (auto murcielago : aliados)
 		murcielago->dibujar(g);
+
+	if (encenderLinterna()){ linterna->dibujar(g); }
 	guardia->dibujar(g);
 
 }
@@ -73,19 +75,10 @@ void GestorBiblioteca::detectarColisiones(){
 		}
 	}
 	//colision enemigos y linterna
-	for (size_t i = 0; i < (int)bienes.size(); i++)
+	for (int i = (int)enemigos.size() - 1; i >= 0; i--)
 	{
-		Rectangle htbBien = bienes[i]->getRectangle();
-		for (size_t j = 0; j < (int)enemigos.size(); j++)
-		{
-			Rectangle htbEnemigo = enemigos[j]->getRectangle();
-			if (htbBien.IntersectsWith(htbEnemigo)) {
-				enemigos[j]->setMoviendose(false);
-				enemigos[j]->setColumna(0);
-				enemigos[j]->setAtacando(true);
-				bienes[i]->restarPuntajeValor(1);
-			}
-		}
+		Rectangle hbLadron = enemigos[i]->getRectangle(1);
+		if (hbLadron.IntersectsWith(hbLinterna) && linterna->getEncendida() == true) { eliminarEnemigo(i); }
 	}
 
 }
@@ -96,9 +89,10 @@ bool GestorBiblioteca::derrota(){
 	bool bienDestruido = false;
 	for (auto bien : bienes)
 	{
-		if (bien->getPuntajeValor() <= 0) bienDestruido = true;
+		if (bien->getPuntajeValor() <= 0) {bienDestruido = true; return bienDestruido;}
 	}
-	return bienDestruido;
+	if (vidas <= 0) return true;
+
 }
 
 void GestorBiblioteca::jugar(){
@@ -196,4 +190,15 @@ double GestorBiblioteca::getTiempoRecarga() {
 
 double GestorBiblioteca::getVidas() {
 	return vidas;
+}
+
+bool GestorBiblioteca::encenderLinterna() {
+	if (guardia->getAccion() && guardia->getTipoAccion() == 1) {
+		int lx = guardia->getPosX();
+		int ly = guardia->getPosY() + 114;
+		linterna->setEncencida(true);
+		linterna->setPos(lx, ly);
+		return true;
+	}
+	else return false;
 }
