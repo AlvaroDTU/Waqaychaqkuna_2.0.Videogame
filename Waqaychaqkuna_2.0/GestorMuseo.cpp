@@ -5,12 +5,11 @@ GestorMuseo::GestorMuseo(int enTotales) : Escenario(enTotales)
 {
 	srand(time(nullptr));
 	iniciado = false;
-	tempSpawnEntidades = 75;
 	fondoActual = 1;
 	intentos = 3;
 	primerRondaVencida = false;
 	segundaRondaVencida = false;
-	enemigosRonda1 = rand() % (enemigosTotales / 2 - enemigosTotales / 4) + enemigosTotales / 4 + 1;
+	enemigosRonda1 = rand() % (enemigosTotales / 2 + 3 - enemigosTotales / 4) + enemigosTotales / 4 + 1;
 	enemigosRonda2 = enemigosTotales - enemigosRonda1;
 }
 
@@ -54,9 +53,23 @@ void GestorMuseo::mover()
 	aliados[0]->mover(anchoLienzo, altoLienzo);
 }
 
+static void dibujarFlechas(Graphics^ g, int fActual)
+{
+	Bitmap^ flecha = gcnew Bitmap("sprites\\flecha.png");
+	Rectangle origen(0, 0, flecha->Width, flecha->Height);
+	Rectangle destino1(1241 - 7 * (fActual - 1), 356 + 3 * (fActual - 1), 34, 26);
+	Rectangle destino2(1241 - 7 * (fActual - 1), 391 + 3 * (fActual - 1), 34, 26);
+	Rectangle destino3(1241 - 7 * (fActual - 1), 427 + 3 * (fActual - 1), 34, 26);
+	g->DrawImage(flecha, destino1, origen, GraphicsUnit::Pixel);
+	g->DrawImage(flecha, destino2, origen, GraphicsUnit::Pixel);
+	g->DrawImage(flecha, destino3, origen, GraphicsUnit::Pixel);
+}
+
 void GestorMuseo::dibujar(Graphics^ g)
 {
 	fondo->dibujarFondo(g);
+	if ((getReportera()->getTipoPista() > 0 && fondoActual == 1) || (primerRondaVencida && fondoActual==2))
+		dibujarFlechas(g, fondoActual);
 	if (fondoActual == 1)
 	{
 		for (auto reportera : aliados)
@@ -93,7 +106,7 @@ void GestorMuseo::detectarColisiones()
 			frases.push_back("Reportera:\n\"Mucha suerte, guardia!\"");
 			dialogo.iniciar(frases);
 		}
-		if(!dialogo.estaActivo())
+		if (!dialogo.estaActivo())
 			aliados[0]->setAyudando(false);
 	}
 
@@ -162,10 +175,35 @@ void GestorMuseo::detectarColisiones()
 		iniciado = true;
 		fondoActual++;
 		fondo->cambioEscena(fondoActual);
-		if (fondoActual == 2) guardia->setPos(85, 370);
-		if (fondoActual == 3) guardia->setPos(80, 365);
+		std::vector<std::string> frases;
+		if (fondoActual == 2)
+		{
+			guardia->setPos(85, 370);
+			frases.push_back("(Radio)Reportera:\n\"Segun mis informes, en esta sala encontraras " + std::to_string(enemigosRonda2) + " ladrones escondidos entre la gente.\"");
+			frases.push_back("(Radio)Reportera:\n\"Suerte encontrandolos!\"");
+			frases.push_back("(Tip: Puedes interactuar con los bienes con 'D' para aprender algo interesante sobre ellos)");
+			dialogo.iniciar(frases);
+		}
+		if (fondoActual == 3)
+		{
+			guardia->setPos(80, 365);
+			getReportera()->ayudar();
+			getReportera()->setAyudando(false);
+			std::string pista;
+			switch (getReportera()->getTipoPista()) {
+			case 1: pista = "BANDANA EN LAS PIERNAS"; break;
+			case 2: pista = "BANDANA EN LOS BRAZOS"; break;
+			case 3: pista = "CAMISAS NEGRAS"; break;
+			default: pista = ""; break;
+			}
+			frases.push_back("(Radio)Reportera:\n\"Malas noticias! Los ladrones se dieron cuenta que estan siendo buscandos, asi que cambiaron de identificador.\"");
+			frases.push_back("(Radio)Reportera:\n\"Pero no te preocupes, ya consegui la nueva informacion y lo que llevan ahora es: " + pista + "\"");
+			frases.push_back("(Radio)Reportera:\n\"Ademas, tambien tenemos la informacion de que en esta sala se encuentran " + std::to_string(enemigosRonda2) + " ladrones ocultos.\"");
+			frases.push_back("(Radio)Reportera:\n\"Mucha suerte!\"");
+
+			dialogo.iniciar(frases);
+		}
 		setearColisionesMapa();
-		tempSpawnEntidades = 0;
 	}
 	if (hbGuardia.IntersectsWith(cambioIzq)) {
 		fondoActual--;
@@ -173,7 +211,6 @@ void GestorMuseo::detectarColisiones()
 		if (fondoActual == 1) guardia->setPos(1171, 377);
 		if (fondoActual == 2) guardia->setPos(1162, 367);
 		setearColisionesMapa();
-		tempSpawnEntidades = 0;
 
 	}
 }
@@ -231,6 +268,9 @@ void GestorMuseo::setearColisionesMapa()
 	}
 	if (fondoActual == 2)
 	{
+		agregarObjeto(new Objeto(442, 416, 48, 23));	//cartel 0
+		agregarObjeto(new Objeto(760, 417, 48, 23));	// cartel 1
+		agregarObjeto(new Objeto(1056, 416, 49, 23));	// cartel 2
 		agregarObjeto(new Objeto(0, 312, 40, 26));
 		agregarObjeto(new Objeto(40, 11, 34, 327));
 		agregarObjeto(new Objeto(74, 11, 1156, 125));
@@ -248,23 +288,18 @@ void GestorMuseo::setearColisionesMapa()
 		agregarObjeto(new Objeto(1264, 464, 36, 53));
 		agregarObjeto(new Objeto(0, 348, 15, 113));		// bordeIzq
 		agregarObjeto(new Objeto(1285, 351, 15, 113));	// bordeDer
-		agregarObjeto(new Objeto(442, 416, 48, 23));	//cartel 0
-		agregarObjeto(new Objeto(760, 417, 48, 23));	// cartel 1
-		agregarObjeto(new Objeto(1056, 416, 49, 23));	// cartel 2
 
-		if (!primerRondaVencida)
-		{
-			for (int i = 0; i < enemigosRonda1; i++)
-			{
-				int x = 0, y = 0;
-				x = rand() % 1109 + 75; // 75 a 1183
-				if (rand() % 2 == 0) y = rand() % 84 + 159; // 159 a 242
-				else y = rand() % 200 + 477; // 477 a 676
-				int tipo = rand() % 3 + 1;
-				agregarEnemigo(new Ladron(x, y, 45, 60, 60, 80, 0, 0, rand() % 3, tipo, ((Reportera*)aliados[0])->getTipoPista()));
-			}
-		}
 		for (int i = 0; i < enemigosRonda1; i++)
+		{
+			int x = 0, y = 0;
+			x = rand() % 1109 + 75; // 75 a 1183
+			if (rand() % 2 == 0) y = rand() % 84 + 159; // 159 a 242
+			else y = rand() % 200 + 477; // 477 a 676
+			int tipo = rand() % 3 + 1;
+			agregarEnemigo(new Ladron(x, y, 45, 60, 60, 80, 0, 0, rand() % 3, tipo, getReportera()->getTipoPista()));
+		}
+		int nVisitantes = enemigosRonda1 + rand() % 6; 
+		for (int i = 0; i < nVisitantes; i++)
 		{
 			int x = 0, y = 0;
 			x = rand() % 1109 + 75; // 75 a 1183
@@ -282,6 +317,9 @@ void GestorMuseo::setearColisionesMapa()
 	}
 	if (fondoActual == 3)
 	{
+		agregarObjeto(new Objeto(411, 438, 44, 32));	// cartel 3
+		agregarObjeto(new Objeto(698, 438, 44, 32));	// cartel 4
+		agregarObjeto(new Objeto(976, 438, 44, 32));	// cartel 5
 		agregarObjeto(new Objeto(0, 311, 72, 30));
 		agregarObjeto(new Objeto(28, 148, 44, 163));
 		agregarObjeto(new Objeto(28, 12, 1153, 136));
@@ -294,22 +332,18 @@ void GestorMuseo::setearColisionesMapa()
 		agregarObjeto(new Objeto(28, 465, 44, 265));
 		agregarObjeto(new Objeto(28, 730, 1108, 56));
 		agregarObjeto(new Objeto(0, 351, 14, 113));		// bordeIzq
-		agregarObjeto(new Objeto(411, 438, 44, 32));	// cartel 3
-		agregarObjeto(new Objeto(698, 438, 44, 32));	// cartel 4
-		agregarObjeto(new Objeto(976, 438, 44, 32));	// cartel 5
 
-		if (!segundaRondaVencida) {
-			for (int i = 0; i < enemigosRonda2; i++)
-			{
-				int x = 0, y = 0;
-				x = rand() % 1013 + 75; // 75 a 1088
-				if (rand() % 2 == 0) y = rand() % 96 + 180; // 180 a 275
-				else y = rand() % 137 + 532; // 532 a 668
-				int tipo = rand() % 3 + 1;
-				agregarEnemigo(new Ladron(x, y, 45, 60, 60, 80, 0, 0, rand() % 3 + 3, tipo, ((Reportera*)aliados[0])->getTipoPista()));
-			}
-		}
 		for (int i = 0; i < enemigosRonda2; i++)
+		{
+			int x = 0, y = 0;
+			x = rand() % 1013 + 75; // 75 a 1088
+			if (rand() % 2 == 0) y = rand() % 96 + 180; // 180 a 275
+			else y = rand() % 137 + 532; // 532 a 668
+			int tipo = rand() % 3 + 1;
+			agregarEnemigo(new Ladron(x, y, 45, 60, 60, 80, 0, 0, rand() % 3 + 3, tipo, getReportera()->getTipoPista()));
+		}
+		int nVisitantes = enemigosRonda2 + rand() % 6 - 2;
+		for (int i = 0; i < nVisitantes; i++)
 		{
 			int x = 0, y = 0;
 			x = rand() % 1013 + 75; // 75 a 1088
@@ -330,8 +364,19 @@ void GestorMuseo::jugar()
 	mover();
 	detectarColisiones();
 
-	if (enemigosCapturados == enemigosRonda1 && !primerRondaVencida) { iniciado = false; primerRondaVencida = true; }
-	if (enemigosCapturados == enemigosTotales && !segundaRondaVencida) { iniciado = false; segundaRondaVencida = true; }
+	if (enemigosCapturados == enemigosRonda1 && !primerRondaVencida) 
+	{ 
+		iniciado = false; primerRondaVencida = true; 
+		std::vector<std::string> frases;
+		frases.push_back("(Radio)Reportera:\n\"Lo lograste! Ahora pasa a la siguiente sala para capturar al resto.\"");
+		dialogo.iniciar(frases);
+	}
+	if (enemigosCapturados == enemigosTotales && !segundaRondaVencida) { 
+		std::vector<std::string> frases;
+		frases.push_back("(Radio)Reportera:\n\"Bien hecho, guardia! El museo esta seguro de los ladrones gracias a ti\"");
+		dialogo.iniciar(frases);
+		iniciado = false; segundaRondaVencida = true;
+	}
 	if (fondoActual > 1) tempSpawnEntidades++;
 }
 
