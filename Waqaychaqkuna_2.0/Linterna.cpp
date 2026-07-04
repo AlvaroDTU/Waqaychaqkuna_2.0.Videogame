@@ -23,7 +23,11 @@ int Linterna::getDirX(){ return dirX; }
 int Linterna::getDirY(){ return dirY; }
 int Linterna::getAlto(){ return alto; }
 int Linterna::getAncho(){ return ancho; }
+int Linterna::getColumna() { return columna; }
 bool Linterna::getEncendida(){ return encendida; }
+
+
+void Linterna::setColumna(int c){ columna = c;}
 
 void Linterna::setPos(int x, int y) {
 	this->posX = x;

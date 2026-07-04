@@ -24,8 +24,10 @@ class Linterna
 		int getDirY();
 		int getAlto();
 		int getAncho();
+		int getColumna();
 		bool getEncendida();
 
+		void setColumna(int c);
 		void setPos(int x, int y);
 		void setEncendida(bool e);
 		void dibujar(Graphics^ g);

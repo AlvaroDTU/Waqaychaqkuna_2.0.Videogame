@@ -208,13 +208,29 @@ double GestorBiblioteca::getVidas() {
 bool GestorBiblioteca::encenderLinterna() {
 
 	if (guardia->getAccion() && guardia->getTipoAccion() == 1 && tiempoRecarga >=1)
-	{
-		linterna->setEncendida(true);
+	{	
 
-		int lx = guardia->getPosX() - 21;
-		int ly = guardia->getPosY() - linterna->getAlto();
+		int direccion = guardia->getFila();
 
-		linterna->setPos(lx, ly);
+		if (direccion == 3){
+			linterna->setEncendida(true);
+			linterna->setColumna(0);
+			int lx = guardia->getPosX() - 21;
+			int ly = guardia->getPosY() - linterna->getAlto();
+
+			linterna->setPos(lx, ly);
+		}
+
+		else if (direccion == 0) {
+			linterna->setEncendida(true);
+			linterna->setColumna(1);
+			int lx = guardia->getPosX() - 21;
+			int ly = guardia->getPosY() + guardia->getAlto();
+
+			linterna->setPos(lx, ly);
+		}
+		else { linterna->setEncendida(false); }
+
 		return true;
 	}
 	else
