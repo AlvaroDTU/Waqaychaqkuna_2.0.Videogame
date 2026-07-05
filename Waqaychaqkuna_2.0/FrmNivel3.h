@@ -63,7 +63,21 @@ namespace Waqaychaqkuna20 {
 		   bool dialogoArchivo3 = false;
 		   bool dialogoArchivo4 = false;
 		   bool musicaSuspenso = false;
-
+		   Point lblDerrotadosBase;
+		   Point lblIntentosBase;
+		   Point lblBateriaBase;
+		   Point lblArchivo1Base;
+		   Point lblArchivo2Base;
+		   Point lblArchivo3Base;
+		   Point lblArchivo4Base;
+	       Point lblPuntaje1Base;
+		   Point lblPuntaje2Base;
+		   Point lblPuntaje3Base;
+		   Point lblPuntaje4Base;
+		   float mapa_escalaX = 1.0f;
+		   float mapa_escalaY = 1.0f;
+		   float stats_escalaX = 1.0f;
+		   float stats_escalaY = 1.0f;
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -274,7 +288,19 @@ namespace Waqaychaqkuna20 {
 private: System::Void FrmNivel3_Load(System::Object^ sender, System::EventArgs^ e) {
 	gestor->setLienzo(this->pnlMapa->Width, this->pnlMapa->Height);
 	gestor->crearSprites();
+	lblDerrotadosBase = lblDerrotados->Location;
+	lblIntentosBase =	lblIntentos->Location;
+	lblBateriaBase =	lblBateria->Location;
 
+	lblArchivo1Base = lblArchivo1->Location;
+	lblArchivo2Base = lblArchivo2->Location;
+	lblArchivo3Base = lblArchivo3->Location;
+	lblArchivo4Base = lblArchivo4->Location;
+
+	lblPuntaje1Base = lblPuntaje1->Location;
+	lblPuntaje2Base = lblPuntaje2->Location;
+	lblPuntaje3Base = lblPuntaje3->Location;
+	lblPuntaje4Base = lblPuntaje4->Location;
 	//dialogo de inicio
 	std::vector<std::string> frases;
 	frases.push_back("(Radio) Reportera: ¡Oh no, parece que la banda criminal se ha inflitrado dentro del museo!");
@@ -335,7 +361,69 @@ private: System::Void FrmNivel3_KeyDown(System::Object^ sender, System::Windows:
 	 buffer->Render(g);
 	 delete g;
 }
+  private: System::Void FrmNivel3_Resize(System::Object^ sender, System::EventArgs^ e)
+  {
+	  if (buffer == nullptr)
+		  return;
+	  pnlMapa->Width = (13 * this->ClientSize.Width) / 16.0f;
+	  pnlMapa->Height = this->ClientSize.Height;
 
+	  
+
+	  mapa_escalaX = pnlMapa->Width / 1300.0f;
+	  mapa_escalaY = pnlMapa->Height / 800.0f;
+
+
+	  ActualizarTamanoLabels();
+
+	  gestor->setEscalado(mapa_escalaX, mapa_escalaY);
+	  gestor->setLienzo(this->pnlMapa->Width, this->pnlMapa->Height);
+
+	  delete buffer;
+	  BufferedGraphicsContext^ contexto = BufferedGraphicsManager::Current;
+	  Graphics^ g = pnlMapa->CreateGraphics();
+	  buffer = contexto->Allocate(g, pnlMapa->ClientRectangle);
+	  buffer->Graphics->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
+	  delete g;
+  }
+		 Void ActualizarTamanoLabels()
+		 {
+			 int tmFuente = 10;
+			 float escalaPromedio = stats_escalaX;
+			 System::Drawing::Font^ fuente = gcnew System::Drawing::Font(
+				 "Microsoft Sans Serif",
+				 (int)tmFuente * escalaPromedio,
+				 FontStyle::Bold
+			 );
+			 // ARCHIVOS
+			 lblArchivo1->Location = Point(lblArchivo1Base.X * stats_escalaX, lblArchivo1Base.Y * stats_escalaY);
+			 lblArchivo1->Font = fuente;
+			 lblArchivo2->Location = Point(lblArchivo2Base.X * stats_escalaX, lblArchivo2Base.Y * stats_escalaY);
+			 lblArchivo2->Font = fuente;
+			 lblArchivo3->Location = Point(lblArchivo3Base.X * stats_escalaX, lblArchivo3Base.Y * stats_escalaY);
+			 lblArchivo3->Font = fuente;
+			 lblArchivo4->Location = Point(lblArchivo4Base.X * stats_escalaX, lblArchivo4Base.Y * stats_escalaY);
+			 lblArchivo4->Font = fuente;
+			 //PUNTAJES
+			 lblPuntaje1->Location = Point(lblPuntaje1Base.X * stats_escalaX, lblPuntaje1Base.Y * stats_escalaY);
+			 lblPuntaje1->Font = fuente;
+			 lblPuntaje2->Location = Point(lblPuntaje2Base.X * stats_escalaX, lblPuntaje2Base.Y * stats_escalaY);
+			 lblPuntaje2->Font = fuente;
+			 lblPuntaje3->Location = Point(lblPuntaje3Base.X * stats_escalaX, lblPuntaje3Base.Y * stats_escalaY);
+			 lblPuntaje3->Font = fuente;
+			 lblPuntaje4->Location = Point(lblPuntaje4Base.X * stats_escalaX, lblPuntaje4Base.Y * stats_escalaY);
+			 lblPuntaje4->Font = fuente;
+			 // EXTRAS
+			lblDerrotados->Location = Point(lblDerrotadosBase.X * stats_escalaX, lblDerrotadosBase.Y * stats_escalaY);
+			lblDerrotados->Font = fuente;
+
+			lblIntentos ->Location = Point(lblIntentosBase.X * stats_escalaX, lblIntentosBase.Y * stats_escalaY);
+			lblIntentos->Font = fuente;
+
+			lblBateria->Location = Point(lblBateriaBase.X * stats_escalaX, lblBateriaBase.Y * stats_escalaY);
+			lblBateria->Font = fuente;
+
+		 }
 private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ e) {
 
 	gestor->getDialogo()->actualizar();

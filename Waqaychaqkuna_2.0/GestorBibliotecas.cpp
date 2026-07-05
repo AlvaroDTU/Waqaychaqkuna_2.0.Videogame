@@ -32,8 +32,8 @@ void GestorBiblioteca::crearSprites(){
 
 }
 void GestorBiblioteca::dibujar(Graphics^ g){
-
 	fondo->dibujarFondo(g, escalaX, escalaY);
+	dibujarLibros(g);
 	guardia->dibujar(g, escalaX, escalaY);
 	for (auto manipulador : enemigos) manipulador->dibujar(g,escalaX, escalaY);
 	for (auto murcielago : aliados)
@@ -86,6 +86,8 @@ void GestorBiblioteca::detectarColisiones(){
 				enemigos[j]->setColumna(0);
 				enemigos[j]->setAtacando(true);
 				bienes[i]->restarPuntajeValor(1);
+
+
 			}
 		}
 	}
@@ -254,11 +256,23 @@ bool GestorBiblioteca::encenderLinterna() {
 	}
 }
 
-void GestorBiblioteca::dibujarLibros(Graphics^ g, int i) {
-	int x ;
-	int y;
-	int ancho;
-	int alto;
-	Bitmap^ img = Recursos::libros;
-	g->DrawImage(img, x, y, ancho, alto);
+void GestorBiblioteca::dibujarLibros(Graphics^ g) {
+	
+	for (size_t i = 0; i < (int)bienes.size(); i++)
+	{
+		Rectangle htbBien = bienes[i]->getRectangle();
+		for (size_t j = 0; j < (int)enemigos.size(); j++)
+		{
+			Rectangle htbEnemigo = enemigos[j]->getRectangle();
+			if (htbBien.IntersectsWith(htbEnemigo) && bienes[i]->getPuntajeValor() <=2005) {
+				int x = enemigos[i]->getPosX() - 20;
+				int y = enemigos[i]->getPosY();
+				int ancho = 44;
+				int alto = 22;
+
+				Bitmap^ img = Recursos::libros;
+				g->DrawImage(img, x, y, ancho, alto);
+			}
+		}
+	}
 }

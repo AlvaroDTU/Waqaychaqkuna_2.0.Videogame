@@ -60,6 +60,18 @@ namespace Waqaychaqkuna20 {
 		   bool dialogoHuaca3 = false;
 		   bool dialogoHuaca4 = false;
 		   bool musicaSuspenso = false;
+		   Point lblHuacaN1Base;
+		   Point lblHuaca1Base;
+		   Point lblHuacaN2Base;
+		   Point lblHuaca2Base;
+		   Point lblHuacaN3Base;
+		   Point lblHuaca3Base;
+		   Point lblHuacaN4Base;
+		   Point lblHuaca4Base;
+		   float mapa_escalaX = 1.0f;
+		   float mapa_escalaY = 1.0f;
+		   float stats_escalaX = 1.0f;
+		   float stats_escalaY = 1.0f;
 	private: System::Windows::Forms::Panel^ pnlEstadisticas;
 
 
@@ -258,7 +270,14 @@ namespace Waqaychaqkuna20 {
 	private: System::Void FrmNivel2_Load(System::Object^ sender, System::EventArgs^ e) {
 		gestor->setLienzo(this->pnlMapa->Width, this->pnlMapa->Height);
 		gestor->crearSprites();
-
+		lblHuaca1Base = lblHuaca1->Location;
+		lblHuacaN1Base = lblHuacaN1->Location;
+		lblHuaca2Base = lblHuaca2->Location;
+		lblHuacaN2Base = lblHuacaN2->Location;
+		lblHuaca3Base = lblHuaca3->Location;
+		lblHuacaN3Base = lblHuacaN3->Location;
+		lblHuaca4Base = lblHuaca4->Location;
+		lblHuacaN4Base = lblHuacaN4->Location;
 		//prueba de dialogo
 		std::vector<std::string> frases;
 		frases.push_back("Reportera: ¡Necesitamos tu ayuda para proteger nuestro patrimonio cultural!");
@@ -328,6 +347,66 @@ namespace Waqaychaqkuna20 {
 	  buffer->Render(g);
 	  delete g;
 	 }
+	 private: System::Void FrmNivel2_Resize(System::Object^ sender, System::EventArgs^ e)
+	 {
+		 if (buffer == nullptr)
+			 return;
+		 pnlMapa->Width = (13 * this->ClientSize.Width) / 16.0f;
+		 pnlMapa->Height = this->ClientSize.Height;
+
+		 pnlEstadisticas->Width = (3 * this->ClientSize.Width) / 16.0f;
+		 pnlEstadisticas->Height = this->ClientSize.Height;
+		 pnlEstadisticas->Left = this->ClientSize.Width - pnlEstadisticas->Width;
+
+		 mapa_escalaX = pnlMapa->Width / 1300.0f;
+		 mapa_escalaY = pnlMapa->Height / 800.0f;
+
+		 stats_escalaX = pnlEstadisticas->Width / 300.0f;
+		 stats_escalaY = pnlEstadisticas->Height / 800.0f;
+
+		 ActualizarTamanoLabels();
+
+		 gestor->setEscalado(mapa_escalaX, mapa_escalaY);
+		 gestor->setLienzo(this->pnlMapa->Width, this->pnlMapa->Height);
+
+		 delete buffer;
+		 BufferedGraphicsContext^ contexto = BufferedGraphicsManager::Current;
+		 Graphics^ g = pnlMapa->CreateGraphics();
+		 buffer = contexto->Allocate(g, pnlMapa->ClientRectangle);
+		 buffer->Graphics->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
+		 delete g;
+	 }
+			Void ActualizarTamanoLabels()
+			{
+				int tmFuente = 10;
+				float escalaPromedio = stats_escalaX;
+				System::Drawing::Font^ fuente = gcnew System::Drawing::Font(
+					"Microsoft Sans Serif",
+					(int)tmFuente * escalaPromedio,
+					FontStyle::Bold
+				);
+				lblHuaca1->Location = Point(lblHuaca1Base.X * stats_escalaX,lblHuaca1Base.Y * stats_escalaY);
+				lblHuaca1->Font = fuente;
+				lblHuacaN1->Location = Point(lblHuacaN1Base.X * stats_escalaX, lblHuacaN1Base.Y * stats_escalaY);
+				lblHuacaN1->Font = fuente;
+
+				lblHuaca2->Location = Point(lblHuaca2Base.X * stats_escalaX, lblHuaca2Base.Y * stats_escalaY);
+				lblHuaca2->Font = fuente;
+				lblHuacaN2->Location = Point(lblHuacaN2Base.X * stats_escalaX, lblHuacaN2Base.Y * stats_escalaY);
+				lblHuacaN2->Font = fuente;
+
+				lblHuaca3->Location = Point(lblHuaca3Base.X * stats_escalaX, lblHuaca3Base.Y * stats_escalaY);
+				lblHuaca3->Font = fuente;
+				lblHuacaN3->Location = Point(lblHuacaN3Base.X * stats_escalaX, lblHuacaN3Base.Y * stats_escalaY);
+				lblHuacaN3->Font = fuente;
+
+				lblHuaca4->Location = Point(lblHuaca4Base.X * stats_escalaX,lblHuaca4Base.Y * stats_escalaY);
+				lblHuaca4->Font = fuente;
+				lblHuacaN4->Location = Point(lblHuacaN4Base.X * stats_escalaX, lblHuacaN4Base.Y * stats_escalaY);
+				lblHuacaN4->Font = fuente;
+				
+			}
+
 	private: System::Void FrmNivel2_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		Guardia* g = gestor->getGuardia();
 		g->setVelocidad(0, 0);

@@ -26,7 +26,12 @@ public:
 	void restarPuntajeValor(int pv);
 	virtual void describir() = 0;
 	Rectangle getRectangle(int extra = 0);
-
-
+	virtual Bitmap^ getBitmap()=0;
+	void dibujar(Graphics^ g, int escalaX, int escalaY) {
+		Bitmap^ img = getBitmap();
+		Rectangle origen = Rectangle(0, 0, ancho, alto);
+		Rectangle destino(posX * escalaX, posY * escalaY, ancho * escalaX, alto * escalaY);
+		g->DrawImage(img, posX, posY, ancho, alto);
+	}
 };
 
