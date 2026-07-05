@@ -70,6 +70,12 @@ public:
 		}
 		return puntajeNivel;
 	}
+
+
+	void guardarPuntaje(int puntos, string nombre);
+	int ultimoPuntaje();
+	int record();
+	vector<Puntaje*> historial();
 };
 
 

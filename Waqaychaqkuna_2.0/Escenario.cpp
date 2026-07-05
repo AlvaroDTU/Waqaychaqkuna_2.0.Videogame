@@ -70,3 +70,29 @@ void Escenario::setEscalado(float eX, float eY)
 	escalaX = eX;
 	escalaY = eY;
 }
+void Escenario::guardarPuntaje(int puntos, string nombre)
+{
+	Puntaje* p = new Puntaje(nombre, puntos, gestor->fechaActual());
+	//TO-DO(HAMP) TEXTO: registro de la partida
+	gestor->guardarTexto(p);
+	delete p;
+
+	//TOD-DO (HAMP) :  BINARIO: actualiza el record si se supero
+	if (puntos > gestor->leerRecord())
+		gestor->guardarRecord(puntos);
+}
+
+int Escenario::ultimoPuntaje()
+{
+	return gestor->ultimoPuntaje();
+}
+
+int Escenario::record()
+{
+	return gestor->leerRecord();
+}
+
+vector<Puntaje*> Escenario::historial()
+{
+	return gestor->leerTexto();
+}
