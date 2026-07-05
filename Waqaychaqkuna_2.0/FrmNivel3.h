@@ -277,6 +277,7 @@ namespace Waqaychaqkuna20 {
 			this->Load += gcnew System::EventHandler(this, &FrmNivel3::FrmNivel3_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel3::FrmNivel3_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel3::FrmNivel3_KeyUp);
+			this->Resize += gcnew System::EventHandler(this, &FrmNivel3::FrmNivel3_Resize);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

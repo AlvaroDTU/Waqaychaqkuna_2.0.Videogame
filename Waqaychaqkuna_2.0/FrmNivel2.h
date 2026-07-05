@@ -109,7 +109,7 @@ namespace Waqaychaqkuna20 {
 			// 
 			// pnlMapa
 			// 
-			this->pnlMapa->BackColor = System::Drawing::Color::White;
+			this->pnlMapa->BackColor = System::Drawing::Color::Black;
 			this->pnlMapa->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->pnlMapa->Location = System::Drawing::Point(0, 0);
 			this->pnlMapa->Name = L"pnlMapa";
@@ -119,6 +119,7 @@ namespace Waqaychaqkuna20 {
 			// pnlEstadisticas
 			// 
 			this->pnlEstadisticas->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pnlEstadisticas.BackgroundImage")));
+			this->pnlEstadisticas->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pnlEstadisticas->Controls->Add(this->lblPrueba);
 			this->pnlEstadisticas->Controls->Add(this->lblHuaca4);
 			this->pnlEstadisticas->Controls->Add(this->lblHuacaN4);
@@ -261,6 +262,7 @@ namespace Waqaychaqkuna20 {
 			this->Load += gcnew System::EventHandler(this, &FrmNivel2::FrmNivel2_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel2::FrmNivel2_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel2::FrmNivel2_KeyUp);
+			this->Resize += gcnew System::EventHandler(this, &FrmNivel2::FrmNivel2_Resize);
 			this->pnlEstadisticas->ResumeLayout(false);
 			this->pnlEstadisticas->PerformLayout();
 			this->ResumeLayout(false);
@@ -347,8 +349,10 @@ namespace Waqaychaqkuna20 {
 	  buffer->Render(g);
 	  delete g;
 	 }
-	 private: System::Void FrmNivel2_Resize(System::Object^ sender, System::EventArgs^ e)
+
+	 Void FrmNivel2_Resize(System::Object^ sender, System::EventArgs^ e)
 	 {
+		 
 		 if (buffer == nullptr)
 			 return;
 		 pnlMapa->Width = (13 * this->ClientSize.Width) / 16.0f;
@@ -523,5 +527,6 @@ namespace Waqaychaqkuna20 {
 
 
 }
+	
 };
 }
