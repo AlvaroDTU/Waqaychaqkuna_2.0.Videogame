@@ -256,7 +256,7 @@ namespace Waqaychaqkuna20 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1370, 749);
+			this->ClientSize = System::Drawing::Size(1600, 800);
 			this->Controls->Add(this->pnlEstadisticas);
 			this->Controls->Add(this->pnlMapa);
 			this->Name = L"FrmNivel2";
@@ -512,7 +512,6 @@ namespace Waqaychaqkuna20 {
 
 			gestor->getDialogo()->iniciar(huaca2);
 		}
-		//hOLA
 
 		if (!dialogoHuaca3 && gestor->getBien(2)->getPuntajeValor() <= 1500)
 		{
@@ -539,8 +538,6 @@ namespace Waqaychaqkuna20 {
 
 			gestor->getDialogo()->iniciar(huaca4);
 		}
-
-	lblPrueba->Text = String::Format("PosX: {0}", gestor->getGuardia()->getPosX());
 	lblHuaca1->Text = String::Format("Puntaje: {0}", gestor->getBien(0)->getPuntajeValor());
 	lblHuacaN1->Text = gcnew System::String(gestor->getBien(0)->getNombre().c_str());
 	lblHuaca2->Text = String::Format("Puntaje: {0}", gestor->getBien(1)->getPuntajeValor());
