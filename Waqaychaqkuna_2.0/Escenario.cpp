@@ -9,6 +9,7 @@ Escenario::Escenario(int enTotales)
 	tempSpawnEntidades = 0;
 	escalaX = 1.0f;
 	escalaY = 1.0f;
+	mostrandoInfo = false;
 }
 
 Escenario::~Escenario()

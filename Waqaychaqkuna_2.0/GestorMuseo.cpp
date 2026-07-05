@@ -130,13 +130,26 @@ void GestorMuseo::detectarColisiones()
 		}
 	}
 	// Colision con guardia y visitantes
-	for (int i = (int)visitantes.size() - 1; i >= 0; i--)
+	for (int i = 0; i < (int)visitantes.size(); i++)
 	{
 		Rectangle hbVistante = visitantes[i]->getRectangle(1);
 		if (hbVistante.IntersectsWith(hbGuardia))
 		{
 			if (guardia->getAccion() && guardia->getTipoAccion() == 1) {
 				intentos--;
+				guardia->setAccion(false);
+				guardia->setTipoAccion(0);
+			}
+		}
+	}
+	// Colision con guardia y bienes
+	for (int i = 0; i < (int)bienes.size(); i++)
+	{
+		Rectangle hbBien = bienes[i]->getRectangle(1);
+		if (hbBien.IntersectsWith(hbGuardia))
+		{
+			if (guardia->getAccion() && guardia->getTipoAccion() == 2) {
+				// colocar mostrandoInfo true
 				guardia->setAccion(false);
 				guardia->setTipoAccion(0);
 			}

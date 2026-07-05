@@ -56,8 +56,10 @@ public:
     //---------------- SONIDOS ----------------
     static SoundPlayer^ victoria = gcnew SoundPlayer("sonidos\\victoria.wav");
     static SoundPlayer^ perdiste = gcnew SoundPlayer("sonidos\\perdiste.wav");
+    static SoundPlayer^ normal1 = gcnew SoundPlayer("sonidos\\normal1.wav");
+    static SoundPlayer^ suspenso1 = gcnew SoundPlayer("sonidos\\suspenso1.wav");
     static SoundPlayer^ normal2 = gcnew SoundPlayer("sonidos\\normal2.wav");
-    static SoundPlayer^ suspenso2 = gcnew SoundPlayer("sonidos\\suspenso2.wav");
+    static SoundPlayer^ suspenso2 = gcnew SoundPlayer("sonidos\\suspenso2.wav"); 
     static SoundPlayer^ normal3 = gcnew SoundPlayer("sonidos\\normal3.wav");
     static SoundPlayer^ suspenso3 = gcnew SoundPlayer("sonidos\\suspenso3.wav");
 

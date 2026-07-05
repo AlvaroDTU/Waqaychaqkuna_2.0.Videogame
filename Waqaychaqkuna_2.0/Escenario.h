@@ -31,6 +31,7 @@ protected:
 	int tempSpawnEntidades;
 	int puntajeNivel;
 	float escalaX, escalaY;
+	bool mostrandoInfo;
 
 public:
 	Escenario(int enTotales);

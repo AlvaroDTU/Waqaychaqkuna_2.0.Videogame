@@ -149,6 +149,9 @@
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="Escenario.h" />
     <ClInclude Include="Fondo.h" />
+    <ClInclude Include="FrmInstrucciones.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="FrmMenu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -190,6 +193,7 @@
     <ClCompile Include="Entidad.cpp" />
     <ClCompile Include="Escenario.cpp" />
     <ClCompile Include="Fondo.cpp" />
+    <ClCompile Include="FrmInstrucciones.cpp" />
     <ClCompile Include="FrmMenu.cpp" />
     <ClCompile Include="FrmNivel1.cpp" />
     <ClCompile Include="FrmNivel2.cpp" />
@@ -227,6 +231,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmInstrucciones.resx">
+      <DependentUpon>FrmInstrucciones.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMenu.resx">
       <DependentUpon>FrmMenu.h</DependentUpon>
     </EmbeddedResource>
