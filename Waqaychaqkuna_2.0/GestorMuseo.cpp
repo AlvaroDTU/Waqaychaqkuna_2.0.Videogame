@@ -75,6 +75,12 @@ void GestorMuseo::dibujar(Graphics^ g)
 	fondo->dibujarFondo(g, escalaX, escalaY);
 	if ((getReportera()->getTipoPista() > 0 && fondoActual == 1) || (primerRondaVencida && fondoActual == 2))
 		dibujarFlechas(g);
+	if (bienes[0]->getPuntajeValor() <= 400) bienes[0]->dibujar(g, escalaX, escalaY);
+	if (bienes[1]->getPuntajeValor() <= 500) bienes[1]->dibujar(g, escalaX, escalaY);
+	if (bienes[2]->getPuntajeValor() <= 1000)bienes[2]->dibujar(g, escalaX, escalaY);
+	if (bienes[3]->getPuntajeValor() <= 1500)bienes[3]->dibujar(g, escalaX, escalaY);
+	if (bienes[4]->getPuntajeValor() <= 2500)bienes[4]->dibujar(g, escalaX, escalaY);
+	if (bienes[5]->getPuntajeValor() <= 1250)bienes[5]->dibujar(g, escalaX, escalaY);
 	if (fondoActual == 1)
 	{
 		for (auto reportera : aliados)
