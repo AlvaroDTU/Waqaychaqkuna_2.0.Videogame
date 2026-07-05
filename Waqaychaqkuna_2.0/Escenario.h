@@ -46,7 +46,6 @@ public:
 	virtual bool victoria() = 0;
 	virtual bool derrota() = 0;
 
-	int getPuntaje() { return puntajeNivel; }
 	void dibujarDescripcion(Graphics^ g);
 	void setLienzo(int ancho, int alto);
 	void agregarEnemigo(Enemigo* nuevo);
@@ -70,6 +69,14 @@ public:
 			puntajeNivel += bien->getPuntajeValor();
 		}
 		return puntajeNivel;
+	}
+	int getPuntaje() {
+		int con = 0;
+		for (size_t i = 0; i < (int)bienes.size(); i++)
+		{
+			con += bienes[i]->getPuntajeValor();
+		}
+		return con;
 	}
 
 
