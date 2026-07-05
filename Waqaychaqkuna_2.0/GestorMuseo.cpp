@@ -30,12 +30,12 @@ void GestorMuseo::crearSprites()
 
 	agregarAliado(new Reportera(1095, 120, 45, 60, 60, 80));
 
-	agregarBien(new Artilugio(243, 313, 181, 157, 800, "Cabeza Clava")); // 0
-	agregarBien(new Artilugio(542, 313, 196, 157, 1000, "Telar"));// 1
-	agregarBien(new Artilugio(857, 313, 181, 157, 2000, "Craneo"));// 2
-	agregarBien(new Artilugio(223, 339, 177, 159, 3000, "Huaco"));// 3
-	agregarBien(new Artilugio(507, 339, 180, 159, 5000, "Tumi Dorado"));// 4
-	agregarBien(new Artilugio(794, 339, 171, 159, 2500, "Vaso Kero"));// 5
+	agregarBien(new Artilugio(243, 313, 181, 157, 800, "Cabeza Clava", 1));
+	agregarBien(new Artilugio(542, 313, 196, 157, 1000, "Telar", 2));
+	agregarBien(new Artilugio(857, 313, 181, 157, 2000, "Craneo", 3));
+	agregarBien(new Artilugio(223, 339, 177, 159, 3000, "Huaco", 4));
+	agregarBien(new Artilugio(507, 339, 180, 159, 5000, "Tumi Dorado", 5));
+	agregarBien(new Artilugio(794, 339, 171, 159, 2500, "Vaso Kero", 6));
 
 	setearColisionesMapa();
 }
@@ -91,7 +91,7 @@ void GestorMuseo::detectarColisiones()
 {
 	Rectangle hbGuardia = guardia->getRectangle();
 	Rectangle hbReportera = aliados[0]->getRectangle(1);
-	if (hbGuardia.IntersectsWith(hbReportera))
+	if (hbGuardia.IntersectsWith(hbReportera) && aliados[0]->estaActivo())
 	{
 		if (guardia->getAccion() && guardia->getTipoAccion() == 1) {
 			aliados[0]->ayudar();
@@ -239,6 +239,7 @@ void GestorMuseo::setearColisionesMapa()
 	enemigos.clear();
 	for (auto visitante : visitantes) delete visitante;
 	visitantes.clear();
+	for (auto objeto : objetos) delete objeto;
 	objetos.clear();
 	if (fondoActual == 1)
 	{

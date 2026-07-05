@@ -110,7 +110,7 @@ namespace Waqaychaqkuna20 {
 			   // 
 			   // pnlMapa
 			   // 
-			   this->pnlMapa->BackColor = System::Drawing::Color::Black;
+			   this->pnlMapa->BackColor = System::Drawing::Color::White;
 			   this->pnlMapa->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			   this->pnlMapa->Location = System::Drawing::Point(0, 0);
 			   this->pnlMapa->Name = L"pnlMapa";
@@ -132,7 +132,6 @@ namespace Waqaychaqkuna20 {
 			   this->pnlEstadisticas->Name = L"pnlEstadisticas";
 			   this->pnlEstadisticas->Size = System::Drawing::Size(300, 800);
 			   this->pnlEstadisticas->TabIndex = 0;
-			   this->pnlEstadisticas->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmNivel2::pnlEstadisticas_Paint);
 			   // 
 			   // lblHuaca4
 			   // 
@@ -320,6 +319,10 @@ namespace Waqaychaqkuna20 {
 			   }
 
 		   }
+		   Void FrmNivel2_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+			   Guardia* g = gestor->getGuardia();
+			   g->setVelocidad(0, 0);
+		   }
 		   Void PintarEstadisticas()
 		   {
 			   Bitmap^ fondo = Recursos::PanelEstadisticas2;
@@ -414,11 +417,6 @@ namespace Waqaychaqkuna20 {
 			   lblHuacaN4->Font = fuente;
 
 		   }
-
-	private: System::Void FrmNivel2_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-		Guardia* g = gestor->getGuardia();
-		g->setVelocidad(0, 0);
-	}
 		   Void tmrJuego_Tick(System::Object^ sender, System::EventArgs^ e) {
 			   gestor->getDialogo()->actualizar();
 			   if (gestor->victoria() || gestor->derrota())
@@ -538,5 +536,5 @@ namespace Waqaychaqkuna20 {
 		Recursos::victoria->Stop();
 		Recursos::perdiste->Stop();
 	}
-};
+	};
 }

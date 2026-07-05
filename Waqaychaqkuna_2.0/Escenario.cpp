@@ -48,7 +48,7 @@ void Escenario::dibujarDescripcion(Graphics^ g) {
 	{
 		if (bien->getColision() == true)
 		{
-			bien->dibujarDescricicion(g, escalaX, escalaY); // Pasamos las escalas reales
+			bien->dibujarDescripcion(g, escalaX, escalaY); // Pasamos las escalas reales
 		}
 	}
 }

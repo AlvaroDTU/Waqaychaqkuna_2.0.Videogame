@@ -47,6 +47,7 @@ public:
     static Bitmap^ biblioteca = gcnew Bitmap("backgrounds\\biblioteca.png");
 
     //----------------- RECURSOS DEL MAPA ----------------------
+    static Bitmap^ vidrioRoto = gcnew Bitmap("sprites\\vidrioroto.png");
     static Bitmap^ huaca1 = gcnew Bitmap("backgrounds\\Huaca1.png");
     static Bitmap^ huaca2 = gcnew Bitmap("backgrounds\\Huaca2.png");
     static Bitmap^ huaca3 = gcnew Bitmap("backgrounds\\Huaca3.png");
@@ -68,6 +69,13 @@ public:
     static Bitmap^ huaca2Desc = gcnew Bitmap("backgrounds\\lunaDesc.png");
     static Bitmap^ huaca3Desc = gcnew Bitmap("backgrounds\\dragonDesc.png");
     static Bitmap^ huaca4Desc = gcnew Bitmap("backgrounds\\takaDesc.png");
+    static Bitmap^ artilugio1Desc = gcnew Bitmap("backgrounds\\artilugio1Desc.png");
+    static Bitmap^ artilugio2Desc = gcnew Bitmap("backgrounds\\artilugio2Desc.png");
+    static Bitmap^ artilugio3Desc = gcnew Bitmap("backgrounds\\artilugio3Desc.png");
+    static Bitmap^ artilugio4Desc = gcnew Bitmap("backgrounds\\artilugio4Desc.png");
+    static Bitmap^ artilugio5Desc = gcnew Bitmap("backgrounds\\artilugio5Desc.png");
+    static Bitmap^ artilugio6Desc = gcnew Bitmap("backgrounds\\artilugio6Desc.png");
+
 
     //---------------- ESTADITICAS ----------------
     static Bitmap^ PanelEstadisticas1 = gcnew Bitmap("backgrounds\\PanelEstadisticas1.png");
