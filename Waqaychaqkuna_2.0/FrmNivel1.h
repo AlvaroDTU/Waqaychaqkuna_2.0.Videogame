@@ -348,7 +348,6 @@ namespace Waqaychaqkuna20 {
 		}
 	private: System::Void FrmNivel1_Resize(System::Object^ sender, System::EventArgs^ e)
 	{
-		MessageBox::Show("HACIENDO RESIZE");
 		if (buffer == nullptr)
 			return;
 		pnlMapa->Width = (13 * this->ClientSize.Width) / 16.0f;
