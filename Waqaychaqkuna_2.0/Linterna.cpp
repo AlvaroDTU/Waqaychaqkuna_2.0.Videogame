@@ -37,11 +37,11 @@ void Linterna::setEncendida(bool e){
 	encendida = e;
 }
 
-void Linterna::dibujar(Graphics^ g){
+void Linterna::dibujar(Graphics^ g, float escalaX, float escalaY){
 	Bitmap^ img = getBitmap();
 
 	Rectangle origen = Rectangle(columna * anchoFrame, fila * altoFrame, anchoFrame, altoFrame);
-	Rectangle destino(posX, posY, ancho, alto);
+	Rectangle destino(posX * escalaX, posY * escalaY, ancho * escalaX, alto * escalaY);
 
 	g->DrawImage(img, destino, origen, GraphicsUnit::Pixel);
 }

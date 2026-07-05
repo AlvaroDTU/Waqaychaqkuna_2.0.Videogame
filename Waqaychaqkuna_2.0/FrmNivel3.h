@@ -248,7 +248,7 @@ namespace Waqaychaqkuna20 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1370, 749);
+			this->ClientSize = System::Drawing::Size(1600, 800);
 			this->Controls->Add(this->lblPuntaje4);
 			this->Controls->Add(this->lblPuntaje2);
 			this->Controls->Add(this->lblPuntaje3);
@@ -438,7 +438,7 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 		archivo1.push_back("Los documentos originales de Andres Avelino Caceres se han perdido.");
 		archivo1.push_back("Con ellos desaparece parte de la memoria de la Guerra del Pacifico.");
 		archivo1.push_back("¡No permitas que la historia del Peru sea borrada!");
-
+		
 		gestor->getDialogo()->iniciar(archivo1);
 	}
 

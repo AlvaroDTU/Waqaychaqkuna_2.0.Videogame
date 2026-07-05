@@ -30,7 +30,7 @@ class Linterna
 		void setColumna(int c);
 		void setPos(int x, int y);
 		void setEncendida(bool e);
-		void dibujar(Graphics^ g);
+		void dibujar(Graphics^ g, float escalaX, float escalaY);
 		Bitmap^ getBitmap();
 		Rectangle getRectangle(int extra=0);
 };
