@@ -298,6 +298,7 @@ namespace Waqaychaqkuna20 {
 				return;
 			}
 			delete slods3;
+
 			FrmNivel3^ f3 = gcnew FrmNivel3(puntajeTotal, txtName->Text);
 			if (f3->ShowDialog() != System::Windows::Forms::DialogResult::OK)
 			{
