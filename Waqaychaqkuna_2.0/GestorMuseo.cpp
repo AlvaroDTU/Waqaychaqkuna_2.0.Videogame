@@ -5,7 +5,7 @@ GestorMuseo::GestorMuseo() : Escenario()
 {
 	int n1, n2, n3, gx, gy, bat;
 	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
-	enemigosTotales = n1;
+	enemigosTotales = 2;
 
 	iniciado = false;
 	fondoActual = 1;
