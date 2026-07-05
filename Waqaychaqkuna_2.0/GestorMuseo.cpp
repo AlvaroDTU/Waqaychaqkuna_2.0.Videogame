@@ -24,16 +24,16 @@ GestorMuseo::~GestorMuseo()
 void GestorMuseo::crearSprites()
 {
 	fondo = new Fondo(1, anchoLienzo, altoLienzo);
+
 	std::vector<std::string> frases;
 	frases.push_back("Reportera:\n\"Hey, por aqui!\"");
 	frases.push_back("Reportera:\n\"Acercate para poder ayudarte detener a los ladrones.\"");
 	frases.push_back("(Interactua usando E con la reportera)");
 	dialogo.iniciar(frases);
 
-	int n1, n2, n3, gx, gy, bat;
-	guardia = new Guardia(gx, gy, 30, 40, 60, 80);
-
-	guardia = new Guardia(450, 300, 30, 40, 60, 80);
+	int n1, n2, n3, gx = 1, gy = 1, bat;
+	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
+	guardia = new Guardia(gx, gy, 45, 60, 60, 80);
 
 	agregarAliado(new Reportera(1095, 120, 48, 64, 60, 80));
 
