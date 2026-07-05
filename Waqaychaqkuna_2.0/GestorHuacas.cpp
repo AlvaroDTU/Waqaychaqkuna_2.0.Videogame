@@ -12,7 +12,7 @@ GestorHuacas::~GestorHuacas() {
 void GestorHuacas::crearSprites() {
 	fondo = new Fondo(2, anchoLienzo, altoLienzo);
 
-	guardia = new Guardia(790, 170, 30, 40, 60, 80);
+	guardia = new Guardia(anchoLienzo/2, 170, 30, 40, 60, 80);
 
 	agregarObjeto(new Objeto(0, 0, 180, 800));
 	agregarObjeto(new Objeto(183, 0, 922, 127));
@@ -37,6 +37,7 @@ void GestorHuacas::dibujar(Graphics^ g) {
 		if (bienes[i]->getPuntajeValor() < 1505) {
 			((Huaca*)bienes[i])->dibujar(g,escalaX,escalaY);
 		}
+
 	}
 	for (auto huaquero : enemigos) huaquero->dibujar(g,escalaX, escalaY);
 	for (auto cuidador : aliados) cuidador->dibujar(g, escalaX, escalaY);
@@ -53,6 +54,18 @@ void GestorHuacas::mover() {
 	}
 }
 void GestorHuacas::detectarColisiones() {
+
+	Rectangle htbGuardia = guardia->getRectangle();
+
+	for (size_t i = 0; i < (int)bienes.size(); i++)
+	{
+		Rectangle r = bienes[i]->getRectangle(2);
+		if (htbGuardia.IntersectsWith(r)) {
+			bienes[i]->setColision(true);
+		} 
+		
+	}
+
 	for (size_t i = 0; i < (int)bienes.size(); i++)
 	{
 		Rectangle htbBien = bienes[i]->getRectangle();

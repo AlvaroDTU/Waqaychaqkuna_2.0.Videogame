@@ -5,6 +5,7 @@ Escenario::Escenario(int enTotales)
 	: fondo(nullptr), guardia(nullptr), anchoLienzo(1300), altoLienzo(800), enemigosTotales(enTotales)
 {
 	srand(time(nullptr));
+	accion = false;
 	enemigosCapturados = 0;
 	tempSpawnEntidades = 0;
 	escalaX = 1.0f;
@@ -41,7 +42,15 @@ void Escenario::agregarEnemigo(Enemigo* nuevo) { enemigos.push_back(nuevo); }
 void Escenario::agregarAliado(Aliado* nuevo) { aliados.push_back(nuevo); }
 void Escenario::agregarBien(Bien* nuevo) { bienes.push_back(nuevo); }
 void Escenario::agregarObjeto(Objeto* nuevo) { objetos.push_back(nuevo); }
-
+void Escenario::dibujarDescripcion(Graphics^ g) {
+	for (auto bien : bienes)
+	{
+		if (bien->getColision() == true)
+		{
+			bien->dibujarDescricicion(g, escalaX, escalaY); // Pasamos las escalas reales
+		}
+	}
+}
 void Escenario::eliminarEnemigo(int i) { delete enemigos[i]; enemigos.erase(enemigos.begin() + i); }
 void Escenario::eliminarAliado(int i) { aliados.erase(aliados.begin() + i); }
 

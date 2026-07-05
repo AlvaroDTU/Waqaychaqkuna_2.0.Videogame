@@ -31,7 +31,7 @@ protected:
 	int tempSpawnEntidades;
 	int puntajeNivel;
 	float escalaX, escalaY;
-
+	bool accion;
 public:
 	Escenario(int enTotales);
 	virtual ~Escenario();
@@ -43,6 +43,10 @@ public:
 	virtual bool victoria() = 0;
 	virtual bool derrota() = 0;
 
+	void setAccion(bool a) { accion = a; }
+	bool getAccion() { return accion; }
+
+	void dibujarDescripcion(Graphics^ g);
 	void setLienzo(int ancho, int alto);
 	void agregarEnemigo(Enemigo* nuevo);
 	void agregarAliado(Aliado* nuevo);

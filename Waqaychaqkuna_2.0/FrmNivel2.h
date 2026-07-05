@@ -55,6 +55,7 @@ namespace Waqaychaqkuna20 {
 	int finCont;
 	
 		   BufferedGraphics^ buffer;
+		   BufferedGraphics^ bufferStats;
 		   bool dialogoHuaca1 = false;
 		   bool dialogoHuaca2 = false;
 		   bool dialogoHuaca3 = false;
@@ -301,6 +302,10 @@ namespace Waqaychaqkuna20 {
 		tmrJuego->Start();
 		Recursos::normal2->PlayLooping();
 		delete g;
+
+		Graphics^ gStats = pnlEstadisticas->CreateGraphics();
+		bufferStats = BufferedGraphicsManager::Current->Allocate(gStats,pnlEstadisticas->ClientRectangle);
+		delete gStats;
 	}
 	private: System::Void FrmNivel2_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 
@@ -329,9 +334,20 @@ namespace Waqaychaqkuna20 {
 		else if (e->KeyCode == Keys::E) {
 			gestor->generarCuidador();
 		}
-		
-	}
 
+	}
+		   Void PintarEstadisticas()
+		   {
+
+
+			   Bitmap^ fondo = Recursos::PanelEstadisticas2;
+			   bufferStats->Graphics->DrawImage(fondo,Rectangle(0, 0, pnlEstadisticas->Width, pnlEstadisticas->Height));
+			   gestor->dibujarDescripcion(bufferStats->Graphics);
+
+			   Graphics^ g = pnlEstadisticas->CreateGraphics();
+			   bufferStats->Render(g);
+			   delete g;
+		   }
 	 Void Pintar()
 	 {
 	  gestor->dibujar(buffer->Graphics);
@@ -349,11 +365,14 @@ namespace Waqaychaqkuna20 {
 	  Graphics^ g = this->pnlMapa->CreateGraphics();
 	  buffer->Render(g);
 	  delete g;
+
 	 }
 
 	 Void FrmNivel2_Resize(System::Object^ sender, System::EventArgs^ e)
 	 {
 		 if (buffer == nullptr)
+			 return;
+		 if (bufferStats == nullptr)
 			 return;
 		 pnlMapa->Width = (13 * this->ClientSize.Width) / 16.0f;
 		 pnlMapa->Height = this->ClientSize.Height;
@@ -379,6 +398,9 @@ namespace Waqaychaqkuna20 {
 		 buffer = contexto->Allocate(g, pnlMapa->ClientRectangle);
 		 buffer->Graphics->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
 		 delete g;
+		 Graphics^ gStats = pnlEstadisticas->CreateGraphics();
+		 bufferStats = contexto->Allocate(gStats, pnlEstadisticas->ClientRectangle);
+		 delete gStats;
 	 }
 			Void ActualizarTamanoLabels()
 			{
@@ -416,6 +438,10 @@ namespace Waqaychaqkuna20 {
 		g->setVelocidad(0, 0);
 	}
 	Void tmrJuego_Tick(System::Object^ sender, System::EventArgs^ e) {
+	
+		lblPrueba2->Text = String::Format("{0}", gestor->getBien(0)->getColision());
+		
+
 
 		gestor->getDialogo()->actualizar();
 		if (gestor->victoria() || gestor->derrota())
@@ -520,9 +546,14 @@ namespace Waqaychaqkuna20 {
 	lblHuaca4->Text = String::Format("Puntaje: {0}", gestor->getBien(3)->getPuntajeValor());
 	lblHuacaN4->Text = gcnew System::String(gestor->getBien(3)->getNombre().c_str());
 
-	if (!gestor->getDialogo()->estaActivo()) { gestor->jugar(); 
-	gestor->detectarColisiones();}
+	if (!gestor->getDialogo()->estaActivo()) { 
+		gestor->detectarColisiones();
+		gestor->jugar();
+	}
 
+
+
+	PintarEstadisticas();
 	Pintar();
 
 

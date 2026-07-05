@@ -11,7 +11,7 @@ class Archivo : public Bien
 	~Archivo();
 	Bitmap^ getBitmap() override { return nullptr; } 
 	std::string getNombre();
-	void describir() override;
+	Bitmap^ getBitmapDescripciones() override { return nullptr; }
 
 };
 

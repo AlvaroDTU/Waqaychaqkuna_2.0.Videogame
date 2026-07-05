@@ -61,6 +61,13 @@ public:
     static SoundPlayer^ normal3 = gcnew SoundPlayer("sonidos\\normal3.wav");
     static SoundPlayer^ suspenso3 = gcnew SoundPlayer("sonidos\\suspenso3.wav");
 
-    //---------------- PANEL ESTADISTICAS ----------------
+    //---------------- DESCRIPCIONES ----------------
+    static Bitmap^ huaca1Desc = gcnew Bitmap("backgrounds\\solDesc.png");
+    static Bitmap^ huaca2Desc = gcnew Bitmap("backgrounds\\lunaDesc.png");
+    static Bitmap^ huaca3Desc = gcnew Bitmap("backgrounds\\dragonDesc.png");
+    static Bitmap^ huaca4Desc = gcnew Bitmap("backgrounds\\takaDesc.png");
+
+    //---------------- ESTADITICAS ----------------
+    static Bitmap^ PanelEstadisticas2 = gcnew Bitmap("backgrounds\\PanelEstadisticas2.jpg");
 
 };
