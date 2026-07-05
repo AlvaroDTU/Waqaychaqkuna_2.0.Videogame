@@ -316,6 +316,7 @@ namespace Waqaychaqkuna20 {
 		Void btnInstrucciones_Click(System::Object^ sender, System::EventArgs^ e)
 		{
 			FrmInstrucciones^ frm = gcnew FrmInstrucciones();
+			frm->ShowDialog();
 			delete frm;
 		}
 		Void btnCreditos_Click(System::Object^ sender, System::EventArgs^ e)
