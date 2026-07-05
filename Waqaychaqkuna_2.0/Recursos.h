@@ -70,6 +70,7 @@ public:
     static Bitmap^ huaca4Desc = gcnew Bitmap("backgrounds\\takaDesc.png");
 
     //---------------- ESTADITICAS ----------------
-    static Bitmap^ PanelEstadisticas2 = gcnew Bitmap("backgrounds\\PanelEstadisticas2.jpg");
+    static Bitmap^ PanelEstadisticas1 = gcnew Bitmap("backgrounds\\PanelEstadisticas1.png");
+    static Bitmap^ PanelEstadisticas2 = gcnew Bitmap("backgrounds\\PanelEstadisticas2.png");
 
 };

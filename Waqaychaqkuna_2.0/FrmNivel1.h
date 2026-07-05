@@ -507,7 +507,7 @@ namespace Waqaychaqkuna20 {
 	Void pnlEstadisticas_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) 
 	{
 		Graphics^ g = e->Graphics;
-		g->DrawImage(gcnew Bitmap("backgrounds\\PanelEstadisticas1.png"), this->pnlEstadisticas->ClientRectangle);
+		g->DrawImage(Recursos::PanelEstadisticas1, this->pnlEstadisticas->ClientRectangle);
 	}
 };
 }

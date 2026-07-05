@@ -47,17 +47,17 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Button^ btnInstrucciones;
 	private: System::Windows::Forms::Button^ btnCreditos;
 	private: System::Windows::Forms::Button^ btnSalir;
-    protected: virtual void OnPaint(PaintEventArgs^ e) override
-		   {
-			   Graphics^ g = e->Graphics;
-			   g->DrawImage(gcnew Bitmap("backgrounds\\Menu.png"),this->ClientRectangle);
-			   Form::OnPaint(e);
-		   }
+	protected: virtual void OnPaint(PaintEventArgs^ e) override
+	{
+		Graphics^ g = e->Graphics;
+		g->DrawImage(gcnew Bitmap("backgrounds\\Menu.png"), this->ClientRectangle);
+		Form::OnPaint(e);
+	}
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -130,7 +130,7 @@ namespace Waqaychaqkuna20 {
 			this->Controls->Add(this->btnInstrucciones);
 			this->Controls->Add(this->btnJugar);
 			this->Name = L"FrmMenu";
-			this->Text = L"FrmMenu";
+			this->Text = L"Waqaychaqkuna";
 			this->Load += gcnew System::EventHandler(this, &FrmMenu::FrmMenu_Load);
 			this->Resize += gcnew System::EventHandler(this, &FrmMenu::FrmMenu_Resize);
 			this->ResumeLayout(false);
@@ -138,80 +138,71 @@ namespace Waqaychaqkuna20 {
 		}
 #pragma endregion
 
-	Void FrmMenu_Load(System::Object^ sender, System::EventArgs^ e) {}
-	Void btnJugar_Click(System::Object^ sender, System::EventArgs^ e) 
-	{
-		//FrmNivel1^ f1 = gcnew FrmNivel1();
-		//if (f1->ShowDialog() != System::Windows::Forms::DialogResult::OK)
-		//{
-		//	delete f1;
-		//	return;
-		//}
-		//delete f1;
-		
-		FrmNivel2^ f2 = gcnew FrmNivel2();
-		if (f2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+		Void FrmMenu_Load(System::Object^ sender, System::EventArgs^ e) {}
+		Void btnJugar_Click(System::Object^ sender, System::EventArgs^ e)
 		{
+			// FrmNivel1^ f1 = gcnew FrmNivel1();
+			// if (f1->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+			// {
+			// 	delete f1;
+			// 	return;
+			// }
+			// delete f1;
+
+			FrmNivel2^ f2 = gcnew FrmNivel2();
+			if (f2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+			{
+				delete f2;
+				return;
+			}
 			delete f2;
-			return;
-		}
-		delete f2;
-		
-		//FrmNivel2^ f2 = gcnew FrmNivel2();
-		//if (f2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
-		//{
-		//	delete f2;
-		//	return;
-		//}
-		//delete f2;
-		 
-		FrmNivel3^ f3 = gcnew FrmNivel3();
-		if (f3->ShowDialog() != System::Windows::Forms::DialogResult::OK)
-		{
+
+			FrmNivel3^ f3 = gcnew FrmNivel3();
+			if (f3->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+			{
+				delete f3;
+				return;
+			}
 			delete f3;
-			return;
 		}
-		delete f3;
-	}
-	Void FrmMenu_Resize(System::Object^ sender, System::EventArgs^ e) 
-	{
-		int centerX = this->ClientSize.Width / 2;
+		Void FrmMenu_Resize(System::Object^ sender, System::EventArgs^ e)
+		{
+			int centerX = this->ClientSize.Width / 2;
 
-		int buttonWidth = btnJugar->Width;
-		int buttonHeight = btnJugar->Height;
+			int buttonWidth = btnJugar->Width;
+			int buttonHeight = btnJugar->Height;
 
-		// BOTÓN 1
-		btnJugar->Left = centerX - buttonWidth / 2;
-		btnJugar->Top = this->ClientSize.Height / 2 - 100;
+			// BOTÓN 1
+			btnJugar->Left = centerX - buttonWidth / 2;
+			btnJugar->Top = this->ClientSize.Height / 2 - 100;
 
-		// BOTÓN 2
-		btnInstrucciones->Left = centerX - buttonWidth / 2;
-		btnInstrucciones->Top = btnJugar->Bottom + 15;
+			// BOTÓN 2
+			btnInstrucciones->Left = centerX - buttonWidth / 2;
+			btnInstrucciones->Top = btnJugar->Bottom + 15;
 
-		// BOTÓN 3
-		btnCreditos->Left = centerX - buttonWidth / 2;
-		btnCreditos->Top = btnInstrucciones->Bottom + 15;
+			// BOTÓN 3
+			btnCreditos->Left = centerX - buttonWidth / 2;
+			btnCreditos->Top = btnInstrucciones->Bottom + 15;
 
-		// BOTÓN 4
-		btnSalir->Left = centerX - buttonWidth / 2;
-		btnSalir->Top = btnCreditos->Bottom + 15;
+			// BOTÓN 4
+			btnSalir->Left = centerX - buttonWidth / 2;
+			btnSalir->Top = btnCreditos->Bottom + 15;
 
-		this->Invalidate();
-	}
-	Void btnInstrucciones_Click(System::Object^ sender, System::EventArgs^ e) 
-	{
-		FrmInstrucciones^ frm = gcnew FrmInstrucciones();
-		delete frm;
-	}
-	Void btnCreditos_Click(System::Object^ sender, System::EventArgs^ e) 
-	{
-		//
-	}
-	Void btnSalir_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		this->Close();
-	}
-	
-};
+			this->Invalidate();
+		}
+		Void btnInstrucciones_Click(System::Object^ sender, System::EventArgs^ e)
+		{
+			FrmInstrucciones^ frm = gcnew FrmInstrucciones();
+			delete frm;
+		}
+		Void btnCreditos_Click(System::Object^ sender, System::EventArgs^ e)
+		{
+			//
+		}
+		Void btnSalir_Click(System::Object^ sender, System::EventArgs^ e)
+		{
+			this->Close();
+		}
+
+	};
 }
-	
