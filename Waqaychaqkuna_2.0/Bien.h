@@ -27,11 +27,17 @@ public:
 	virtual void describir() = 0;
 	Rectangle getRectangle(int extra = 0);
 	virtual Bitmap^ getBitmap()=0;
-	void dibujar(Graphics^ g, int escalaX, int escalaY) {
+	void dibujar(Graphics^ g, float escalaX, float escalaY) {
 		Bitmap^ img = getBitmap();
-		Rectangle origen = Rectangle(0, 0, ancho, alto);
-		Rectangle destino(posX * escalaX, posY * escalaY, ancho * escalaX, alto * escalaY);
-		g->DrawImage(img, posX, posY, ancho, alto);
+		Rectangle origen(0, 0, ancho, alto);
+		Rectangle destino(
+			(int)(posX * escalaX),
+			(int)(posY * escalaY),
+			(int)(ancho * escalaX),
+			(int)(alto * escalaY)
+		);
+
+		g->DrawImage(img, destino, origen, GraphicsUnit::Pixel);
 	}
 };
 
