@@ -254,11 +254,12 @@ namespace Waqaychaqkuna20 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1600, 800);
+			this->ClientSize = System::Drawing::Size(1370, 749);
 			this->Controls->Add(this->pnlEstadisticas);
 			this->Controls->Add(this->pnlMapa);
 			this->Name = L"FrmNivel2";
 			this->Text = L"FrmNivel2";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &FrmNivel2::FrmNivel2_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &FrmNivel2::FrmNivel2_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel2::FrmNivel2_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel2::FrmNivel2_KeyUp);
@@ -527,5 +528,9 @@ namespace Waqaychaqkuna20 {
 
 }
 	
+private: System::Void FrmNivel2_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+	Recursos::normal2->Stop();
+	Recursos::suspenso2->Stop();
+}
 };
 }
