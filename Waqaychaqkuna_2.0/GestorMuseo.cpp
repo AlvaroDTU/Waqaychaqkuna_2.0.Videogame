@@ -33,7 +33,7 @@ void GestorMuseo::crearSprites()
 	int n1, n2, n3, gx = 1, gy = 1, bat;
 	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
 
-	guardia = new Guardia(450, 370, 30, 40, 60, 80);
+	guardia = new Guardia(gx, gy, 45, 60, 60, 80);
 
 	agregarAliado(new Reportera(1095, 120, 48, 64, 60, 80));
 
