@@ -135,9 +135,8 @@ namespace Waqaychaqkuna20 {
 				static_cast<System::Byte>(0)));
 			this->lblArchivo1->Location = System::Drawing::Point(1312, 316);
 			this->lblArchivo1->Name = L"lblArchivo1";
-			this->lblArchivo1->Size = System::Drawing::Size(95, 17);
+			this->lblArchivo1->Size = System::Drawing::Size(0, 17);
 			this->lblArchivo1->TabIndex = 13;
-
 			// 
 			// lblArchivo2
 			// 
@@ -146,9 +145,8 @@ namespace Waqaychaqkuna20 {
 				static_cast<System::Byte>(0)));
 			this->lblArchivo2->Location = System::Drawing::Point(1478, 316);
 			this->lblArchivo2->Name = L"lblArchivo2";
-			this->lblArchivo2->Size = System::Drawing::Size(95, 17);
+			this->lblArchivo2->Size = System::Drawing::Size(0, 17);
 			this->lblArchivo2->TabIndex = 14;
-
 			// 
 			// lblArchivo3
 			// 
@@ -157,9 +155,8 @@ namespace Waqaychaqkuna20 {
 				static_cast<System::Byte>(0)));
 			this->lblArchivo3->Location = System::Drawing::Point(1312, 387);
 			this->lblArchivo3->Name = L"lblArchivo3";
-			this->lblArchivo3->Size = System::Drawing::Size(95, 17);
+			this->lblArchivo3->Size = System::Drawing::Size(0, 17);
 			this->lblArchivo3->TabIndex = 15;
-
 			// 
 			// lblArchivo4
 			// 
@@ -168,9 +165,8 @@ namespace Waqaychaqkuna20 {
 				static_cast<System::Byte>(0)));
 			this->lblArchivo4->Location = System::Drawing::Point(1478, 387);
 			this->lblArchivo4->Name = L"lblArchivo4";
-			this->lblArchivo4->Size = System::Drawing::Size(95, 17);
+			this->lblArchivo4->Size = System::Drawing::Size(0, 17);
 			this->lblArchivo4->TabIndex = 16;
-
 			// 
 			// lblDerrotados
 			// 
@@ -179,9 +175,8 @@ namespace Waqaychaqkuna20 {
 				static_cast<System::Byte>(0)));
 			this->lblDerrotados->Location = System::Drawing::Point(1319, 648);
 			this->lblDerrotados->Name = L"lblDerrotados";
-			this->lblDerrotados->Size = System::Drawing::Size(221, 17);
+			this->lblDerrotados->Size = System::Drawing::Size(0, 17);
 			this->lblDerrotados->TabIndex = 17;
-
 			// 
 			// lblBateria
 			// 
@@ -200,9 +195,8 @@ namespace Waqaychaqkuna20 {
 				static_cast<System::Byte>(0)));
 			this->lblIntentos->Location = System::Drawing::Point(1319, 694);
 			this->lblIntentos->Name = L"lblIntentos";
-			this->lblIntentos->Size = System::Drawing::Size(105, 17);
+			this->lblIntentos->Size = System::Drawing::Size(0, 17);
 			this->lblIntentos->TabIndex = 19;
-
 			// 
 			// tmrNivel3
 			// 
@@ -217,9 +211,8 @@ namespace Waqaychaqkuna20 {
 				static_cast<System::Byte>(0)));
 			this->lblPuntaje1->Location = System::Drawing::Point(1312, 345);
 			this->lblPuntaje1->Name = L"lblPuntaje1";
-			this->lblPuntaje1->Size = System::Drawing::Size(17, 17);
+			this->lblPuntaje1->Size = System::Drawing::Size(0, 17);
 			this->lblPuntaje1->TabIndex = 20;
-
 			// 
 			// lblPuntaje3
 			// 
@@ -228,9 +221,8 @@ namespace Waqaychaqkuna20 {
 				static_cast<System::Byte>(0)));
 			this->lblPuntaje3->Location = System::Drawing::Point(1312, 418);
 			this->lblPuntaje3->Name = L"lblPuntaje3";
-			this->lblPuntaje3->Size = System::Drawing::Size(17, 17);
+			this->lblPuntaje3->Size = System::Drawing::Size(0, 17);
 			this->lblPuntaje3->TabIndex = 21;
-
 			// 
 			// lblPuntaje2
 			// 
@@ -239,9 +231,8 @@ namespace Waqaychaqkuna20 {
 				static_cast<System::Byte>(0)));
 			this->lblPuntaje2->Location = System::Drawing::Point(1478, 345);
 			this->lblPuntaje2->Name = L"lblPuntaje2";
-			this->lblPuntaje2->Size = System::Drawing::Size(17, 17);
+			this->lblPuntaje2->Size = System::Drawing::Size(0, 17);
 			this->lblPuntaje2->TabIndex = 22;
-
 			// 
 			// lblPuntaje4
 			// 
@@ -250,15 +241,14 @@ namespace Waqaychaqkuna20 {
 				static_cast<System::Byte>(0)));
 			this->lblPuntaje4->Location = System::Drawing::Point(1478, 418);
 			this->lblPuntaje4->Name = L"lblPuntaje4";
-			this->lblPuntaje4->Size = System::Drawing::Size(17, 17);
+			this->lblPuntaje4->Size = System::Drawing::Size(0, 17);
 			this->lblPuntaje4->TabIndex = 23;
-
 			// 
 			// FrmNivel3
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1600, 800);
+			this->ClientSize = System::Drawing::Size(1370, 749);
 			this->Controls->Add(this->lblPuntaje4);
 			this->Controls->Add(this->lblPuntaje2);
 			this->Controls->Add(this->lblPuntaje3);
@@ -274,6 +264,7 @@ namespace Waqaychaqkuna20 {
 			this->Controls->Add(this->pnlMapa);
 			this->Name = L"FrmNivel3";
 			this->Text = L"Nivel 3: Biblioteca";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &FrmNivel3::FrmNivel3_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &FrmNivel3::FrmNivel3_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel3::FrmNivel3_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel3::FrmNivel3_KeyUp);
@@ -546,5 +537,9 @@ private: System::Void FrmNivel3_KeyUp(System::Object^ sender, System::Windows::F
 	g->setTipoAccion(0);
 }
 
+private: System::Void FrmNivel3_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+	Recursos::normal3->Stop();
+	Recursos::suspenso3->Stop();
+}
 };
 }
