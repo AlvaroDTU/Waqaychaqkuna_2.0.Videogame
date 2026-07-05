@@ -13,7 +13,7 @@ class GestorBiblioteca : public Escenario
 {
 	private:
 	int contador;
-	double tiempoRecarga;
+	double porcentajeLinterna;
 	double vidas;
 	Linterna* linterna;
 
@@ -33,7 +33,7 @@ class GestorBiblioteca : public Escenario
 
 		void generarManipulador();
 		void recargaLinterna();
-		double getTiempoRecarga();
+		double getPorcentajeLinterna();
 		double getVidas();
 		Linterna* getLinterna();
 		bool encenderLinterna();

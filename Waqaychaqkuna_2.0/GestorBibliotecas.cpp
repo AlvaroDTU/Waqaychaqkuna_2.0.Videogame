@@ -8,7 +8,7 @@ GestorBiblioteca::GestorBiblioteca() : Escenario()
 
 	enemigosTotales = 30;
 	contador = 0;
-	this->tiempoRecarga = bat;
+	this->porcentajeLinterna = bat;
 	tempSpawnEntidades = 80;
 	vidas = 20;
 	linterna = nullptr;
@@ -230,17 +230,17 @@ void GestorBiblioteca::recargaLinterna(){
 
 	if (g.IntersectsWith(m)&& guardia->getAccion() && guardia->getTipoAccion() == 1){
 
-		tiempoRecarga = 100.00;
+		porcentajeLinterna = 100.00;
 		aliados[0]->setColumna(2);
 	}
 
-	if (tiempoRecarga <= 0) tiempoRecarga = 0;
+	if (porcentajeLinterna <= 0) porcentajeLinterna = 0;
 
-	else tiempoRecarga = tiempoRecarga - 0.3;
+	else porcentajeLinterna = porcentajeLinterna - 0.05;
 }
 
-double GestorBiblioteca::getTiempoRecarga() {
-	return tiempoRecarga;
+double GestorBiblioteca::getPorcentajeLinterna() {
+	return porcentajeLinterna;
 }
 
 double GestorBiblioteca::getVidas() {
@@ -249,7 +249,7 @@ double GestorBiblioteca::getVidas() {
 
 bool GestorBiblioteca::encenderLinterna() {
 
-	if (guardia->getAccion() && guardia->getTipoAccion() == 1 && tiempoRecarga >=1)
+	if (guardia->getAccion() && guardia->getTipoAccion() == 1 && porcentajeLinterna >=1)
 	{	
 
 		int direccion = guardia->getFila();
