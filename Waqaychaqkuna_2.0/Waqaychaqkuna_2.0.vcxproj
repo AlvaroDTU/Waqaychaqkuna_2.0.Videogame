@@ -170,6 +170,15 @@
     <ClInclude Include="FrmSlod1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="FrmSlod2.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FrmSlod3.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FrmSlodVictoria.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="GestorArchivo.h" />
     <ClInclude Include="GestorMuseo.h" />
     <ClInclude Include="GestorHuacas.h" />
@@ -208,6 +217,9 @@
     <ClCompile Include="FrmNivel2.cpp" />
     <ClCompile Include="FrmNivel3.cpp" />
     <ClCompile Include="FrmSlod1.cpp" />
+    <ClCompile Include="FrmSlod2.cpp" />
+    <ClCompile Include="FrmSlod3.cpp" />
+    <ClCompile Include="FrmSlodVictoria.cpp" />
     <ClCompile Include="GestorArchivo.cpp" />
     <ClCompile Include="GestorMuseo.cpp" />
     <ClCompile Include="GestorHuacas.cpp" />
@@ -263,6 +275,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSlod1.resx">
       <DependentUpon>FrmSlod1.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSlod2.resx">
+      <DependentUpon>FrmSlod2.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSlod3.resx">
+      <DependentUpon>FrmSlod3.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSlodVictoria.resx">
+      <DependentUpon>FrmSlodVictoria.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -10,12 +10,12 @@ namespace Waqaychaqkuna20 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for FrmSlod1
+	/// Summary for FrmSlod3
 	/// </summary>
-	public ref class FrmSlod1 : public System::Windows::Forms::Form
+	public ref class FrmSlod3 : public System::Windows::Forms::Form
 	{
 	public:
-		FrmSlod1(void)
+		FrmSlod3(void)
 		{
 			InitializeComponent();
 			//
@@ -27,22 +27,21 @@ namespace Waqaychaqkuna20 {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~FrmSlod1()
+		~FrmSlod3()
 		{
 			if (components)
 			{
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Label^ label1;
-	protected:
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container^ components;
+		System::ComponentModel::Container ^components;
 		bool final = false;
+	private: System::Windows::Forms::Label^ label1;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -51,7 +50,7 @@ namespace Waqaychaqkuna20 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(FrmSlod1::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(FrmSlod3::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
@@ -62,13 +61,13 @@ namespace Waqaychaqkuna20 {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::SystemColors::HighlightText;
-			this->label1->Location = System::Drawing::Point(1163, 749);
+			this->label1->Location = System::Drawing::Point(1163, 744);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(425, 31);
-			this->label1->TabIndex = 0;
+			this->label1->TabIndex = 2;
 			this->label1->Text = L"Presiona ENTER para continuar...";
 			// 
-			// FrmSlod1
+			// FrmSlod3
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -77,47 +76,49 @@ namespace Waqaychaqkuna20 {
 			this->ClientSize = System::Drawing::Size(1600, 800);
 			this->Controls->Add(this->label1);
 			this->DoubleBuffered = true;
-			this->Name = L"FrmSlod1";
-			this->Text = L"Slods1";
-			this->Load += gcnew System::EventHandler(this, &FrmSlod1::FrmSlod1_Load);
-			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmSlod1::FrmSlod1_KeyDown);
-			this->Resize += gcnew System::EventHandler(this, &FrmSlod1::FrmSlod1_Resize);
+			this->Name = L"FrmSlod3";
+			this->Text = L"FrmSlod3";
+			this->Load += gcnew System::EventHandler(this, &FrmSlod3::FrmSlod3_Load);
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmSlod3::FrmSlod3_KeyDown);
+			this->Resize += gcnew System::EventHandler(this, &FrmSlod3::FrmSlod3_Resize);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void FrmSlod1_Load(System::Object^ sender, System::EventArgs^ e) {}
-		   Void FrmSlod1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-			   if (e->KeyCode == Keys::Enter)
-			   {
-				   if (!final) {
-					   Graphics^ g = this->CreateGraphics();
-					   g->Clear(Color::Transparent);
-					   g->DrawImage(gcnew Bitmap("backgrounds\\slod2.png"), System::Drawing::Rectangle(0, 0, this->ClientSize.Width, this->ClientSize.Height), System::Drawing::Rectangle(0, 0, 618, 412), GraphicsUnit::Pixel);
-					   delete g;
-					   final = true;
-				   }
-				   else
-				   {
-					   this->DialogResult = System::Windows::Forms::DialogResult::OK;
-					   this->Close();
-				   }
-			   }
-		   }
-	private: System::Void FrmSlod1_Resize(System::Object^ sender, System::EventArgs^ e)
+	private: System::Void FrmSlod3_Load(System::Object^ sender, System::EventArgs^ e) {}
+	private: System::Void FrmSlod3_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) 
 	{
-		if (!final) {
+		if (e->KeyCode == Keys::Enter)
+		{
+			if (!final) {
+				Graphics^ g = this->CreateGraphics();
+				g->Clear(Color::Transparent);
+				g->DrawImage(gcnew Bitmap("backgrounds\\slod6.png"), System::Drawing::Rectangle(0, 0, this->ClientSize.Width, this->ClientSize.Height), System::Drawing::Rectangle(0, 0, 668, 445), GraphicsUnit::Pixel);
+				delete g;
+				final = true;
+			}
+			else
+			{
+				this->DialogResult = System::Windows::Forms::DialogResult::OK;
+				this->Close();
+			}
+		}
+	}
+	private: System::Void FrmSlod3_Resize(System::Object^ sender, System::EventArgs^ e) 
+	{
+		if (!final) 
+		{
 			Graphics^ g = this->CreateGraphics();
 			g->Clear(Color::Transparent);
-			g->DrawImage(gcnew Bitmap("backgrounds\\slod1.png"), System::Drawing::Rectangle(0, 0, this->ClientSize.Width, this->ClientSize.Height), System::Drawing::Rectangle(0, 0, 618, 412), GraphicsUnit::Pixel);
+			g->DrawImage(gcnew Bitmap("backgrounds\\slod5.png"), System::Drawing::Rectangle(0, 0, this->ClientSize.Width, this->ClientSize.Height), System::Drawing::Rectangle(0, 0, 571, 447), GraphicsUnit::Pixel);
 			delete g;
 		}
 		else
 		{
 			Graphics^ g = this->CreateGraphics();
 			g->Clear(Color::Transparent);
-			g->DrawImage(gcnew Bitmap("backgrounds\\slod2.png"), System::Drawing::Rectangle(0, 0, this->ClientSize.Width, this->ClientSize.Height), System::Drawing::Rectangle(0, 0, 619, 412), GraphicsUnit::Pixel);
+			g->DrawImage(gcnew Bitmap("backgrounds\\slod6.png"), System::Drawing::Rectangle(0, 0, this->ClientSize.Width, this->ClientSize.Height), System::Drawing::Rectangle(0, 0, 668, 445), GraphicsUnit::Pixel);
 			delete g;
 		}
 		this->label1->Left = this->ClientSize.Width - this->label1->Width - 30;

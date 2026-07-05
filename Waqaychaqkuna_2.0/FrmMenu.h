@@ -2,9 +2,14 @@
 #include "FrmNivel1.h"
 #include "FrmNivel2.h"
 #include "FrmNivel3.h"
+#include "FrmSlod1.h"
+#include "FrmSlod2.h"
+#include "FrmSlod3.h"
+#include "FrmSlodVictoria.h"
 #include "FrmInstrucciones.h"
 #include "FrmCreditos.h"
 #include "GestorBiblioteca.h"
+
 namespace Waqaychaqkuna20 {
 
 	using namespace System;
@@ -166,7 +171,7 @@ namespace Waqaychaqkuna20 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1370, 749);
+			this->ClientSize = System::Drawing::Size(1600, 800);
 			this->Controls->Add(this->lstHistorial);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->txtName);
@@ -218,36 +223,61 @@ namespace Waqaychaqkuna20 {
         }
 		Void btnJugar_Click(System::Object^ sender, System::EventArgs^ e)
 		{
-
+			FrmSlod1^ slods1 = gcnew FrmSlod1();
+			if (slods1->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+			{
+				delete slods1;
+				return;
+			}
+			delete slods1;
 			FrmNivel1^ f1 = gcnew FrmNivel1();
 			if (f1->ShowDialog() != System::Windows::Forms::DialogResult::OK)
 			{
 				puntaje1 = f1->RetornarPuntaje();
-
+			
 				delete f1;
 				return;
 			}
 			puntaje1 = f1->RetornarPuntaje();
-
+			
 			delete f1;
-
+			
+			FrmSlod2^ slods2 = gcnew FrmSlod2();
+			if (slods2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+			{
+				delete slods2;
+				return;
+			}
+			delete slods2;
+			
 			FrmNivel2^ f2 = gcnew FrmNivel2();
 			if (f2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
 			{
 				puntaje2 = f2->RetornarPuntaje();
-
+			
 				delete f2;
 				return;
 			}
 			puntaje2 = f2->RetornarPuntaje();
 			delete f2;
-
+			
 			puntajeTotal = puntaje1 + puntaje2;
+			
+			FrmSlod3^ slods3 = gcnew FrmSlod3();
+			if (slods3->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+			{
+				delete slods3;
+				return;
+			}
+			delete slods3;
 			FrmNivel3^ f3 = gcnew FrmNivel3(puntajeTotal, txtName->Text);
 			if (f3->ShowDialog() != System::Windows::Forms::DialogResult::OK)
 			{
 				puntaje3 = f3->RetornarPuntaje();
 				delete f3;
+
+				// FrmSlodVictoria^ slodVictoria = gcnew FrmSlodVictoria();
+				// slodVictoria->ShowDialog();
 				return;
 			}
 			puntaje3 = f3->RetornarPuntaje();
