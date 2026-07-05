@@ -44,7 +44,7 @@ namespace Waqaychaqkuna20 {
 			}
 		}
 	private: System::Windows::Forms::Panel^ pnlMapa;
-	private: System::Windows::Forms::Label^ lblInstruccion;
+
 
 
 	private: System::Windows::Forms::Label^ lblArchivo1;
@@ -107,7 +107,6 @@ namespace Waqaychaqkuna20 {
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			this->pnlMapa = (gcnew System::Windows::Forms::Panel());
-			this->lblInstruccion = (gcnew System::Windows::Forms::Label());
 			this->lblArchivo1 = (gcnew System::Windows::Forms::Label());
 			this->lblArchivo2 = (gcnew System::Windows::Forms::Label());
 			this->lblArchivo3 = (gcnew System::Windows::Forms::Label());
@@ -131,17 +130,6 @@ namespace Waqaychaqkuna20 {
 			this->pnlMapa->Name = L"pnlMapa";
 			this->pnlMapa->Size = System::Drawing::Size(1300, 800);
 			this->pnlMapa->TabIndex = 1;
-			// 
-			// lblInstruccion
-			// 
-			this->lblInstruccion->AutoSize = true;
-			this->lblInstruccion->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lblInstruccion->Location = System::Drawing::Point(1311, 139);
-			this->lblInstruccion->Name = L"lblInstruccion";
-			this->lblInstruccion->Size = System::Drawing::Size(199, 40);
-			this->lblInstruccion->TabIndex = 11;
-			this->lblInstruccion->Text = L"\'E\' PARA\r\nENCENDER LINTERNA";
 			// 
 			// lblArchivo1
 			// 
@@ -283,7 +271,6 @@ namespace Waqaychaqkuna20 {
 			this->Controls->Add(this->lblArchivo3);
 			this->Controls->Add(this->lblArchivo2);
 			this->Controls->Add(this->lblArchivo1);
-			this->Controls->Add(this->lblInstruccion);
 			this->Controls->Add(this->pnlMapa);
 			this->Controls->Add(this->pnlEstadisticas);
 			this->Name = L"FrmNivel3";
@@ -372,7 +359,16 @@ private: System::Void FrmNivel3_KeyDown(System::Object^ sender, System::Windows:
 		g->setTipoAccion(2);
 	}
 }
-
+	Void PintarEstadisticas()
+	{
+	 Bitmap^ fondo = Recursos::PanelEstadisticas3;
+	 bufferStats->Graphics->DrawImage(fondo, System::Drawing::Rectangle(0, 0, pnlEstadisticas->Width, pnlEstadisticas->Height));
+	 gestor->dibujarDescripcion(bufferStats->Graphics);
+	
+	 Graphics^ g = pnlEstadisticas->CreateGraphics();
+	 bufferStats->Render(g);
+	 delete g;
+	}
  Void Pintar(){
 
 	 gestor->dibujar(buffer->Graphics);
@@ -385,14 +381,20 @@ private: System::Void FrmNivel3_KeyDown(System::Object^ sender, System::Windows:
   {
 	  if (buffer == nullptr)
 		  return;
+	  if (bufferStats == nullptr)
+		  return;
 	  pnlMapa->Width = (13 * this->ClientSize.Width) / 16.0f;
 	  pnlMapa->Height = this->ClientSize.Height;
 
-	  
+	  pnlEstadisticas->Width = (3 * this->ClientSize.Width) / 16.0f;
+	  pnlEstadisticas->Height = this->ClientSize.Height;
+	  pnlEstadisticas->Left = this->ClientSize.Width - pnlEstadisticas->Width;
 
 	  mapa_escalaX = pnlMapa->Width / 1300.0f;
 	  mapa_escalaY = pnlMapa->Height / 800.0f;
 
+	  stats_escalaX = pnlEstadisticas->Width / 300.0f;
+	  stats_escalaY = pnlEstadisticas->Height / 800.0f;
 
 	  ActualizarTamanoLabels();
 
@@ -405,6 +407,9 @@ private: System::Void FrmNivel3_KeyDown(System::Object^ sender, System::Windows:
 	  buffer = contexto->Allocate(g, pnlMapa->ClientRectangle);
 	  buffer->Graphics->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
 	  delete g;
+	  Graphics^ gStats = pnlEstadisticas->CreateGraphics();
+	  bufferStats = contexto->Allocate(gStats, pnlEstadisticas->ClientRectangle);
+	  delete gStats;
   }
 		 Void ActualizarTamanoLabels()
 		 {
@@ -447,18 +452,31 @@ private: System::Void FrmNivel3_KeyDown(System::Object^ sender, System::Windows:
 private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ e) {
 
 	gestor->getDialogo()->actualizar();
-	if (gestor->victoria())
+	if (gestor->victoria() || gestor->derrota())
 	{
+		if (gestor->victoria() && !musicaFinal) {
+			Recursos::normal2->Stop();
+			Recursos::suspenso2->Stop();
+			Recursos::victoria->PlayLooping();
+			musicaFinal = true;
+		}
+		if (gestor->derrota() && !musicaFinal) {
+			Recursos::normal2->Stop();
+			Recursos::suspenso2->Stop();
+			Recursos::perdiste->PlayLooping();
+			musicaFinal = true;
+		}
 		finCont++;
-		if (finCont >= 120)
+		if (finCont >= 200)
 		{
-			IntPtr ptr = System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(this->nombre);
-			std::string nombreNormal(static_cast<const char*>(ptr.ToPointer()));
-			System::Runtime::InteropServices::Marshal::FreeHGlobal(ptr);
-
-			puntajeFinal = puntajeFinal + gestor->getPuntajeNivel();
-			gestor->guardarPuntaje(puntajeFinal,nombreNormal);
-			this->DialogResult = System::Windows::Forms::DialogResult::OK;
+			this->tmrNivel3->Stop();
+			if (gestor->victoria())
+			{
+				Recursos::victoria->Stop();
+				this->DialogResult = System::Windows::Forms::DialogResult::OK;
+			}
+			if (gestor->derrota())
+				Recursos::perdiste->Stop();
 			this->Close();
 		}
 	}
@@ -540,13 +558,6 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 	this->lblPuntaje3->Text = String::Format("Puntaje: {0}", gestor->getBien(2)->getPuntajeValor());
 	this->lblPuntaje4->Text = String::Format("Puntaje: {0}", gestor->getBien(3)->getPuntajeValor());
 
-	if (!gestor->getDialogo()->estaActivo()) {
-		gestor->jugar();
-		gestor->detectarColisiones();
-	}
-
-	Pintar();
-
 	if (gestor->victoria() || gestor->derrota())
 	{
 		if (gestor->victoria() && !musicaFinal) {
@@ -575,6 +586,14 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 			this->Close();
 		}
 	}
+
+	if (!gestor->getDialogo()->estaActivo()) {
+		gestor->jugar();
+		gestor->detectarColisiones();
+	}
+
+	PintarEstadisticas();
+	Pintar();
 }
 
 private: System::Void FrmNivel3_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {

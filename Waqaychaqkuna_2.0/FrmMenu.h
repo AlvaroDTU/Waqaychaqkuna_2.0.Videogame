@@ -219,28 +219,28 @@ namespace Waqaychaqkuna20 {
 		Void btnJugar_Click(System::Object^ sender, System::EventArgs^ e)
 		{
 
-			FrmNivel1^ f1 = gcnew FrmNivel1();
-			if (f1->ShowDialog() != System::Windows::Forms::DialogResult::OK)
-			{
-				puntaje1 = f1->RetornarPuntaje();
-
-				delete f1;
-				return;
-			}
-			puntaje1 = f1->RetornarPuntaje();
-
-			delete f1;
-
-			FrmNivel2^ f2 = gcnew FrmNivel2();
-			if (f2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
-			{
-				puntaje2 = f2->RetornarPuntaje();
-
-				delete f2;
-				return;
-			}
-			puntaje2 = f2->RetornarPuntaje();
-			delete f2;
+			//FrmNivel1^ f1 = gcnew FrmNivel1();
+			//if (f1->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+			//{
+			//	puntaje1 = f1->RetornarPuntaje();
+			//
+			//	delete f1;
+			//	return;
+			//}
+			//puntaje1 = f1->RetornarPuntaje();
+			//
+			//delete f1;
+			//
+			//FrmNivel2^ f2 = gcnew FrmNivel2();
+			//if (f2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+			//{
+			//	puntaje2 = f2->RetornarPuntaje();
+			//
+			//	delete f2;
+			//	return;
+			//}
+			//puntaje2 = f2->RetornarPuntaje();
+			//delete f2;
 
 			puntajeTotal = puntaje1 + puntaje2;
 			FrmNivel3^ f3 = gcnew FrmNivel3(puntajeTotal, txtName->Text);
