@@ -1,16 +1,16 @@
 #pragma once
 #include <string>
 
-using std::string;
+using std::string; 
 
 class Puntaje
 {
-private:
+  private:
     string nombre;
     int puntos;
     string fecha;
 
-public:
+  public:
     Puntaje(string nombre, int puntos, string fecha);
     string getNombre();
     int getPuntos();

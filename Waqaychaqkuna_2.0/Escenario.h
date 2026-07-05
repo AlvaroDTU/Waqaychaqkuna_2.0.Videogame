@@ -63,6 +63,12 @@ public:
 	int getCapturados() { return enemigosCapturados; }
 	Guardia* getGuardia();
 	Dialogo* getDialogo();
+
+
+	void guardarPuntaje(int puntos, string nombre);
+	int ultimoPuntaje();
+	int record();
+	vector<Puntaje*> historial();
 };
 
 
