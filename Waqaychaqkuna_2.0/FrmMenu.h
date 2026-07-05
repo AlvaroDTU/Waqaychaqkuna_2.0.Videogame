@@ -250,17 +250,17 @@ namespace Waqaychaqkuna20 {
 			//}
 			//delete slods2;
 			//
-			//FrmNivel2^ f2 = gcnew FrmNivel2();
-			//if (f2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
-			//{
-			//	puntaje2 = f2->RetornarPuntaje();
-			//
-			//	delete f2;
-			//	return;
-			//}
-			//puntaje2 = f2->RetornarPuntaje();
-			//delete f2;
-			//
+			FrmNivel2^ f2 = gcnew FrmNivel2();
+			if (f2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+			{
+				puntaje2 = f2->RetornarPuntaje();
+			
+				delete f2;
+				return;
+			}
+			puntaje2 = f2->RetornarPuntaje();
+			delete f2;
+			
 			//puntajeTotal = puntaje1 + puntaje2;
 			
 			FrmSlod3^ slods3 = gcnew FrmSlod3();
@@ -273,7 +273,7 @@ namespace Waqaychaqkuna20 {
 			FrmNivel3^ f3 = gcnew FrmNivel3(puntajeTotal, txtName->Text);
 			if (f3->ShowDialog() != System::Windows::Forms::DialogResult::OK)
 			{
-				puntaje3 = f3->RetornarPuntaje();
+				//puntaje3 = f3->RetornarPuntaje();
 				delete f3;
 
 				// FrmSlodVictoria^ slodVictoria = gcnew FrmSlodVictoria();

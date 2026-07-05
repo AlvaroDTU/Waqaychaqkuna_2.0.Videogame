@@ -377,7 +377,7 @@ private: System::Void FrmNivel3_KeyDown(System::Object^ sender, System::Windows:
 	 Bitmap^ fondo = Recursos::PanelEstadisticas3;
 	 bufferStats->Graphics->DrawImage(fondo, System::Drawing::Rectangle(0, 0, pnlEstadisticas->Width, pnlEstadisticas->Height));
 	 gestor->dibujarDescripcion(bufferStats->Graphics);
-	
+
 	 Graphics^ g = pnlEstadisticas->CreateGraphics();
 	 bufferStats->Render(g);
 	 delete g;
