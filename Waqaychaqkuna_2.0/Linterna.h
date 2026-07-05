@@ -32,6 +32,6 @@ class Linterna
 		void setEncendida(bool e);
 		void dibujar(Graphics^ g, float escalaX, float escalaY);
 		Bitmap^ getBitmap();
-		Rectangle getRectangle(int extra=0);
+		System::Drawing::Rectangle getRectangle(int extra=0);
 };
 

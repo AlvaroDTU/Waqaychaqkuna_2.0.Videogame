@@ -51,7 +51,7 @@ public:
 	virtual void mover(int ancho, int alto) = 0;
 	virtual std::string getNombre() = 0;
 
-	Rectangle getRectangle(int extra=0);
+	System::Drawing::Rectangle getRectangle(int extra=0);
 
 
 };

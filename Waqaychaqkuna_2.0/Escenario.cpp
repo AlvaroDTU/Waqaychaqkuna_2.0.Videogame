@@ -4,6 +4,7 @@
 Escenario::Escenario()
 	: fondo(nullptr), guardia(nullptr), anchoLienzo(1300), altoLienzo(800), enemigosTotales(5), gestor(new GestorArchivo())
 {
+	puntajeNivel = 0;
 	srand(time(nullptr));
 	enemigosCapturados = 0;
 	tempSpawnEntidades = 0;
@@ -73,13 +74,14 @@ void Escenario::setEscalado(float eX, float eY)
 void Escenario::guardarPuntaje(int puntos, string nombre)
 {
 	Puntaje* p = new Puntaje(nombre, puntos, gestor->fechaActual());
-	//TO-DO(HAMP) TEXTO: registro de la partida
+
 	gestor->guardarTexto(p);
+	gestor->guardarBinario(p);
 	delete p;
 
-	//TOD-DO (HAMP) :  BINARIO: actualiza el record si se supero
-	if (puntos > gestor->leerRecord())
+	/*if (puntos > gestor->leerRecord()) {
 		gestor->guardarRecord(puntos);
+	}*/
 }
 
 int Escenario::ultimoPuntaje()
@@ -94,5 +96,5 @@ int Escenario::record()
 
 vector<Puntaje*> Escenario::historial()
 {
-	return gestor->leerTexto();
+	return gestor->leerBinario();
 }

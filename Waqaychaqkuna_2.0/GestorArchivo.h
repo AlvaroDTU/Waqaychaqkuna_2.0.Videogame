@@ -12,7 +12,8 @@ class GestorArchivo
 {
 	public:
 		void cargarTodo(int& n1, int& n2, int& n3, int& gx, int& gy, int& bat);
-
+		void guardarBinario(Puntaje* p);
+		std::vector<Puntaje*> leerBinario();
 		vector<Puntaje*> leerTexto();
 		void guardarTexto(Puntaje* p);
 		int ultimoPuntaje();

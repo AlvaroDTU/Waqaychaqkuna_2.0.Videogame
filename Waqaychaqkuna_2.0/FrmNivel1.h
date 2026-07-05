@@ -26,7 +26,9 @@ namespace Waqaychaqkuna20 {
 			//TODO: Add the constructor code here
 			//
 		}
-
+		int RetornarPuntaje() {
+			return gestor->getPuntaje();
+		}
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -473,22 +475,21 @@ namespace Waqaychaqkuna20 {
 		bufferStats = contexto->Allocate(gStats, pnlEstadisticas->ClientRectangle);
 		delete gStats;
 	}
-
-		   Void ActualizarTamanoLabels()
-		   {
-			   int tmFuente = 12;
-			   float escalaPromedio = stats_escalaX;
-			   int tamanoFuente = (tmFuente * escalaPromedio == 0) ? tmFuente : tmFuente * escalaPromedio;
-			   System::Drawing::Font^ fuente = gcnew System::Drawing::Font(
-				   "Microsoft Sans Serif",
-				   tamanoFuente,
-				   FontStyle::Bold
-			   );
-			   lblPista->Location = Point(
-				   lblPistaBase.X * stats_escalaX,
-				   lblPistaBase.Y * stats_escalaY
-			   );
-			   lblPista->Font = fuente;
+		  
+	Void ActualizarTamanoLabels()
+	{
+		int tmFuente = 10;
+		float escalaPromedio = stats_escalaX;
+		System::Drawing::Font^ fuente = gcnew System::Drawing::Font(
+										"Microsoft Sans Serif",
+										(int)tmFuente * escalaPromedio,
+										FontStyle::Bold
+										);
+		lblPista->Location = Point(
+			lblPistaBase.X * stats_escalaX,
+			lblPistaBase.Y * stats_escalaY
+		);
+		lblPista->Font = fuente;
 
 			   lblIntentos->Location = Point(
 				   lblIntentosBase.X * stats_escalaX,

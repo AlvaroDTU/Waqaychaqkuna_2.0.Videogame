@@ -47,6 +47,8 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Button^ btnJugar;
 	private: System::Windows::Forms::Button^ btnInstrucciones;
 	private: System::Windows::Forms::Button^ btnCreditos;
+	private: System::Windows::Forms::TextBox^ txtName;
+	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ btnSalir;
 	protected: virtual void OnPaint(PaintEventArgs^ e) override
 	{
@@ -55,6 +57,10 @@ namespace Waqaychaqkuna20 {
 		Form::OnPaint(e);
 	}
 	private:
+		int puntaje1=0;
+		int puntaje2=0;
+		int puntaje3=0;
+		int puntajeTotal=0;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -71,15 +77,17 @@ namespace Waqaychaqkuna20 {
 			this->btnInstrucciones = (gcnew System::Windows::Forms::Button());
 			this->btnCreditos = (gcnew System::Windows::Forms::Button());
 			this->btnSalir = (gcnew System::Windows::Forms::Button());
+			this->txtName = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// btnJugar
 			// 
 			this->btnJugar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 40, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnJugar->Location = System::Drawing::Point(575, 295);
+			this->btnJugar->Location = System::Drawing::Point(636, 393);
 			this->btnJugar->Name = L"btnJugar";
-			this->btnJugar->Size = System::Drawing::Size(450, 90);
+			this->btnJugar->Size = System::Drawing::Size(363, 73);
 			this->btnJugar->TabIndex = 1;
 			this->btnJugar->Text = L"Jugar";
 			this->btnJugar->UseVisualStyleBackColor = true;
@@ -89,9 +97,9 @@ namespace Waqaychaqkuna20 {
 			// 
 			this->btnInstrucciones->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 40, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnInstrucciones->Location = System::Drawing::Point(575, 400);
+			this->btnInstrucciones->Location = System::Drawing::Point(636, 474);
 			this->btnInstrucciones->Name = L"btnInstrucciones";
-			this->btnInstrucciones->Size = System::Drawing::Size(450, 90);
+			this->btnInstrucciones->Size = System::Drawing::Size(363, 73);
 			this->btnInstrucciones->TabIndex = 2;
 			this->btnInstrucciones->Text = L"Instrucciones";
 			this->btnInstrucciones->UseVisualStyleBackColor = true;
@@ -101,9 +109,9 @@ namespace Waqaychaqkuna20 {
 			// 
 			this->btnCreditos->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 40, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnCreditos->Location = System::Drawing::Point(575, 505);
+			this->btnCreditos->Location = System::Drawing::Point(636, 554);
 			this->btnCreditos->Name = L"btnCreditos";
-			this->btnCreditos->Size = System::Drawing::Size(450, 90);
+			this->btnCreditos->Size = System::Drawing::Size(363, 73);
 			this->btnCreditos->TabIndex = 3;
 			this->btnCreditos->Text = L"Creditos";
 			this->btnCreditos->UseVisualStyleBackColor = true;
@@ -113,19 +121,41 @@ namespace Waqaychaqkuna20 {
 			// 
 			this->btnSalir->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 40, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnSalir->Location = System::Drawing::Point(575, 610);
+			this->btnSalir->Location = System::Drawing::Point(636, 637);
 			this->btnSalir->Name = L"btnSalir";
-			this->btnSalir->Size = System::Drawing::Size(450, 90);
+			this->btnSalir->Size = System::Drawing::Size(363, 65);
 			this->btnSalir->TabIndex = 4;
 			this->btnSalir->Text = L"Salir";
 			this->btnSalir->UseVisualStyleBackColor = true;
 			this->btnSalir->Click += gcnew System::EventHandler(this, &FrmMenu::btnSalir_Click);
 			// 
+			// txtName
+			// 
+			this->txtName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->txtName->Location = System::Drawing::Point(636, 356);
+			this->txtName->Name = L"txtName";
+			this->txtName->Size = System::Drawing::Size(363, 31);
+			this->txtName->TabIndex = 5;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(634, 322);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(367, 31);
+			this->label1->TabIndex = 6;
+			this->label1->Text = L"INTRODUCE TU NOMBRE";
+			// 
 			// FrmMenu
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1600, 800);
+			this->ClientSize = System::Drawing::Size(1370, 749);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->txtName);
 			this->Controls->Add(this->btnSalir);
 			this->Controls->Add(this->btnCreditos);
 			this->Controls->Add(this->btnInstrucciones);
@@ -135,36 +165,51 @@ namespace Waqaychaqkuna20 {
 			this->Load += gcnew System::EventHandler(this, &FrmMenu::FrmMenu_Load);
 			this->Resize += gcnew System::EventHandler(this, &FrmMenu::FrmMenu_Resize);
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
 
-		Void FrmMenu_Load(System::Object^ sender, System::EventArgs^ e) {}
+		Void FrmMenu_Load(System::Object^ sender, System::EventArgs^ e) {
+		}
 		Void btnJugar_Click(System::Object^ sender, System::EventArgs^ e)
 		{
+
 			FrmNivel1^ f1 = gcnew FrmNivel1();
 			if (f1->ShowDialog() != System::Windows::Forms::DialogResult::OK)
 			{
+				puntaje1 = f1->RetornarPuntaje();
+
 				delete f1;
 				return;
 			}
+			puntaje1 = f1->RetornarPuntaje();
+
 			delete f1;
 
 			FrmNivel2^ f2 = gcnew FrmNivel2();
 			if (f2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
 			{
+				puntaje2 = f2->RetornarPuntaje();
+
 				delete f2;
 				return;
 			}
+			puntaje2 = f2->RetornarPuntaje();
 			delete f2;
 
-			FrmNivel3^ f3 = gcnew FrmNivel3();
+			puntajeTotal = puntaje1 + puntaje2;
+			FrmNivel3^ f3 = gcnew FrmNivel3(puntajeTotal, txtName->Text);
 			if (f3->ShowDialog() != System::Windows::Forms::DialogResult::OK)
 			{
+				puntaje3 = f3->RetornarPuntaje();
 				delete f3;
 				return;
 			}
+			puntaje3 = f3->RetornarPuntaje();
 			delete f3;
+
+
 		}
 		Void FrmMenu_Resize(System::Object^ sender, System::EventArgs^ e)
 		{
