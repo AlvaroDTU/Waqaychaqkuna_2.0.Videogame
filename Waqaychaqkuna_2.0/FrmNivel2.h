@@ -288,7 +288,7 @@ namespace Waqaychaqkuna20 {
 			   delete g;
 
 			   Graphics^ gStats = pnlEstadisticas->CreateGraphics();
-			   bufferStats = BufferedGraphicsManager::Current->Allocate(gStats, pnlEstadisticas->ClientRectangle);
+			   bufferStats = contexto->Allocate(gStats, pnlEstadisticas->ClientRectangle);
 			   delete gStats;
 		   }
 		   Void FrmNivel2_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
@@ -321,6 +321,7 @@ namespace Waqaychaqkuna20 {
 			   }
 			   else if (e->KeyCode == Keys::E) {
 				   g->setAccion(false);
+				   g->setTipoAccion(1);
 				   gestor->generarCuidador();
 			   }
 			   else if (e->KeyCode == Keys::D) {
@@ -331,6 +332,8 @@ namespace Waqaychaqkuna20 {
 		   Void FrmNivel2_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			   Guardia* g = gestor->getGuardia();
 			   g->setVelocidad(0, 0);
+			   g->setAccion(false);
+			   g->setTipoAccion(0);
 		   }
 		   Void PintarEstadisticas()
 		   {
