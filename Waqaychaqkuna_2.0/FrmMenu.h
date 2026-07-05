@@ -54,8 +54,11 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Button^ btnInstrucciones;
 	private: System::Windows::Forms::Button^ btnCreditos;
 	private: System::Windows::Forms::TextBox^ txtName;
-	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ lblName;
+
+
 	private: System::Windows::Forms::ListBox^ lstHistorial;
+	private: System::Windows::Forms::Label^ lblPuntajes;
 	private: System::Windows::Forms::Button^ btnSalir;
 	protected: virtual void OnPaint(PaintEventArgs^ e) override
 	{
@@ -81,20 +84,23 @@ namespace Waqaychaqkuna20 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(FrmMenu::typeid));
 			this->btnJugar = (gcnew System::Windows::Forms::Button());
 			this->btnInstrucciones = (gcnew System::Windows::Forms::Button());
 			this->btnCreditos = (gcnew System::Windows::Forms::Button());
 			this->btnSalir = (gcnew System::Windows::Forms::Button());
 			this->txtName = (gcnew System::Windows::Forms::TextBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->lblName = (gcnew System::Windows::Forms::Label());
 			this->lstHistorial = (gcnew System::Windows::Forms::ListBox());
+			this->lblPuntajes = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// btnJugar
 			// 
-			this->btnJugar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 40, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->btnJugar->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnJugar.BackgroundImage")));
+			this->btnJugar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 39.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnJugar->Location = System::Drawing::Point(636, 393);
+			this->btnJugar->Location = System::Drawing::Point(491, 393);
 			this->btnJugar->Name = L"btnJugar";
 			this->btnJugar->Size = System::Drawing::Size(363, 73);
 			this->btnJugar->TabIndex = 1;
@@ -104,9 +110,10 @@ namespace Waqaychaqkuna20 {
 			// 
 			// btnInstrucciones
 			// 
-			this->btnInstrucciones->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 40, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->btnInstrucciones->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnInstrucciones.BackgroundImage")));
+			this->btnInstrucciones->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 39.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnInstrucciones->Location = System::Drawing::Point(636, 474);
+			this->btnInstrucciones->Location = System::Drawing::Point(491, 472);
 			this->btnInstrucciones->Name = L"btnInstrucciones";
 			this->btnInstrucciones->Size = System::Drawing::Size(363, 73);
 			this->btnInstrucciones->TabIndex = 2;
@@ -116,9 +123,10 @@ namespace Waqaychaqkuna20 {
 			// 
 			// btnCreditos
 			// 
-			this->btnCreditos->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 40, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->btnCreditos->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnCreditos.BackgroundImage")));
+			this->btnCreditos->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 39.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnCreditos->Location = System::Drawing::Point(636, 554);
+			this->btnCreditos->Location = System::Drawing::Point(491, 551);
 			this->btnCreditos->Name = L"btnCreditos";
 			this->btnCreditos->Size = System::Drawing::Size(363, 73);
 			this->btnCreditos->TabIndex = 3;
@@ -128,9 +136,10 @@ namespace Waqaychaqkuna20 {
 			// 
 			// btnSalir
 			// 
-			this->btnSalir->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 40, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->btnSalir->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnSalir.BackgroundImage")));
+			this->btnSalir->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 39.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnSalir->Location = System::Drawing::Point(636, 637);
+			this->btnSalir->Location = System::Drawing::Point(491, 630);
 			this->btnSalir->Name = L"btnSalir";
 			this->btnSalir->Size = System::Drawing::Size(363, 65);
 			this->btnSalir->TabIndex = 4;
@@ -142,38 +151,54 @@ namespace Waqaychaqkuna20 {
 			// 
 			this->txtName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txtName->Location = System::Drawing::Point(636, 356);
+			this->txtName->Location = System::Drawing::Point(491, 356);
 			this->txtName->Name = L"txtName";
 			this->txtName->Size = System::Drawing::Size(363, 31);
 			this->txtName->TabIndex = 5;
 			// 
-			// label1
+			// lblName
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lblName->AutoSize = true;
+			this->lblName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(634, 322);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(367, 31);
-			this->label1->TabIndex = 6;
-			this->label1->Text = L"INTRODUCE TU NOMBRE";
+			this->lblName->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"lblName.Image")));
+			this->lblName->Location = System::Drawing::Point(488, 322);
+			this->lblName->Name = L"lblName";
+			this->lblName->Size = System::Drawing::Size(367, 31);
+			this->lblName->TabIndex = 6;
+			this->lblName->Text = L"INTRODUCE TU NOMBRE";
 			// 
 			// lstHistorial
 			// 
-			this->lstHistorial->Font = (gcnew System::Drawing::Font(L"Consolas", 10));
-			this->lstHistorial->ItemHeight = 15;
-			this->lstHistorial->Location = System::Drawing::Point(30, 202);
+			this->lstHistorial->BackColor = System::Drawing::Color::LavenderBlush;
+			this->lstHistorial->Font = (gcnew System::Drawing::Font(L"Imprint MT Shadow", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lstHistorial->ItemHeight = 25;
+			this->lstHistorial->Location = System::Drawing::Point(885, 375);
 			this->lstHistorial->Name = L"lstHistorial";
-			this->lstHistorial->Size = System::Drawing::Size(320, 124);
+			this->lstHistorial->Size = System::Drawing::Size(444, 104);
 			this->lstHistorial->TabIndex = 0;
+			// 
+			// lblPuntajes
+			// 
+			this->lblPuntajes->AutoSize = true;
+			this->lblPuntajes->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblPuntajes->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"lblPuntajes.Image")));
+			this->lblPuntajes->Location = System::Drawing::Point(1017, 341);
+			this->lblPuntajes->Name = L"lblPuntajes";
+			this->lblPuntajes->Size = System::Drawing::Size(165, 31);
+			this->lblPuntajes->TabIndex = 7;
+			this->lblPuntajes->Text = L"PUNTAJES";
 			// 
 			// FrmMenu
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1600, 800);
+			this->ClientSize = System::Drawing::Size(1370, 749);
+			this->Controls->Add(this->lblPuntajes);
 			this->Controls->Add(this->lstHistorial);
-			this->Controls->Add(this->label1);
+			this->Controls->Add(this->lblName);
 			this->Controls->Add(this->txtName);
 			this->Controls->Add(this->btnSalir);
 			this->Controls->Add(this->btnCreditos);
@@ -290,14 +315,25 @@ namespace Waqaychaqkuna20 {
 		}
 		Void FrmMenu_Resize(System::Object^ sender, System::EventArgs^ e)
 		{
-			int centroX = this->ClientSize.Width / 2;
+			int centroX = this->ClientSize.Width / 2  - 200;
 
 			int buttonWidth = btnJugar->Width;
 			int buttonHeight = btnJugar->Height;
+			lblName->Left = centroX - lblName->Width / 2;
+			lblName->Top = (this->ClientSize.Height / 2) - 75; 
 
+			lstHistorial->Left = lblName->Right + 20; 
+			lblPuntajes->Left = centroX + (buttonWidth / 2) + 40; 
+			lblPuntajes->Top = lblName->Top;                     
+
+			lstHistorial->Top = lblPuntajes->Bottom + 8;         
+			lblPuntajes->Left = lstHistorial->Left + (lstHistorial->Width / 2) - (lblPuntajes->Width / 2);
+
+			txtName->Left = centroX - buttonWidth / 2;
+			txtName->Top = lblName->Bottom + 8;
 			// BOTÓN 1
 			btnJugar->Left = centroX - buttonWidth / 2;
-			btnJugar->Top = this->ClientSize.Height / 2 - 100;
+			btnJugar->Top = this->ClientSize.Height / 2 ;
 
 			// BOTÓN 2
 			btnInstrucciones->Left = centroX - buttonWidth / 2;
@@ -310,6 +346,8 @@ namespace Waqaychaqkuna20 {
 			// BOTÓN 4
 			btnSalir->Left = centroX - buttonWidth / 2;
 			btnSalir->Top = btnCreditos->Bottom + 15;
+
+		
 
 			this->Invalidate();
 		}
