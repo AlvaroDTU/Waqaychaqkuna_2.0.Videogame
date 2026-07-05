@@ -78,7 +78,8 @@ namespace Waqaychaqkuna20 {
 		   Point lblArtilugio4Base;
 		   Point lblArtilugio5Base;
 		   Point lblArtilugio6Base;
-
+		   bool slod1 = false;
+		   bool slod2 = false;
 #pragma region Windows Form Designer generated code
 		   /// <summary>
 		   /// Required method for Designer support - do not modify

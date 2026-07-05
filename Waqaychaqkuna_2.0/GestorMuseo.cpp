@@ -96,7 +96,6 @@ void GestorMuseo::dibujar(Graphics^ g)
 	for (auto ladron : enemigos) ladron->dibujar(g, escalaX, escalaY);
 	for (auto visitante : visitantes) visitante->dibujar(g, escalaX, escalaY);
 	guardia->dibujar(g, escalaX, escalaY);
-
 	dialogo.dibujar(g, anchoLienzo, altoLienzo);
 }
 
