@@ -120,6 +120,7 @@ namespace Waqaychaqkuna20 {
 			this->lblPuntaje2 = (gcnew System::Windows::Forms::Label());
 			this->lblPuntaje4 = (gcnew System::Windows::Forms::Label());
 			this->pnlEstadisticas = (gcnew System::Windows::Forms::Panel());
+			this->pnlEstadisticas->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// pnlMapa
@@ -136,70 +137,77 @@ namespace Waqaychaqkuna20 {
 			this->lblArchivo1->AutoSize = true;
 			this->lblArchivo1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblArchivo1->Location = System::Drawing::Point(1312, 316);
+			this->lblArchivo1->Location = System::Drawing::Point(12, 506);
 			this->lblArchivo1->Name = L"lblArchivo1";
-			this->lblArchivo1->Size = System::Drawing::Size(0, 17);
+			this->lblArchivo1->Size = System::Drawing::Size(52, 17);
 			this->lblArchivo1->TabIndex = 13;
+			this->lblArchivo1->Text = L"label1";
 			// 
 			// lblArchivo2
 			// 
 			this->lblArchivo2->AutoSize = true;
 			this->lblArchivo2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblArchivo2->Location = System::Drawing::Point(1478, 316);
+			this->lblArchivo2->Location = System::Drawing::Point(178, 506);
 			this->lblArchivo2->Name = L"lblArchivo2";
-			this->lblArchivo2->Size = System::Drawing::Size(0, 17);
+			this->lblArchivo2->Size = System::Drawing::Size(52, 17);
 			this->lblArchivo2->TabIndex = 14;
+			this->lblArchivo2->Text = L"label1";
 			// 
 			// lblArchivo3
 			// 
 			this->lblArchivo3->AutoSize = true;
 			this->lblArchivo3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblArchivo3->Location = System::Drawing::Point(1312, 387);
+			this->lblArchivo3->Location = System::Drawing::Point(12, 577);
 			this->lblArchivo3->Name = L"lblArchivo3";
-			this->lblArchivo3->Size = System::Drawing::Size(0, 17);
+			this->lblArchivo3->Size = System::Drawing::Size(52, 17);
 			this->lblArchivo3->TabIndex = 15;
+			this->lblArchivo3->Text = L"label1";
 			// 
 			// lblArchivo4
 			// 
 			this->lblArchivo4->AutoSize = true;
 			this->lblArchivo4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblArchivo4->Location = System::Drawing::Point(1478, 387);
+			this->lblArchivo4->Location = System::Drawing::Point(178, 577);
 			this->lblArchivo4->Name = L"lblArchivo4";
-			this->lblArchivo4->Size = System::Drawing::Size(0, 17);
+			this->lblArchivo4->Size = System::Drawing::Size(52, 17);
 			this->lblArchivo4->TabIndex = 16;
+			this->lblArchivo4->Text = L"label1";
 			// 
 			// lblDerrotados
 			// 
 			this->lblDerrotados->AutoSize = true;
 			this->lblDerrotados->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblDerrotados->Location = System::Drawing::Point(1319, 648);
+			this->lblDerrotados->Location = System::Drawing::Point(12, 678);
 			this->lblDerrotados->Name = L"lblDerrotados";
-			this->lblDerrotados->Size = System::Drawing::Size(0, 17);
+			this->lblDerrotados->Size = System::Drawing::Size(52, 17);
 			this->lblDerrotados->TabIndex = 17;
+			this->lblDerrotados->Text = L"label1";
 			// 
 			// lblBateria
 			// 
 			this->lblBateria->AutoSize = true;
 			this->lblBateria->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblBateria->Location = System::Drawing::Point(1319, 734);
+			this->lblBateria->Location = System::Drawing::Point(12, 764);
 			this->lblBateria->Name = L"lblBateria";
-			this->lblBateria->Size = System::Drawing::Size(0, 17);
+			this->lblBateria->Size = System::Drawing::Size(52, 17);
 			this->lblBateria->TabIndex = 18;
+			this->lblBateria->Text = L"label1";
 			// 
 			// lblIntentos
 			// 
 			this->lblIntentos->AutoSize = true;
 			this->lblIntentos->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblIntentos->Location = System::Drawing::Point(1319, 694);
+			this->lblIntentos->Location = System::Drawing::Point(12, 719);
 			this->lblIntentos->Name = L"lblIntentos";
-			this->lblIntentos->Size = System::Drawing::Size(0, 17);
+			this->lblIntentos->Size = System::Drawing::Size(52, 17);
 			this->lblIntentos->TabIndex = 19;
+			this->lblIntentos->Text = L"label1";
 			// 
 			// tmrNivel3
 			// 
@@ -212,45 +220,60 @@ namespace Waqaychaqkuna20 {
 			this->lblPuntaje1->AutoSize = true;
 			this->lblPuntaje1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblPuntaje1->Location = System::Drawing::Point(1312, 345);
+			this->lblPuntaje1->Location = System::Drawing::Point(12, 535);
 			this->lblPuntaje1->Name = L"lblPuntaje1";
-			this->lblPuntaje1->Size = System::Drawing::Size(0, 17);
+			this->lblPuntaje1->Size = System::Drawing::Size(52, 17);
 			this->lblPuntaje1->TabIndex = 20;
+			this->lblPuntaje1->Text = L"label1";
 			// 
 			// lblPuntaje3
 			// 
 			this->lblPuntaje3->AutoSize = true;
 			this->lblPuntaje3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblPuntaje3->Location = System::Drawing::Point(1312, 418);
+			this->lblPuntaje3->Location = System::Drawing::Point(12, 608);
 			this->lblPuntaje3->Name = L"lblPuntaje3";
-			this->lblPuntaje3->Size = System::Drawing::Size(0, 17);
+			this->lblPuntaje3->Size = System::Drawing::Size(52, 17);
 			this->lblPuntaje3->TabIndex = 21;
+			this->lblPuntaje3->Text = L"label1";
 			// 
 			// lblPuntaje2
 			// 
 			this->lblPuntaje2->AutoSize = true;
 			this->lblPuntaje2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblPuntaje2->Location = System::Drawing::Point(1478, 345);
+			this->lblPuntaje2->Location = System::Drawing::Point(178, 535);
 			this->lblPuntaje2->Name = L"lblPuntaje2";
-			this->lblPuntaje2->Size = System::Drawing::Size(0, 17);
+			this->lblPuntaje2->Size = System::Drawing::Size(52, 17);
 			this->lblPuntaje2->TabIndex = 22;
+			this->lblPuntaje2->Text = L"label1";
 			// 
 			// lblPuntaje4
 			// 
 			this->lblPuntaje4->AutoSize = true;
 			this->lblPuntaje4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblPuntaje4->Location = System::Drawing::Point(1478, 418);
+			this->lblPuntaje4->Location = System::Drawing::Point(178, 608);
 			this->lblPuntaje4->Name = L"lblPuntaje4";
-			this->lblPuntaje4->Size = System::Drawing::Size(0, 17);
+			this->lblPuntaje4->Size = System::Drawing::Size(52, 17);
 			this->lblPuntaje4->TabIndex = 23;
+			this->lblPuntaje4->Text = L"label1";
 			// 
 			// pnlEstadisticas
 			// 
 			this->pnlEstadisticas->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pnlEstadisticas->Location = System::Drawing::Point(1257, 1);
+			this->pnlEstadisticas->Controls->Add(this->lblPuntaje4);
+			this->pnlEstadisticas->Controls->Add(this->lblBateria);
+			this->pnlEstadisticas->Controls->Add(this->lblPuntaje2);
+			this->pnlEstadisticas->Controls->Add(this->lblDerrotados);
+			this->pnlEstadisticas->Controls->Add(this->lblPuntaje3);
+			this->pnlEstadisticas->Controls->Add(this->lblPuntaje1);
+			this->pnlEstadisticas->Controls->Add(this->lblIntentos);
+			this->pnlEstadisticas->Controls->Add(this->lblArchivo4);
+			this->pnlEstadisticas->Controls->Add(this->lblArchivo1);
+			this->pnlEstadisticas->Controls->Add(this->lblArchivo3);
+			this->pnlEstadisticas->Controls->Add(this->lblArchivo2);
+			this->pnlEstadisticas->Location = System::Drawing::Point(1300, 0);
 			this->pnlEstadisticas->Name = L"pnlEstadisticas";
 			this->pnlEstadisticas->Size = System::Drawing::Size(300, 800);
 			this->pnlEstadisticas->TabIndex = 24;
@@ -260,17 +283,6 @@ namespace Waqaychaqkuna20 {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1600, 800);
-			this->Controls->Add(this->lblPuntaje4);
-			this->Controls->Add(this->lblPuntaje2);
-			this->Controls->Add(this->lblPuntaje3);
-			this->Controls->Add(this->lblPuntaje1);
-			this->Controls->Add(this->lblIntentos);
-			this->Controls->Add(this->lblBateria);
-			this->Controls->Add(this->lblDerrotados);
-			this->Controls->Add(this->lblArchivo4);
-			this->Controls->Add(this->lblArchivo3);
-			this->Controls->Add(this->lblArchivo2);
-			this->Controls->Add(this->lblArchivo1);
 			this->Controls->Add(this->pnlMapa);
 			this->Controls->Add(this->pnlEstadisticas);
 			this->Name = L"FrmNivel3";
@@ -280,8 +292,9 @@ namespace Waqaychaqkuna20 {
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel3::FrmNivel3_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel3::FrmNivel3_KeyUp);
 			this->Resize += gcnew System::EventHandler(this, &FrmNivel3::FrmNivel3_Resize);
+			this->pnlEstadisticas->ResumeLayout(false);
+			this->pnlEstadisticas->PerformLayout();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion

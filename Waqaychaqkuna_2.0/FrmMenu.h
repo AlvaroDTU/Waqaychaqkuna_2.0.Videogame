@@ -223,45 +223,45 @@ namespace Waqaychaqkuna20 {
         }
 		Void btnJugar_Click(System::Object^ sender, System::EventArgs^ e)
 		{
-			FrmSlod1^ slods1 = gcnew FrmSlod1();
-			if (slods1->ShowDialog() != System::Windows::Forms::DialogResult::OK)
-			{
-				delete slods1;
-				return;
-			}
-			delete slods1;
-			FrmNivel1^ f1 = gcnew FrmNivel1();
-			if (f1->ShowDialog() != System::Windows::Forms::DialogResult::OK)
-			{
-				puntaje1 = f1->RetornarPuntaje();
-			
-				delete f1;
-				return;
-			}
-			puntaje1 = f1->RetornarPuntaje();
-			
-			delete f1;
-			
-			FrmSlod2^ slods2 = gcnew FrmSlod2();
-			if (slods2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
-			{
-				delete slods2;
-				return;
-			}
-			delete slods2;
-			
-			FrmNivel2^ f2 = gcnew FrmNivel2();
-			if (f2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
-			{
-				puntaje2 = f2->RetornarPuntaje();
-			
-				delete f2;
-				return;
-			}
-			puntaje2 = f2->RetornarPuntaje();
-			delete f2;
-			
-			puntajeTotal = puntaje1 + puntaje2;
+			//FrmSlod1^ slods1 = gcnew FrmSlod1();
+			//if (slods1->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+			//{
+			//	delete slods1;
+			//	return;
+			//}
+			//delete slods1;
+			//FrmNivel1^ f1 = gcnew FrmNivel1();
+			//if (f1->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+			//{
+			//	puntaje1 = f1->RetornarPuntaje();
+			//
+			//	delete f1;
+			//	return;
+			//}
+			//puntaje1 = f1->RetornarPuntaje();
+			//
+			//delete f1;
+			//
+			//FrmSlod2^ slods2 = gcnew FrmSlod2();
+			//if (slods2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+			//{
+			//	delete slods2;
+			//	return;
+			//}
+			//delete slods2;
+			//
+			//FrmNivel2^ f2 = gcnew FrmNivel2();
+			//if (f2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+			//{
+			//	puntaje2 = f2->RetornarPuntaje();
+			//
+			//	delete f2;
+			//	return;
+			//}
+			//puntaje2 = f2->RetornarPuntaje();
+			//delete f2;
+			//
+			//puntajeTotal = puntaje1 + puntaje2;
 			
 			FrmSlod3^ slods3 = gcnew FrmSlod3();
 			if (slods3->ShowDialog() != System::Windows::Forms::DialogResult::OK)
