@@ -2,6 +2,7 @@
 #include "FrmNivel1.h"
 #include "FrmNivel2.h"
 #include "FrmNivel3.h"
+#include "FrmInstrucciones.h"
 
 namespace Waqaychaqkuna20 {
 
@@ -151,10 +152,18 @@ namespace Waqaychaqkuna20 {
 		FrmNivel2^ f2 = gcnew FrmNivel2();
 		if (f2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
 		{
-			delete f2;
+			delete f1;
 			return;
 		}
-		delete f2;
+		delete f1;
+		
+		//FrmNivel2^ f2 = gcnew FrmNivel2();
+		//if (f2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+		//{
+		//	delete f2;
+		//	return;
+		//}
+		//delete f2;
 		 
 		FrmNivel3^ f3 = gcnew FrmNivel3();
 		if (f3->ShowDialog() != System::Windows::Forms::DialogResult::OK)
@@ -191,7 +200,8 @@ namespace Waqaychaqkuna20 {
 	}
 	Void btnInstrucciones_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
-		//
+		FrmInstrucciones^ frm = gcnew FrmInstrucciones();
+		delete frm;
 	}
 	Void btnCreditos_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
@@ -201,6 +211,7 @@ namespace Waqaychaqkuna20 {
 	{
 		this->Close();
 	}
+	
 };
 }
 	

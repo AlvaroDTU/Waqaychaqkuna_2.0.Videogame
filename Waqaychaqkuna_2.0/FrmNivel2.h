@@ -1,5 +1,6 @@
 #pragma once
 #include "GestorHuacas.h"
+
 namespace Waqaychaqkuna20 {
 
 	using namespace System;
@@ -462,10 +463,13 @@ namespace Waqaychaqkuna20 {
 			if (finCont >= 200)
 			{
 				this->tmrJuego->Stop();
-				if (gestor->victoria()) { Recursos::victoria->Stop();
-				this->DialogResult = System::Windows::Forms::DialogResult::OK;
+				if (gestor->victoria()) 
+				{ 
+					Recursos::victoria->Stop();
+					this->DialogResult = System::Windows::Forms::DialogResult::OK;
 				}
-				if (gestor->derrota()) Recursos::perdiste->Stop();
+				if (gestor->derrota()) 
+					Recursos::perdiste->Stop();
 				this->Close();
 			}
 		}
@@ -562,6 +566,8 @@ namespace Waqaychaqkuna20 {
 private: System::Void FrmNivel2_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 	Recursos::normal2->Stop();
 	Recursos::suspenso2->Stop();
+	Recursos::victoria->Stop();
+	Recursos::perdiste->Stop();
 }
 };
 }

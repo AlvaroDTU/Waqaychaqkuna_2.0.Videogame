@@ -32,6 +32,8 @@ protected:
 	int puntajeNivel;
 	float escalaX, escalaY;
 	bool accion;
+	bool mostrandoInfo;
+
 public:
 	Escenario(int enTotales);
 	virtual ~Escenario();

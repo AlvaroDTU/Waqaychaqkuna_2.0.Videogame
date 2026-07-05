@@ -40,7 +40,7 @@ void GestorBiblioteca::dibujar(Graphics^ g){
 		murcielago->dibujar(g, escalaX, escalaY);
 
 	if (linterna->getEncendida())
-		linterna->dibujar(g);
+		linterna->dibujar(g, escalaX, escalaY);
 
 }
 void GestorBiblioteca::mover(){
@@ -240,8 +240,8 @@ bool GestorBiblioteca::encenderLinterna() {
 		else if (direccion == 0) {
 			linterna->setEncendida(true);
 			linterna->setColumna(1);
-			int lx = guardia->getPosX() - 21;
-			int ly = guardia->getPosY() + guardia->getAlto();
+			int lx = guardia->getPosX() - 22;
+			int ly = guardia->getPosY() + guardia->getAlto()-4;
 
 			linterna->setPos(lx, ly);
 		}

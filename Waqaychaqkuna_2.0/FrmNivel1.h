@@ -59,6 +59,9 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Label^ lblArtilugio6;
 		   BufferedGraphics^ buffer;
 		   GestorMuseo* gestor;
+		   bool musicaSuspenso = false;
+		   bool musicaFinal = false;
+		   int finCont = 0;
 		   float mapa_escalaX = 1.0f;
 		   float mapa_escalaY = 1.0f;
 		   float stats_escalaX = 1.0f;
@@ -81,7 +84,6 @@ namespace Waqaychaqkuna20 {
 		   void InitializeComponent(void)
 		   {
 			   this->components = (gcnew System::ComponentModel::Container());
-			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(FrmNivel1::typeid));
 			   this->tmrNivel1 = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->pnlMapa = (gcnew System::Windows::Forms::Panel());
 			   this->pnlEstadisticas = (gcnew System::Windows::Forms::Panel());
@@ -113,8 +115,8 @@ namespace Waqaychaqkuna20 {
 			   // 
 			   // pnlEstadisticas
 			   // 
-			   this->pnlEstadisticas->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			   this->pnlEstadisticas->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pnlEstadisticas.BackgroundImage")));
+			   this->pnlEstadisticas->BackColor = System::Drawing::Color::Transparent;
+			   this->pnlEstadisticas->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			   this->pnlEstadisticas->Controls->Add(this->lblArtilugio1);
 			   this->pnlEstadisticas->Controls->Add(this->lblArtilugio2);
 			   this->pnlEstadisticas->Controls->Add(this->lblArtilugio3);
@@ -128,11 +130,11 @@ namespace Waqaychaqkuna20 {
 			   this->pnlEstadisticas->Name = L"pnlEstadisticas";
 			   this->pnlEstadisticas->Size = System::Drawing::Size(300, 800);
 			   this->pnlEstadisticas->TabIndex = 10;
+			   this->pnlEstadisticas->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmNivel1::pnlEstadisticas_Paint);
 			   // 
 			   // lblArtilugio1
 			   // 
 			   this->lblArtilugio1->AutoSize = true;
-			   this->lblArtilugio1->BackColor = System::Drawing::Color::Transparent;
 			   this->lblArtilugio1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblArtilugio1->Location = System::Drawing::Point(18, 446);
@@ -144,7 +146,6 @@ namespace Waqaychaqkuna20 {
 			   // lblArtilugio2
 			   // 
 			   this->lblArtilugio2->AutoSize = true;
-			   this->lblArtilugio2->BackColor = System::Drawing::Color::Transparent;
 			   this->lblArtilugio2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblArtilugio2->Location = System::Drawing::Point(18, 509);
@@ -156,7 +157,6 @@ namespace Waqaychaqkuna20 {
 			   // lblArtilugio3
 			   // 
 			   this->lblArtilugio3->AutoSize = true;
-			   this->lblArtilugio3->BackColor = System::Drawing::Color::Transparent;
 			   this->lblArtilugio3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblArtilugio3->Location = System::Drawing::Point(18, 575);
@@ -168,7 +168,6 @@ namespace Waqaychaqkuna20 {
 			   // lblArtilugio4
 			   // 
 			   this->lblArtilugio4->AutoSize = true;
-			   this->lblArtilugio4->BackColor = System::Drawing::Color::Transparent;
 			   this->lblArtilugio4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblArtilugio4->Location = System::Drawing::Point(165, 446);
@@ -180,7 +179,6 @@ namespace Waqaychaqkuna20 {
 			   // lblArtilugio5
 			   // 
 			   this->lblArtilugio5->AutoSize = true;
-			   this->lblArtilugio5->BackColor = System::Drawing::Color::Transparent;
 			   this->lblArtilugio5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblArtilugio5->Location = System::Drawing::Point(165, 509);
@@ -192,7 +190,6 @@ namespace Waqaychaqkuna20 {
 			   // lblArtilugio6
 			   // 
 			   this->lblArtilugio6->AutoSize = true;
-			   this->lblArtilugio6->BackColor = System::Drawing::Color::Transparent;
 			   this->lblArtilugio6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblArtilugio6->Location = System::Drawing::Point(165, 575);
@@ -204,7 +201,6 @@ namespace Waqaychaqkuna20 {
 			   // lblIntentos
 			   // 
 			   this->lblIntentos->AutoSize = true;
-			   this->lblIntentos->BackColor = System::Drawing::Color::Transparent;
 			   this->lblIntentos->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblIntentos->Location = System::Drawing::Point(6, 700);
@@ -216,7 +212,6 @@ namespace Waqaychaqkuna20 {
 			   // lblDerrotados
 			   // 
 			   this->lblDerrotados->AutoSize = true;
-			   this->lblDerrotados->BackColor = System::Drawing::Color::Transparent;
 			   this->lblDerrotados->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblDerrotados->Location = System::Drawing::Point(6, 727);
@@ -228,7 +223,6 @@ namespace Waqaychaqkuna20 {
 			   // lblPista
 			   // 
 			   this->lblPista->AutoSize = true;
-			   this->lblPista->BackColor = System::Drawing::Color::Transparent;
 			   this->lblPista->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblPista->Location = System::Drawing::Point(6, 760);
@@ -248,6 +242,7 @@ namespace Waqaychaqkuna20 {
 			   this->Name = L"FrmNivel1";
 			   this->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			   this->Text = L"Nivel 1: Museo";
+			   this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &FrmNivel1::FrmNivel1_FormClosing);
 			   this->Load += gcnew System::EventHandler(this, &FrmNivel1::FrmNivel1_Load);
 			   this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel1::FrmNivel1_KeyDown);
 			   this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel1::FrmNivel1_KeyUp);
@@ -277,6 +272,8 @@ namespace Waqaychaqkuna20 {
 			Graphics^ g = this->pnlMapa->CreateGraphics();
 			buffer = contexto->Allocate(g, this->pnlMapa->ClientRectangle);
 			tmrNivel1->Start();
+
+			Recursos::normal1->PlayLooping();
 			delete g;
 
 		}
@@ -327,26 +324,74 @@ namespace Waqaychaqkuna20 {
 			this->lblDerrotados->Text = String::Format(L"ENEMIGOS CAPTURADOS: {0}", gestor->getCapturados());
 			this->lblIntentos->Text = String::Format(L"INTENTOS: {0}", gestor->getIntentos());
 
+			if (!musicaSuspenso &&
+				(gestor->getBien(0)->getPuntajeValor() <= 500 ||
+					gestor->getBien(1)->getPuntajeValor() <= 500 ||
+					gestor->getBien(2)->getPuntajeValor() <= 500 ||
+					gestor->getBien(3)->getPuntajeValor() <= 500))
+			{
+				musicaSuspenso = true;
+
+				Recursos::normal1->Stop();
+				Recursos::suspenso1->PlayLooping();
+			}
+
 			Pintar();
 
-			if (gestor->victoria())
+			if (gestor->victoria() || gestor->derrota())
 			{
-				this->tmrNivel1->Stop();
-				MessageBox::Show("GANASTE");
-				this->DialogResult = System::Windows::Forms::DialogResult::OK;
-				this->Close();
-			}
-			if (gestor->derrota())
-			{
-				this->tmrNivel1->Stop();
-				MessageBox::Show("PERDISTE");
-				this->Close();
+				if (gestor->victoria() && !musicaFinal) {
+					Recursos::normal1->Stop();
+					Recursos::suspenso1->Stop();
+					Recursos::victoria->PlayLooping();
+					musicaFinal = true;
+				}
+				if (gestor->derrota() && !musicaFinal) {
+					Recursos::normal1->Stop();
+					Recursos::suspenso1->Stop();
+					Recursos::perdiste->PlayLooping();
+					musicaFinal = true;
+				}
+				finCont++;
+				if (finCont >= 200)
+				{
+					this->tmrNivel1->Stop();
+					if (gestor->victoria())
+					{
+						Recursos::victoria->Stop();
+						this->DialogResult = System::Windows::Forms::DialogResult::OK;
+					}
+					if (gestor->derrota())
+						Recursos::perdiste->Stop();
+					this->Close();
+				}
 			}
 		}
 		Void Pintar()
 		{
 			gestor->dibujar(buffer->Graphics);
 			Graphics^ g = this->pnlMapa->CreateGraphics();
+			if (gestor->victoria()) {
+				System::Drawing::Font^ fuente = gcnew System::Drawing::Font("Segoe UI", 40, FontStyle::Bold);
+				String^ text = "MISION CUMPLIDA!";
+				SizeF textSize = buffer->Graphics->MeasureString(text, fuente);
+				// centro
+				float x = (buffer->Graphics->VisibleClipBounds.Width - textSize.Width) / 2.0f;
+				float y = (buffer->Graphics->VisibleClipBounds.Height - textSize.Height) / 2.0f;
+
+				buffer->Graphics->DrawString(text,fuente,gcnew SolidBrush(Color::DarkGreen), x, y);
+
+			}
+			if (gestor->derrota()) {
+				System::Drawing::Font^ fuente = gcnew System::Drawing::Font("Segoe UI", 40, FontStyle::Bold);
+				String^ text = "GAME OVER :C";
+				SizeF textSize = buffer->Graphics->MeasureString(text, fuente);
+				// centro
+				float x = (buffer->Graphics->VisibleClipBounds.Width - textSize.Width) / 2.0f;
+				float y = (buffer->Graphics->VisibleClipBounds.Height - textSize.Height) / 2.0f;
+				buffer->Graphics->DrawString(text, fuente, gcnew SolidBrush(Color::DarkGreen), x, y);
+
+			}
 			buffer->Render(g);
 			delete g;
 		}
@@ -385,6 +430,8 @@ namespace Waqaychaqkuna20 {
 		buffer = contexto->Allocate(g, pnlMapa->ClientRectangle);
 		buffer->Graphics->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
 		delete g;
+
+		Pintar();
 	}
 
 	Void ActualizarTamanoLabels()
@@ -450,5 +497,17 @@ namespace Waqaychaqkuna20 {
 		);
 		lblArtilugio6->Font = fuente;
 	}
-	};
+	Void FrmNivel1_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) 
+	{
+		Recursos::normal1->Stop();
+		Recursos::suspenso1->Stop();
+		Recursos::victoria->Stop();
+		Recursos::perdiste->Stop();
+	}
+	Void pnlEstadisticas_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) 
+	{
+		Graphics^ g = e->Graphics;
+		g->DrawImage(gcnew Bitmap("backgrounds\\PanelEstadisticas1.png"), this->pnlEstadisticas->ClientRectangle);
+	}
+};
 }
