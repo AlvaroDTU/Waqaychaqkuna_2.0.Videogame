@@ -4,7 +4,7 @@
 #include "FrmNivel3.h"
 #include "FrmInstrucciones.h"
 #include "FrmCreditos.h"
-
+#include "GestorBiblioteca.h"
 namespace Waqaychaqkuna20 {
 
 	using namespace System;
@@ -29,6 +29,7 @@ namespace Waqaychaqkuna20 {
 			this->SetStyle(ControlStyles::AllPaintingInWmPaint |
 				ControlStyles::UserPaint |
 				ControlStyles::DoubleBuffer, true);
+			escena = new GestorBiblioteca();
 		}
 
 	protected:
@@ -49,6 +50,7 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Button^ btnCreditos;
 	private: System::Windows::Forms::TextBox^ txtName;
 	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::ListBox^ lstHistorial;
 	private: System::Windows::Forms::Button^ btnSalir;
 	protected: virtual void OnPaint(PaintEventArgs^ e) override
 	{
@@ -61,6 +63,7 @@ namespace Waqaychaqkuna20 {
 		int puntaje2=0;
 		int puntaje3=0;
 		int puntajeTotal=0;
+		GestorBiblioteca* escena;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -79,6 +82,7 @@ namespace Waqaychaqkuna20 {
 			this->btnSalir = (gcnew System::Windows::Forms::Button());
 			this->txtName = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->lstHistorial = (gcnew System::Windows::Forms::ListBox());
 			this->SuspendLayout();
 			// 
 			// btnJugar
@@ -149,11 +153,21 @@ namespace Waqaychaqkuna20 {
 			this->label1->TabIndex = 6;
 			this->label1->Text = L"INTRODUCE TU NOMBRE";
 			// 
+			// lstHistorial
+			// 
+			this->lstHistorial->Font = (gcnew System::Drawing::Font(L"Consolas", 10));
+			this->lstHistorial->ItemHeight = 15;
+			this->lstHistorial->Location = System::Drawing::Point(30, 202);
+			this->lstHistorial->Name = L"lstHistorial";
+			this->lstHistorial->Size = System::Drawing::Size(320, 124);
+			this->lstHistorial->TabIndex = 0;
+			// 
 			// FrmMenu
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1370, 749);
+			this->Controls->Add(this->lstHistorial);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->txtName);
 			this->Controls->Add(this->btnSalir);
@@ -171,7 +185,37 @@ namespace Waqaychaqkuna20 {
 #pragma endregion
 
 		Void FrmMenu_Load(System::Object^ sender, System::EventArgs^ e) {
+			CargarHistorial();
 		}
+		Void CargarHistorial()
+        {
+            // TO-DO (HAMP) Le pido a la escena todos los puntajes guardados (ella maneja el archivo).
+            vector<Puntaje*> puntajes = escena->historial();
+            int n = (int)puntajes.size();
+
+            // TO-DO (HAMP) Ordenamiento burbuja por fecha, mas reciente primero.
+            // TO-DO (HAMP) La fecha es texto "aaaa/mm/dd HH:MM", asi que comparar el texto = comparar la fecha.
+            for (int i = 0; i < n - 1; i++)
+                for (int j = 0; j < n - 1 - i; j++)
+                    if (puntajes[j]->getFecha() < puntajes[j + 1]->getFecha())
+                    {
+                        Puntaje* temp = puntajes[j];
+                        puntajes[j] = puntajes[j + 1];
+                        puntajes[j + 1] = temp;
+                    }
+
+            // TO-DO (HAMP) Lleno la lista visual con "puntaje - fecha"
+            lstHistorial->Items->Clear();
+            for (int i = 0; i < n; i++)
+            {
+                System::String ^ fecha = gcnew System::String(puntajes[i]->getFecha().c_str());
+                lstHistorial->Items->Add(System::String::Format("{0,5} pts  -  {1}", puntajes[i]->getPuntos(), fecha));
+            }
+
+            for (int i = 0; i < n; i++)
+                delete puntajes[i];
+
+        }
 		Void btnJugar_Click(System::Object^ sender, System::EventArgs^ e)
 		{
 

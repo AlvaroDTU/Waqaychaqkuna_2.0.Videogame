@@ -7,14 +7,13 @@ void GestorArchivo::cargarTodo(int& n1, int& n2, int& n3, int& gx, int& gy, int&
     std::ifstream f("PARAMETERS.txt");
     if (!f.is_open()) return;
 
-    char sep; 
-
-    f >> n1 >> sep; 
-    f >> n2 >> sep;
-    f >> n3 >> sep; 
-    f >> gx >> sep; 
-    f >> gy >> sep; 
-    f >> bat >> sep;
+    // Lee el número e ignora 1 carácter (el separador ';') antes del siguiente
+    f >> n1; f.ignore(1);
+    f >> n2; f.ignore(1);
+    f >> n3; f.ignore(1);
+    f >> gx; f.ignore(1);
+    f >> gy; f.ignore(1);
+    f >> bat;
 
     f.close();
 }

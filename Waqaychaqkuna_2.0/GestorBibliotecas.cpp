@@ -23,10 +23,10 @@ void GestorBiblioteca::crearSprites(){
 
 	linterna = new Linterna(false);
 
-	int n1, n2, n3, gx=1, gy=1, bat;
-	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
-
+	int n1, n2, n3, gx, gy, bat;
 	guardia = new Guardia(gx, gy, 30, 40, 60, 80);
+
+	guardia = new Guardia(450, 300, 30, 40, 60, 80);
 
 	agregarAliado(new Murcielago(131, 541, 40, 30, 40, 24));
 
