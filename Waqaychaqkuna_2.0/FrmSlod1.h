@@ -62,10 +62,18 @@ namespace Waqaychaqkuna20 {
 			this->Name = L"FrmSlod1";
 			this->Text = L"FrmSlod1";
 			this->Load += gcnew System::EventHandler(this, &FrmSlod1::FrmSlod1_Load);
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmSlod1::FrmSlod1_KeyDown);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 	private: System::Void FrmSlod1_Load(System::Object^ sender, System::EventArgs^ e) {}
+	Void FrmSlod1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		if (e->KeyCode = Keys::Enter)
+		{
+			this->DialogResult = System::Windows::Forms::DialogResult::OK;
+			this->Close();
+		}
+	}
 	};
 }
