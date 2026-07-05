@@ -2,12 +2,12 @@
 #include "Bien.h"
 class Huaca : public Bien
 {
-private:
-	int tipo;
 public:
 	Huaca(int px, int py, int an, int al, int pValor, std::string nom, int ti);
 	~Huaca();
 	Bitmap^ getBitmap() override;
 	Bitmap^ getBitmapDescripciones() override;
+	void dibujar(Graphics^ g, float escalaX, float escalaY) override;
+	void dibujarDescripcion(Graphics^ g, float escalaX, float escalaY) override;
 };
 

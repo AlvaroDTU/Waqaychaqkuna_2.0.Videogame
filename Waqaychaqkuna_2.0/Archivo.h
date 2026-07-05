@@ -3,15 +3,14 @@
 class Archivo : public Bien
 
 {
-	private:
-	int tipo;
-
 	public:
-	Archivo(int px, int py, int an, int al, int pValor, std::string nom, bool nc, int t);
+	Archivo(int px, int py, int an, int al, int pValor, std::string nom, bool nc, int ti);
 	~Archivo();
-	Bitmap^ getBitmap() override { return nullptr; } 
+	Bitmap^ getBitmap();
 	std::string getNombre();
-	Bitmap^ getBitmapDescripciones() override { return nullptr; }
+	Bitmap^ getBitmapDescripciones() override;
+	void dibujar(Graphics^ g, float escalaX, float escalaY) override;
+	void dibujarDescripcion(Graphics^ g, float escalaX, float escalaY) override;
 
 };
 
