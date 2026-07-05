@@ -79,20 +79,8 @@ void Escenario::guardarPuntaje(int puntos, string nombre)
 	gestor->guardarBinario(p);
 	delete p;
 
-	/*if (puntos > gestor->leerRecord()) {
-		gestor->guardarRecord(puntos);
-	}*/
 }
 
-int Escenario::ultimoPuntaje()
-{
-	return gestor->ultimoPuntaje();
-}
-
-int Escenario::record()
-{
-	return gestor->leerRecord();
-}
 
 vector<Puntaje*> Escenario::historial()
 {
