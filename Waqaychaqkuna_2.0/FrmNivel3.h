@@ -598,8 +598,13 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 				gestor->guardarPuntaje(gestor->getPuntaje() + puntajeFinal, nombreNormal);
 				this->DialogResult = System::Windows::Forms::DialogResult::OK;
 			}
-			if (gestor->derrota())
-				Recursos::perdiste->Stop();
+			if (gestor->derrota()) {
+				IntPtr ptr = System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(nombre);
+				std::string nombreNormal(static_cast<const char*>(ptr.ToPointer()));
+				System::Runtime::InteropServices::Marshal::FreeHGlobal(ptr);
+			Recursos::perdiste->Stop();
+			gestor->guardarPuntaje(gestor->getPuntaje() + puntajeFinal, nombreNormal);
+		}
 			this->Close();
 		}
 	}
