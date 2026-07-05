@@ -325,10 +325,10 @@ namespace Waqaychaqkuna20 {
 			this->lblIntentos->Text = String::Format(L"INTENTOS: {0}", gestor->getIntentos());
 
 			if (!musicaSuspenso &&
-				(gestor->getBien(0)->getPuntajeValor() <= 500 ||
-					gestor->getBien(1)->getPuntajeValor() <= 500 ||
-					gestor->getBien(2)->getPuntajeValor() <= 500 ||
-					gestor->getBien(3)->getPuntajeValor() <= 500))
+				(gestor->getBien(0)->getPuntajeValor() <= 400 || gestor->getBien(1)->getPuntajeValor() <= 500 ||
+				gestor->getBien(2)->getPuntajeValor() <= 1000 || gestor->getBien(3)->getPuntajeValor() <= 1500 ||
+				gestor->getBien(4)->getPuntajeValor() <= 2500 || gestor->getBien(5)->getPuntajeValor() <= 1250)
+				)
 			{
 				musicaSuspenso = true;
 
