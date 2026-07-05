@@ -65,7 +65,6 @@ void GestorHuacas::detectarColisiones() {
 		{
 			bienes[i]->setColision(false);
 		}
-		
 	}
 
 	for (size_t i = 0; i < (int)bienes.size(); i++)

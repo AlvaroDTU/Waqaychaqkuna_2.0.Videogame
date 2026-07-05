@@ -5,7 +5,6 @@ Escenario::Escenario(int enTotales)
 	: fondo(nullptr), guardia(nullptr), anchoLienzo(1300), altoLienzo(800), enemigosTotales(enTotales)
 {
 	srand(time(nullptr));
-	accion = false;
 	enemigosCapturados = 0;
 	tempSpawnEntidades = 0;
 	escalaX = 1.0f;
@@ -46,7 +45,7 @@ void Escenario::agregarObjeto(Objeto* nuevo) { objetos.push_back(nuevo); }
 void Escenario::dibujarDescripcion(Graphics^ g) {
 	for (auto bien : bienes)
 	{
-		if (bien->getColision() == true && accion)
+		if (bien->getColision() == true && guardia->getAccion() && guardia->getTipoAccion()==2)
 		{
 			bien->dibujarDescripcion(g, escalaX, escalaY); // Pasamos las escalas reales
 		}

@@ -57,6 +57,7 @@ namespace Waqaychaqkuna20 {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(1600, 800);
+			this->Enabled = false;
 			this->Name = L"FrmInstrucciones";
 			this->Text = L"FrmInstrucciones";
 			this->ResumeLayout(false);

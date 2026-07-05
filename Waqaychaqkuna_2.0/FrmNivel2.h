@@ -265,6 +265,7 @@ namespace Waqaychaqkuna20 {
 			   lblHuacaN3Base = lblHuacaN3->Location;
 			   lblHuaca4Base = lblHuaca4->Location;
 			   lblHuacaN4Base = lblHuacaN4->Location;
+
 			   //prueba de dialogo
 			   std::vector<std::string> frases;
 			   frases.push_back("Reportera: ¡Necesitamos tu ayuda para proteger nuestro patrimonio cultural!");
@@ -303,21 +304,29 @@ namespace Waqaychaqkuna20 {
 
 			   Guardia* g = gestor->getGuardia();
 			   if (e->KeyCode == Keys::Up) {
+				   g->setAccion(false);
 				   g->setVelocidad(0, -5);
 			   }
 			   else if (e->KeyCode == Keys::Down) {
+				   g->setAccion(false);
 				   g->setVelocidad(0, 5);
 			   }
 			   else if (e->KeyCode == Keys::Right) {
+				   g->setAccion(false);
 				   g->setVelocidad(5, 0);
 			   }
 			   else if (e->KeyCode == Keys::Left) {
+				   g->setAccion(false);
 				   g->setVelocidad(-5, 0);
 			   }
 			   else if (e->KeyCode == Keys::E) {
+				   g->setAccion(false);
 				   gestor->generarCuidador();
 			   }
-
+			   else if (e->KeyCode == Keys::D) {
+				   g->setAccion(true);
+				   g->setTipoAccion(2);
+			   }
 		   }
 		   Void FrmNivel2_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			   Guardia* g = gestor->getGuardia();

@@ -137,7 +137,7 @@ namespace Waqaychaqkuna20 {
 			   this->lblArtilugio1->AutoSize = true;
 			   this->lblArtilugio1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lblArtilugio1->Location = System::Drawing::Point(18, 446);
+			   this->lblArtilugio1->Location = System::Drawing::Point(18, 437);
 			   this->lblArtilugio1->Name = L"lblArtilugio1";
 			   this->lblArtilugio1->Size = System::Drawing::Size(110, 17);
 			   this->lblArtilugio1->TabIndex = 1;
@@ -148,7 +148,7 @@ namespace Waqaychaqkuna20 {
 			   this->lblArtilugio2->AutoSize = true;
 			   this->lblArtilugio2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lblArtilugio2->Location = System::Drawing::Point(18, 509);
+			   this->lblArtilugio2->Location = System::Drawing::Point(18, 500);
 			   this->lblArtilugio2->Name = L"lblArtilugio2";
 			   this->lblArtilugio2->Size = System::Drawing::Size(110, 17);
 			   this->lblArtilugio2->TabIndex = 4;
@@ -159,7 +159,7 @@ namespace Waqaychaqkuna20 {
 			   this->lblArtilugio3->AutoSize = true;
 			   this->lblArtilugio3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lblArtilugio3->Location = System::Drawing::Point(18, 575);
+			   this->lblArtilugio3->Location = System::Drawing::Point(18, 564);
 			   this->lblArtilugio3->Name = L"lblArtilugio3";
 			   this->lblArtilugio3->Size = System::Drawing::Size(110, 17);
 			   this->lblArtilugio3->TabIndex = 6;
@@ -170,7 +170,7 @@ namespace Waqaychaqkuna20 {
 			   this->lblArtilugio4->AutoSize = true;
 			   this->lblArtilugio4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lblArtilugio4->Location = System::Drawing::Point(165, 446);
+			   this->lblArtilugio4->Location = System::Drawing::Point(165, 437);
 			   this->lblArtilugio4->Name = L"lblArtilugio4";
 			   this->lblArtilugio4->Size = System::Drawing::Size(110, 17);
 			   this->lblArtilugio4->TabIndex = 7;
@@ -181,7 +181,7 @@ namespace Waqaychaqkuna20 {
 			   this->lblArtilugio5->AutoSize = true;
 			   this->lblArtilugio5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lblArtilugio5->Location = System::Drawing::Point(165, 509);
+			   this->lblArtilugio5->Location = System::Drawing::Point(165, 500);
 			   this->lblArtilugio5->Name = L"lblArtilugio5";
 			   this->lblArtilugio5->Size = System::Drawing::Size(110, 17);
 			   this->lblArtilugio5->TabIndex = 8;
@@ -192,7 +192,7 @@ namespace Waqaychaqkuna20 {
 			   this->lblArtilugio6->AutoSize = true;
 			   this->lblArtilugio6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lblArtilugio6->Location = System::Drawing::Point(165, 575);
+			   this->lblArtilugio6->Location = System::Drawing::Point(165, 564);
 			   this->lblArtilugio6->Name = L"lblArtilugio6";
 			   this->lblArtilugio6->Size = System::Drawing::Size(110, 17);
 			   this->lblArtilugio6->TabIndex = 9;
@@ -203,7 +203,7 @@ namespace Waqaychaqkuna20 {
 			   this->lblIntentos->AutoSize = true;
 			   this->lblIntentos->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lblIntentos->Location = System::Drawing::Point(6, 700);
+			   this->lblIntentos->Location = System::Drawing::Point(6, 663);
 			   this->lblIntentos->Name = L"lblIntentos";
 			   this->lblIntentos->Size = System::Drawing::Size(105, 17);
 			   this->lblIntentos->TabIndex = 5;
@@ -214,7 +214,7 @@ namespace Waqaychaqkuna20 {
 			   this->lblDerrotados->AutoSize = true;
 			   this->lblDerrotados->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lblDerrotados->Location = System::Drawing::Point(6, 727);
+			   this->lblDerrotados->Location = System::Drawing::Point(6, 701);
 			   this->lblDerrotados->Name = L"lblDerrotados";
 			   this->lblDerrotados->Size = System::Drawing::Size(221, 17);
 			   this->lblDerrotados->TabIndex = 3;
@@ -225,7 +225,7 @@ namespace Waqaychaqkuna20 {
 			   this->lblPista->AutoSize = true;
 			   this->lblPista->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lblPista->Location = System::Drawing::Point(6, 760);
+			   this->lblPista->Location = System::Drawing::Point(6, 743);
 			   this->lblPista->Name = L"lblPista";
 			   this->lblPista->Size = System::Drawing::Size(122, 17);
 			   this->lblPista->TabIndex = 2;
