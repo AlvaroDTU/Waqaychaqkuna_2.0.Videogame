@@ -30,7 +30,7 @@ void GestorMuseo::crearSprites()
 	frases.push_back("(Interactua usando E con la reportera)");
 	dialogo.iniciar(frases);
 
-	int n1, n2, n3, gx = 1, gy = 1, bat;
+	int n1, n2, n3, gx = 950, gy = 400, bat;
 	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
 
 	guardia = new Guardia(gx, gy, 45, 60, 60, 80);
