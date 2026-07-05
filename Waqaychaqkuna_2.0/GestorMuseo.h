@@ -20,7 +20,7 @@ private:
 	int enemigosRonda2;
 	int intentos;
 public:
-	GestorMuseo(int enTotales);
+	GestorMuseo();
 	~GestorMuseo();
 
 	void crearSprites() override;

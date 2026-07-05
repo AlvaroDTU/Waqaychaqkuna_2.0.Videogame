@@ -1,9 +1,12 @@
 #include "pch.h"
 #include "GestorMuseo.h"
 
-GestorMuseo::GestorMuseo(int enTotales) : Escenario(enTotales)
+GestorMuseo::GestorMuseo() : Escenario()
 {
-	srand(time(nullptr));
+	int n1, n2, n3, gx, gy, bat;
+	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
+	enemigosTotales = n1;
+
 	iniciado = false;
 	fondoActual = 1;
 	intentos = 3;
@@ -26,7 +29,11 @@ void GestorMuseo::crearSprites()
 	frases.push_back("Reportera:\n\"Acercate para poder ayudarte detener a los ladrones.\"");
 	frases.push_back("(Interactua usando E con la reportera)");
 	dialogo.iniciar(frases);
-	guardia = new Guardia(790, 170, 45, 60, 60, 80);
+
+	int n1, n2, n3, gx, gy, bat;
+	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
+
+	guardia = new Guardia(gx, gy, 30, 40, 60, 80);
 
 	agregarAliado(new Reportera(1095, 120, 45, 60, 60, 80));
 

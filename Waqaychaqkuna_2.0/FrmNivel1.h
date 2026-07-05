@@ -21,7 +21,7 @@ namespace Waqaychaqkuna20 {
 		{
 			InitializeComponent();
 			this->KeyPreview = true;
-			gestor = new GestorMuseo(16);
+			gestor = new GestorMuseo();
 			//
 			//TODO: Add the constructor code here
 			//

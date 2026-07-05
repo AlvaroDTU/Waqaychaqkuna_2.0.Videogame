@@ -19,7 +19,7 @@ namespace Waqaychaqkuna20 {
 	public:
 		FrmNivel3(void)
 		{
-			gestor = new GestorBiblioteca(30);
+			gestor = new GestorBiblioteca();
 			InitializeComponent();
 			finCont = 0;
 			//

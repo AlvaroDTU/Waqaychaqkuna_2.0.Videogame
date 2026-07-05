@@ -8,6 +8,7 @@
 #include "Huaca.h"
 #include "Archivo.h"
 #include "Dialogo.h"
+#include "GestorArchivo.h"
 #include <ctime>
 #include <cstdlib>
 #include <vector>
@@ -19,6 +20,7 @@ class Escenario
 protected:
 	Fondo* fondo;
 	Guardia* guardia;
+	GestorArchivo* gestor;
 	vector<Enemigo*> enemigos;
 	vector<Aliado*> aliados;
 	vector<Bien*> bienes;
@@ -34,7 +36,7 @@ protected:
 	bool mostrandoInfo;
 
 public:
-	Escenario(int enTotales);
+	Escenario();
 	virtual ~Escenario();
 
 	virtual void crearSprites() = 0;
