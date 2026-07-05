@@ -10,10 +10,6 @@ Huaca::~Huaca() {}
 
 void Huaca::describir() {}
 
-void Huaca::dibujar(Graphics^ g) {
-	Bitmap^ img = getBitmap();
-	g->DrawImage(img, posX, posY,ancho,alto);
-}
 Bitmap^ Huaca::getBitmap() {
 	if(tipo==1) return Recursos::huaca1;
 	else if(tipo==2) return Recursos::huaca2;
