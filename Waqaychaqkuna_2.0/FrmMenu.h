@@ -3,6 +3,7 @@
 #include "FrmNivel2.h"
 #include "FrmNivel3.h"
 #include "FrmInstrucciones.h"
+#include "FrmCreditos.h"
 
 namespace Waqaychaqkuna20 {
 
@@ -197,7 +198,9 @@ namespace Waqaychaqkuna20 {
 		}
 		Void btnCreditos_Click(System::Object^ sender, System::EventArgs^ e)
 		{
-			//
+			FrmCreditos^ frm = gcnew FrmCreditos();
+			frm->ShowDialog();
+			delete frm;
 		}
 		Void btnSalir_Click(System::Object^ sender, System::EventArgs^ e)
 		{
