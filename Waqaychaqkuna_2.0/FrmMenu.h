@@ -253,16 +253,16 @@ namespace Waqaychaqkuna20 {
 			//}
 			//delete slods2;
 			//
-			FrmNivel2^ f2 = gcnew FrmNivel2();
-			if (f2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
-			{
-				puntaje2 = f2->RetornarPuntaje();
-			
-				delete f2;
-				return;
-			}
-			puntaje2 = f2->RetornarPuntaje();
-			delete f2;
+			//FrmNivel2^ f2 = gcnew FrmNivel2();
+			//if (f2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+			//{
+			//	puntaje2 = f2->RetornarPuntaje();
+			//
+			//	delete f2;
+			//	return;
+			//}
+			//puntaje2 = f2->RetornarPuntaje();
+			//delete f2;
 			
 			puntajeTotal = puntaje1 + puntaje2;
 			
