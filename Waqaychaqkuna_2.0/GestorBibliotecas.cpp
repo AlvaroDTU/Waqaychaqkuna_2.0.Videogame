@@ -6,7 +6,7 @@ GestorBiblioteca::GestorBiblioteca() : Escenario()
 	int n1, n2, n3, gx, gy, bat;
 	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
 
-	enemigosTotales = 2;
+	enemigosTotales = 30;
 	contador = 0;
 	this->tiempoRecarga = bat;
 	tempSpawnEntidades = 80;
