@@ -276,14 +276,14 @@ namespace Waqaychaqkuna20 {
 			FrmNivel3^ f3 = gcnew FrmNivel3(puntajeTotal, txtName->Text);
 			if (f3->ShowDialog() != System::Windows::Forms::DialogResult::OK)
 			{
-				//puntaje3 = f3->RetornarPuntaje();
+				puntaje3 = f3->RetornarPuntaje();
 				delete f3;
 
 				FrmSlodVictoria^ slodVictoria = gcnew FrmSlodVictoria();
 				slodVictoria->ShowDialog();
 				return;
 			}
-			//puntaje3 = f3->RetornarPuntaje();
+			puntaje3 = f3->RetornarPuntaje();
 			delete f3;
 
 
@@ -316,6 +316,7 @@ namespace Waqaychaqkuna20 {
 		Void btnInstrucciones_Click(System::Object^ sender, System::EventArgs^ e)
 		{
 			FrmInstrucciones^ frm = gcnew FrmInstrucciones();
+			frm->ShowDialog();
 			delete frm;
 		}
 		Void btnCreditos_Click(System::Object^ sender, System::EventArgs^ e)

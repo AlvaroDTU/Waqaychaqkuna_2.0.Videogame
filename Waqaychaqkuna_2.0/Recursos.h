@@ -75,6 +75,10 @@ public:
     static Bitmap^ artilugio4Desc = gcnew Bitmap("backgrounds\\artilugio4Desc.png");
     static Bitmap^ artilugio5Desc = gcnew Bitmap("backgrounds\\artilugio5Desc.png");
     static Bitmap^ artilugio6Desc = gcnew Bitmap("backgrounds\\artilugio6Desc.png");
+    static Bitmap^ archivo1Desc = gcnew Bitmap("backgrounds\\archivo1desc.png");
+    static Bitmap^ archivo2Desc = gcnew Bitmap("backgrounds\\archivo2desc.png");
+    static Bitmap^ archivo3Desc = gcnew Bitmap("backgrounds\\archivo3desc.png");
+    static Bitmap^ archivo4Desc = gcnew Bitmap("backgrounds\\archivo4desc.png");
 
 
     //---------------- ESTADITICAS ----------------

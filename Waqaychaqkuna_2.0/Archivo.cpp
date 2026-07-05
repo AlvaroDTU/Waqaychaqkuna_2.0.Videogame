@@ -11,10 +11,10 @@ std::string Archivo::getNombre() { return nombre; }
 
 Bitmap^ Archivo::getBitmap() { return nullptr; }
 Bitmap^ Archivo::getBitmapDescripciones() {
-	if (tipo == 1) return Recursos::huaca1Desc;
-	else if (tipo == 2) return Recursos::huaca2Desc;
-	else if (tipo == 3) return Recursos::huaca3Desc;
-	else if (tipo == 4) return Recursos::huaca4Desc;
+	if (tipo == 1) return Recursos::archivo1Desc;
+	else if (tipo == 2) return Recursos::archivo2Desc;
+	else if (tipo == 3) return Recursos::archivo3Desc;
+	else if (tipo == 4) return Recursos::archivo4Desc;
 }
 
 void Archivo::dibujar(Graphics^ g, float escalaX, float escalaY) {

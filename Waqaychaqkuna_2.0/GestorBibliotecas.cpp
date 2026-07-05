@@ -6,7 +6,7 @@ GestorBiblioteca::GestorBiblioteca() : Escenario()
 	int n1, n2, n3, gx, gy, bat;
 	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
 
-	enemigosTotales = 2;
+	enemigosTotales = 30;
 	contador = 0;
 	this->tiempoRecarga = bat;
 	tempSpawnEntidades = 80;
@@ -118,6 +118,22 @@ void GestorBiblioteca::detectarColisiones(){
 		}
 	}
 
+	//colision guardia y bienes
+	for (int i = 0; i < (int)bienes.size(); i++)
+	{
+		Rectangle hbBien = bienes[i]->getRectangle(5);
+		if (hbBien.IntersectsWith(hbGuardia) && bienes[i]->estaActivo())
+		{
+			if (guardia->getAccion() && guardia->getTipoAccion() == 2) {
+				bienes[i]->setColision(!bienes[i]->getColision());
+				guardia->setAccion(false);
+				guardia->setTipoAccion(0);
+
+			}
+		}
+		else
+			bienes[i]->setColision(false);
+	}
 }
 
 bool GestorBiblioteca::victoria(){ return enemigosCapturados == enemigosTotales; }
@@ -275,8 +291,8 @@ void GestorBiblioteca::dibujarLibros(Graphics^ g , float escalaX, float escalaY)
 		{
 			Rectangle htbEnemigo = enemigos[j]->getRectangle();
 			if (htbBien.IntersectsWith(htbEnemigo) && bienes[i]->getPuntajeValor() <=2005) {
-				int x = enemigos[i]->getPosX() - 20;
-				int y = enemigos[i]->getPosY();
+				int x = enemigos[j]->getPosX() - 20;
+				int y = enemigos[j]->getPosY();
 				int ancho = 44;
 				int alto = 22;
 
