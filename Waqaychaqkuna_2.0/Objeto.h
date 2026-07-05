@@ -12,6 +12,6 @@ public:
 	Objeto(int x, int y, int ancho, int alto);
 	bool estaActivo();
 	void setActivo(bool a);
-	Rectangle getRectangle(int extra=0);
+	System::Drawing::Rectangle getRectangle(int extra=0);
 };
 

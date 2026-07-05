@@ -19,7 +19,7 @@ void GestorHuacas::crearSprites() {
 	int n1, n2, n3, gx, gy, bat;
 	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
 
-	guardia = new Guardia(gx,gy, 30, 40, 60, 80);
+	guardia = new Guardia(450, 370, 30, 40, 60, 80);
 
 	agregarObjeto(new Objeto(0, 0, 180, 800));
 	agregarObjeto(new Objeto(183, 0, 922, 127));
@@ -118,6 +118,8 @@ void GestorHuacas::detectarColisiones() {
 	{
 		if (((Huaquero*)enemigos[i])->getVidas() <= 0) {
 			eliminarEnemigo(i);
+			//SUMA PUNTAJE
+			puntajeNivel += 10;
 			enemigosCapturados++;
 			i--;
 		}

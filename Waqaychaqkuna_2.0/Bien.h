@@ -29,7 +29,7 @@ public:
 	bool estaActivo();
 	void setActivo(bool act);
 	void restarPuntajeValor(int pv);
-	Rectangle getRectangle(int extra = 0);
+	System::Drawing::Rectangle getRectangle(int extra = 0);
 	virtual Bitmap^ getBitmap() = 0;
 	virtual Bitmap^ getBitmapDescripciones() = 0;
 	virtual void dibujar(Graphics^ g, float escalaX, float escalaY) = 0;

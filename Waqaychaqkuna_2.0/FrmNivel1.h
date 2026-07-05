@@ -26,7 +26,9 @@ namespace Waqaychaqkuna20 {
 			//TODO: Add the constructor code here
 			//
 		}
-
+		int RetornarPuntaje() {
+			return gestor->getPuntaje();
+		}
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -449,7 +451,7 @@ namespace Waqaychaqkuna20 {
 
 		Pintar();
 	}
-
+		  
 	Void ActualizarTamanoLabels()
 	{
 		int tmFuente = 10;

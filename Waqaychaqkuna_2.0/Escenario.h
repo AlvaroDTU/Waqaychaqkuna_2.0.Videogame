@@ -46,6 +46,7 @@ public:
 	virtual bool victoria() = 0;
 	virtual bool derrota() = 0;
 
+	int getPuntaje() { return puntajeNivel; }
 	void dibujarDescripcion(Graphics^ g);
 	void setLienzo(int ancho, int alto);
 	void agregarEnemigo(Enemigo* nuevo);

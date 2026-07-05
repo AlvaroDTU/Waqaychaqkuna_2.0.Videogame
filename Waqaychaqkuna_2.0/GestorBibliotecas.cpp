@@ -26,7 +26,7 @@ void GestorBiblioteca::crearSprites(){
 	int n1, n2, n3, gx, gy, bat;
 	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
 
-	guardia = new Guardia(gx, gy, 30, 40, 60, 80);
+	guardia = new Guardia(450, 370, 30, 40, 60, 80);
 	
 	agregarAliado(new Murcielago(131, 541, 40, 30, 40, 24));
 
@@ -111,6 +111,9 @@ void GestorBiblioteca::detectarColisiones(){
 			{
 				eliminarEnemigo(i);
 				enemigosCapturados++;
+				//SUMA PUNTAJE
+
+				puntajeNivel += 10;
 			}
 		}
 	}

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "GestorArchivo.h"
+#include <cstring>
 using namespace std;
 
 void GestorArchivo::cargarTodo(int& n1, int& n2, int& n3, int& gx, int& gy, int& bat) {
@@ -28,7 +29,32 @@ string GestorArchivo::fechaActual()
     return string(buffer);
 }
 
-// Guarda en texto legible: una linea "nombre;puntos;fecha"
+// Estructura fija para escribir/leer bloques perfectos en binario
+struct RegistroBinario {
+    char nombre[50]; // Espacio fijo para nombres de hasta 49 letras
+    int puntos;
+    char fecha[20];  // Espacio fijo para la fecha
+};
+
+
+void GestorArchivo::guardarBinario(Puntaje* p)
+{
+    // ios::binary para manejar bytes, ios::app para agregar al final
+    ofstream f("puntajes.dat", ios::binary | ios::app);
+    if (f.is_open())
+    {
+        RegistroBinario reg;
+
+        // Copiamos los string variables a nuestros arreglos fijos de bytes
+        strncpy_s(reg.nombre, p->getNombre().c_str(), sizeof(reg.nombre) - 1);
+        reg.puntos = p->getPuntos();
+        strncpy_s(reg.fecha, p->getFecha().c_str(), sizeof(reg.fecha) - 1);
+
+        // Escribimos el bloque completo de memoria en el archivo
+        f.write(reinterpret_cast<char*>(&reg), sizeof(RegistroBinario));
+        f.close();
+    }
+}
 void GestorArchivo::guardarTexto(Puntaje* p)
 {
     ofstream f("puntajes.txt", ios::app); // ios::app = agrega al final, no borra
@@ -39,12 +65,12 @@ void GestorArchivo::guardarTexto(Puntaje* p)
     }
 }
 
-// Lee todos los puntajes del .txt para poder mostrarlos en el formulario
 vector<Puntaje*> GestorArchivo::leerTexto()
 {
     vector<Puntaje*> lista;
     ifstream f("puntajes.txt");
     string nombre, sPuntos, fecha;
+
     // lee hasta el primer ;
     while (getline(f, nombre, ';'))
     {
@@ -59,6 +85,29 @@ vector<Puntaje*> GestorArchivo::leerTexto()
     f.close();
     return lista;
 }
+// NUEVO MÉTODO: Lee todo el archivo binario y te devuelve el vector
+vector<Puntaje*> GestorArchivo::leerBinario()
+{
+    vector<Puntaje*> lista;
+    ifstream f("puntajes.dat", ios::binary);
+    if (f.is_open())
+    {
+        RegistroBinario reg;
+
+        // Lee bloques del tamaño exacto de la estructura hasta que se acabe el archivo
+        while (f.read(reinterpret_cast<char*>(&reg), sizeof(RegistroBinario)))
+        {
+            // Convertimos los char arrays de vuelta a std::string automáticamente
+            string nombreStr(reg.nombre);
+            string fechaStr(reg.fecha);
+
+            lista.push_back(new Puntaje(nombreStr, reg.puntos, fechaStr));
+        }
+        f.close();
+    }
+    return lista;
+}
+
 
 // Devuelve el puntaje de la ultima partida guardada (0 si no hay ninguna).
 int GestorArchivo::ultimoPuntaje()

@@ -27,7 +27,9 @@ namespace Waqaychaqkuna20 {
 			//TODO: agregar código de constructor aquí
 			//
 		}
-
+		int RetornarPuntaje() {
+			return gestor->getPuntaje();
+		}
 	protected:
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
@@ -254,6 +256,7 @@ namespace Waqaychaqkuna20 {
 
 		   }
 #pragma endregion
+		  
 		   Void FrmNivel2_Load(System::Object^ sender, System::EventArgs^ e) {
 			   gestor->setLienzo(this->pnlMapa->Width, this->pnlMapa->Height);
 			   gestor->crearSprites();

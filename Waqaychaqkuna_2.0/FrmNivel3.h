@@ -1,4 +1,5 @@
 #pragma once
+#include <msclr/marshal_cppstd.h> 
 #include "Guardia.h"
 #include "GestorBiblioteca.h"
 
@@ -17,16 +18,20 @@ namespace Waqaychaqkuna20 {
 	public ref class FrmNivel3 : public System::Windows::Forms::Form
 	{
 	public:
-		FrmNivel3(void)
+		FrmNivel3(int p,String^ nom)
 		{
 			gestor = new GestorBiblioteca();
 			InitializeComponent();
 			finCont = 0;
+			puntajeFinal = p;
+			nombre = nom;
 			//
 			//TODO: agregar código de constructor aquí
 			//
 		}
-
+		int RetornarPuntaje() {
+			return gestor->getPuntaje();
+		}
 	protected:
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
@@ -81,6 +86,10 @@ namespace Waqaychaqkuna20 {
 		   float mapa_escalaY = 1.0f;
 		   float stats_escalaX = 1.0f;
 		   float stats_escalaY = 1.0f;
+		   int puntajeFinal;
+		   String^ nombre;
+
+
 	private: System::Windows::Forms::Panel^ pnlEstadisticas;
 
 	private:
@@ -443,6 +452,12 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 		finCont++;
 		if (finCont >= 120)
 		{
+			IntPtr ptr = System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(this->nombre);
+			std::string nombreNormal(static_cast<const char*>(ptr.ToPointer()));
+			System::Runtime::InteropServices::Marshal::FreeHGlobal(ptr);
+
+			puntajeFinal = puntajeFinal + gestor->getPuntajeNivel();
+			gestor->guardarPuntaje(puntajeFinal,nombreNormal);
 			this->DialogResult = System::Windows::Forms::DialogResult::OK;
 			this->Close();
 		}

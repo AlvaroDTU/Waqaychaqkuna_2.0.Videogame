@@ -33,7 +33,7 @@ void GestorMuseo::crearSprites()
 	int n1, n2, n3, gx, gy, bat;
 	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
 
-	guardia = new Guardia(gx, gy, 30, 40, 60, 80);
+	guardia = new Guardia(450, 370, 30, 40, 60, 80);
 
 	agregarAliado(new Reportera(1095, 120, 45, 60, 60, 80));
 
@@ -137,6 +137,8 @@ void GestorMuseo::detectarColisiones()
 			if (guardia->getAccion() && guardia->getTipoAccion() == 1) {
 				enemigosCapturados++;
 				eliminarEnemigo(i);
+				//SUMA PUNTAJE
+				puntajeNivel += 10;
 				guardia->setAccion(false);
 				guardia->setTipoAccion(0);
 			}
