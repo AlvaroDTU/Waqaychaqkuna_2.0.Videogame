@@ -81,6 +81,7 @@ namespace Waqaychaqkuna20 {
 		   void InitializeComponent(void)
 		   {
 			   this->components = (gcnew System::ComponentModel::Container());
+			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(FrmNivel1::typeid));
 			   this->tmrNivel1 = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->pnlMapa = (gcnew System::Windows::Forms::Panel());
 			   this->pnlEstadisticas = (gcnew System::Windows::Forms::Panel());
@@ -113,6 +114,7 @@ namespace Waqaychaqkuna20 {
 			   // pnlEstadisticas
 			   // 
 			   this->pnlEstadisticas->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			   this->pnlEstadisticas->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pnlEstadisticas.BackgroundImage")));
 			   this->pnlEstadisticas->Controls->Add(this->lblArtilugio1);
 			   this->pnlEstadisticas->Controls->Add(this->lblArtilugio2);
 			   this->pnlEstadisticas->Controls->Add(this->lblArtilugio3);
