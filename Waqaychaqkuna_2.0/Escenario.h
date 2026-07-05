@@ -57,10 +57,17 @@ public:
 	int totalBienes();
 	void setEscalado(float eX, float eY);
 	Bien* getBien(int i);
-	int getPuntajeNivel() { return puntajeNivel; }
 	int getCapturados() { return enemigosCapturados; }
 	Guardia* getGuardia();
 	Dialogo* getDialogo();
+	int getPuntajeNivel()
+	{
+		puntajeNivel = 0;
+		for (auto bien : bienes) {
+			puntajeNivel += bien->getPuntajeValor();
+		}
+		return puntajeNivel;
+	}
 };
 
 

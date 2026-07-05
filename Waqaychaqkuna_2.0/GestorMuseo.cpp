@@ -188,7 +188,6 @@ void GestorMuseo::detectarColisiones()
 	if (fondoActual == 2)
 	{
 		if (!iniciado) {
-			// cambioIzq = Rectangle(0, 350, 70, 110);
 			cambioDer = Rectangle(1236, 355, 64, 110);
 		}
 	}
