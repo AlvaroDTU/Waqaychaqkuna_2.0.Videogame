@@ -59,10 +59,14 @@ void GestorHuacas::detectarColisiones() {
 
 	for (size_t i = 0; i < (int)bienes.size(); i++)
 	{
-		Rectangle r = bienes[i]->getRectangle(2);
+		Rectangle r = bienes[i]->getRectangle(5);
 		if (htbGuardia.IntersectsWith(r)) {
 			bienes[i]->setColision(true);
 		} 
+		else
+		{
+			bienes[i]->setColision(false);
+		}
 		
 	}
 
