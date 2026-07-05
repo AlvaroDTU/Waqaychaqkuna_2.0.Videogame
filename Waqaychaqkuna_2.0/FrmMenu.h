@@ -52,8 +52,6 @@ namespace Waqaychaqkuna20 {
 			   g->DrawImage(gcnew Bitmap("backgrounds\\Menu.png"),this->ClientRectangle);
 			   Form::OnPaint(e);
 		   }
-	protected:
-
 	private:
 		/// <summary>
 		/// Required designer variable.
