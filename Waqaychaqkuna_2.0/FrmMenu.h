@@ -194,12 +194,10 @@ namespace Waqaychaqkuna20 {
 		}
 		Void CargarHistorial()
         {
-            // TO-DO (HAMP) Le pido a la escena todos los puntajes guardados (ella maneja el archivo).
             vector<Puntaje*> puntajes = escena->historial();
             int n = (int)puntajes.size();
 
-            // TO-DO (HAMP) Ordenamiento burbuja por fecha, mas reciente primero.
-            // TO-DO (HAMP) La fecha es texto "aaaa/mm/dd HH:MM", asi que comparar el texto = comparar la fecha.
+       
             for (int i = 0; i < n - 1; i++)
                 for (int j = 0; j < n - 1 - i; j++)
                     if (puntajes[j]->getFecha() < puntajes[j + 1]->getFecha())
@@ -209,13 +207,18 @@ namespace Waqaychaqkuna20 {
                         puntajes[j + 1] = temp;
                     }
 
-            // TO-DO (HAMP) Lleno la lista visual con "puntaje - fecha"
             lstHistorial->Items->Clear();
-            for (int i = 0; i < n; i++)
-            {
-                System::String ^ fecha = gcnew System::String(puntajes[i]->getFecha().c_str());
-                lstHistorial->Items->Add(System::String::Format("{0,5} pts  -  {1}", puntajes[i]->getPuntos(), fecha));
-            }
+			for (int i = 0; i < n; i++)
+			{
+				System::String^ nombre = gcnew System::String(puntajes[i]->getNombre().c_str());
+				System::String^ fecha = gcnew System::String(puntajes[i]->getFecha().c_str());
+
+				lstHistorial->Items->Add(
+					System::String::Format("{0}  -  {1,5} pts  -  {2}",
+						nombre,
+						puntajes[i]->getPuntos(),
+						fecha));
+			}
 
             for (int i = 0; i < n; i++)
                 delete puntajes[i];
@@ -230,17 +233,17 @@ namespace Waqaychaqkuna20 {
 			//	return;
 			//}
 			//delete slods1;
-			//FrmNivel1^ f1 = gcnew FrmNivel1();
-			//if (f1->ShowDialog() != System::Windows::Forms::DialogResult::OK)
-			//{
-			//	puntaje1 = f1->RetornarPuntaje();
-			//
-			//	delete f1;
-			//	return;
-			//}
-			//puntaje1 = f1->RetornarPuntaje();
-			//
-			//delete f1;
+			FrmNivel1^ f1 = gcnew FrmNivel1();
+			if (f1->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+			{
+				puntaje1 = f1->RetornarPuntaje();
+			
+				delete f1;
+				return;
+			}
+			puntaje1 = f1->RetornarPuntaje();
+			
+			delete f1;
 			//
 			//FrmSlod2^ slods2 = gcnew FrmSlod2();
 			//if (slods2->ShowDialog() != System::Windows::Forms::DialogResult::OK)
@@ -261,7 +264,7 @@ namespace Waqaychaqkuna20 {
 			puntaje2 = f2->RetornarPuntaje();
 			delete f2;
 			
-			//puntajeTotal = puntaje1 + puntaje2;
+			puntajeTotal = puntaje1 + puntaje2;
 			
 			FrmSlod3^ slods3 = gcnew FrmSlod3();
 			if (slods3->ShowDialog() != System::Windows::Forms::DialogResult::OK)
@@ -280,7 +283,7 @@ namespace Waqaychaqkuna20 {
 				// slodVictoria->ShowDialog();
 				return;
 			}
-			puntaje3 = f3->RetornarPuntaje();
+			//puntaje3 = f3->RetornarPuntaje();
 			delete f3;
 
 
