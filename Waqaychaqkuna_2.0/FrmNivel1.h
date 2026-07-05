@@ -133,6 +133,7 @@ namespace Waqaychaqkuna20 {
 			   this->pnlEstadisticas->Name = L"pnlEstadisticas";
 			   this->pnlEstadisticas->Size = System::Drawing::Size(300, 800);
 			   this->pnlEstadisticas->TabIndex = 10;
+			   this->pnlEstadisticas->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmNivel1::pnlEstadisticas_Paint);
 			   // 
 			   // lblArtilugio1
 			   // 
@@ -282,6 +283,14 @@ namespace Waqaychaqkuna20 {
 			bufferStats = BufferedGraphicsManager::Current->Allocate(gStats, pnlEstadisticas->ClientRectangle);
 			delete gStats;
 
+			System::Reflection::PropertyInfo^ p =
+				pnlEstadisticas->GetType()->GetProperty(
+					"DoubleBuffered",
+					System::Reflection::BindingFlags::Instance |
+					System::Reflection::BindingFlags::NonPublic);
+
+			p->SetValue(pnlEstadisticas, true, nullptr);
+
 		}
 		Void FrmNivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			Guardia* g = gestor->getGuardia();
@@ -332,8 +341,8 @@ namespace Waqaychaqkuna20 {
 
 			if (!musicaSuspenso &&
 				(gestor->getBien(0)->getPuntajeValor() <= 400 || gestor->getBien(1)->getPuntajeValor() <= 500 ||
-				gestor->getBien(2)->getPuntajeValor() <= 1000 || gestor->getBien(3)->getPuntajeValor() <= 1500 ||
-				gestor->getBien(4)->getPuntajeValor() <= 2500 || gestor->getBien(5)->getPuntajeValor() <= 1250)
+					gestor->getBien(2)->getPuntajeValor() <= 1000 || gestor->getBien(3)->getPuntajeValor() <= 1500 ||
+					gestor->getBien(4)->getPuntajeValor() <= 2500 || gestor->getBien(5)->getPuntajeValor() <= 1250)
 				)
 			{
 				musicaSuspenso = true;
@@ -376,13 +385,25 @@ namespace Waqaychaqkuna20 {
 		}
 		Void PintarEstadisticas()
 		{
-			Bitmap^ fondo = Recursos::PanelEstadisticas1;
-			bufferStats->Graphics->DrawImage(fondo, Rectangle(0, 0, pnlEstadisticas->Width, pnlEstadisticas->Height));
+			// Bitmap^ fondo = Recursos::PanelEstadisticas1;
+			// 
+			// bufferStats->Graphics->Clear(Color::FromArgb(0, 0, 0, 0));
+			// bufferStats->Graphics->DrawImage(fondo, Rectangle(0, 0, pnlEstadisticas->Width, pnlEstadisticas->Height));
+			// gestor->dibujarDescripcion(bufferStats->Graphics);
+			// 
+			// Graphics^ g = pnlEstadisticas->CreateGraphics();
+			// bufferStats->Render(g);
+			// delete g;
+			bufferStats->Graphics->Clear(Color::Transparent);
+
+			bufferStats->Graphics->DrawImage(
+				Recursos::PanelEstadisticas1,
+				Rectangle(0, 0, pnlEstadisticas->Width, pnlEstadisticas->Height)
+			);
+
 			gestor->dibujarDescripcion(bufferStats->Graphics);
 
-			Graphics^ g = pnlEstadisticas->CreateGraphics();
-			bufferStats->Render(g);
-			delete g;
+			pnlEstadisticas->Invalidate();
 		}
 		Void Pintar()
 		{
@@ -397,7 +418,7 @@ namespace Waqaychaqkuna20 {
 				float x = (buffer->Graphics->VisibleClipBounds.Width - textSize.Width) / 2.0f;
 				float y = (buffer->Graphics->VisibleClipBounds.Height - textSize.Height) / 2.0f;
 
-				buffer->Graphics->DrawString(text,fuente,gcnew SolidBrush(Color::DarkGreen), x, y);
+				buffer->Graphics->DrawString(text, fuente, gcnew SolidBrush(Color::DarkGreen), x, y);
 
 			}
 			if (gestor->derrota()) {
@@ -449,7 +470,9 @@ namespace Waqaychaqkuna20 {
 		buffer->Graphics->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
 		delete g;
 
-		Pintar();
+		Graphics^ gStats = pnlEstadisticas->CreateGraphics();
+		bufferStats = contexto->Allocate(gStats, pnlEstadisticas->ClientRectangle);
+		delete gStats;
 	}
 		  
 	Void ActualizarTamanoLabels()
@@ -467,60 +490,64 @@ namespace Waqaychaqkuna20 {
 		);
 		lblPista->Font = fuente;
 
-		lblIntentos->Location = Point(
-			lblIntentosBase.X * stats_escalaX,
-			lblIntentosBase.Y * stats_escalaY
-		);
-		lblIntentos->Font = fuente;
+			   lblIntentos->Location = Point(
+				   lblIntentosBase.X * stats_escalaX,
+				   lblIntentosBase.Y * stats_escalaY
+			   );
+			   lblIntentos->Font = fuente;
 
-		lblDerrotados->Location = Point(
-			lblDerrotadosBase.X * stats_escalaX,
-			lblDerrotadosBase.Y * stats_escalaY
-		);
-		lblDerrotados->Font = fuente;
+			   lblDerrotados->Location = Point(
+				   lblDerrotadosBase.X * stats_escalaX,
+				   lblDerrotadosBase.Y * stats_escalaY
+			   );
+			   lblDerrotados->Font = fuente;
 
-		lblArtilugio1->Location = Point(
-			lblArtilugio1Base.X * stats_escalaX,
-			lblArtilugio1Base.Y * stats_escalaY
-		);
-		lblArtilugio1->Font = fuente;
+			   lblArtilugio1->Location = Point(
+				   lblArtilugio1Base.X * stats_escalaX,
+				   lblArtilugio1Base.Y * stats_escalaY
+			   );
+			   lblArtilugio1->Font = fuente;
 
-		lblArtilugio2->Location = Point(
-			lblArtilugio2Base.X * stats_escalaX,
-			lblArtilugio2Base.Y * stats_escalaY
-		);
-		lblArtilugio2->Font = fuente;
+			   lblArtilugio2->Location = Point(
+				   lblArtilugio2Base.X * stats_escalaX,
+				   lblArtilugio2Base.Y * stats_escalaY
+			   );
+			   lblArtilugio2->Font = fuente;
 
-		lblArtilugio3->Location = Point(
-			lblArtilugio3Base.X * stats_escalaX,
-			lblArtilugio3Base.Y * stats_escalaY
-		);
-		lblArtilugio3->Font = fuente;
+			   lblArtilugio3->Location = Point(
+				   lblArtilugio3Base.X * stats_escalaX,
+				   lblArtilugio3Base.Y * stats_escalaY
+			   );
+			   lblArtilugio3->Font = fuente;
 
-		lblArtilugio4->Location = Point(
-			lblArtilugio4Base.X * stats_escalaX,
-			lblArtilugio4Base.Y * stats_escalaY
-		);
-		lblArtilugio4->Font = fuente;
+			   lblArtilugio4->Location = Point(
+				   lblArtilugio4Base.X * stats_escalaX,
+				   lblArtilugio4Base.Y * stats_escalaY
+			   );
+			   lblArtilugio4->Font = fuente;
 
-		lblArtilugio5->Location = Point(
-			lblArtilugio5Base.X * stats_escalaX,
-			lblArtilugio5Base.Y * stats_escalaY
-		);
-		lblArtilugio5->Font = fuente;
+			   lblArtilugio5->Location = Point(
+				   lblArtilugio5Base.X * stats_escalaX,
+				   lblArtilugio5Base.Y * stats_escalaY
+			   );
+			   lblArtilugio5->Font = fuente;
 
-		lblArtilugio6->Location = Point(
-			lblArtilugio6Base.X * stats_escalaX,
-			lblArtilugio6Base.Y * stats_escalaY
-		);
-		lblArtilugio6->Font = fuente;
-	}
-	Void FrmNivel1_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) 
+			   lblArtilugio6->Location = Point(
+				   lblArtilugio6Base.X * stats_escalaX,
+				   lblArtilugio6Base.Y * stats_escalaY
+			   );
+			   lblArtilugio6->Font = fuente;
+		   }
+		   Void FrmNivel1_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e)
+		   {
+			   Recursos::normal1->Stop();
+			   Recursos::suspenso1->Stop();
+			   Recursos::victoria->Stop();
+			   Recursos::perdiste->Stop();
+		   }
+	private: System::Void pnlEstadisticas_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) 
 	{
-		Recursos::normal1->Stop();
-		Recursos::suspenso1->Stop();
-		Recursos::victoria->Stop();
-		Recursos::perdiste->Stop();
+		bufferStats->Render(e->Graphics);
 	}
 };
 }
