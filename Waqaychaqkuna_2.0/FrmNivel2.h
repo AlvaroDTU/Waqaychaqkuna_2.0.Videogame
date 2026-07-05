@@ -341,7 +341,7 @@ namespace Waqaychaqkuna20 {
 		   Void PintarEstadisticas()
 		   {
 			   Bitmap^ fondo = Recursos::PanelEstadisticas2;
-			   bufferStats->Graphics->DrawImage(fondo, Rectangle(0, 0, pnlEstadisticas->Width, pnlEstadisticas->Height));
+			   bufferStats->Graphics->DrawImage(fondo, System::Drawing::Rectangle(0, 0, pnlEstadisticas->Width, pnlEstadisticas->Height));
 			   gestor->dibujarDescripcion(bufferStats->Graphics);
 
 			   Graphics^ g = pnlEstadisticas->CreateGraphics();
