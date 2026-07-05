@@ -46,7 +46,7 @@ void Escenario::agregarObjeto(Objeto* nuevo) { objetos.push_back(nuevo); }
 void Escenario::dibujarDescripcion(Graphics^ g) {
 	for (auto bien : bienes)
 	{
-		if (bien->getColision() == true)
+		if (bien->getColision() == true && accion)
 		{
 			bien->dibujarDescripcion(g, escalaX, escalaY); // Pasamos las escalas reales
 		}
