@@ -8,10 +8,6 @@ using std::string;
 class GestorArchivo
 {
 	public:
-		void leerEnemigosMuseo(int& i);
-		void leerEnemigosHuaca(int& i);
-		void leerEnemigosBiblioteca(int& i);
-		void leerGuardia(int& x, int& y);
-		void leerBateria(int& i);
+		void cargarTodo(int& n1, int& n2, int& n3, int& gx, int& gy, int& bat);
 };
 
