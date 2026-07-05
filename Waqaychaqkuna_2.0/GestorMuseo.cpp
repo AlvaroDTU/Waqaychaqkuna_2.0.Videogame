@@ -158,14 +158,18 @@ void GestorMuseo::detectarColisiones()
 	// Colision con guardia y bienes
 	for (int i = 0; i < (int)bienes.size(); i++)
 	{
-		Rectangle hbBien = bienes[i]->getRectangle(1);
-		if (hbBien.IntersectsWith(hbGuardia))
+		Rectangle hbBien = bienes[i]->getRectangle(5);
+		if (hbBien.IntersectsWith(hbGuardia) && bienes[i]->estaActivo())
 		{
 			if (guardia->getAccion() && guardia->getTipoAccion() == 2) {
+				bienes[i]->setColision(!bienes[i]->getColision());
 				guardia->setAccion(false);
 				guardia->setTipoAccion(0);
+				
 			}
 		}
+		else
+			bienes[i]->setColision(false);
 	}
 	// Colision enemigos y bienes
 	for (int i = 0; i < (int)enemigos.size(); i++)

@@ -58,6 +58,7 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Label^ lblArtilugio5;
 	private: System::Windows::Forms::Label^ lblArtilugio6;
 		   BufferedGraphics^ buffer;
+		   BufferedGraphics^ bufferStats;
 		   GestorMuseo* gestor;
 		   bool musicaSuspenso = false;
 		   bool musicaFinal = false;
@@ -130,7 +131,6 @@ namespace Waqaychaqkuna20 {
 			   this->pnlEstadisticas->Name = L"pnlEstadisticas";
 			   this->pnlEstadisticas->Size = System::Drawing::Size(300, 800);
 			   this->pnlEstadisticas->TabIndex = 10;
-			   this->pnlEstadisticas->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmNivel1::pnlEstadisticas_Paint);
 			   // 
 			   // lblArtilugio1
 			   // 
@@ -276,6 +276,10 @@ namespace Waqaychaqkuna20 {
 			Recursos::normal1->PlayLooping();
 			delete g;
 
+			Graphics^ gStats = pnlEstadisticas->CreateGraphics();
+			bufferStats = BufferedGraphicsManager::Current->Allocate(gStats, pnlEstadisticas->ClientRectangle);
+			delete gStats;
+
 		}
 		Void FrmNivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			Guardia* g = gestor->getGuardia();
@@ -337,6 +341,7 @@ namespace Waqaychaqkuna20 {
 			}
 
 			Pintar();
+			PintarEstadisticas();
 
 			if (gestor->victoria() || gestor->derrota())
 			{
@@ -367,9 +372,20 @@ namespace Waqaychaqkuna20 {
 				}
 			}
 		}
+		Void PintarEstadisticas()
+		{
+			Bitmap^ fondo = Recursos::PanelEstadisticas1;
+			bufferStats->Graphics->DrawImage(fondo, Rectangle(0, 0, pnlEstadisticas->Width, pnlEstadisticas->Height));
+			gestor->dibujarDescripcion(bufferStats->Graphics);
+
+			Graphics^ g = pnlEstadisticas->CreateGraphics();
+			bufferStats->Render(g);
+			delete g;
+		}
 		Void Pintar()
 		{
 			gestor->dibujar(buffer->Graphics);
+			gestor->dibujarDescripcion(bufferStats->Graphics);
 			Graphics^ g = this->pnlMapa->CreateGraphics();
 			if (gestor->victoria()) {
 				System::Drawing::Font^ fuente = gcnew System::Drawing::Font("Segoe UI", 40, FontStyle::Bold);
@@ -503,11 +519,6 @@ namespace Waqaychaqkuna20 {
 		Recursos::suspenso1->Stop();
 		Recursos::victoria->Stop();
 		Recursos::perdiste->Stop();
-	}
-	Void pnlEstadisticas_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) 
-	{
-		Graphics^ g = e->Graphics;
-		g->DrawImage(Recursos::PanelEstadisticas1, this->pnlEstadisticas->ClientRectangle);
 	}
 };
 }
