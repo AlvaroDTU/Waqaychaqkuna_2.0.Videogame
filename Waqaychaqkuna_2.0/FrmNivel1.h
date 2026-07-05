@@ -78,7 +78,7 @@ namespace Waqaychaqkuna20 {
 		   Point lblArtilugio4Base;
 		   Point lblArtilugio5Base;
 		   Point lblArtilugio6Base;
-	private: System::Windows::Forms::Panel^ pnlSlod;
+
 #pragma region Windows Form Designer generated code
 		   /// <summary>
 		   /// Required method for Designer support - do not modify
@@ -99,8 +99,6 @@ namespace Waqaychaqkuna20 {
 			   this->lblIntentos = (gcnew System::Windows::Forms::Label());
 			   this->lblDerrotados = (gcnew System::Windows::Forms::Label());
 			   this->lblPista = (gcnew System::Windows::Forms::Label());
-			   this->pnlSlod = (gcnew System::Windows::Forms::Panel());
-			   this->pnlMapa->SuspendLayout();
 			   this->pnlEstadisticas->SuspendLayout();
 			   this->SuspendLayout();
 			   // 
@@ -113,7 +111,6 @@ namespace Waqaychaqkuna20 {
 			   // 
 			   this->pnlMapa->BackColor = System::Drawing::Color::White;
 			   this->pnlMapa->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			   this->pnlMapa->Controls->Add(this->pnlSlod);
 			   this->pnlMapa->Location = System::Drawing::Point(0, 0);
 			   this->pnlMapa->Name = L"pnlMapa";
 			   this->pnlMapa->Size = System::Drawing::Size(1300, 800);
@@ -238,13 +235,6 @@ namespace Waqaychaqkuna20 {
 			   this->lblPista->Text = L"PISTA ACTUAL:\n";
 			   this->lblPista->Visible = false;
 			   // 
-			   // pnlSlod
-			   // 
-			   this->pnlSlod->Location = System::Drawing::Point(0, 0);
-			   this->pnlSlod->Name = L"pnlSlod";
-			   this->pnlSlod->Size = System::Drawing::Size(1600, 800);
-			   this->pnlSlod->TabIndex = 0;
-			   // 
 			   // FrmNivel1
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -260,7 +250,6 @@ namespace Waqaychaqkuna20 {
 			   this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel1::FrmNivel1_KeyDown);
 			   this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel1::FrmNivel1_KeyUp);
 			   this->Resize += gcnew System::EventHandler(this, &FrmNivel1::FrmNivel1_Resize);
-			   this->pnlMapa->ResumeLayout(false);
 			   this->pnlEstadisticas->ResumeLayout(false);
 			   this->pnlEstadisticas->PerformLayout();
 			   this->ResumeLayout(false);
@@ -333,7 +322,6 @@ namespace Waqaychaqkuna20 {
 		}
 		Void tmrNivel1_Tick(System::Object^ sender, System::EventArgs^ e)
 		{
-			Graphics^ gSlod = this->pnlSlod->CreateGraphics();
 			gestor->jugar();
 			int tPista = gestor->getReportera()->getTipoPista();
 			if (tPista < 4) this->lblPista->Visible = true;
