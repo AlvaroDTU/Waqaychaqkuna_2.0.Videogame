@@ -321,19 +321,27 @@ namespace Waqaychaqkuna20 {
 
 		Guardia* g = gestor->getGuardia();
 		if (e->KeyCode == Keys::Up) {
+			gestor->setAccion(false);
 			g->setVelocidad(0, -5);
 		}
 		else if (e->KeyCode == Keys::Down) {
+			gestor->setAccion(false);
 			g->setVelocidad(0, 5);
 		}
 		else if (e->KeyCode == Keys::Right) {
+			gestor->setAccion(false);
 			g->setVelocidad(5, 0);
 		}
 		else if (e->KeyCode == Keys::Left) {
+			gestor->setAccion(false);
 			g->setVelocidad(-5, 0);
 		}
 		else if (e->KeyCode == Keys::E) {
+			gestor->setAccion(false);
 			gestor->generarCuidador();
+		}
+		else if (e->KeyCode == Keys::D) {
+			gestor->setAccion(true);
 		}
 
 	}
