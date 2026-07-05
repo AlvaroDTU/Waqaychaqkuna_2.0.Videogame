@@ -18,7 +18,7 @@ class GestorBiblioteca : public Escenario
 	Linterna* linterna;
 
 	public:
-		GestorBiblioteca(int enTotales);
+		GestorBiblioteca();
 		~GestorBiblioteca();
 		void crearSprites() override;
 		void dibujar(Graphics^ g) override;

@@ -19,7 +19,7 @@ namespace Waqaychaqkuna20 {
 	public:
 		FrmNivel3(void)
 		{
-			gestor = new GestorBiblioteca(30);
+			gestor = new GestorBiblioteca();
 			InitializeComponent();
 			finCont = 0;
 			//
@@ -39,7 +39,8 @@ namespace Waqaychaqkuna20 {
 			}
 		}
 	private: System::Windows::Forms::Panel^ pnlMapa;
-	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ lblInstruccion;
+
 
 	private: System::Windows::Forms::Label^ lblArchivo1;
 	private: System::Windows::Forms::Label^ lblArchivo2;
@@ -50,12 +51,13 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Label^ lblIntentos;
 	private: System::Windows::Forms::Timer^ tmrNivel3;
 	private: System::ComponentModel::IContainer^ components;
-	 BufferedGraphics^ buffer;
 	private: System::Windows::Forms::Label^ lblPuntaje1;
 	private: System::Windows::Forms::Label^ lblPuntaje3;
 	private: System::Windows::Forms::Label^ lblPuntaje2;
 	private: System::Windows::Forms::Label^ lblPuntaje4;
 
+		   BufferedGraphics^ buffer;
+		   BufferedGraphics^ bufferStats;
 		   GestorBiblioteca* gestor;
 		   int finCont;
 		   bool dialogoArchivo1 = false;
@@ -63,6 +65,7 @@ namespace Waqaychaqkuna20 {
 		   bool dialogoArchivo3 = false;
 		   bool dialogoArchivo4 = false;
 		   bool musicaSuspenso = false;
+		   bool musicaFinal = false;
 		   Point lblDerrotadosBase;
 		   Point lblIntentosBase;
 		   Point lblBateriaBase;
@@ -78,6 +81,8 @@ namespace Waqaychaqkuna20 {
 		   float mapa_escalaY = 1.0f;
 		   float stats_escalaX = 1.0f;
 		   float stats_escalaY = 1.0f;
+	private: System::Windows::Forms::Panel^ pnlEstadisticas;
+
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -93,7 +98,7 @@ namespace Waqaychaqkuna20 {
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			this->pnlMapa = (gcnew System::Windows::Forms::Panel());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->lblInstruccion = (gcnew System::Windows::Forms::Label());
 			this->lblArchivo1 = (gcnew System::Windows::Forms::Label());
 			this->lblArchivo2 = (gcnew System::Windows::Forms::Label());
 			this->lblArchivo3 = (gcnew System::Windows::Forms::Label());
@@ -106,6 +111,7 @@ namespace Waqaychaqkuna20 {
 			this->lblPuntaje3 = (gcnew System::Windows::Forms::Label());
 			this->lblPuntaje2 = (gcnew System::Windows::Forms::Label());
 			this->lblPuntaje4 = (gcnew System::Windows::Forms::Label());
+			this->pnlEstadisticas = (gcnew System::Windows::Forms::Panel());
 			this->SuspendLayout();
 			// 
 			// pnlMapa
@@ -117,16 +123,16 @@ namespace Waqaychaqkuna20 {
 			this->pnlMapa->Size = System::Drawing::Size(1300, 800);
 			this->pnlMapa->TabIndex = 1;
 			// 
-			// label1
+			// lblInstruccion
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lblInstruccion->AutoSize = true;
+			this->lblInstruccion->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(1311, 139);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(199, 40);
-			this->label1->TabIndex = 11;
-			this->label1->Text = L"\'E\' PARA\r\nENCENDER LINTERNA";
+			this->lblInstruccion->Location = System::Drawing::Point(1311, 139);
+			this->lblInstruccion->Name = L"lblInstruccion";
+			this->lblInstruccion->Size = System::Drawing::Size(199, 40);
+			this->lblInstruccion->TabIndex = 11;
+			this->lblInstruccion->Text = L"\'E\' PARA\r\nENCENDER LINTERNA";
 			// 
 			// lblArchivo1
 			// 
@@ -244,6 +250,14 @@ namespace Waqaychaqkuna20 {
 			this->lblPuntaje4->Size = System::Drawing::Size(0, 17);
 			this->lblPuntaje4->TabIndex = 23;
 			// 
+			// pnlEstadisticas
+			// 
+			this->pnlEstadisticas->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pnlEstadisticas->Location = System::Drawing::Point(1257, 1);
+			this->pnlEstadisticas->Name = L"pnlEstadisticas";
+			this->pnlEstadisticas->Size = System::Drawing::Size(300, 800);
+			this->pnlEstadisticas->TabIndex = 24;
+			// 
 			// FrmNivel3
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -260,8 +274,9 @@ namespace Waqaychaqkuna20 {
 			this->Controls->Add(this->lblArchivo3);
 			this->Controls->Add(this->lblArchivo2);
 			this->Controls->Add(this->lblArchivo1);
-			this->Controls->Add(this->label1);
+			this->Controls->Add(this->lblInstruccion);
 			this->Controls->Add(this->pnlMapa);
+			this->Controls->Add(this->pnlEstadisticas);
 			this->Name = L"FrmNivel3";
 			this->Text = L"Nivel 3: Biblioteca";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &FrmNivel3::FrmNivel3_FormClosing);
@@ -307,6 +322,10 @@ private: System::Void FrmNivel3_Load(System::Object^ sender, System::EventArgs^ 
 	tmrNivel3->Start();
 	Recursos::normal3->PlayLooping();
 	delete g;
+
+	Graphics^ gStats = pnlEstadisticas->CreateGraphics();
+	bufferStats = BufferedGraphicsManager::Current->Allocate(gStats, pnlEstadisticas->ClientRectangle);
+	delete gStats;
 }
 
 
@@ -513,20 +532,33 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 
 	Pintar();
 
-	if (gestor->victoria())
+	if (gestor->victoria() || gestor->derrota())
 	{
-		this->tmrNivel3->Stop();
-		Recursos::suspenso2->Stop();
-		MessageBox::Show("GANASTE");
-		this->DialogResult = System::Windows::Forms::DialogResult::OK;
-		this->Close();
-	}
-	if (gestor->derrota())
-	{
-		Recursos::suspenso2->Stop();
-		this->tmrNivel3->Stop();
-		MessageBox::Show("PERDISTE");
-		this->Close();
+		if (gestor->victoria() && !musicaFinal) {
+			Recursos::normal3->Stop();
+			Recursos::suspenso3->Stop();
+			Recursos::victoria->PlayLooping();
+			musicaFinal = true;
+		}
+		if (gestor->derrota() && !musicaFinal) {
+			Recursos::normal3->Stop();
+			Recursos::suspenso3->Stop();
+			Recursos::perdiste->PlayLooping();
+			musicaFinal = true;
+		}
+		finCont++;
+		if (finCont >= 200)
+		{
+			this->tmrNivel3->Stop();
+			if (gestor->victoria())
+			{
+				Recursos::victoria->Stop();
+				this->DialogResult = System::Windows::Forms::DialogResult::OK;
+			}
+			if (gestor->derrota())
+				Recursos::perdiste->Stop();
+			this->Close();
+		}
 	}
 }
 
@@ -540,6 +572,8 @@ private: System::Void FrmNivel3_KeyUp(System::Object^ sender, System::Windows::F
 private: System::Void FrmNivel3_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 	Recursos::normal3->Stop();
 	Recursos::suspenso3->Stop();
+	Recursos::victoria->Stop();
+	Recursos::perdiste->Stop();
 }
 };
 }

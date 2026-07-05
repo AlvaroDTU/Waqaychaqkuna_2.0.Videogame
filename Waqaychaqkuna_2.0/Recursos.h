@@ -80,5 +80,6 @@ public:
     //---------------- ESTADITICAS ----------------
     static Bitmap^ PanelEstadisticas1 = gcnew Bitmap("backgrounds\\PanelEstadisticas1.png");
     static Bitmap^ PanelEstadisticas2 = gcnew Bitmap("backgrounds\\PanelEstadisticas2.png");
+    static Bitmap^ PanelEstadisticas3 = gcnew Bitmap("backgrounds\\PanelEstadisticas3.png");
 
 };

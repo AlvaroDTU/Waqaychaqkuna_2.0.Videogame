@@ -1,10 +1,14 @@
 #include "pch.h"
 #include "GestorBiblioteca.h"
 
-GestorBiblioteca::GestorBiblioteca(int enTotal) : Escenario(enTotal)
+GestorBiblioteca::GestorBiblioteca() : Escenario()
 {
+	int n1, n2, n3, gx, gy, bat;
+	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
+
+	enemigosTotales = n3;
 	contador = 0;
-	this->tiempoRecarga = 100.00;
+	this->tiempoRecarga = bat;
 	tempSpawnEntidades = 80;
 	vidas = 20;
 	linterna = nullptr;
@@ -19,7 +23,10 @@ void GestorBiblioteca::crearSprites(){
 
 	linterna = new Linterna(false);
 
-	guardia = new Guardia(622, 674, 30, 40, 60, 80);
+	int n1, n2, n3, gx, gy, bat;
+	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
+
+	guardia = new Guardia(gx, gy, 30, 40, 60, 80);
 	
 	agregarAliado(new Murcielago(131, 541, 40, 30, 40, 24));
 

@@ -12,7 +12,7 @@ private:
 	int contador;
 	int temporizadorMov;
 public:
-	GestorHuacas(int enTotales);
+	GestorHuacas();
 	~GestorHuacas();
 	void crearSprites() override;
 	void dibujar(Graphics^ g) override;

@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "Escenario.h"
 
-Escenario::Escenario(int enTotales)
-	: fondo(nullptr), guardia(nullptr), anchoLienzo(1300), altoLienzo(800), enemigosTotales(enTotales)
+Escenario::Escenario()
+	: fondo(nullptr), guardia(nullptr), anchoLienzo(1300), altoLienzo(800), enemigosTotales(5), gestor(new GestorArchivo())
 {
 	srand(time(nullptr));
 	enemigosCapturados = 0;

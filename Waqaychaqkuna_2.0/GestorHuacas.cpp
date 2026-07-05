@@ -1,8 +1,12 @@
 #include "pch.h"
 #include "GestorHuacas.h"
 #include "Cuidador.h"
-GestorHuacas::GestorHuacas(int enTotales) : Escenario(enTotales)
+GestorHuacas::GestorHuacas() : Escenario()
 {
+	int n1, n2, n3, gx, gy, bat;
+	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
+
+	enemigosTotales = n2;
 	contador = 0;
 	tempSpawnEntidades = 70;
 }
@@ -12,7 +16,10 @@ GestorHuacas::~GestorHuacas() {
 void GestorHuacas::crearSprites() {
 	fondo = new Fondo(2, anchoLienzo, altoLienzo);
 
-	guardia = new Guardia(anchoLienzo/2, 170, 30, 40, 60, 80);
+	int n1, n2, n3, gx, gy, bat;
+	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
+
+	guardia = new Guardia(gx,gy, 30, 40, 60, 80);
 
 	agregarObjeto(new Objeto(0, 0, 180, 800));
 	agregarObjeto(new Objeto(183, 0, 922, 127));
