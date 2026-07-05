@@ -113,6 +113,9 @@
     <ClInclude Include="FrmInstrucciones.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FrmCreditos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Waqaychaqkuna_2.0.cpp">
@@ -206,6 +209,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FrmInstrucciones.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrmCreditos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

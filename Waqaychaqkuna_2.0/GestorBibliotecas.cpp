@@ -33,7 +33,7 @@ void GestorBiblioteca::crearSprites(){
 }
 void GestorBiblioteca::dibujar(Graphics^ g){
 	fondo->dibujarFondo(g, escalaX, escalaY);
-	dibujarLibros(g);
+	dibujarLibros(g,escalaX, escalaY);
 	guardia->dibujar(g, escalaX, escalaY);
 	for (auto manipulador : enemigos) manipulador->dibujar(g,escalaX, escalaY);
 	for (auto murcielago : aliados)
@@ -256,7 +256,7 @@ bool GestorBiblioteca::encenderLinterna() {
 	}
 }
 
-void GestorBiblioteca::dibujarLibros(Graphics^ g) {
+void GestorBiblioteca::dibujarLibros(Graphics^ g , float escalaX, float escalaY) {
 	
 	for (size_t i = 0; i < (int)bienes.size(); i++)
 	{
@@ -271,7 +271,7 @@ void GestorBiblioteca::dibujarLibros(Graphics^ g) {
 				int alto = 22;
 
 				Bitmap^ img = Recursos::libros;
-				g->DrawImage(img, x, y, ancho, alto);
+				g->DrawImage(img, x* escalaX, y * escalaY, ancho * escalaX, alto * escalaY);
 			}
 		}
 	}
