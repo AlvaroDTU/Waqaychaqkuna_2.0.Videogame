@@ -59,6 +59,7 @@ namespace Waqaychaqkuna20 {
 
 	private: System::Windows::Forms::ListBox^ lstHistorial;
 	private: System::Windows::Forms::Label^ lblPuntajes;
+	private: System::Windows::Forms::Button^ btnEliminar;
 	private: System::Windows::Forms::Button^ btnSalir;
 	protected: virtual void OnPaint(PaintEventArgs^ e) override
 	{
@@ -93,6 +94,7 @@ namespace Waqaychaqkuna20 {
 			this->lblName = (gcnew System::Windows::Forms::Label());
 			this->lstHistorial = (gcnew System::Windows::Forms::ListBox());
 			this->lblPuntajes = (gcnew System::Windows::Forms::Label());
+			this->btnEliminar = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// btnJugar
@@ -191,11 +193,25 @@ namespace Waqaychaqkuna20 {
 			this->lblPuntajes->TabIndex = 7;
 			this->lblPuntajes->Text = L"PUNTAJES";
 			// 
+			// btnEliminar
+			// 
+			this->btnEliminar->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnEliminar.BackgroundImage")));
+			this->btnEliminar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnEliminar->Location = System::Drawing::Point(12, 12);
+			this->btnEliminar->Name = L"btnEliminar";
+			this->btnEliminar->Size = System::Drawing::Size(217, 46);
+			this->btnEliminar->TabIndex = 8;
+			this->btnEliminar->Text = L"Eliminar Puntaje";
+			this->btnEliminar->UseVisualStyleBackColor = true;
+			this->btnEliminar->Click += gcnew System::EventHandler(this, &FrmMenu::btnEliminar_Click);
+			// 
 			// FrmMenu
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1370, 749);
+			this->Controls->Add(this->btnEliminar);
 			this->Controls->Add(this->lblPuntajes);
 			this->Controls->Add(this->lstHistorial);
 			this->Controls->Add(this->lblName);
@@ -369,5 +385,12 @@ namespace Waqaychaqkuna20 {
 			this->Close();
 		}
 
-	};
+	private: System::Void btnEliminar_Click(System::Object^ sender, System::EventArgs^ e) {
+		IntPtr ptr = System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(txtName->Text);
+		std::string nombreNativo(static_cast<const char*>(ptr.ToPointer()));
+		System::Runtime::InteropServices::Marshal::FreeHGlobal(ptr);
+
+		escena->eliminarPuntaje(nombreNativo);
+	}
+};
 }

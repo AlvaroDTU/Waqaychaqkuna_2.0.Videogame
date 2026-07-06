@@ -79,7 +79,9 @@ public:
 		return con;
 	}
 
-
+	void eliminarPuntaje(string nombre) {
+		gestor->eliminarPuntajeBinario(nombre);
+	}
 	void guardarPuntaje(int puntos, string nombre);
 
 	vector<Puntaje*> historial();

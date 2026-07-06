@@ -103,5 +103,36 @@ vector<Puntaje*> GestorArchivo::leerBinario()
 
 
 
+void GestorArchivo::eliminarPuntajeBinario(string nombreAEliminar)
+{
+    ifstream origen("puntajes.dat", ios::binary);
+    ofstream destino("temporal.dat", ios::binary);
 
+    if (origen.is_open() && destino.is_open())
+    {
+        RegistroBinario reg;
+
+        // Leemos bloque por bloque el archivo binario
+        while (origen.read(reinterpret_cast<char*>(&reg), sizeof(RegistroBinario)))
+        {
+            string nombreStr(reg.nombre);
+
+            // CONDICIÓN: Si el nombre coincide, lo saltamos (se elimina)
+            if (nombreStr == nombreAEliminar)
+            {
+                continue;
+            }
+
+            // Si es de otro jugador, se conserva en el archivo temporal
+            destino.write(reinterpret_cast<char*>(&reg), sizeof(RegistroBinario));
+        }
+
+        origen.close();
+        destino.close();
+
+        // Aplicamos los cambios en el disco
+        remove("puntajes.dat");
+        rename("temporal.dat", "puntajes.dat");
+    }
+}
 

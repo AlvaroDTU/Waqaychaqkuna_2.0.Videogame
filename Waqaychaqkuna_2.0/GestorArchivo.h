@@ -17,6 +17,6 @@ class GestorArchivo
 		vector<Puntaje*> leerTexto();
 		void guardarTexto(Puntaje* p);
 		string fechaActual();
-
+		void eliminarPuntajeBinario(string nombre);
 };
 
