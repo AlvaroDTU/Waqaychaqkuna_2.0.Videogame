@@ -7,6 +7,7 @@ using namespace Windows::Forms;
 [STAThread]
 int main(array<System::String ^> ^args)
 {
+    srand(time(nullptr));
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
     Application::Run(gcnew Waqaychaqkuna20::FrmMenu());

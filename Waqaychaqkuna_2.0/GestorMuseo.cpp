@@ -5,7 +5,7 @@ GestorMuseo::GestorMuseo() : Escenario()
 {
 	int n1, n2, n3, gx, gy, bat;
 	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
-	enemigosTotales = 2;
+	enemigosTotales = n1;
 
 	iniciado = false;
 	fondoActual = 1;
@@ -213,7 +213,7 @@ void GestorMuseo::detectarColisiones()
 		if (fondoActual == 2)
 		{
 			guardia->setPos(85, 370);
-			frases.push_back("(Radio)Reportera:\n\"Segun mis informes, en esta sala encontraras " + std::to_string(enemigosRonda2) + " ladrones escondidos entre la gente.\"");
+			frases.push_back("(Radio)Reportera:\n\"Segun mis informes, en esta sala encontraras " + std::to_string(enemigosRonda1) + " ladrones escondidos entre la gente.\"");
 			frases.push_back("(Radio)Reportera:\n\"Suerte encontrandolos!\"");
 			frases.push_back("(Tip: Puedes interactuar con los bienes con 'D' para aprender algo interesante sobre ellos)");
 			dialogo.iniciar(frases);

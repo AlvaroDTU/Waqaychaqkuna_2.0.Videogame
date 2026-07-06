@@ -31,10 +31,10 @@ void GestorHuacas::crearSprites() {
 	agregarObjeto(new Objeto(753, 278, 8, 37));
 	agregarObjeto(new Objeto(779, 243, 23, 54));
 
-	agregarBien(new Huaca(177, 109, 300, 194,2000,"Huaca del Sol",1));
-	agregarBien(new Huaca(817,108 , 299, 188,2069, "Huaca de la Luna",2));
-	agregarBien(new Huaca(202, 482, 266, 177,2679,"Huaca Dragon",3));
-	agregarBien(new Huaca(801, 474, 309, 200,3000,"Huaca Takaynamo",4));
+	agregarBien(new Huaca(177, 109, 300, 194,2000,"HUACA DEL SOL",1));
+	agregarBien(new Huaca(817,108 , 299, 188,2069, "HUACA DE LA LUNA",2));
+	agregarBien(new Huaca(202, 482, 266, 177,2679,"HUACA DRAGON",3));
+	agregarBien(new Huaca(801, 474, 309, 200,3000,"HUACA TAKAYNAMO",4));
 
 }
 void GestorHuacas::dibujar(Graphics^ g) {
