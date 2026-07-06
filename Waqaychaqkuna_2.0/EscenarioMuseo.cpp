@@ -1,7 +1,7 @@
 #include "pch.h"
-#include "GestorMuseo.h"
+#include "EscenarioMuseo.h"
 
-GestorMuseo::GestorMuseo() : Escenario()
+EscenarioMuseo::EscenarioMuseo() : Escenario()
 {
 	int n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat;
 	gestor->cargarTodo(n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat);
@@ -16,12 +16,12 @@ GestorMuseo::GestorMuseo() : Escenario()
 	enemigosRonda2 = enemigosTotales - enemigosRonda1;
 }
 
-GestorMuseo::~GestorMuseo()
+EscenarioMuseo::~EscenarioMuseo()
 {
 	Escenario::~Escenario();
 }
 
-void GestorMuseo::crearSprites()
+void EscenarioMuseo::crearSprites()
 {
 	fondo = new Fondo(1, anchoLienzo, altoLienzo);
 
@@ -47,7 +47,7 @@ void GestorMuseo::crearSprites()
 	setearColisionesMapa();
 }
 
-void GestorMuseo::mover()
+void EscenarioMuseo::mover()
 {
 	if (dialogo.estaActivo())
 		dialogo.actualizar();
@@ -60,7 +60,7 @@ void GestorMuseo::mover()
 	aliados[0]->mover(anchoLienzo, altoLienzo);
 }
 
-void GestorMuseo::dibujarFlechas(Graphics^ g)
+void EscenarioMuseo::dibujarFlechas(Graphics^ g)
 {
 	Bitmap^ flecha = gcnew Bitmap("sprites\\flecha.png");
 	Rectangle origen(0, 0, flecha->Width, flecha->Height);
@@ -77,7 +77,7 @@ void GestorMuseo::dibujarFlechas(Graphics^ g)
 	g->DrawImage(flecha, destino3, origen, GraphicsUnit::Pixel);
 }
 
-void GestorMuseo::dibujar(Graphics^ g)
+void EscenarioMuseo::dibujar(Graphics^ g)
 {
 	fondo->dibujarFondo(g, escalaX, escalaY);
 	if ((getReportera()->getTipoPista() > 0 && fondoActual == 1) || (primerRondaVencida && fondoActual == 2))
@@ -99,7 +99,7 @@ void GestorMuseo::dibujar(Graphics^ g)
 	dialogo.dibujar(g, anchoLienzo, altoLienzo);
 }
 
-void GestorMuseo::detectarColisiones()
+void EscenarioMuseo::detectarColisiones()
 {
 	Rectangle hbGuardia = guardia->getRectangle();
 	Rectangle hbReportera = aliados[0]->getRectangle(1);
@@ -249,7 +249,7 @@ void GestorMuseo::detectarColisiones()
 	}
 }
 
-void GestorMuseo::setearColisionesMapa()
+void EscenarioMuseo::setearColisionesMapa()
 {
 	for (auto enemigo : enemigos) delete enemigo;
 	enemigos.clear();
@@ -394,7 +394,7 @@ void GestorMuseo::setearColisionesMapa()
 		aliados[0]->setActivo(false);
 	}
 }
-void GestorMuseo::jugar()
+void EscenarioMuseo::jugar()
 {
 	mover();
 	detectarColisiones();
@@ -415,13 +415,13 @@ void GestorMuseo::jugar()
 	if (fondoActual > 1) tempSpawnEntidades++;
 }
 
-void GestorMuseo::agregarVisitante(Visitante* nuevo) { visitantes.push_back(nuevo); }
-void GestorMuseo::eliminarVisitante(int i) { visitantes.erase(visitantes.begin() + i); }
-bool GestorMuseo::victoria()
+void EscenarioMuseo::agregarVisitante(Visitante* nuevo) { visitantes.push_back(nuevo); }
+void EscenarioMuseo::eliminarVisitante(int i) { visitantes.erase(visitantes.begin() + i); }
+bool EscenarioMuseo::victoria()
 {
 	return primerRondaVencida && segundaRondaVencida;
 }
-bool GestorMuseo::derrota()
+bool EscenarioMuseo::derrota()
 {
 	bool bienDestruido = false;
 	for (auto bien : bienes)
@@ -431,7 +431,7 @@ bool GestorMuseo::derrota()
 	return intentos <= 0 || bienDestruido;
 }
 
-Reportera* GestorMuseo::getReportera()
+Reportera* EscenarioMuseo::getReportera()
 {
 	return (Reportera*)aliados[0];
 }

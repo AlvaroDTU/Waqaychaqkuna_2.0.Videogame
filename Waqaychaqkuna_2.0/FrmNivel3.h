@@ -1,7 +1,7 @@
 #pragma once
 #include <msclr/marshal_cppstd.h> 
 #include "Guardia.h"
-#include "GestorBiblioteca.h"
+#include "EscenarioBiblioteca.h"
 
 namespace Waqaychaqkuna20 {
 
@@ -20,7 +20,7 @@ namespace Waqaychaqkuna20 {
 	public:
 		FrmNivel3(int p,String^ nom)
 		{
-			gestor = new GestorBiblioteca();
+			gestor = new EscenarioBiblioteca();
 			InitializeComponent();
 			finCont = 0;
 			puntajeFinal = p;
@@ -63,7 +63,7 @@ namespace Waqaychaqkuna20 {
 
 		   BufferedGraphics^ buffer;
 		   BufferedGraphics^ bufferStats;
-		   GestorBiblioteca* gestor;
+		   EscenarioBiblioteca* gestor;
 		   int finCont;
 		   bool dialogoArchivo1 = false;
 		   bool dialogoArchivo2 = false;

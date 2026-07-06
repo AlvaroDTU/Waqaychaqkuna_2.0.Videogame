@@ -1,5 +1,5 @@
 #pragma once
-#include "GestorHuacas.h"
+#include "EscenarioHuacas.h"
 
 namespace Waqaychaqkuna20 {
 
@@ -20,7 +20,7 @@ namespace Waqaychaqkuna20 {
 		{
 			InitializeComponent();
 			this->KeyPreview = true;
-			gestor = new GestorHuacas();
+			gestor = new EscenarioHuacas();
 			finCont = 0;
 
 			//
@@ -46,7 +46,7 @@ namespace Waqaychaqkuna20 {
 	private: System::ComponentModel::IContainer^ components;
 
 
-		   GestorHuacas* gestor;
+		   EscenarioHuacas* gestor;
 	private: System::Windows::Forms::Label^ lblHuaca1;
 
 

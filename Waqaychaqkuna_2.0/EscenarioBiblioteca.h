@@ -9,7 +9,7 @@
 
 using std::vector;
 
-class GestorBiblioteca : public Escenario
+class EscenarioBiblioteca : public Escenario
 {
 	private:
 	int contador;
@@ -18,8 +18,8 @@ class GestorBiblioteca : public Escenario
 	Linterna* linterna;
 
 	public:
-		GestorBiblioteca();
-		~GestorBiblioteca();
+		EscenarioBiblioteca();
+		~EscenarioBiblioteca();
 		void crearSprites() override;
 		void dibujar(Graphics^ g) override;
 		void mover() override;

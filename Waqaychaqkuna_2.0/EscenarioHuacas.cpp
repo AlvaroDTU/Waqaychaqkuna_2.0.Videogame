@@ -1,7 +1,7 @@
 #include "pch.h"
-#include "GestorHuacas.h"
+#include "EscenarioHuacas.h"
 #include "Cuidador.h"
-GestorHuacas::GestorHuacas() : Escenario()
+EscenarioHuacas::EscenarioHuacas() : Escenario()
 {
 	int n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat;
 	gestor->cargarTodo(n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat);
@@ -10,10 +10,10 @@ GestorHuacas::GestorHuacas() : Escenario()
 	contador = 0;
 	tempSpawnEntidades = 70;
 }
-GestorHuacas::~GestorHuacas() {
+EscenarioHuacas::~EscenarioHuacas() {
 	Escenario::~Escenario();
 }
-void GestorHuacas::crearSprites() {
+void EscenarioHuacas::crearSprites() {
 	fondo = new Fondo(2, anchoLienzo, altoLienzo);
 
 	int n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat;
@@ -37,7 +37,7 @@ void GestorHuacas::crearSprites() {
 	agregarBien(new Huaca(801, 474, 309, 200, 3000, "HUACA TAKAYNAMO", 4));
 
 }
-void GestorHuacas::dibujar(Graphics^ g) {
+void EscenarioHuacas::dibujar(Graphics^ g) {
 	fondo->dibujarFondo(g, escalaX, escalaY);
 	for (size_t i = 0; i < (int)bienes.size(); i++)
 	{
@@ -50,7 +50,7 @@ void GestorHuacas::dibujar(Graphics^ g) {
 	guardia->dibujar(g, escalaX, escalaY);
 
 }
-void GestorHuacas::mover() {
+void EscenarioHuacas::mover() {
 	guardia->mover(objetos, bienes);
 
 	for (auto cuidador : aliados) ((Cuidador*)cuidador)->sinMover();
@@ -58,7 +58,7 @@ void GestorHuacas::mover() {
 		if (enemigos[j]->getAtacando() == false) { enemigos[j]->mover(anchoLienzo, altoLienzo); }
 	}
 }
-void GestorHuacas::detectarColisiones() {
+void EscenarioHuacas::detectarColisiones() {
 
 	Rectangle htbGuardia = guardia->getRectangle();
 
@@ -133,8 +133,8 @@ void GestorHuacas::detectarColisiones() {
 
 }
 
-bool GestorHuacas::victoria() { return enemigosCapturados == enemigosTotales; }
-bool GestorHuacas::derrota() {
+bool EscenarioHuacas::victoria() { return enemigosCapturados == enemigosTotales; }
+bool EscenarioHuacas::derrota() {
 	bool bienDestruido = false;
 	for (auto bien : bienes)
 	{
@@ -143,7 +143,7 @@ bool GestorHuacas::derrota() {
 	return bienDestruido;
 }
 
-void GestorHuacas::jugar() {
+void EscenarioHuacas::jugar() {
 	mover();
 	tempSpawnEntidades--;
 	if (tempSpawnEntidades == 0 && (contador != enemigosTotales)) {
@@ -153,7 +153,7 @@ void GestorHuacas::jugar() {
 	}
 }
 
-void GestorHuacas::generarHuaquero() {
+void EscenarioHuacas::generarHuaquero() {
 	int tipo = rand() % 16 + 1;
 	//Derecha
 	if (tipo == 1) {
@@ -227,7 +227,7 @@ void GestorHuacas::generarHuaquero() {
 		agregarEnemigo(nuevo);
 	}
 }
-void GestorHuacas::generarCuidador() {
+void EscenarioHuacas::generarCuidador() {
 
 	int dx = guardia->getDirX();
 	int dy = guardia->getDirY();

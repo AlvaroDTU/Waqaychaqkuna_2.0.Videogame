@@ -6,14 +6,14 @@
 #include <vector>
 using std::vector;
 
-class GestorHuacas : public Escenario
+class EscenarioHuacas : public Escenario
 {
 private:
 	int contador;
 	int temporizadorMov;
 public:
-	GestorHuacas();
-	~GestorHuacas();
+	EscenarioHuacas();
+	~EscenarioHuacas();
 	void crearSprites() override;
 	void dibujar(Graphics^ g) override;
 	void mover() override;

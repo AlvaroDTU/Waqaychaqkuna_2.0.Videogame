@@ -1,6 +1,6 @@
 #pragma once
 #include "Guardia.h"
-#include "GestorMuseo.h"
+#include "EscenarioMuseo.h"
 
 namespace Waqaychaqkuna20 {
 
@@ -21,7 +21,7 @@ namespace Waqaychaqkuna20 {
 		{
 			InitializeComponent();
 			this->KeyPreview = true;
-			gestor = new GestorMuseo();
+			gestor = new EscenarioMuseo();
 			//
 			//TODO: Add the constructor code here
 			//
@@ -62,7 +62,7 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Label^ lblArtilugio6;
 		   BufferedGraphics^ buffer;
 		   BufferedGraphics^ bufferStats;
-		   GestorMuseo* gestor;
+		   EscenarioMuseo* gestor;
 		   bool musicaSuspenso = false;
 		   bool musicaFinal = false;
 		   int finCont = 0;

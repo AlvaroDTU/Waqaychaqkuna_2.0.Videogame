@@ -1,7 +1,7 @@
 #include "pch.h"
-#include "GestorBiblioteca.h"
+#include "EscenarioBiblioteca.h"
 
-GestorBiblioteca::GestorBiblioteca() : Escenario()
+EscenarioBiblioteca::EscenarioBiblioteca() : Escenario()
 {
 	int n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat;
 	gestor->cargarTodo(n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat);
@@ -13,10 +13,10 @@ GestorBiblioteca::GestorBiblioteca() : Escenario()
 	linterna = nullptr;
 }
 
-GestorBiblioteca::~GestorBiblioteca(){
+EscenarioBiblioteca::~EscenarioBiblioteca(){
 	Escenario::~Escenario();
 }
-void GestorBiblioteca::crearSprites(){
+void EscenarioBiblioteca::crearSprites(){
 
 	fondo = new Fondo(3, anchoLienzo, altoLienzo);
 
@@ -37,7 +37,7 @@ void GestorBiblioteca::crearSprites(){
 	setearColisionesMapa();
 
 }
-void GestorBiblioteca::dibujar(Graphics^ g){
+void EscenarioBiblioteca::dibujar(Graphics^ g){
 	fondo->dibujarFondo(g, escalaX, escalaY);
 	dibujarLibros(g,escalaX, escalaY);
 	guardia->dibujar(g, escalaX, escalaY);
@@ -49,7 +49,7 @@ void GestorBiblioteca::dibujar(Graphics^ g){
 		linterna->dibujar(g, escalaX, escalaY);
 
 }
-void GestorBiblioteca::mover(){
+void EscenarioBiblioteca::mover(){
 
 	guardia->mover(objetos, bienes);
 	aliados[0]->mover(anchoLienzo, altoLienzo);
@@ -58,7 +58,7 @@ void GestorBiblioteca::mover(){
 	}
 
 }
-void GestorBiblioteca::detectarColisiones(){
+void EscenarioBiblioteca::detectarColisiones(){
 
 	Rectangle hbGuardia = guardia->getRectangle();
 	//colision guardia y enemigos
@@ -134,8 +134,8 @@ void GestorBiblioteca::detectarColisiones(){
 	}
 }
 
-bool GestorBiblioteca::victoria(){ return enemigosCapturados == enemigosTotales; }
-bool GestorBiblioteca::derrota(){
+bool EscenarioBiblioteca::victoria(){ return enemigosCapturados == enemigosTotales; }
+bool EscenarioBiblioteca::derrota(){
 
 	bool bienDestruido = false;
 	for (auto bien : bienes)
@@ -146,7 +146,7 @@ bool GestorBiblioteca::derrota(){
 
 }
 
-void GestorBiblioteca::jugar(){
+void EscenarioBiblioteca::jugar(){
 	mover();
 	encenderLinterna();
 	recargaLinterna();
@@ -158,7 +158,7 @@ void GestorBiblioteca::jugar(){
 	}
 }
 
-void GestorBiblioteca::setearColisionesMapa(){
+void EscenarioBiblioteca::setearColisionesMapa(){
 //escritorio
 	agregarObjeto(new Objeto(570, 578, 36, 43));
 	agregarObjeto(new Objeto(610, 599, 110, 23));
@@ -201,7 +201,7 @@ void GestorBiblioteca::setearColisionesMapa(){
 	agregarObjeto(new Objeto(198, 95, 893, 20));
 }
 
-void GestorBiblioteca::generarManipulador(){
+void EscenarioBiblioteca::generarManipulador(){
 	int tipo = rand() % 4 + 1;
 
 	if (tipo == 1) {
@@ -221,7 +221,7 @@ void GestorBiblioteca::generarManipulador(){
 		agregarEnemigo(nuevo);
 	}
 }
-void GestorBiblioteca::recargaLinterna(){
+void EscenarioBiblioteca::recargaLinterna(){
 
 	Rectangle g = guardia->getRectangle();
 	Rectangle m = aliados[0]->getRectangle();
@@ -237,15 +237,15 @@ void GestorBiblioteca::recargaLinterna(){
 	else porcentajeLinterna = porcentajeLinterna - 0.05;
 }
 
-double GestorBiblioteca::getPorcentajeLinterna() {
+double EscenarioBiblioteca::getPorcentajeLinterna() {
 	return porcentajeLinterna;
 }
 
-double GestorBiblioteca::getVidas() {
+double EscenarioBiblioteca::getVidas() {
 	return vidas;
 }
 
-bool GestorBiblioteca::encenderLinterna() {
+bool EscenarioBiblioteca::encenderLinterna() {
 
 	if (guardia->getAccion() && guardia->getTipoAccion() == 1 && porcentajeLinterna >=1)
 	{	
@@ -280,7 +280,7 @@ bool GestorBiblioteca::encenderLinterna() {
 	}
 }
 
-void GestorBiblioteca::dibujarLibros(Graphics^ g , float escalaX, float escalaY) {
+void EscenarioBiblioteca::dibujarLibros(Graphics^ g , float escalaX, float escalaY) {
 	
 	for (size_t i = 0; i < (int)bienes.size(); i++)
 	{

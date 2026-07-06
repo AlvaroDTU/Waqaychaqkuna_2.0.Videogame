@@ -8,7 +8,7 @@
 #include "FrmSlodVictoria.h"
 #include "FrmInstrucciones.h"
 #include "FrmCreditos.h"
-#include "GestorBiblioteca.h"
+#include "EscenarioBiblioteca.h"
 
 namespace Waqaychaqkuna20 {
 
@@ -34,7 +34,7 @@ namespace Waqaychaqkuna20 {
 			this->SetStyle(ControlStyles::AllPaintingInWmPaint |
 				ControlStyles::UserPaint |
 				ControlStyles::DoubleBuffer, true);
-			escena = new GestorBiblioteca();
+			escena = new EscenarioBiblioteca();
 		}
 
 	protected:
@@ -72,7 +72,7 @@ namespace Waqaychaqkuna20 {
 		int puntaje2=0;
 		int puntaje3=0;
 		int puntajeTotal=0;
-		GestorBiblioteca* escena;
+		EscenarioBiblioteca* escena;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>

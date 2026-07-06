@@ -68,7 +68,7 @@
     <ClInclude Include="Ladron.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GestorMuseo.h">
+    <ClInclude Include="EscenarioMuseo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Bien.h">
@@ -77,13 +77,13 @@
     <ClInclude Include="Artilugio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GestorHuacas.h">
+    <ClInclude Include="EscenarioHuacas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Huaca.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GestorBiblioteca.h">
+    <ClInclude Include="EscenarioBiblioteca.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Archivo.h">
@@ -184,7 +184,7 @@
     <ClCompile Include="Ladron.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GestorMuseo.cpp">
+    <ClCompile Include="EscenarioMuseo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Bien.cpp">
@@ -193,13 +193,13 @@
     <ClCompile Include="Artilugio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GestorHuacas.cpp">
+    <ClCompile Include="EscenarioHuacas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Huaca.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GestorBibliotecas.cpp">
+    <ClCompile Include="EscenarioBiblioteca.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Archivo.cpp">

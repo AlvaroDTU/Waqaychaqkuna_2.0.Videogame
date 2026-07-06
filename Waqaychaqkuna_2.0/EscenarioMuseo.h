@@ -8,7 +8,7 @@
 
 using std::vector;
 
-class GestorMuseo : public Escenario
+class EscenarioMuseo : public Escenario
 {
 private:
 	vector<Visitante*> visitantes;
@@ -20,8 +20,8 @@ private:
 	int enemigosRonda2;
 	int intentos;
 public:
-	GestorMuseo();
-	~GestorMuseo();
+	EscenarioMuseo();
+	~EscenarioMuseo();
 
 	void crearSprites() override;
 	void dibujar(Graphics^ g) override;
