@@ -4,7 +4,7 @@
 Ladron::Ladron(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj, int tp, int tPista)
 	: Enemigo(posX, posY, an, al, anF, alF, dirX, dirY, obj)
 {
-	this->tipo = t;
+	this->tipo = tp;
 	this->tipoPista = tPista;
 	fila = (dirX > 0) ? 2 : 1;
 	atacando = false;
