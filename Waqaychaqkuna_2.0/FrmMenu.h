@@ -393,6 +393,7 @@ namespace Waqaychaqkuna20 {
 		System::Runtime::InteropServices::Marshal::FreeHGlobal(ptr);
 
 		escena->eliminarPuntaje(nombreNativo);
+		CargarHistorial();
 	}
 };
 }
