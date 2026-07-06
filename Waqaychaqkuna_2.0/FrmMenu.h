@@ -304,14 +304,13 @@ namespace Waqaychaqkuna20 {
 			{
 				puntaje3 = f3->RetornarPuntaje();
 				delete f3;
-
-				FrmSlodVictoria^ slodVictoria = gcnew FrmSlodVictoria();
-				slodVictoria->ShowDialog();
 				return;
 			}
 			puntaje3 = f3->RetornarPuntaje();
 			delete f3;
 
+			FrmSlodVictoria^ slodVictoria = gcnew FrmSlodVictoria();
+			slodVictoria->ShowDialog();
 
 		}
 		Void FrmMenu_Resize(System::Object^ sender, System::EventArgs^ e)

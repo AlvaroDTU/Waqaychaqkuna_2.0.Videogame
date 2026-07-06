@@ -3,8 +3,8 @@
 
 GestorMuseo::GestorMuseo() : Escenario()
 {
-	int n1, n2, n3, gx, gy, bat;
-	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
+	int n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat;
+	gestor->cargarTodo(n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat);
 	enemigosTotales = n1;
 
 	iniciado = false;
@@ -31,9 +31,9 @@ void GestorMuseo::crearSprites()
 	frases.push_back("(Interactua usando E con la reportera)");
 	dialogo.iniciar(frases);
 
-	int n1, n2, n3, gx = 1, gy = 1, bat;
-	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
-	guardia = new Guardia(gx, gy, 45, 60, 60, 80);
+	int n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat;
+	gestor->cargarTodo(n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat);
+	guardia = new Guardia(gx1, gy1, 45, 60, 60, 80);
 
 	agregarAliado(new Reportera(1095, 120, 48, 64, 60, 80));
 

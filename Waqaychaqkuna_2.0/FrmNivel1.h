@@ -403,7 +403,7 @@ namespace Waqaychaqkuna20 {
 			Graphics^ g = this->pnlMapa->CreateGraphics();
 			if (gestor->victoria()) {
 				System::Drawing::Font^ fuente = gcnew System::Drawing::Font("Segoe UI", 40, FontStyle::Bold);
-				String^ text = "MISION CUMPLIDA!";
+				String^ text = "NIVEL 1 VENCIDO!";
 				SizeF textSize = buffer->Graphics->MeasureString(text, fuente);
 				// centro
 				float x = (buffer->Graphics->VisibleClipBounds.Width - textSize.Width) / 2.0f;
@@ -414,7 +414,7 @@ namespace Waqaychaqkuna20 {
 			}
 			if (gestor->derrota()) {
 				System::Drawing::Font^ fuente = gcnew System::Drawing::Font("Segoe UI", 40, FontStyle::Bold);
-				String^ text = "GAME OVER :C";
+				String^ text = "INTENTA DE NUEVO";
 				SizeF textSize = buffer->Graphics->MeasureString(text, fuente);
 				// centro
 				float x = (buffer->Graphics->VisibleClipBounds.Width - textSize.Width) / 2.0f;
@@ -464,6 +464,9 @@ namespace Waqaychaqkuna20 {
 		Graphics^ gStats = pnlEstadisticas->CreateGraphics();
 		bufferStats = contexto->Allocate(gStats, pnlEstadisticas->ClientRectangle);
 		delete gStats;
+
+		Pintar();
+		PintarEstadisticas();
 	}
 		  
 	Void ActualizarTamanoLabels()

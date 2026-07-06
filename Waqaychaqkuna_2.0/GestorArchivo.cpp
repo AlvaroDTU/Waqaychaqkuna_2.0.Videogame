@@ -3,15 +3,19 @@
 #include <cstring>
 using namespace std;
 
-void GestorArchivo::cargarTodo(int& n1, int& n2, int& n3, int& gx, int& gy, int& bat) {
+void GestorArchivo::cargarTodo(int& n1, int& n2, int& n3, int& gx1, int& gy1, int& gx2, int& gy2, int& gx3, int& gy3, int& bat) {
     std::ifstream f("PARAMETERS.txt");
     if (!f.is_open()) return;
 
     f >> n1; f.ignore(1);
     f >> n2; f.ignore(1);
     f >> n3; f.ignore(1);
-    f >> gx; f.ignore(1);
-    f >> gy; f.ignore(1);
+    f >> gx1; f.ignore(1);
+    f >> gy1; f.ignore(1);
+    f >> gx2; f.ignore(1);
+    f >> gy2; f.ignore(1);
+    f >> gx3; f.ignore(1);
+    f >> gy3; f.ignore(1);
     f >> bat;
 
     f.close();

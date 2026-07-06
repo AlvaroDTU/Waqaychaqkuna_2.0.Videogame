@@ -382,13 +382,24 @@ namespace Waqaychaqkuna20 {
 			   gestor->dibujar(buffer->Graphics);
 			   gestor->getDialogo()->dibujar(buffer->Graphics, pnlMapa->ClientSize.Width, pnlMapa->ClientSize.Height);
 			   if (gestor->victoria()) {
-				   buffer->Graphics->DrawString("MISION CUMPLIDA!", gcnew System::Drawing::Font("Segoe UI", 40, FontStyle::Bold),
-					   gcnew SolidBrush(Color::DarkGreen), 300.0f, 260.0f);
+				   System::Drawing::Font^ fuente = gcnew System::Drawing::Font("Segoe UI", 40, FontStyle::Bold);
+				   String^ text = "NIVEL 2 VENCIDO!";
+				   SizeF textSize = buffer->Graphics->MeasureString(text, fuente);
+				   // centro
+				   float x = (buffer->Graphics->VisibleClipBounds.Width - textSize.Width) / 2.0f;
+				   float y = (buffer->Graphics->VisibleClipBounds.Height - textSize.Height) / 2.0f;
+
+				   buffer->Graphics->DrawString(text, fuente, gcnew SolidBrush(Color::DarkGreen), x, y);
 
 			   }
 			   if (gestor->derrota()) {
-				   buffer->Graphics->DrawString("GAME OVER", gcnew System::Drawing::Font("Segoe UI", 40, FontStyle::Bold),
-					   gcnew SolidBrush(Color::DarkRed), 360.0f, 260.0f);
+				   System::Drawing::Font^ fuente = gcnew System::Drawing::Font("Segoe UI", 40, FontStyle::Bold);
+				   String^ text = "INTENTA DE NUEVO";
+				   SizeF textSize = buffer->Graphics->MeasureString(text, fuente);
+				   // centro
+				   float x = (buffer->Graphics->VisibleClipBounds.Width - textSize.Width) / 2.0f;
+				   float y = (buffer->Graphics->VisibleClipBounds.Height - textSize.Height) / 2.0f;
+				   buffer->Graphics->DrawString(text, fuente, gcnew SolidBrush(Color::DarkGreen), x, y);
 
 			   }
 			   Graphics^ g = this->pnlMapa->CreateGraphics();
@@ -430,6 +441,9 @@ namespace Waqaychaqkuna20 {
 			   Graphics^ gStats = pnlEstadisticas->CreateGraphics();
 			   bufferStats = contexto->Allocate(gStats, pnlEstadisticas->ClientRectangle);
 			   delete gStats;
+
+			   Pintar();
+			   PintarEstadisticas();
 		   }
 		   Void ActualizarTamanoLabels()
 		   {
@@ -480,7 +494,7 @@ namespace Waqaychaqkuna20 {
 					   musicaFinal = true;
 				   }
 				   finCont++;
-				   if (finCont >= 200)
+				   if (finCont >= 250)
 				   {
 					   this->tmrJuego->Stop();
 					   if (gestor->victoria())

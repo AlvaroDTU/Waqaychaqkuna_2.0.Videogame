@@ -3,13 +3,12 @@
 
 GestorBiblioteca::GestorBiblioteca() : Escenario()
 {
-	int n1, n2, n3, gx, gy, bat;
-	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
-
-	enemigosTotales = 30;
+	int n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat;
+	gestor->cargarTodo(n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat);
+	enemigosTotales = n3;
 	contador = 0;
-	this->porcentajeLinterna = bat;
-	tempSpawnEntidades = 80;
+	porcentajeLinterna = bat;
+	tempSpawnEntidades = 67;
 	vidas = 20;
 	linterna = nullptr;
 }
@@ -23,9 +22,9 @@ void GestorBiblioteca::crearSprites(){
 
 	linterna = new Linterna(false);
 
-	int n1, n2, n3, gx=1, gy=1, bat;
-	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
-	guardia = new Guardia(gx, gy, 30, 40, 60, 80);
+	int n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat;
+	gestor->cargarTodo(n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat);
+	guardia = new Guardia(gx3, gy3, 30, 40, 60, 80);
 
 
 	agregarAliado(new Murcielago(131, 541, 40, 30, 40, 24));
@@ -155,7 +154,7 @@ void GestorBiblioteca::jugar(){
 	tempSpawnEntidades--;
 	if (tempSpawnEntidades == 0 && (contador != enemigosTotales)) {
 		generarManipulador();
-		tempSpawnEntidades = 40;
+		tempSpawnEntidades = 67;
 		contador++;
 	}
 }

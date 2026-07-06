@@ -135,8 +135,10 @@ namespace Waqaychaqkuna20 {
 			// lblArchivo1
 			// 
 			this->lblArchivo1->AutoSize = true;
+			this->lblArchivo1->BackColor = System::Drawing::Color::Transparent;
 			this->lblArchivo1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->lblArchivo1->ForeColor = System::Drawing::Color::PeachPuff;
 			this->lblArchivo1->Location = System::Drawing::Point(12, 506);
 			this->lblArchivo1->Name = L"lblArchivo1";
 			this->lblArchivo1->Size = System::Drawing::Size(52, 17);
@@ -146,8 +148,10 @@ namespace Waqaychaqkuna20 {
 			// lblArchivo2
 			// 
 			this->lblArchivo2->AutoSize = true;
+			this->lblArchivo2->BackColor = System::Drawing::Color::Transparent;
 			this->lblArchivo2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->lblArchivo2->ForeColor = System::Drawing::Color::PeachPuff;
 			this->lblArchivo2->Location = System::Drawing::Point(178, 506);
 			this->lblArchivo2->Name = L"lblArchivo2";
 			this->lblArchivo2->Size = System::Drawing::Size(52, 17);
@@ -157,8 +161,10 @@ namespace Waqaychaqkuna20 {
 			// lblArchivo3
 			// 
 			this->lblArchivo3->AutoSize = true;
+			this->lblArchivo3->BackColor = System::Drawing::Color::Transparent;
 			this->lblArchivo3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->lblArchivo3->ForeColor = System::Drawing::Color::PeachPuff;
 			this->lblArchivo3->Location = System::Drawing::Point(12, 577);
 			this->lblArchivo3->Name = L"lblArchivo3";
 			this->lblArchivo3->Size = System::Drawing::Size(52, 17);
@@ -168,8 +174,10 @@ namespace Waqaychaqkuna20 {
 			// lblArchivo4
 			// 
 			this->lblArchivo4->AutoSize = true;
+			this->lblArchivo4->BackColor = System::Drawing::Color::Transparent;
 			this->lblArchivo4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->lblArchivo4->ForeColor = System::Drawing::Color::PeachPuff;
 			this->lblArchivo4->Location = System::Drawing::Point(178, 577);
 			this->lblArchivo4->Name = L"lblArchivo4";
 			this->lblArchivo4->Size = System::Drawing::Size(52, 17);
@@ -179,8 +187,10 @@ namespace Waqaychaqkuna20 {
 			// lblDerrotados
 			// 
 			this->lblDerrotados->AutoSize = true;
+			this->lblDerrotados->BackColor = System::Drawing::Color::Transparent;
 			this->lblDerrotados->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->lblDerrotados->ForeColor = System::Drawing::Color::PeachPuff;
 			this->lblDerrotados->Location = System::Drawing::Point(12, 678);
 			this->lblDerrotados->Name = L"lblDerrotados";
 			this->lblDerrotados->Size = System::Drawing::Size(52, 17);
@@ -190,8 +200,10 @@ namespace Waqaychaqkuna20 {
 			// lblBateria
 			// 
 			this->lblBateria->AutoSize = true;
+			this->lblBateria->BackColor = System::Drawing::Color::Transparent;
 			this->lblBateria->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->lblBateria->ForeColor = System::Drawing::Color::PeachPuff;
 			this->lblBateria->Location = System::Drawing::Point(12, 764);
 			this->lblBateria->Name = L"lblBateria";
 			this->lblBateria->Size = System::Drawing::Size(52, 17);
@@ -201,8 +213,10 @@ namespace Waqaychaqkuna20 {
 			// lblIntentos
 			// 
 			this->lblIntentos->AutoSize = true;
+			this->lblIntentos->BackColor = System::Drawing::Color::Transparent;
 			this->lblIntentos->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->lblIntentos->ForeColor = System::Drawing::Color::PeachPuff;
 			this->lblIntentos->Location = System::Drawing::Point(12, 719);
 			this->lblIntentos->Name = L"lblIntentos";
 			this->lblIntentos->Size = System::Drawing::Size(52, 17);
@@ -218,8 +232,10 @@ namespace Waqaychaqkuna20 {
 			// lblPuntaje1
 			// 
 			this->lblPuntaje1->AutoSize = true;
+			this->lblPuntaje1->BackColor = System::Drawing::Color::Transparent;
 			this->lblPuntaje1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->lblPuntaje1->ForeColor = System::Drawing::Color::PeachPuff;
 			this->lblPuntaje1->Location = System::Drawing::Point(12, 535);
 			this->lblPuntaje1->Name = L"lblPuntaje1";
 			this->lblPuntaje1->Size = System::Drawing::Size(52, 17);
@@ -229,8 +245,10 @@ namespace Waqaychaqkuna20 {
 			// lblPuntaje3
 			// 
 			this->lblPuntaje3->AutoSize = true;
+			this->lblPuntaje3->BackColor = System::Drawing::Color::Transparent;
 			this->lblPuntaje3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->lblPuntaje3->ForeColor = System::Drawing::Color::PeachPuff;
 			this->lblPuntaje3->Location = System::Drawing::Point(12, 608);
 			this->lblPuntaje3->Name = L"lblPuntaje3";
 			this->lblPuntaje3->Size = System::Drawing::Size(52, 17);
@@ -240,8 +258,10 @@ namespace Waqaychaqkuna20 {
 			// lblPuntaje2
 			// 
 			this->lblPuntaje2->AutoSize = true;
+			this->lblPuntaje2->BackColor = System::Drawing::Color::Transparent;
 			this->lblPuntaje2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->lblPuntaje2->ForeColor = System::Drawing::Color::PeachPuff;
 			this->lblPuntaje2->Location = System::Drawing::Point(178, 535);
 			this->lblPuntaje2->Name = L"lblPuntaje2";
 			this->lblPuntaje2->Size = System::Drawing::Size(52, 17);
@@ -251,8 +271,10 @@ namespace Waqaychaqkuna20 {
 			// lblPuntaje4
 			// 
 			this->lblPuntaje4->AutoSize = true;
+			this->lblPuntaje4->BackColor = System::Drawing::Color::Transparent;
 			this->lblPuntaje4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->lblPuntaje4->ForeColor = System::Drawing::Color::PeachPuff;
 			this->lblPuntaje4->Location = System::Drawing::Point(178, 608);
 			this->lblPuntaje4->Name = L"lblPuntaje4";
 			this->lblPuntaje4->Size = System::Drawing::Size(52, 17);
@@ -277,6 +299,7 @@ namespace Waqaychaqkuna20 {
 			this->pnlEstadisticas->Name = L"pnlEstadisticas";
 			this->pnlEstadisticas->Size = System::Drawing::Size(300, 800);
 			this->pnlEstadisticas->TabIndex = 24;
+			this->pnlEstadisticas->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmNivel3::pnlEstadisticas_Paint);
 			// 
 			// FrmNivel3
 			// 
@@ -335,6 +358,14 @@ private: System::Void FrmNivel3_Load(System::Object^ sender, System::EventArgs^ 
 	Graphics^ gStats = pnlEstadisticas->CreateGraphics();
 	bufferStats = BufferedGraphicsManager::Current->Allocate(gStats, pnlEstadisticas->ClientRectangle);
 	delete gStats;
+
+	System::Reflection::PropertyInfo^ p =
+		pnlEstadisticas->GetType()->GetProperty(
+			"DoubleBuffered",
+			System::Reflection::BindingFlags::Instance |
+			System::Reflection::BindingFlags::NonPublic);
+
+	p->SetValue(pnlEstadisticas, true, nullptr);
 }
 
 
@@ -374,19 +405,43 @@ private: System::Void FrmNivel3_KeyDown(System::Object^ sender, System::Windows:
 }
 	Void PintarEstadisticas()
 	{
-	 Bitmap^ fondo = Recursos::PanelEstadisticas3;
-	 bufferStats->Graphics->DrawImage(fondo, System::Drawing::Rectangle(0, 0, pnlEstadisticas->Width, pnlEstadisticas->Height));
-	 gestor->dibujarDescripcion(bufferStats->Graphics);
+		bufferStats->Graphics->Clear(Color::Transparent);
 
-	 Graphics^ g = pnlEstadisticas->CreateGraphics();
-	 bufferStats->Render(g);
-	 delete g;
+		bufferStats->Graphics->DrawImage(
+			Recursos::PanelEstadisticas3,
+			System::Drawing::Rectangle(0, 0, pnlEstadisticas->Width, pnlEstadisticas->Height)
+		);
+
+		gestor->dibujarDescripcion(bufferStats->Graphics);
+
+		pnlEstadisticas->Invalidate();
 	}
  Void Pintar(){
 
 	 gestor->dibujar(buffer->Graphics);
 	 gestor->getDialogo()->dibujar(buffer->Graphics, pnlMapa->ClientSize.Width, pnlMapa->ClientSize.Height);
 	 Graphics^ g = this->pnlMapa->CreateGraphics();
+	 if (gestor->victoria()) {
+		 System::Drawing::Font^ fuente = gcnew System::Drawing::Font("Segoe UI", 40, FontStyle::Bold);
+		 String^ text = "NIVEL 3 VENCIDO!";
+		 SizeF textSize = buffer->Graphics->MeasureString(text, fuente);
+		 // centro
+		 float x = (buffer->Graphics->VisibleClipBounds.Width - textSize.Width) / 2.0f;
+		 float y = (buffer->Graphics->VisibleClipBounds.Height - textSize.Height) / 2.0f;
+
+		 buffer->Graphics->DrawString(text, fuente, gcnew SolidBrush(Color::DarkGreen), x, y);
+
+	 }
+	 if (gestor->derrota()) {
+		 System::Drawing::Font^ fuente = gcnew System::Drawing::Font("Segoe UI", 40, FontStyle::Bold);
+		 String^ text = "INTENTA DE NUEVO";
+		 SizeF textSize = buffer->Graphics->MeasureString(text, fuente);
+		 // centro
+		 float x = (buffer->Graphics->VisibleClipBounds.Width - textSize.Width) / 2.0f;
+		 float y = (buffer->Graphics->VisibleClipBounds.Height - textSize.Height) / 2.0f;
+		 buffer->Graphics->DrawString(text, fuente, gcnew SolidBrush(Color::DarkGreen), x, y);
+
+	 }
 	 buffer->Render(g);
 	 delete g;
 }
@@ -423,6 +478,9 @@ private: System::Void FrmNivel3_KeyDown(System::Object^ sender, System::Windows:
 	  Graphics^ gStats = pnlEstadisticas->CreateGraphics();
 	  bufferStats = contexto->Allocate(gStats, pnlEstadisticas->ClientRectangle);
 	  delete gStats;
+
+	  Pintar();
+	  PintarEstadisticas();
   }
 		 Void ActualizarTamanoLabels()
 		 {
@@ -463,114 +521,6 @@ private: System::Void FrmNivel3_KeyDown(System::Object^ sender, System::Windows:
 
 		 }
 private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ e) {
-
-	gestor->getDialogo()->actualizar();
-	if (gestor->victoria() || gestor->derrota())
-	{
-		if (gestor->victoria() && !musicaFinal) {
-			Recursos::normal2->Stop();
-			Recursos::suspenso2->Stop();
-			Recursos::victoria->PlayLooping();
-			musicaFinal = true;
-		}
-		if (gestor->derrota() && !musicaFinal) {
-			Recursos::normal2->Stop();
-			Recursos::suspenso2->Stop();
-			Recursos::perdiste->PlayLooping();
-			musicaFinal = true;
-		}
-		finCont++;
-		if (finCont >= 200)
-		{
-			this->tmrNivel3->Stop();
-			if (gestor->victoria())
-			{
-				Recursos::victoria->Stop();
-				this->DialogResult = System::Windows::Forms::DialogResult::OK;
-			}
-			if (gestor->derrota())
-				Recursos::perdiste->Stop();
-			this->Close();
-		}
-	}
-
-	if (!dialogoArchivo1 && gestor->getBien(0)->getPuntajeValor() <= 2000)
-	{
-		dialogoArchivo1 = true;
-
-		std::vector<std::string> archivo1;
-		archivo1.push_back("El Archivo Caceres ha sido manipulado...");
-		archivo1.push_back("Los documentos originales de Andres Avelino Caceres se han perdido.");
-		archivo1.push_back("Con ellos desaparece parte de la memoria de la Guerra del Pacifico.");
-		archivo1.push_back("¡No permitas que la historia del Peru sea borrada!");
-		
-		gestor->getDialogo()->iniciar(archivo1);
-	}
-
-	if (!dialogoArchivo2 && gestor->getBien(1)->getPuntajeValor() <= 2000)
-	{
-		dialogoArchivo2 = true;
-
-		std::vector<std::string> archivo2;
-		archivo2.push_back("Las Tradiciones Peruanas han sido manipuladas...");
-		archivo2.push_back("Las historias de Ricardo Palma ya no podran llegar a futuras generaciones.");
-		archivo2.push_back("La identidad de un pueblo tambien vive en sus relatos.");
-		archivo2.push_back("¡La cultura tambien necesita ser defendida!");
-
-		gestor->getDialogo()->iniciar(archivo2);
-	}
-	//hOLA
-
-	if (!dialogoArchivo3 && gestor->getBien(2)->getPuntajeValor() <= 2000)
-	{
-		dialogoArchivo3 = true;
-
-		std::vector<std::string> archivo3;
-		archivo3.push_back("La Juramentacion de la Independencia ha sido manipulada...");
-		archivo3.push_back("Los testimonios del nacimiento del Peru se han perdido.");
-		archivo3.push_back("La libertad tambien se conserva en sus documentos.");
-		archivo3.push_back("¡Protege el legado de nuestra independencia!");
-
-		gestor->getDialogo()->iniciar(archivo3);
-	}
-
-	if (!dialogoArchivo4 && gestor->getBien(3)->getPuntajeValor() <= 2000)
-	{
-		dialogoArchivo4 = true;
-
-		std::vector<std::string> archivo4;
-		archivo4.push_back("El Archivo Courret ha sido manipulado...");
-		archivo4.push_back("Miles de fotografias historicas se han perdido para siempre.");
-		archivo4.push_back("Sin ellas, una parte del Peru queda en el olvido.");
-		archivo4.push_back("¡Cada fotografia es una ventana a nuestra historia!");
-
-		gestor->getDialogo()->iniciar(archivo4);
-	}
-
-	if (!musicaSuspenso &&
-		(gestor->getBien(0)->getPuntajeValor() <= 2000 || gestor->getBien(1)->getPuntajeValor() <= 2000 ||
-		gestor->getBien(2)->getPuntajeValor() <= 2000 || gestor->getBien(3)->getPuntajeValor() <= 2000)) {
-
-		musicaSuspenso = true;
-
-		Recursos::normal3->Stop();
-		Recursos::suspenso3->PlayLooping();
-	}
-
-	this->lblDerrotados->Text = String::Format(L"ENEMIGOS CAPTURADOS: {0}", (int)gestor->getCapturados());
-	this->lblIntentos->Text = String::Format(L"VIDA: {0}", (int)gestor->getVidas());
-	this->lblBateria->Text = String::Format("PORCENTAJE BATERIA: {0}%", (int)gestor->getPorcentajeLinterna());
-	//archivos
-	this->lblArchivo1->Text = gcnew System::String(gestor->getBien(0)->getNombre().c_str());
-	this->lblArchivo2->Text = gcnew System::String(gestor->getBien(1)->getNombre().c_str());
-	this->lblArchivo3->Text = gcnew System::String(gestor->getBien(2)->getNombre().c_str());
-	this->lblArchivo4->Text = gcnew System::String(gestor->getBien(3)->getNombre().c_str());
-	//puntajes
-	this->lblPuntaje1->Text = String::Format("Puntaje: {0}", gestor->getBien(0)->getPuntajeValor());
-	this->lblPuntaje2->Text = String::Format("Puntaje: {0}", gestor->getBien(1)->getPuntajeValor());
-	this->lblPuntaje3->Text = String::Format("Puntaje: {0}", gestor->getBien(2)->getPuntajeValor());
-	this->lblPuntaje4->Text = String::Format("Puntaje: {0}", gestor->getBien(3)->getPuntajeValor());
-
 	if (gestor->victoria() || gestor->derrota())
 	{
 		if (gestor->victoria() && !musicaFinal) {
@@ -602,20 +552,100 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 				IntPtr ptr = System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(nombre);
 				std::string nombreNormal(static_cast<const char*>(ptr.ToPointer()));
 				System::Runtime::InteropServices::Marshal::FreeHGlobal(ptr);
-			Recursos::perdiste->Stop();
-			gestor->guardarPuntaje(gestor->getPuntaje() + puntajeFinal, nombreNormal);
-		}
+				Recursos::perdiste->Stop();
+				gestor->guardarPuntaje(gestor->getPuntaje() + puntajeFinal, nombreNormal);
+			}
 			this->Close();
 		}
 	}
+	else {
+		gestor->getDialogo()->actualizar();
+		if (!dialogoArchivo1 && gestor->getBien(0)->getPuntajeValor() <= 2000)
+		{
+			dialogoArchivo1 = true;
 
-	if (!gestor->getDialogo()->estaActivo()) {
-		gestor->jugar();
-		gestor->detectarColisiones();
+			std::vector<std::string> archivo1;
+			archivo1.push_back("El Archivo Caceres ha sido manipulado...");
+			archivo1.push_back("Los documentos originales de Andres Avelino Caceres se han perdido.");
+			archivo1.push_back("Con ellos desaparece parte de la memoria de la Guerra del Pacifico.");
+			archivo1.push_back("¡No permitas que la historia del Peru sea borrada!");
+
+			gestor->getDialogo()->iniciar(archivo1);
+		}
+
+		if (!dialogoArchivo2 && gestor->getBien(1)->getPuntajeValor() <= 2000)
+		{
+			dialogoArchivo2 = true;
+
+			std::vector<std::string> archivo2;
+			archivo2.push_back("Las Tradiciones Peruanas han sido manipuladas...");
+			archivo2.push_back("Las historias de Ricardo Palma ya no podran llegar a futuras generaciones.");
+			archivo2.push_back("La identidad de un pueblo tambien vive en sus relatos.");
+			archivo2.push_back("¡La cultura tambien necesita ser defendida!");
+
+			gestor->getDialogo()->iniciar(archivo2);
+		}
+		//hOLA
+
+		if (!dialogoArchivo3 && gestor->getBien(2)->getPuntajeValor() <= 2000)
+		{
+			dialogoArchivo3 = true;
+
+			std::vector<std::string> archivo3;
+			archivo3.push_back("La Juramentacion de la Independencia ha sido manipulada...");
+			archivo3.push_back("Los testimonios del nacimiento del Peru se han perdido.");
+			archivo3.push_back("La libertad tambien se conserva en sus documentos.");
+			archivo3.push_back("¡Protege el legado de nuestra independencia!");
+
+			gestor->getDialogo()->iniciar(archivo3);
+		}
+
+		if (!dialogoArchivo4 && gestor->getBien(3)->getPuntajeValor() <= 2000)
+		{
+			dialogoArchivo4 = true;
+
+			std::vector<std::string> archivo4;
+			archivo4.push_back("El Archivo Courret ha sido manipulado...");
+			archivo4.push_back("Miles de fotografias historicas se han perdido para siempre.");
+			archivo4.push_back("Sin ellas, una parte del Peru queda en el olvido.");
+			archivo4.push_back("¡Cada fotografia es una ventana a nuestra historia!");
+
+			gestor->getDialogo()->iniciar(archivo4);
+		}
+
+		if (!musicaSuspenso &&
+			(gestor->getBien(0)->getPuntajeValor() <= 2000 || gestor->getBien(1)->getPuntajeValor() <= 2000 ||
+				gestor->getBien(2)->getPuntajeValor() <= 2000 || gestor->getBien(3)->getPuntajeValor() <= 2000)) {
+
+			musicaSuspenso = true;
+
+			Recursos::normal3->Stop();
+			Recursos::suspenso3->PlayLooping();
+		}
+
+		this->lblDerrotados->Text = String::Format(L"ENEMIGOS CAPTURADOS: {0}", (int)gestor->getCapturados());
+		this->lblIntentos->Text = String::Format(L"VIDA: {0}", (int)gestor->getVidas());
+		this->lblBateria->Text = String::Format("PORCENTAJE BATERIA: {0}%", (int)gestor->getPorcentajeLinterna());
+		//archivos
+		this->lblArchivo1->Text = gcnew System::String(gestor->getBien(0)->getNombre().c_str());
+		this->lblArchivo2->Text = gcnew System::String(gestor->getBien(1)->getNombre().c_str());
+		this->lblArchivo3->Text = gcnew System::String(gestor->getBien(2)->getNombre().c_str());
+		this->lblArchivo4->Text = gcnew System::String(gestor->getBien(3)->getNombre().c_str());
+		//puntajes
+		this->lblPuntaje1->Text = String::Format("Puntaje: {0}", gestor->getBien(0)->getPuntajeValor());
+		this->lblPuntaje2->Text = String::Format("Puntaje: {0}", gestor->getBien(1)->getPuntajeValor());
+		this->lblPuntaje3->Text = String::Format("Puntaje: {0}", gestor->getBien(2)->getPuntajeValor());
+		this->lblPuntaje4->Text = String::Format("Puntaje: {0}", gestor->getBien(3)->getPuntajeValor());
+
+
+		if (!gestor->getDialogo()->estaActivo()) {
+			gestor->jugar();
+			gestor->detectarColisiones();
+		}
+
+		PintarEstadisticas();
+		Pintar();
 	}
-
-	PintarEstadisticas();
-	Pintar();
 }
 
 private: System::Void FrmNivel3_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
@@ -630,6 +660,10 @@ private: System::Void FrmNivel3_FormClosing(System::Object^ sender, System::Wind
 	Recursos::suspenso3->Stop();
 	Recursos::victoria->Stop();
 	Recursos::perdiste->Stop();
+}
+private: System::Void pnlEstadisticas_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) 
+{
+	bufferStats->Render(e->Graphics);
 }
 };
 }
