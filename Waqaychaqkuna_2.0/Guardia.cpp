@@ -50,5 +50,3 @@ void Guardia::mover(vector<Objeto*> objetos, vector<Bien*> bienes)
 	if (dirX != 0 || dirY != 0) avanzarEscena();
 	else columna = 0;
 }
-
-void Guardia::mover(int ancho, int alto) {}

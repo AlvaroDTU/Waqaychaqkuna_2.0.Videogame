@@ -88,7 +88,6 @@ void GestorBiblioteca::detectarColisiones(){
 		{
 			Rectangle htbEnemigo = enemigos[j]->getRectangle();
 			if (htbBien.IntersectsWith(htbEnemigo)) {
-				enemigos[j]->setMoviendose(false);
 				enemigos[j]->setColumna(0);
 				enemigos[j]->setAtacando(true);
 				bienes[i]->restarPuntajeValor(1);

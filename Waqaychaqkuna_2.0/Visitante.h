@@ -11,8 +11,7 @@ class Visitante : public Entidad
 private:
 	int tipo;
 	int tempMovimiento;
-public:
-
+public:	
 	Visitante(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY);
 	~Visitante();
 	void mover(vector<Objeto*> objetos, vector<Bien*> bienes);

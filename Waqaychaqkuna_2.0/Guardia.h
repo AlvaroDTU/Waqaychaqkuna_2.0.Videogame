@@ -11,7 +11,6 @@ private:
 	int tipoAccion;
 	bool accion;
 public:
-
 	Guardia(int posX, int posY, int an, int al, int anF, int alF);
 	~Guardia();
 	bool getAccion();
@@ -26,6 +25,6 @@ public:
 
 	Bitmap^ getBitmap() override;
 	std::string getNombre() override;
-	void mover(int ancho, int alto) override;
+	void mover(int ancho, int alto) override {}
 };
 

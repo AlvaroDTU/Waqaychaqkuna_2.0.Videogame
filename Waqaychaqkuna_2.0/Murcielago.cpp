@@ -12,7 +12,6 @@ Bitmap^ Murcielago::getBitmap() {
 	return Recursos::murcielago;
 }
 void Murcielago::mover(int anchoLienzo, int altoLienzo) {
-	moviendose = true;
 	if (dirX < 0) { fila = 0; }
 
 	posX += dirX;

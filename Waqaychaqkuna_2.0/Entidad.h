@@ -37,8 +37,8 @@ public:
 	void setAncho(int anch);
 	void setFila(int fil);
 	void setColumna(int colum);
-		bool estaActivo();
-		void setActivo(bool a);
+	bool estaActivo();
+	void setActivo(bool a);
 	void dibujar(Graphics^ g, float escalaX, float escalaY);
 
 	virtual Bitmap^ getBitmap() = 0;

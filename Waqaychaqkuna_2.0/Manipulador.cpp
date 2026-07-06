@@ -26,7 +26,6 @@ void Manipulador::setIluminado(bool i) {
 
 void Manipulador::mover(int anchoLienzo, int altoLienzo)
 {
-	moviendose = true;
 	if (dirX < 0) { fila = 1; }
 	else if (dirX > 0) { fila = 2; }
 	else if (dirY < 0) { fila = 3; }
