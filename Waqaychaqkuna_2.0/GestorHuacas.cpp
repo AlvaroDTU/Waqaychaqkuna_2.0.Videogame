@@ -3,8 +3,8 @@
 #include "Cuidador.h"
 GestorHuacas::GestorHuacas() : Escenario()
 {
-	int n1, n2, n3, gx, gy, bat;
-	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
+	int n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat;
+	gestor->cargarTodo(n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat);
 
 	enemigosTotales = n2;
 	contador = 0;
@@ -16,9 +16,9 @@ GestorHuacas::~GestorHuacas() {
 void GestorHuacas::crearSprites() {
 	fondo = new Fondo(2, anchoLienzo, altoLienzo);
 
-	int n1, n2, n3, gx = 1, gy = 1, bat;
-	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
-	guardia = new Guardia(gx, gy, 30, 40, 60, 80);
+	int n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat;
+	gestor->cargarTodo(n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat);
+	guardia = new Guardia(gx2, gy2, 30, 40, 60, 80);
 
 
 	agregarObjeto(new Objeto(0, 0, 180, 800));
@@ -31,10 +31,10 @@ void GestorHuacas::crearSprites() {
 	agregarObjeto(new Objeto(753, 278, 8, 37));
 	agregarObjeto(new Objeto(779, 243, 23, 54));
 
-	agregarBien(new Huaca(177, 109, 300, 194,2000,"Huaca del Sol",1));
-	agregarBien(new Huaca(817,108 , 299, 188,2069, "Huaca de la Luna",2));
-	agregarBien(new Huaca(202, 482, 266, 177,2679,"Huaca Dragon",3));
-	agregarBien(new Huaca(801, 474, 309, 200,3000,"Huaca Takaynamo",4));
+	agregarBien(new Huaca(177, 109, 300, 194, 2000, "HUACA DEL SOL", 1));
+	agregarBien(new Huaca(817, 108, 299, 188, 2069, "HUACA DE LA LUNA", 2));
+	agregarBien(new Huaca(202, 482, 266, 177, 2679, "HUACA DRAGON", 3));
+	agregarBien(new Huaca(801, 474, 309, 200, 3000, "HUACA TAKAYNAMO", 4));
 
 }
 void GestorHuacas::dibujar(Graphics^ g) {
@@ -42,20 +42,20 @@ void GestorHuacas::dibujar(Graphics^ g) {
 	for (size_t i = 0; i < (int)bienes.size(); i++)
 	{
 		if (bienes[i]->getPuntajeValor() < 1505)
-			bienes[i]->dibujar(g,escalaX,escalaY);
+			bienes[i]->dibujar(g, escalaX, escalaY);
 	}
-	for (auto huaquero : enemigos) huaquero->dibujar(g,escalaX, escalaY);
+	for (auto huaquero : enemigos) huaquero->dibujar(g, escalaX, escalaY);
 	for (auto cuidador : aliados) cuidador->dibujar(g, escalaX, escalaY);
 
 	guardia->dibujar(g, escalaX, escalaY);
-	
+
 }
 void GestorHuacas::mover() {
 	guardia->mover(objetos, bienes);
 
-	for (auto cuidador : aliados) ((Cuidador*) cuidador)->sinMover();
+	for (auto cuidador : aliados) ((Cuidador*)cuidador)->sinMover();
 	for (size_t j = 0; j < (int)enemigos.size(); j++) {
-		if (enemigos[j]->getAtacando()==false) { enemigos[j]->mover(anchoLienzo,altoLienzo); }
+		if (enemigos[j]->getAtacando() == false) { enemigos[j]->mover(anchoLienzo, altoLienzo); }
 	}
 }
 void GestorHuacas::detectarColisiones() {
@@ -71,7 +71,7 @@ void GestorHuacas::detectarColisiones() {
 				guardia->setAccion(false);
 				guardia->setTipoAccion(0);
 			}
-		} 
+		}
 		else
 			bienes[i]->setColision(false);
 	}
@@ -134,14 +134,14 @@ void GestorHuacas::detectarColisiones() {
 
 }
 
-bool GestorHuacas::victoria() { return enemigosCapturados==enemigosTotales; }
-bool GestorHuacas::derrota() { 
+bool GestorHuacas::victoria() { return enemigosCapturados == enemigosTotales; }
+bool GestorHuacas::derrota() {
 	bool bienDestruido = false;
 	for (auto bien : bienes)
 	{
 		if (bien->getPuntajeValor() <= 0) bienDestruido = true;
 	}
-	return bienDestruido; 
+	return bienDestruido;
 }
 
 void GestorHuacas::jugar() {
@@ -157,72 +157,73 @@ void GestorHuacas::jugar() {
 void GestorHuacas::generarHuaquero() {
 	int tipo = rand() % 16 + 1;
 	//Derecha
-	 if (tipo == 1) {
-		Huaquero* nuevo = new Huaquero(0, 365, 30, 40, 60, 80, 5,0,1,1);
+	if (tipo == 1) {
+		Huaquero* nuevo = new Huaquero(0, 365, 30, 40, 60, 80, 5, 0, 1, 1);
 		agregarEnemigo(nuevo);
 	}
 	else if (tipo == 2) {
-		Huaquero* nuevo = new Huaquero(0, 365, 30, 40, 60, 80, 5, 0,2, tipo);
+		Huaquero* nuevo = new Huaquero(0, 365, 30, 40, 60, 80, 5, 0, 2, tipo);
 		agregarEnemigo(nuevo);
 	}
 	else if (tipo == 3) {
 		Huaquero* nuevo = new Huaquero(0, 365, 30, 40, 60, 80, 5, 0, 3, tipo);
 		agregarEnemigo(nuevo);
 	}
-	 else if (tipo == 4) {
+	else if (tipo == 4) {
 		Huaquero* nuevo = new Huaquero(0, 365, 30, 40, 60, 80, 5, 0, 4, tipo);
 		agregarEnemigo(nuevo);
 	}
 
-	 // Izqueirda
-	 else if (tipo == 5) {
+	// Izqueirda
+	else if (tipo == 5) {
 		Huaquero* nuevo = new Huaquero(1270, 365, 30, 40, 60, 80, -5, 0, 1, tipo);
 		agregarEnemigo(nuevo);
 	}
-	 else if (tipo == 6) {
+	else if (tipo == 6) {
 		Huaquero* nuevo = new Huaquero(1270, 365, 30, 40, 60, 80, -5, 0, 2, tipo);
 		agregarEnemigo(nuevo);
 	}
-	 else if (tipo == 7) {
+	else if (tipo == 7) {
 		Huaquero* nuevo = new Huaquero(1270, 365, 30, 40, 60, 80, -5, 0, 3, tipo);
 		agregarEnemigo(nuevo);
 	}
-	 else if (tipo == 8) {
+	else if (tipo == 8) {
 		Huaquero* nuevo = new Huaquero(1270, 365, 30, 40, 60, 80, -5, 0, 4, tipo);
 		agregarEnemigo(nuevo);
 	}
 
-	 // Arriba
-	 else if (tipo == 9) {
+	// Arriba
+	else if (tipo == 9) {
 		Huaquero* nuevo = new Huaquero(634, 0, 30, 40, 60, 80, 0, 5, 1, tipo);
 		agregarEnemigo(nuevo);
 	}
-	 else if (tipo == 10) {
-		Huaquero* nuevo = new Huaquero(634, 0, 30, 40, 60, 80, 0,5, 2, tipo);
+	else if (tipo == 10) {
+		Huaquero* nuevo = new Huaquero(634, 0, 30, 40, 60, 80, 0, 5, 2, tipo);
 		agregarEnemigo(nuevo);
 	}
-	 else if (tipo == 11) {
+	else if (tipo == 11) {
 		Huaquero* nuevo = new Huaquero(634, 0, 30, 40, 60, 80, 0, 5, 3, tipo);
 		agregarEnemigo(nuevo);
 	}
-	 else if (tipo == 12) {
+	else if (tipo == 12) {
 		Huaquero* nuevo = new Huaquero(634, 0, 30, 40, 60, 80, 0, 5, 4, tipo);
 		agregarEnemigo(nuevo);
 	}
 
-	 // Abajo
-	 else if (tipo == 13) {
+	// Abajo
+	else if (tipo == 13) {
 		Huaquero* nuevo = new Huaquero(634, 760, 30, 40, 60, 80, 0, -5, 1, tipo);
 		agregarEnemigo(nuevo);
-	} else if (tipo == 14) {
+	}
+	else if (tipo == 14) {
 		Huaquero* nuevo = new Huaquero(634, 760, 30, 40, 60, 80, 0, -5, 2, tipo);
 		agregarEnemigo(nuevo);
 	}
-	 else if (tipo == 15) {
+	else if (tipo == 15) {
 		Huaquero* nuevo = new Huaquero(634, 760, 30, 40, 60, 80, 0, -5, 3, tipo);
 		agregarEnemigo(nuevo);
 	}
-	 else if (tipo == 16) {
+	else if (tipo == 16) {
 		Huaquero* nuevo = new Huaquero(634, 760, 30, 40, 60, 80, 0, -5, 4, tipo);
 		agregarEnemigo(nuevo);
 	}
@@ -259,7 +260,7 @@ void GestorHuacas::generarCuidador() {
 
 	if (!colisionHuaca)
 	{
-		Cuidador* nuevo = new Cuidador(x, y,30,40,60,80);
+		Cuidador* nuevo = new Cuidador(x, y, 30, 40, 60, 80);
 		agregarAliado(nuevo);
 	}
 }

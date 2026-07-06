@@ -5,7 +5,6 @@ Escenario::Escenario()
 	: fondo(nullptr), guardia(nullptr), anchoLienzo(1300), altoLienzo(800), enemigosTotales(5), gestor(new GestorArchivo())
 {
 	puntajeNivel = 0;
-	srand(time(nullptr));
 	enemigosCapturados = 0;
 	tempSpawnEntidades = 0;
 	escalaX = 1.0f;

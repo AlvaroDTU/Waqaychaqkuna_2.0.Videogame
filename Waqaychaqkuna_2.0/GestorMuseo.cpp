@@ -3,9 +3,9 @@
 
 GestorMuseo::GestorMuseo() : Escenario()
 {
-	int n1, n2, n3, gx, gy, bat;
-	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
-	enemigosTotales = 2;
+	int n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat;
+	gestor->cargarTodo(n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat);
+	enemigosTotales = n1;
 
 	iniciado = false;
 	fondoActual = 1;
@@ -31,9 +31,9 @@ void GestorMuseo::crearSprites()
 	frases.push_back("(Interactua usando E con la reportera)");
 	dialogo.iniciar(frases);
 
-	int n1, n2, n3, gx = 1, gy = 1, bat;
-	gestor->cargarTodo(n1, n2, n3, gx, gy, bat);
-	guardia = new Guardia(gx, gy, 45, 60, 60, 80);
+	int n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat;
+	gestor->cargarTodo(n1, n2, n3, gx1, gy1, gx2, gy2, gx3, gy3, bat);
+	guardia = new Guardia(gx1, gy1, 45, 60, 60, 80);
 
 	agregarAliado(new Reportera(1095, 120, 48, 64, 60, 80));
 
@@ -213,7 +213,7 @@ void GestorMuseo::detectarColisiones()
 		if (fondoActual == 2)
 		{
 			guardia->setPos(85, 370);
-			frases.push_back("(Radio)Reportera:\n\"Segun mis informes, en esta sala encontraras " + std::to_string(enemigosRonda2) + " ladrones escondidos entre la gente.\"");
+			frases.push_back("(Radio)Reportera:\n\"Segun mis informes, en esta sala encontraras " + std::to_string(enemigosRonda1) + " ladrones escondidos entre la gente.\"");
 			frases.push_back("(Radio)Reportera:\n\"Suerte encontrandolos!\"");
 			frases.push_back("(Tip: Puedes interactuar con los bienes con 'D' para aprender algo interesante sobre ellos)");
 			dialogo.iniciar(frases);

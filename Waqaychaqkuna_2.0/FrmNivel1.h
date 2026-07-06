@@ -52,7 +52,8 @@ namespace Waqaychaqkuna20 {
 	private: System::Windows::Forms::Timer^ tmrNivel1;
 	private: System::Windows::Forms::Label^ lblPista;
 	private: System::Windows::Forms::Label^ lblIntentos;
-	private: System::Windows::Forms::Label^ lblDerrotados;
+	private: System::Windows::Forms::Label^ lblCapturados;
+
 	private: System::Windows::Forms::Label^ lblArtilugio1;
 	private: System::Windows::Forms::Label^ lblArtilugio2;
 	private: System::Windows::Forms::Label^ lblArtilugio3;
@@ -71,7 +72,7 @@ namespace Waqaychaqkuna20 {
 		   float stats_escalaY = 1.0f;
 		   Point lblPistaBase;
 		   Point lblIntentosBase;
-		   Point lblDerrotadosBase;
+		   Point lblCapturadosBase;
 		   Point lblArtilugio1Base;
 		   Point lblArtilugio2Base;
 		   Point lblArtilugio3Base;
@@ -97,7 +98,7 @@ namespace Waqaychaqkuna20 {
 			   this->lblArtilugio5 = (gcnew System::Windows::Forms::Label());
 			   this->lblArtilugio6 = (gcnew System::Windows::Forms::Label());
 			   this->lblIntentos = (gcnew System::Windows::Forms::Label());
-			   this->lblDerrotados = (gcnew System::Windows::Forms::Label());
+			   this->lblCapturados = (gcnew System::Windows::Forms::Label());
 			   this->lblPista = (gcnew System::Windows::Forms::Label());
 			   this->pnlEstadisticas->SuspendLayout();
 			   this->SuspendLayout();
@@ -127,7 +128,7 @@ namespace Waqaychaqkuna20 {
 			   this->pnlEstadisticas->Controls->Add(this->lblArtilugio5);
 			   this->pnlEstadisticas->Controls->Add(this->lblArtilugio6);
 			   this->pnlEstadisticas->Controls->Add(this->lblIntentos);
-			   this->pnlEstadisticas->Controls->Add(this->lblDerrotados);
+			   this->pnlEstadisticas->Controls->Add(this->lblCapturados);
 			   this->pnlEstadisticas->Controls->Add(this->lblPista);
 			   this->pnlEstadisticas->Location = System::Drawing::Point(1300, 0);
 			   this->pnlEstadisticas->Name = L"pnlEstadisticas";
@@ -212,16 +213,16 @@ namespace Waqaychaqkuna20 {
 			   this->lblIntentos->TabIndex = 5;
 			   this->lblIntentos->Text = L"INTENTOS: 0";
 			   // 
-			   // lblDerrotados
+			   // lblCapturados
 			   // 
-			   this->lblDerrotados->AutoSize = true;
-			   this->lblDerrotados->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			   this->lblCapturados->AutoSize = true;
+			   this->lblCapturados->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lblDerrotados->Location = System::Drawing::Point(6, 701);
-			   this->lblDerrotados->Name = L"lblDerrotados";
-			   this->lblDerrotados->Size = System::Drawing::Size(221, 17);
-			   this->lblDerrotados->TabIndex = 3;
-			   this->lblDerrotados->Text = L"ENEMIGOS DERROTADOS: 0";
+			   this->lblCapturados->Location = System::Drawing::Point(6, 701);
+			   this->lblCapturados->Name = L"lblCapturados";
+			   this->lblCapturados->Size = System::Drawing::Size(218, 17);
+			   this->lblCapturados->TabIndex = 3;
+			   this->lblCapturados->Text = L"ENEMIGOS CAPTURADOS: 0";
 			   // 
 			   // lblPista
 			   // 
@@ -263,7 +264,7 @@ namespace Waqaychaqkuna20 {
 			gestor->crearSprites();
 			lblPistaBase = lblPista->Location;
 			lblIntentosBase = lblIntentos->Location;
-			lblDerrotadosBase = lblDerrotados->Location;
+			lblCapturadosBase = lblCapturados->Location;
 			lblArtilugio1Base = lblArtilugio1->Location;
 			lblArtilugio2Base = lblArtilugio2->Location;
 			lblArtilugio3Base = lblArtilugio3->Location;
@@ -290,7 +291,6 @@ namespace Waqaychaqkuna20 {
 					System::Reflection::BindingFlags::NonPublic);
 
 			p->SetValue(pnlEstadisticas, true, nullptr);
-
 		}
 		Void FrmNivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			Guardia* g = gestor->getGuardia();
@@ -336,8 +336,8 @@ namespace Waqaychaqkuna20 {
 			lblArtilugio5->Text = String::Format("Puntaje\nTumi de Oro:\n{0}", gestor->getBien(4)->getPuntajeValor());
 			lblArtilugio6->Text = String::Format("Puntaje\nVaso Kero:\n{0}", gestor->getBien(5)->getPuntajeValor());
 
-			this->lblDerrotados->Text = String::Format(L"ENEMIGOS CAPTURADOS: {0}", gestor->getCapturados());
-			this->lblIntentos->Text = String::Format(L"INTENTOS: {0}", gestor->getIntentos());
+			this->lblCapturados->Text = String::Format(L"ENEMIGOS CAPTURADOS:\n{0}", gestor->getCapturados());
+			this->lblIntentos->Text = String::Format(L"INTENTOS:\n{0}", gestor->getIntentos());
 
 			if (!musicaSuspenso &&
 				(gestor->getBien(0)->getPuntajeValor() <= 400 || gestor->getBien(1)->getPuntajeValor() <= 500 ||
@@ -385,22 +385,12 @@ namespace Waqaychaqkuna20 {
 		}
 		Void PintarEstadisticas()
 		{
-			// Bitmap^ fondo = Recursos::PanelEstadisticas1;
-			// 
-			// bufferStats->Graphics->Clear(Color::FromArgb(0, 0, 0, 0));
-			// bufferStats->Graphics->DrawImage(fondo, Rectangle(0, 0, pnlEstadisticas->Width, pnlEstadisticas->Height));
-			// gestor->dibujarDescripcion(bufferStats->Graphics);
-			// 
-			// Graphics^ g = pnlEstadisticas->CreateGraphics();
-			// bufferStats->Render(g);
-			// delete g;
 			bufferStats->Graphics->Clear(Color::Transparent);
 
 			bufferStats->Graphics->DrawImage(
 				Recursos::PanelEstadisticas1,
 				System::Drawing::Rectangle(0, 0, pnlEstadisticas->Width, pnlEstadisticas->Height)
 			);
-
 
 			gestor->dibujarDescripcion(bufferStats->Graphics);
 
@@ -413,7 +403,7 @@ namespace Waqaychaqkuna20 {
 			Graphics^ g = this->pnlMapa->CreateGraphics();
 			if (gestor->victoria()) {
 				System::Drawing::Font^ fuente = gcnew System::Drawing::Font("Segoe UI", 40, FontStyle::Bold);
-				String^ text = "MISION CUMPLIDA!";
+				String^ text = "NIVEL 1 VENCIDO!";
 				SizeF textSize = buffer->Graphics->MeasureString(text, fuente);
 				// centro
 				float x = (buffer->Graphics->VisibleClipBounds.Width - textSize.Width) / 2.0f;
@@ -424,7 +414,7 @@ namespace Waqaychaqkuna20 {
 			}
 			if (gestor->derrota()) {
 				System::Drawing::Font^ fuente = gcnew System::Drawing::Font("Segoe UI", 40, FontStyle::Bold);
-				String^ text = "GAME OVER :C";
+				String^ text = "INTENTA DE NUEVO";
 				SizeF textSize = buffer->Graphics->MeasureString(text, fuente);
 				// centro
 				float x = (buffer->Graphics->VisibleClipBounds.Width - textSize.Width) / 2.0f;
@@ -474,6 +464,9 @@ namespace Waqaychaqkuna20 {
 		Graphics^ gStats = pnlEstadisticas->CreateGraphics();
 		bufferStats = contexto->Allocate(gStats, pnlEstadisticas->ClientRectangle);
 		delete gStats;
+
+		Pintar();
+		PintarEstadisticas();
 	}
 		  
 	Void ActualizarTamanoLabels()
@@ -497,11 +490,11 @@ namespace Waqaychaqkuna20 {
 			   );
 			   lblIntentos->Font = fuente;
 
-			   lblDerrotados->Location = Point(
-				   lblDerrotadosBase.X * stats_escalaX,
-				   lblDerrotadosBase.Y * stats_escalaY
+			   lblCapturados->Location = Point(
+				   lblCapturadosBase.X * stats_escalaX,
+				   lblCapturadosBase.Y * stats_escalaY
 			   );
-			   lblDerrotados->Font = fuente;
+			   lblCapturados->Font = fuente;
 
 			   lblArtilugio1->Location = Point(
 				   lblArtilugio1Base.X * stats_escalaX,
