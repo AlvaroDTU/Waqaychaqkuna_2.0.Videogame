@@ -320,6 +320,7 @@ namespace Waqaychaqkuna20 {
 			{
 				puntaje3 = f3->RetornarPuntaje();
 				delete f3;
+				CargarHistorial();
 				return;
 			}
 			puntaje3 = f3->RetornarPuntaje();
