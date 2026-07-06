@@ -16,9 +16,7 @@ class GestorArchivo
 		std::vector<Puntaje*> leerBinario();
 		vector<Puntaje*> leerTexto();
 		void guardarTexto(Puntaje* p);
-		int ultimoPuntaje();
 		string fechaActual();
-		int leerRecord();
-		void guardarRecord(int puntos);
+
 };
 

@@ -559,7 +559,7 @@ private: System::Void tmrNivel3_Tick(System::Object^ sender, System::EventArgs^ 
 
 	this->lblDerrotados->Text = String::Format(L"ENEMIGOS CAPTURADOS: {0}", (int)gestor->getCapturados());
 	this->lblIntentos->Text = String::Format(L"VIDA: {0}", (int)gestor->getVidas());
-	this->lblBateria->Text = String::Format("PORCENTAJE BATERIA: {0}", (int)gestor->getTiempoRecarga());
+	this->lblBateria->Text = String::Format("PORCENTAJE BATERIA: {0}%", (int)gestor->getPorcentajeLinterna());
 	//archivos
 	this->lblArchivo1->Text = gcnew System::String(gestor->getBien(0)->getNombre().c_str());
 	this->lblArchivo2->Text = gcnew System::String(gestor->getBien(1)->getNombre().c_str());
