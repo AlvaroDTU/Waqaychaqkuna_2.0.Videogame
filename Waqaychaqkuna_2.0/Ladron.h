@@ -13,7 +13,7 @@ private:
 	int tempMovimiento;
 	int tempAtaque;
 public:
-	Ladron(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj, int t, int tPista);
+	Ladron(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj, int tp, int tPista);
 	~Ladron();
 
 	std::string getNombre() override;

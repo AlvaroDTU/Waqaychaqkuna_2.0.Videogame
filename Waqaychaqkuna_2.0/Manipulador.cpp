@@ -1,15 +1,15 @@
 #include "pch.h"
 #include "Manipulador.h"
-Manipulador::Manipulador(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj, int tM, bool iluminado)
+Manipulador::Manipulador(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj, int tp, bool iluminado)
 	: Enemigo(posX, posY, an, al, anF, alF, dirX, dirY, obj)
 {
-	this->tipo = tM;
+	this->tipo = tp;
 	posFinal= rand() % 240 + 210;
 }
 Manipulador::~Manipulador() {}
 
 int Manipulador::getTipo() { return this->tipo; }
-void Manipulador::setTipo(int TM) { tipo = TM; }
+void Manipulador::setTipo(int tp) { tipo = tp; }
 
 std::string Manipulador::getNombre() { return "manipulador"; }
 

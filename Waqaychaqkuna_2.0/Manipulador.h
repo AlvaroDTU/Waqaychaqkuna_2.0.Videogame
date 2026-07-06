@@ -7,11 +7,11 @@ private:
 	bool iluminado;
 	int posFinal;
 public:
-	Manipulador(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj, int t, bool iluminado);
-	~Manipulador();
+	Manipulador(int posX, int posY, int an, int al, int anF, int alF, int dirX, int dirY, int obj, int tp, bool iluminado);
+	~Manipulador();	
 
 	int getTipo();
-	void setTipo(int TM);
+	void setTipo(int tp);
 	bool getIluminado();
 	void setIluminado(bool i);
 
